@@ -1,11 +1,13 @@
 package ar.edu.unsam.algo3
 
+import ar.edu.unsam.algo3.model.recoms
 import kotlinx.serialization.Serializable
 import kotlinx.serialization.json.Json
+import org.springframework.stereotype.Component
 
 
 abstract class Repositorio<T:ItemRepo> {
-    protected val items: MutableSet<T> = mutableSetOf()
+    abstract protected val items: MutableSet<T>
 
     private fun existeItem(item: T): Boolean = items.map { it.id }.contains(item.id)
 
@@ -46,12 +48,13 @@ abstract class Repositorio<T:ItemRepo> {
         accion.ejecutar()
     }
 
-    fun items() = items
+    fun items() = items.toList()
 
     fun limpiarParaTest() = items.clear()
 }
-
+@Component
 object repositorioLibros : Repositorio<Libro>() {
+    override val items = mutableSetOf<Libro>()
     lateinit var service: ServiceLibros
     override fun buscarItems(patron: String) = items.filter { patron.lowercase() in it.titulo().lowercase()
             || patron.lowercase() in it.autor().apellido().lowercase() }
@@ -80,18 +83,21 @@ object repositorioLibros : Repositorio<Libro>() {
 }
 
 object repositorioUsuarios : Repositorio<Usuario>() {
+    override val items = mutableSetOf<Usuario>()
     override fun buscarItems(patron: String) = items.filter { patron.lowercase() in it.nombreCompleto().lowercase()
             || patron.lowercase() == it.userName().lowercase() }
 }
 
 object repositorioAutores : Repositorio<Autor>() {
+    override val items = mutableSetOf<Autor>()
     override fun buscarItems(patron: String) = items.filter {
         patron.lowercase() in it.nombre().lowercase() || patron.lowercase() in it.apellido().lowercase()
                 || patron.lowercase() == it.seudonimo().lowercase()
     }
 }
-
+@Component
 object repositorioRecomendaciones : Repositorio<Recomendacion>() {
+    override val items = recoms.toMutableSet()
     override fun buscarItems(patron: String) = items.filter {
         patron.lowercase() == it.creador().apellido().lowercase() || patron.lowercase() in it.resegna().lowercase()
                 || it.libros().any { l -> patron.lowercase() in l.titulo().lowercase() }
@@ -99,6 +105,7 @@ object repositorioRecomendaciones : Repositorio<Recomendacion>() {
 }
 
 object repositorioCentroLectura : Repositorio<CentroLectura>() {
+    override val items = mutableSetOf<CentroLectura>()
     override fun buscarItems(patron: String) = items.filter { patron.lowercase() == it.libro.titulo().lowercase() }
 }
 
