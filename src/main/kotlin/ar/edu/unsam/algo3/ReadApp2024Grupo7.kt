@@ -4,8 +4,8 @@ import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
 @SpringBootApplication
-class ProyectoApplication
+class ReadApp2024Grupo7
 
 fun main(args: Array<String>) {
-    runApplication<ProyectoApplication>(*args)
+    runApplication<ReadApp2024Grupo7>(*args)
 }
