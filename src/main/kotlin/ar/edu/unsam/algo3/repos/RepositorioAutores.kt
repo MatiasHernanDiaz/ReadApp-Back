@@ -1,8 +1,10 @@
 package ar.edu.unsam.algo3.repos
 
 import ar.edu.unsam.algo3.Autor
+import org.springframework.stereotype.Component
 
-object repositorioAutores : Repositorio<Autor>() {
+@Component
+class RepositorioAutores : Repositorio<Autor>() {
     override val items = mutableSetOf<Autor>()
     override fun buscarItems(patron: String) = items.filter {
         patron.lowercase() in it.nombre().lowercase() || patron.lowercase() in it.apellido().lowercase()

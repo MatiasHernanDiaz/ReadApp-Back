@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component
 
 
 abstract class Repositorio<T:ItemRepo> {
-    abstract protected val items: MutableSet<T>
+    abstract val items: MutableSet<T>
 
     private fun existeItem(item: T): Boolean = items.map { it.id }.contains(item.id)
 
@@ -18,7 +18,7 @@ abstract class Repositorio<T:ItemRepo> {
         }
 
         val lastId = items.maxOfOrNull { it.id!! }
-        val newId = if(lastId != null) lastId + 1u else 1u
+        val newId = if(lastId != null) lastId + 1 else 1
         item.id = newId
         items.add(item)
     }
@@ -40,7 +40,7 @@ abstract class Repositorio<T:ItemRepo> {
     }
 
 
-    fun itemPorId(id: UInt): T? = items.find { it.id == id }
+    fun itemPorId(id: Int): T? = items.find { it.id == id }
 
 
     abstract fun buscarItems(patron: String): List<T>
@@ -55,7 +55,7 @@ abstract class Repositorio<T:ItemRepo> {
 }
 
 interface ItemRepo {
-    var id: UInt?
+    var id: Int
 }
 
 interface ServiceLibros {

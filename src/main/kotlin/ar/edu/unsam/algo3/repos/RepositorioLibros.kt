@@ -6,7 +6,7 @@ import kotlinx.serialization.json.Json
 import org.springframework.stereotype.Component
 
 @Component
-object repositorioLibros : Repositorio<Libro>() {
+class RepositorioLibros : Repositorio<Libro>() {
     override val items = mutableSetOf<Libro>()
     lateinit var service: ServiceLibros
     override fun buscarItems(patron: String) = items.filter { patron.lowercase() in it.titulo().lowercase()
@@ -14,7 +14,7 @@ object repositorioLibros : Repositorio<Libro>() {
 
     @Serializable
     data class LibroPayload(
-        val id: UInt,
+        val id: Int,
         val ediciones: Int,
         val ventasSemanales: Int
     )

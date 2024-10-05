@@ -5,7 +5,7 @@ import ar.edu.unsam.algo3.model.recoms
 import org.springframework.stereotype.Component
 
 @Component
-object repositorioRecomendaciones : Repositorio<Recomendacion>() {
+class RepositorioRecomendaciones : Repositorio<Recomendacion>() {
     override val items = recoms.toMutableSet()
     override fun buscarItems(patron: String) = items.filter {
         patron.lowercase() == it.creador().apellido().lowercase() || patron.lowercase() in it.resegna().lowercase()

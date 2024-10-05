@@ -9,5 +9,6 @@ class RecomController (val recomService: RecomService){
 
     @GetMapping("/recommendations")
     fun recommendation() = recomService.getAllRecoms()
+
 }
 

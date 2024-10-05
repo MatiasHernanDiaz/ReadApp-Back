@@ -9,7 +9,7 @@ class CentroLectura(
     val organizador:Organizador,
     val fechas : MutableSet<LocalDate>
 ) : ItemRepo {
-    override var id: UInt? = null
+    override var id: Int = -1
 
     fun costoReserva(): Float = organizador.costoReserva(this)
     fun cantMaxParicipantes(): Int = organizador.cantMaxParticipantes()

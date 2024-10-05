@@ -2,13 +2,13 @@ package ar.edu.unsam.algo3
 
 // ¿Es correcto declararla como "data class"? Dos recomendaciones podrían obtener
 // valoraciones iguales, pero no serían la misma.
-data class Valoracion (private var puntuacion: Int, private var comentario: String, private val autor: Usuario){
+data class Valoracion (var puntuacion: Int, var comentario: String, val autor: Usuario){
 
-    fun getComentario() = comentario
+    //fun getComentario() = comentario
 
-    fun getAutor() = autor
+    //fun getAutor() = autor
 
-    fun getPuntuacion() = puntuacion
+    //fun getPuntuacion() = puntuacion
 
     fun capazDeEditar(usuario: Usuario): Boolean{
         return usuario === autor
