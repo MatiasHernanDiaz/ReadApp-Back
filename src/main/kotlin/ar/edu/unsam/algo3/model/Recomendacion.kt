@@ -1,5 +1,7 @@
 package ar.edu.unsam.algo3
 
+import ar.edu.unsam.algo3.repos.ItemRepo
+
 class Recomendacion(
     private val creador: Usuario,
     private var resegna: String,
