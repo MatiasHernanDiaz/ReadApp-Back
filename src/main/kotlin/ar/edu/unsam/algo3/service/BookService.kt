@@ -13,7 +13,7 @@ import org.springframework.stereotype.Service
 class BookService (val bookRepositorio: RepositorioLibros){
     //Fijate que tenes un quilombo con la funcion actualizar, hay que reemplazarla.
     fun getAllBook(): List<Libro> {
-        bookRepositorio.crearItem(libroAutorNoPreferido)
+        //bookRepositorio.crearItem(libroAutorNoPreferido)
         return bookRepositorio.items()
     }
 

@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 class RecomService (val recomRepositorio: RepositorioRecomendaciones){
     //Aca tenes un QUILOMBASO de recursividad y toda la chota, fijate como lo arresglas Gas
     fun getAllRecoms(): List<Recomendacion> {
-        recomRepositorio.crearItem(recomCompleta)
+        //recomRepositorio.crearItem(recomCompleta)
         return recomRepositorio.items()
     }
 

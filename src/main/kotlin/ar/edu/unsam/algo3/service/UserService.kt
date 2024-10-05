@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service
 @Service
 class UserService (val userRepo: RepositoriosUsuarios){
     fun getAllUser(): MutableSet<Usuario> {
-        userRepo.crearItem(creadorRecom)
+        //userRepo.crearItem(creadorRecom)
         return userRepo.items
     }
 
