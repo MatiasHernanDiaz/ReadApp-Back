@@ -2,6 +2,7 @@ package ar.edu.unsam.algo3
 
 
 import ar.edu.unsam.algo3.repos.ItemRepo
+import com.fasterxml.jackson.annotation.JsonIgnore
 import java.time.LocalDate
 import java.time.Period
 
@@ -18,6 +19,7 @@ class Usuario(
     val librosLeidos: MutableList<Libro> = mutableListOf(),
     val librosALeer: MutableSet<Libro> = mutableSetOf(),
     val autoresPreferidos: MutableSet<Autor> = mutableSetOf(),
+    @JsonIgnore
     val recomendaciones: MutableList<Recomendacion> = mutableListOf(),
     val valoraciones: MutableList<Valoracion> = mutableListOf(),
     var tipoLector: TipoLector = LectorPromedio
