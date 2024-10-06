@@ -10,6 +10,7 @@ class Usuario(
     val nombre: String,
     val apellido: String,
     val userName: String,
+    val password: String,
     val email: String,
     val fechaNacimiento: LocalDate,
     var perfil: Perfil,
