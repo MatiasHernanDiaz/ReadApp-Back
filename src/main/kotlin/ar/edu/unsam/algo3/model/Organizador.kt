@@ -7,7 +7,7 @@ interface Organizador {
 
 }
 
-class Particular(private val cantidadMaxima: Int, private val porcentajeAdicional: Float) : Organizador {
+class Particular(val cantidadMaxima: Int, val porcentajeAdicional: Float) : Organizador {
     override fun cantMaxParticipantes(): Int {
         return cantidadMaxima
     }
@@ -35,7 +35,7 @@ class Editorial(
     override fun costoReserva(centroLectura: CentroLectura): Float {
         if (autorPresente) {
             if (centroLectura.libro.esBestSeller()) {
-                return centroLectura.libro.getVentasSemanales() * 0.1F + costoBase()
+                return centroLectura.libro.ventasSemanales * 0.1F + costoBase()
             } else
                 return  costoBase()+200F
         }

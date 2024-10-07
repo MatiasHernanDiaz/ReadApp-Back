@@ -1,15 +1,18 @@
 package ar.edu.unsam.algo3
 
-class Recomendacion(
-    private val creador: Usuario,
-    private var resegna: String,
-    private val libros: MutableSet<Libro> = mutableSetOf(),
-    private var publica: Boolean = false
-) : ItemRepo {
-    override var id: UInt? = null
+import ar.edu.unsam.algo3.repos.ItemRepo
 
-    private val valoraciones: MutableList<Valoracion> = mutableListOf()
-    private val observers: MutableSet<AddLibrosObserver> = mutableSetOf()
+class Recomendacion(
+    val creador: Usuario,
+    val titulo: String="",
+    var resegna: String,
+    val libros: MutableSet<Libro> = mutableSetOf(),
+    var publica: Boolean = false
+) : ItemRepo {
+    override var id: Int = -1
+
+    val valoraciones: MutableList<Valoracion> = mutableListOf()
+    val observers: MutableSet<AddLibrosObserver> = mutableSetOf()
 
     init {
         creador.agregarRecomendacion(this)
@@ -84,16 +87,16 @@ class Recomendacion(
 
     fun valoraciones() = valoraciones
     fun agregarValoracion(valoracion: Valoracion) {
-        if(puedeValorar(valoracion.getAutor())) {
+        if(puedeValorar(valoracion.autor)) {
             valoraciones.add(valoracion)
         } else {
             throw Exception("No es un valorador válido")
         }
     }
 
-    fun usuarioValoro(usuario: Usuario) = valoraciones.any { it.getAutor() === usuario }
+    fun usuarioValoro(usuario: Usuario) = valoraciones.any { it.autor === usuario }
 
-    fun promedioValoraciones(): Double = valoraciones.map{ it.getPuntuacion() }.average()
+    fun promedioValoraciones(): Double = valoraciones.map{ it.puntuacion }.average()
 
     fun agregarAddLibrosObserver(observer: AddLibrosObserver){ observers.add(observer) }
 }

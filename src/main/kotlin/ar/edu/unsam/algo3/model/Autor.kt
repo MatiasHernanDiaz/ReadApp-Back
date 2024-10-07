@@ -1,17 +1,18 @@
 package ar.edu.unsam.algo3
+import ar.edu.unsam.algo3.repos.ItemRepo
 import java.time.LocalDate
 import java.time.Period
 
 
 class Autor (
-    private val apellido: String,
-    private var nombre: String,
-    private val seudonimo: String,
-    private val fechaNacimiento : LocalDate,
+    val apellido: String,
+    var nombre: String,
+    val seudonimo: String,
+    val fechaNacimiento : LocalDate,
     val idiomaNativo: Lenguaje,
-    private val premios : MutableList<Premio> = mutableListOf()
+    val premios : MutableList<Premio> = mutableListOf()
 ) : ItemRepo {
-    override var id: UInt? = null
+    override var id: Int = -1
 
     fun apellido() = apellido
     fun nombre() = nombre

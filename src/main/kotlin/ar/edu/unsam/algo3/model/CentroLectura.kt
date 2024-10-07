@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3
 
+import ar.edu.unsam.algo3.repos.ItemRepo
 import java.time.LocalDate
 
 class CentroLectura(
@@ -8,7 +9,7 @@ class CentroLectura(
     val organizador:Organizador,
     val fechas : MutableSet<LocalDate>
 ) : ItemRepo {
-    override var id: UInt? = null
+    override var id: Int = -1
 
     fun costoReserva(): Float = organizador.costoReserva(this)
     fun cantMaxParicipantes(): Int = organizador.cantMaxParticipantes()

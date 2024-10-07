@@ -1,27 +1,33 @@
 package ar.edu.unsam.algo3
 
 
+import ar.edu.unsam.algo3.repos.ItemRepo
+import com.fasterxml.jackson.annotation.JsonIgnore
 import java.time.LocalDate
 import java.time.Period
 
 class Usuario(
-    private val nombre: String,
-    private val apellido: String,
-    private val userName: String,
-    private val email: String,
-    private val fechaNacimiento: LocalDate,
-    private var perfil: Perfil,
-    private val lenguajeNativo: Lenguaje,
-    private val palabrasXMinuto: Int,
-    private val amigos: MutableSet<Usuario> = mutableSetOf(),
-    private val librosLeidos: MutableList<Libro> = mutableListOf(),
-    private val librosALeer: MutableSet<Libro> = mutableSetOf(),
-    private val autoresPreferidos: MutableSet<Autor> = mutableSetOf(),
-    private val recomendaciones: MutableList<Recomendacion> = mutableListOf(),
-    private val valoraciones: MutableList<Valoracion> = mutableListOf(),
-    private var tipoLector: TipoLector = LectorPromedio
+    val nombre: String,
+    val apellido: String,
+    val userName: String,
+    val password: String,
+    val email: String,
+    val fechaNacimiento: LocalDate,
+    var perfil: Perfil,
+    val lenguajeNativo: Lenguaje,
+    val palabrasXMinuto: Int,
+    val amigos: MutableSet<Usuario> = mutableSetOf(),
+    val librosLeidos: MutableList<Libro> = mutableListOf(),
+    val librosALeer: MutableSet<Libro> = mutableSetOf(),
+    val autoresPreferidos: MutableSet<Autor> = mutableSetOf(),
+    val recomendaciones: MutableList<Recomendacion> = mutableListOf(),
+    val valoraciones: MutableList<Valoracion> = mutableListOf(),
+    var tipoLector: TipoLector = LectorPromedio
 ): ItemRepo {
-    override var id: UInt? = null
+    //override var id: UInt? = null
+    override var id: Int = -1
+
+    var avatar= ""
 
     fun edad(): Int = Period.between(fechaNacimiento, LocalDate.now()).years
 

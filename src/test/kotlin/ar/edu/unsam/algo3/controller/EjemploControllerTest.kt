@@ -12,7 +12,7 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 @SpringBootTest
 @AutoConfigureMockMvc
 @DisplayName("Dado un controller de tareas")
-class RecetaControllerTest(@Autowired val mockMvc: MockMvc) {
+class RecetaRecomControllerTest(@Autowired val mockMvc: MockMvc) {
 
     @Test
     fun `puedo mockear una llamada al endpoint via get y me responde correctamente`() {

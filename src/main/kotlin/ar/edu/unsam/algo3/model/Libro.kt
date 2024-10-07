@@ -1,24 +1,26 @@
 package ar.edu.unsam.algo3
 
+import ar.edu.unsam.algo3.repos.ItemRepo
+
 //import java.time.temporal.ChronoUnit
 
 class Libro(
-    private val titulo: String = "",
-    private val autor: Autor,
-    private val paginas: Int,
-    private val palabras: Int,
-    private var ediciones: Int,
-    private var ventasSemanales: Int,
-    private val lecturaCompleja: Boolean,
-    private val traducciones: MutableSet<Lenguaje> = mutableSetOf(),
+    val titulo: String = "",
+    val autor: Autor,
+    val paginas: Int,
+    val palabras: Int,
+    var ediciones: Int,
+    var ventasSemanales: Int,
+    val lecturaCompleja: Boolean,
+    val traducciones: MutableSet<Lenguaje> = mutableSetOf(),
 
     ) : ItemRepo {
     companion object maxPag {
-        private val maxPaginasLibroLargo = 600
+        val maxPaginasLibroLargo = 600
 
         fun maxPaginasLibroLargo() = maxPaginasLibroLargo
     }
-    override var id: UInt? = null
+    override var id: Int = -1
 
 
     fun palabras(): Int = palabras
@@ -39,7 +41,7 @@ class Libro(
     fun editarEdiciones(cantidadEdiciones: Int) { ediciones = cantidadEdiciones }
     fun editarVentasSemanales(cantidadVentasSemanales: Int) { ventasSemanales = cantidadVentasSemanales }
 
-    fun getVentasSemanales()=ventasSemanales
+    //fun getVentasSemanales(): Int = ventasSemanales
 }
 
 class Premio{
