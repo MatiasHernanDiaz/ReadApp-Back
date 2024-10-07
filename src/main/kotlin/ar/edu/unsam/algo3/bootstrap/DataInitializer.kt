@@ -194,7 +194,7 @@ class DataInitializer(
             lenguajeNativo = Lenguaje.ESPANIOL,
             palabrasXMinuto = 300,
             amigos = mutableSetOf(),
-            librosLeidos = mutableListOf(bill,genteToxica,aleph)
+            librosLeidos = mutableListOf(bill,genteToxica,aleph, rayuela)
         )
 
         val marge = Usuario(
@@ -343,12 +343,23 @@ class DataInitializer(
 
 
         val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = homero)
+        val valoracion2 = Valoracion(puntuacion = 1, comentario = "Una porqueria!", autor = carl)
 
         val recomCompleta = Recomendacion(
             creador = lisa,
             resegna = "Estos libros están buenísimos!",
             libros = mutableSetOf(rayuela, genteToxica, aleph)
         )
+
+        val recomCompletaConValoracion = Recomendacion(
+            creador = lisa,
+            resegna = "Estos libros están buenísimos, comenten!!",
+            libros = mutableSetOf(rayuela),
+            publica = true
+        )
+
+        recomCompletaConValoracion.agregarValoracion(valoracion)
+        recomCompletaConValoracion.agregarValoracion(valoracion2)
 
         val recomCompleta2 = Recomendacion(
             creador = homero,
@@ -359,19 +370,22 @@ class DataInitializer(
         val recomCompleta3 = Recomendacion(
             creador = barney,
             resegna = "Estos libros están buenísimos3333!",
-            libros = mutableSetOf(cthulhu,gaturro)
+            libros = mutableSetOf(cthulhu,gaturro),
+            publica = true
         )
 
         val recomCompleta4 = Recomendacion(
             creador = bart,
             resegna = "Estos libros están buenísimos 4444!",
-            libros = mutableSetOf(dragonBall,historiaDelArte,aleph)
+            libros = mutableSetOf(dragonBall,historiaDelArte,aleph),
+            publica = true
         )
 
         repoRecom.crearItem(recomCompleta)
         repoRecom.crearItem(recomCompleta2)
         repoRecom.crearItem(recomCompleta3)
         repoRecom.crearItem(recomCompleta4)
+        repoRecom.crearItem(recomCompletaConValoracion)
     }
 
 }

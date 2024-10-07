@@ -15,4 +15,6 @@ class RecomService (val recomRepositorio: RepositorioRecomendaciones){
         return recomRepositorio.items()
     }
 
+    fun getRecomById(id: Int): Recomendacion = recomRepositorio.itemPorId(id)!!
+
 }
