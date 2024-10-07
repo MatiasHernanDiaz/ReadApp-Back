@@ -193,7 +193,8 @@ class DataInitializer(
             perfil = Leedor(),
             lenguajeNativo = Lenguaje.ESPANIOL,
             palabrasXMinuto = 300,
-            amigos = mutableSetOf()
+            amigos = mutableSetOf(),
+            librosLeidos = mutableListOf(bill,genteToxica,aleph)
         )
 
         val marge = Usuario(
@@ -219,7 +220,8 @@ class DataInitializer(
             perfil = Leedor(),
             lenguajeNativo = Lenguaje.ESPANIOL,
             palabrasXMinuto = 300,
-            amigos = mutableSetOf()
+            amigos = mutableSetOf(),
+            librosLeidos = mutableListOf(dragonBall,historiaDelArte,aleph)
         )
         val lisa = Usuario(
             nombre = "Lisa",
@@ -293,7 +295,7 @@ class DataInitializer(
             lenguajeNativo = Lenguaje.BENGALI,
             palabrasXMinuto = 150,
             amigos = mutableSetOf (homero, bart, selma),
-            librosLeidos = mutableListOf(rayuela),
+            librosLeidos = mutableListOf(cthulhu,gaturro),
             librosALeer = mutableSetOf(genteToxica),
             autoresPreferidos = mutableSetOf(cortazar),
         )
@@ -355,13 +357,13 @@ class DataInitializer(
         )
 
         val recomCompleta3 = Recomendacion(
-            creador = lisa,
+            creador = barney,
             resegna = "Estos libros están buenísimos3333!",
             libros = mutableSetOf(cthulhu,gaturro)
         )
 
         val recomCompleta4 = Recomendacion(
-            creador = lisa,
+            creador = bart,
             resegna = "Estos libros están buenísimos 4444!",
             libros = mutableSetOf(dragonBall,historiaDelArte,aleph)
         )

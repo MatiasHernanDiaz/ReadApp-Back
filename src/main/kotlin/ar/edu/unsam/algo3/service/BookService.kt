@@ -1,8 +1,6 @@
 package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.Libro
-import ar.edu.unsam.algo3.Recomendacion
-import ar.edu.unsam.algo3.model.libroAutorNoPreferido
 
 import ar.edu.unsam.algo3.repos.RepositorioLibros
 

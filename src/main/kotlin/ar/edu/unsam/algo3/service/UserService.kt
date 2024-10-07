@@ -2,8 +2,6 @@ package ar.edu.unsam.algo3.service
 
 
 import ar.edu.unsam.algo3.Usuario
-import ar.edu.unsam.algo3.model.creadorRecom
-import ar.edu.unsam.algo3.repos.Repositorio
 import ar.edu.unsam.algo3.repos.RepositoriosUsuarios
 import org.springframework.stereotype.Service
 

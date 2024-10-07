@@ -1,11 +1,6 @@
 package ar.edu.unsam.algo3.repos
 
 import ar.edu.unsam.algo3.*
-import ar.edu.unsam.algo3.model.recoms
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.json.Json
-import org.springframework.stereotype.Component
-
 
 abstract class Repositorio<T:ItemRepo> {
     abstract val items: MutableSet<T>
