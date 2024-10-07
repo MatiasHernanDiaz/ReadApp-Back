@@ -20,13 +20,14 @@ class Usuario(
     val librosLeidos: MutableList<Libro> = mutableListOf(),
     val librosALeer: MutableSet<Libro> = mutableSetOf(),
     val autoresPreferidos: MutableSet<Autor> = mutableSetOf(),
-    @JsonIgnore
     val recomendaciones: MutableList<Recomendacion> = mutableListOf(),
     val valoraciones: MutableList<Valoracion> = mutableListOf(),
     var tipoLector: TipoLector = LectorPromedio
 ): ItemRepo {
     //override var id: UInt? = null
     override var id: Int = -1
+
+    var avatar= ""
 
     fun edad(): Int = Period.between(fechaNacimiento, LocalDate.now()).years
 

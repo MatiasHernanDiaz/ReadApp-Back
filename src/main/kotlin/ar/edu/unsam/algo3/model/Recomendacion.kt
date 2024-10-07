@@ -4,6 +4,7 @@ import ar.edu.unsam.algo3.repos.ItemRepo
 
 class Recomendacion(
     val creador: Usuario,
+    val titulo: String="",
     var resegna: String,
     val libros: MutableSet<Libro> = mutableSetOf(),
     var publica: Boolean = false
