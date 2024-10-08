@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service
 class RecomService (val recomRepositorio: RepositorioRecomendaciones){
     fun getAllRecoms(id:Int?): List<Recomendacion> = recomRepositorio.items().filter{ id === null || it.creador.id == id  }
 
+    fun getAllRecoms(id:Int?, text:String?): List<Recomendacion> = recomRepositorio.buscarItems(text).filter{ id === null || it.creador.id == id  }
 
     fun getRecomById(id: Int): Recomendacion = recomRepositorio.itemPorId(id)!!
 

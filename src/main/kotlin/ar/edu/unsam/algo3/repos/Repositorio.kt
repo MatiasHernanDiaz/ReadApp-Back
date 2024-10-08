@@ -38,7 +38,7 @@ abstract class Repositorio<T:ItemRepo> {
     fun itemPorId(id: Int): T? = items.find { it.id == id }
 
 
-    abstract fun buscarItems(patron: String): List<T>
+    abstract fun buscarItems(patron: String?): List<T>
 
     fun ejecutarAccion(accion: AccionRepositorio) {
         accion.ejecutar()
