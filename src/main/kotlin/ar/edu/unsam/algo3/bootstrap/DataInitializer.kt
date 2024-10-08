@@ -371,7 +371,8 @@ class DataInitializer(
             creador = barney,
             resegna = "Estos libros están buenísimos3333!",
             libros = mutableSetOf(cthulhu,gaturro),
-            publica = true
+            publica = true,
+            titulo = "Un titulo para la recomendacion"
         )
 
         val recomCompleta4 = Recomendacion(
