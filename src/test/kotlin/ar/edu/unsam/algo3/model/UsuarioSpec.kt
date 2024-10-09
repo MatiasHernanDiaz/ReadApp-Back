@@ -17,55 +17,55 @@ class UsuarioSpec : DescribeSpec({
         //Arrange
         //Creacion de Lectores
 
-        val usuario = Usuario(
-            nombre = "Marty",
-            apellido = "McFly",
-            userName = "Condensador_De_Flujo",
+        val user = User(
+            firstName = "Marty",
+            lastName = "McFly",
+            username = "Condensador_De_Flujo",
             email = "volverAlFuturo@gmail.com",
-            fechaNacimiento = LocalDate.of(1968, 6, 9),
-            perfil = Leedor(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 30,
-            amigos = mutableSetOf()
+            birthday = LocalDate.of(1968, 6, 9),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Lenguaje.ESPANIOL,
+            readTimeMinAvg = 30,
+            friends = mutableSetOf()
         )
-        val usuario1 = Usuario(
-            nombre = "Juan",
-            apellido = "Perez",
-            userName = "juPerez",
+        val user1 = User(
+            firstName = "Juan",
+            lastName = "Perez",
+            username = "juPerez",
             email = "jperez@gmail.com",
-            fechaNacimiento = LocalDate.of(1988, 1, 12),
-            perfil = Leedor(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 30,
-            amigos = mutableSetOf(),
-            tipoLector = LectorAnsioso
+            birthday = LocalDate.of(1988, 1, 12),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Lenguaje.ESPANIOL,
+            readTimeMinAvg = 30,
+            friends = mutableSetOf(),
+            readMode = LectorAnsioso
         )
 
-        val usuario2 = Usuario(
-            nombre = "Pablo",
-            apellido = "Alvarez",
-            userName = "pAlvarez",
+        val user2 = User(
+            firstName = "Pablo",
+            lastName = "Alvarez",
+            username = "pAlvarez",
             email = "pablitoAlvarez@gmail.com",
-            fechaNacimiento = LocalDate.of(1998, 6, 1),
-            perfil = Leedor(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 30,
-            amigos = mutableSetOf(),
-            tipoLector = LectorFanatico
+            birthday = LocalDate.of(1998, 6, 1),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Lenguaje.ESPANIOL,
+            readTimeMinAvg = 30,
+            friends = mutableSetOf(),
+            readMode = LectorFanatico
         )
-        usuario2.agregarAutorPreferido(miguel)//agrego que es un autor favorito
+        user2.agregarAutorPreferido(miguel)//agrego que es un autor favorito
 
-        val usuario3 = Usuario(
-            nombre = "Martin",
-            apellido = "Palermo",
-            userName = "loco22titan",
+        val user3 = User(
+            firstName = "Martin",
+            lastName = "Palermo",
+            username = "loco22titan",
             email = "elLoco22Titan@gmail.com",
-            fechaNacimiento = LocalDate.of(1973, 11, 7),
-            perfil = Leedor(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 30,
-            amigos = mutableSetOf(),
-            tipoLector = LectorRecurrente
+            birthday = LocalDate.of(1973, 11, 7),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Lenguaje.ESPANIOL,
+            readTimeMinAvg = 30,
+            friends = mutableSetOf(),
+            readMode = LectorRecurrente
         )
 
 
@@ -126,8 +126,8 @@ class UsuarioSpec : DescribeSpec({
 
 
         it("tiene una de edad") {
-            val edadEsperada = Period.between(usuario.fechaNacimiento(), LocalDate.now()).years
-            usuario.edad() shouldBe edadEsperada
+            val edadEsperada = Period.between(user.fechaNacimiento(), LocalDate.now()).years
+            user.edad() shouldBe edadEsperada
         }
 
         it("Lee un libro No desafiante") {
@@ -141,7 +141,7 @@ class UsuarioSpec : DescribeSpec({
                 lecturaCompleja = false
             )
 
-            usuario.tiempoLecturaPromedio(libroNoDesafiante) shouldBe 10
+            user.tiempoLecturaPromedio(libroNoDesafiante) shouldBe 10
         }
         it("Lee un librodesafiante") {
             val libroNoDesafiante = Libro(
@@ -154,83 +154,83 @@ class UsuarioSpec : DescribeSpec({
                 lecturaCompleja = true
             )
 
-            usuario.tiempoLecturaPromedio(libroNoDesafiante) shouldBe 20
+            user.tiempoLecturaPromedio(libroNoDesafiante) shouldBe 20
         }
 
 
         it("un lectorPromedio agrega UN libro leido") {
 
             //Act
-            usuario.agregarLibroLeido(elRetornoDelRey)
+            user.agregarLibroLeido(elRetornoDelRey)
 
             //Assert
-            usuario.listaLibrosLeidos().size shouldBe 1
+            user.listaLibrosLeidos().size shouldBe 1
         }
 
         it("un lectorPromedio leyo un libro"){
 
             //Act
-            usuario.agregarLibroLeido(elRetornoDelRey)
+            user.agregarLibroLeido(elRetornoDelRey)
 
             //Assert
-            usuario.libroLeido(elRetornoDelRey) shouldBe  true
+            user.libroLeido(elRetornoDelRey) shouldBe  true
         }
 
         it("un lectorPromedio leyo todos los libros de una recomendacion"){
 
             //Arrange
-            usuario.agregarLibroLeido(elRetornoDelRey)
-            usuario.agregarLibroLeido(laComunidadDelAnillo)
+            user.agregarLibroLeido(elRetornoDelRey)
+            user.agregarLibroLeido(laComunidadDelAnillo)
             val recomendacionConLibrosLeidos = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros están buenísimos!!",
                 libros = mutableSetOf(laComunidadDelAnillo ,elRetornoDelRey)
             )
 
             //Act
-            usuario2.agregarLibroLeido(elRetornoDelRey)
-            usuario2.agregarLibroLeido(laComunidadDelAnillo)
+            user2.agregarLibroLeido(elRetornoDelRey)
+            user2.agregarLibroLeido(laComunidadDelAnillo)
 
             //Assert
-            usuario2.todosLosLibrosLeidos(recomendacionConLibrosLeidos) shouldBe true
+            user2.todosLosLibrosLeidos(recomendacionConLibrosLeidos) shouldBe true
 
         }
 
         it("un lectorPromedio No leyo todos los libros de una recomendacion"){
-            usuario.agregarLibroLeido(elRetornoDelRey)
-            usuario.agregarLibroLeido(laComunidadDelAnillo)
-            usuario.agregarLibroLeido(lasDosTorres)
+            user.agregarLibroLeido(elRetornoDelRey)
+            user.agregarLibroLeido(laComunidadDelAnillo)
+            user.agregarLibroLeido(lasDosTorres)
 
             //Arrange
             val recomendacionConLibrosNoLeidos = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros están buenísimos!!",
                 libros = mutableSetOf(laComunidadDelAnillo ,elRetornoDelRey, lasDosTorres)
             )
 
             //Act
-            usuario3.agregarLibroLeido(elRetornoDelRey)
-            usuario3.agregarLibroLeido(laComunidadDelAnillo)
+            user3.agregarLibroLeido(elRetornoDelRey)
+            user3.agregarLibroLeido(laComunidadDelAnillo)
 
             //Assert
-            usuario3.todosLosLibrosLeidos(recomendacionConLibrosNoLeidos) shouldBe false
+            user3.todosLosLibrosLeidos(recomendacionConLibrosNoLeidos) shouldBe false
 
         }
 
         it("un lectorPromedio quiere agregar un libro su lista de libros pendientes"){
 
             //Act
-            usuario.agregarLibroALeer(lasDosTorres)
+            user.agregarLibroALeer(lasDosTorres)
 
             //Assert
-            usuario.listaDeLibrosALeer() shouldBe mutableListOf(lasDosTorres)
+            user.listaDeLibrosALeer() shouldBe mutableListOf(lasDosTorres)
         }
 
         it("Tiempo de lectura de una recomendacion"){
 
             //Arrange
             val recomendacion = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros están buenísimos!!",
                 libros = mutableSetOf(laComunidadDelAnillo ,elRetornoDelRey, lasDosTorres)
             )
@@ -238,7 +238,7 @@ class UsuarioSpec : DescribeSpec({
             //Assert
             //30 palabras por minuto ...
             // Cant Palabras (40000 / 30) * 3 = 3999.999 --> 4000
-            recomendacion.tiempoLecturaRecomendacion(usuario) shouldBe 4000
+            recomendacion.tiempoLecturaRecomendacion(user) shouldBe 4000
 
         }
 
@@ -246,23 +246,23 @@ class UsuarioSpec : DescribeSpec({
 
             //Arrange
             val recomendacion = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros están buenísimos!!",
                 libros = mutableSetOf(laComunidadDelAnillo ,elRetornoDelRey, lasDosTorres)
             )
             //NO RECUERDO COMO SEPARAR LOS IT... POR SEPARADO LOS TEST CORREN
             //PERO TODOS JUNTOS NO PORQUE NO SE INDEPENDIZAN LAS VARIABLES.
             //INSTANCIO OTRO LECTOR PROMEDIO PARA PISARLO. CUANDO SEPAMOS COMO HACERLO LO BORRAMOS
-            val lectorPromedio = Usuario(
-                nombre = "Marty",
-                apellido = "McFly",
-                userName = "Condensador_De_Flujo",
+            val lectorPromedio = User(
+                firstName = "Marty",
+                lastName = "McFly",
+                username = "Condensador_De_Flujo",
                 email = "volverAlFuturo@gmail.com",
-                fechaNacimiento = LocalDate.of(1968, 6, 9),
-                perfil = Leedor(),
-                lenguajeNativo = Lenguaje.ESPANIOL,
-                palabrasXMinuto = 30,
-                amigos = mutableSetOf()
+                birthday = LocalDate.of(1968, 6, 9),
+                searchCriteria = GreatReader(),
+                nativeLanguage = Lenguaje.ESPANIOL,
+                readTimeMinAvg = 30,
+                friends = mutableSetOf()
             )
             //Act
             lectorPromedio.agregarLibroLeido(laComunidadDelAnillo)
@@ -278,23 +278,23 @@ class UsuarioSpec : DescribeSpec({
 
             //Arrange
             val recomendacion = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros están buenísimos!!",
                 libros = mutableSetOf(laComunidadDelAnillo ,elRetornoDelRey, lasDosTorres)
             )
             //NO RECUERDO COMO SEPARAR LOS IT... POR SEPARADO LOS TEST CORREN
             //PERO TODOS JUNTOS NO PORQUE NO SE INDEPENDIZAN LAS VARIABLES.
             //INSTANCIO OTRO LECTOR PROMEDIO PARA PISARLO. CUANDO SEPAMOS COMO HACERLO LO BORRAMOS
-            val lectorPromedio = Usuario(
-                nombre = "Marty",
-                apellido = "McFly",
-                userName = "Condensador_De_Flujo",
+            val lectorPromedio = User(
+                firstName = "Marty",
+                lastName = "McFly",
+                username = "Condensador_De_Flujo",
                 email = "volverAlFuturo@gmail.com",
-                fechaNacimiento = LocalDate.of(1968, 6, 9),
-                perfil = Leedor(),
-                lenguajeNativo = Lenguaje.ESPANIOL,
-                palabrasXMinuto = 30,
-                amigos = mutableSetOf()
+                birthday = LocalDate.of(1968, 6, 9),
+                searchCriteria = GreatReader(),
+                nativeLanguage = Lenguaje.ESPANIOL,
+                readTimeMinAvg = 30,
+                friends = mutableSetOf()
             )
 
             //Act
@@ -308,80 +308,80 @@ class UsuarioSpec : DescribeSpec({
         }
         //-----------------------LectorAnsioso
         it("Usuario1 es un lector Ansioso"){
-            usuario1.tipoDeLector() shouldBe LectorAnsioso
+            user1.tipoDeLector() shouldBe LectorAnsioso
         }
 
         it("Un lector ansioso reduce el tiempo promedio 20% de un libro no desafiante "){
-            val tiempoPromedio=usuario1.tiempoLecturaLibro(laComunidadDelAnillo)
+            val tiempoPromedio=user1.tiempoLecturaLibro(laComunidadDelAnillo)
             //if (libro.esDesafiante()) (40000 / 30) * 2 else (40000/ 30) es el promedio 1666.6*0.8
             assertEquals(1066.6,tiempoPromedio,0.1)
         }
 
         it("Un lector ansioso reduce el tiempo promedio 50% de un libro best seller"){
-            val tiempoPromedio=usuario1.tiempoLecturaLibro(donQuijote)
+            val tiempoPromedio=user1.tiempoLecturaLibro(donQuijote)
             //if (libro.esDesafiante()) (40000 / 30) * 2 else (40000/ 30) es el promedio 1333*0.5
             //tiempoPromedio shouldBe 1666.66periodico
             assertEquals(1666.6,tiempoPromedio,0.1)
         }
 //-----------------------LectorFanatico
         it("Usuario2 es un lector Fanatico"){
-            usuario2.tipoDeLector() shouldBe LectorFanatico
+            user2.tipoDeLector() shouldBe LectorFanatico
         }
 
         it("Un lector fanatico(Usuario2) tiene un autor preferido que es miguel"){
-            usuario2.esAutorPreferido(miguel) shouldBe true
+            user2.esAutorPreferido(miguel) shouldBe true
         }
 
         it("Un lector fanatico(Usuario2) no leyo don quijote"){
-            usuario2.libroLeido(donQuijote) shouldBe false
+            user2.libroLeido(donQuijote) shouldBe false
         }
 
         it("Un lector fanatico aumenta el tiempo promedio 2min por pagina si es autor preferido y no lo leyo"){
-            val tiempoPromedio=usuario2.tiempoLecturaLibro(donQuijote2)
+            val tiempoPromedio=user2.tiempoLecturaLibro(donQuijote2)
             //if (libro.esDesafiante()) (500000 / 30) * 2 else (500000/ 30) --->  33333.3333  else 16666,66
             // 33333.3333 + 1400 = 34733.3333
             assertEquals(34733.3,tiempoPromedio,0.1)
         }
 
         it("Un lector fanatico no aumenta el tiempo promedio por pagina porque ya lo leyo"){
-            usuario2.agregarLibroLeido(donQuijote)
-            val tiempoPromedio=usuario2.tiempoLecturaLibro(donQuijote)
+            user2.agregarLibroLeido(donQuijote)
+            val tiempoPromedio=user2.tiempoLecturaLibro(donQuijote)
             //val tiempoPorPagina = if (libro.paginas() > libro.maxPaginasLibroLargo()) 1 else 2
             // 3332 + 0(
             assertEquals(3333.3,tiempoPromedio,0.1)
         }
 //---------------------LectorRecurrente
         it("Usuario3 es un lector Recurrente"){
-            usuario3.tipoDeLector() shouldBe LectorRecurrente
+            user3.tipoDeLector() shouldBe LectorRecurrente
         }
 
         it("Un lector Recurrente (Usuario3) no leyo ninguna vez"){
-            usuario3.listaLibrosLeidos() shouldNotBeEqual donQuijote
+            user3.listaLibrosLeidos() shouldNotBeEqual donQuijote
         }
 
         it("Un lector Recurrente (Usuario3) leyo una vez , 1% menos de velocidad de lectura"){
-            usuario3.agregarLibroLeido(donQuijote)
-            usuario3.cantidadDeReleida(donQuijote) shouldBe 1
-            val tiempoPromedio=usuario3.tiempoLecturaLibro(donQuijote)
+            user3.agregarLibroLeido(donQuijote)
+            user3.cantidadDeReleida(donQuijote) shouldBe 1
+            val tiempoPromedio=user3.tiempoLecturaLibro(donQuijote)
             // 3333.333 * 0.99 = 3299,99 (
             assertEquals(3299.9,tiempoPromedio,0.1)
         }
 
         it("Un lector Recurrente (Usuario3) leyo 2 veces , 1% menos de velocidad de lectura"){
-            usuario3.agregarLibroLeido(donQuijote)
-            usuario3.cantidadDeReleida(donQuijote) shouldBe 2
-            val tiempoPromedio=usuario3.tiempoLecturaLibro(donQuijote)
+            user3.agregarLibroLeido(donQuijote)
+            user3.cantidadDeReleida(donQuijote) shouldBe 2
+            val tiempoPromedio=user3.tiempoLecturaLibro(donQuijote)
             // 3299 * 0.99=3266,6666
             assertEquals(3266.6,tiempoPromedio,0.1)
         }
 
         it("Un lector Recurrente (Usuario3) leyo 10 veces , 5% menos de velocidad de lectura"){
-            usuario3.agregarLibroLeido(donQuijote)
-            usuario3.agregarLibroLeido(donQuijote)
-            usuario3.agregarLibroLeido(donQuijote)
-            usuario3.agregarLibroLeido(donQuijote)
-            usuario3.cantidadDeReleida(donQuijote) shouldBe 6
-            val tiempoPromedio=usuario3.tiempoLecturaLibro(donQuijote)
+            user3.agregarLibroLeido(donQuijote)
+            user3.agregarLibroLeido(donQuijote)
+            user3.agregarLibroLeido(donQuijote)
+            user3.agregarLibroLeido(donQuijote)
+            user3.cantidadDeReleida(donQuijote) shouldBe 6
+            val tiempoPromedio=user3.tiempoLecturaLibro(donQuijote)
             // 3333.3333 * 0.95 = 3166,666
             assertEquals(3166.6,tiempoPromedio,0.1)
 
@@ -390,46 +390,46 @@ class UsuarioSpec : DescribeSpec({
 
     describe("Un usuario"){
 
-        val usuario = Usuario(
-            nombre = "Marty",
-            apellido = "McFly",
-            userName = "Condensador_De_Flujo",
+        val user = User(
+            firstName = "Marty",
+            lastName = "McFly",
+            username = "Condensador_De_Flujo",
             email = "volverAlFuturo@gmail.com",
-            fechaNacimiento = LocalDate.of(1968, 6, 9),
-            perfil = Leedor(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 30,
-            amigos = mutableSetOf()
+            birthday = LocalDate.of(1968, 6, 9),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Lenguaje.ESPANIOL,
+            readTimeMinAvg = 30,
+            friends = mutableSetOf()
         )
-        val amigo = Usuario(
-            nombre = "Juan",
-            apellido = "Perez",
-            userName = "juPerez",
+        val amigo = User(
+            firstName = "Juan",
+            lastName = "Perez",
+            username = "juPerez",
             email = "jperez@gmail.com",
-            fechaNacimiento = LocalDate.of(1988, 1, 12),
-            perfil = Leedor(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 30,
-            amigos = mutableSetOf(),
-            tipoLector = LectorAnsioso
+            birthday = LocalDate.of(1988, 1, 12),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Lenguaje.ESPANIOL,
+            readTimeMinAvg = 30,
+            friends = mutableSetOf(),
+            readMode = LectorAnsioso
         )
 
         it("Agrega un amigo a su lista de amigos"){
 
-            usuario.agregarAmigo(amigo)
+            user.agregarAmigo(amigo)
 
-            usuario.amigos() shouldBe mutableSetOf(amigo)
+            user.amigos() shouldBe mutableSetOf(amigo)
         }
         it("Intenta agregar un amigo que ya tiene en la lista de amigos, lanza excepcion"){
 
             shouldThrow<Exception> {
-                usuario.agregarAmigo(amigo)
+                user.agregarAmigo(amigo)
             }
         }
 
         it("Elimina un amigo de la lista de amigos"){
 
-            usuario.eliminarAmigo(amigo)
+            user.eliminarAmigo(amigo)
 
             amigo.amigos() shouldBe mutableSetOf()
 
@@ -438,7 +438,7 @@ class UsuarioSpec : DescribeSpec({
         it("Intenta eliminar amigo que no existe en la lista de amigos, lanza excepcion"){
 
             shouldThrow<Exception> {
-                usuario.eliminarAmigo(amigo)
+                user.eliminarAmigo(amigo)
             }
 
         }

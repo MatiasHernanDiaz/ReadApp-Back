@@ -29,13 +29,13 @@ class EliminadorCentroLecturaSpec : DescribeSpec({
     )
 
     val centroExpirado = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(),
+        listaDeUserConReserva = mutableSetOf(),
         organizador = Particular(cantidadMaxima = 3, porcentajeAdicional = 0.05F),
         fechas = mutableSetOf(LocalDate.of(2023, 7, 1)), // Fecha expiro
         libro = libro1
     )
     val centroUnaFechaExpirada = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(),
+        listaDeUserConReserva = mutableSetOf(),
         organizador = Particular(cantidadMaxima = 3, porcentajeAdicional = 0.05F),
         fechas = mutableSetOf(
             LocalDate.of(2023, 7, 1),
@@ -45,13 +45,13 @@ class EliminadorCentroLecturaSpec : DescribeSpec({
     )
 
     val centroVigente = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(),
+        listaDeUserConReserva = mutableSetOf(),
         organizador = Particular(cantidadMaxima = 3, porcentajeAdicional = 0.05F),
         fechas = mutableSetOf(LocalDate.now().plusDays(10)), // Fecha que no expira
         libro = libro1
     )
     val centroVigente2 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(),
+        listaDeUserConReserva = mutableSetOf(),
         organizador = Particular(cantidadMaxima = 3, porcentajeAdicional = 0.05F),
         fechas = mutableSetOf(LocalDate.now().plusDays(10)), // Fecha que no expira
         libro = libro1

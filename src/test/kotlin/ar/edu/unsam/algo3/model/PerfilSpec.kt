@@ -43,40 +43,40 @@ class PerfilSpec : DescribeSpec ({
         traducciones = mutableSetOf( Lenguaje.ITALIANO, Lenguaje.PORTUGUES,Lenguaje.INGLES, Lenguaje.FRANCES)
     )
 
-    val amigo = Usuario(
-        nombre = "Marty",
-        apellido = "McFly",
-        userName = "Condensador_De_Flujo",
+    val amigo = User(
+        firstName = "Marty",
+        lastName = "McFly",
+        username = "Condensador_De_Flujo",
         email = "volverAlFuturo@gmail.com",
-        fechaNacimiento = LocalDate.of(1938, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf(libro2,libro3)
+        birthday = LocalDate.of(1938, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf(libro2,libro3)
     )
-    val usuario = Usuario(
-        nombre = "Marty",
-        apellido = "McFly",
-        userName = "Condensador_De_Flujo",
+    val user = User(
+        firstName = "Marty",
+        lastName = "McFly",
+        username = "Condensador_De_Flujo",
         email = "volverAlFuturo@gmail.com",
-        fechaNacimiento = LocalDate.of(2008, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(amigo)
+        birthday = LocalDate.of(2008, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(amigo)
     )
-    val creador = Usuario(
-        nombre = "Josuke",
-        apellido = "hikashikata",
-        userName = "CrazyDiamond",
+    val creador = User(
+        firstName = "Josuke",
+        lastName = "hikashikata",
+        username = "CrazyDiamond",
         email = "Jojo@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        librosLeidos = mutableListOf(libro,libro2,libro3),
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        readBooks = mutableListOf(libro,libro2,libro3),
+        friends = mutableSetOf()
     )
     val recomendacion = Recomendacion(
         creador = creador,
@@ -100,107 +100,107 @@ class PerfilSpec : DescribeSpec ({
         autor = amigo
     )
 
-    val calculador = Calculador(
-        usuario = usuario,
+    val calculator = Calculator(
+        user = user,
         tiempoMaximo = 400.0,
         tiempoMinimo = 210.3
     )
     val cambianteUsuario = Cambiante(
-        usuario = usuario,
-        calculador = calculador
+        user = user,
+        calculator = calculator
     )
 
     val cambianteAmigo = Cambiante(
-        usuario = amigo,
-        calculador = calculador
+        user = amigo,
+        calculator = calculator
     )
 
-    val combinado = Combinado(
-        usuario = usuario,
-        perfiles = mutableSetOf(Poliglota(),Demandante())
+    val combined = Combined(
+        user = user,
+        perfiles = mutableSetOf(Polyglot(),Claimant())
     )
 
     describe("perfil precavido"){
         it("puede leer ya que está en su lista de noLeidos"){
-            usuario.modificarPerfil(Precavido(usuario))
-            usuario.agregarLibroALeer(libro)
+            user.modificarPerfil(Cautious(user))
+            user.agregarLibroALeer(libro)
             recomendacion.agregarLibro(creador,libro)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("puede recomendarlo ya que un amigo lo leyó"){
-            usuario.modificarPerfil(Precavido(usuario))
+            user.modificarPerfil(Cautious(user))
             amigo.agregarLibroLeido(libro)
             recomendacion.agregarLibro(creador,libro)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("no lo puede recomendar"){
-            usuario.modificarPerfil(Precavido(usuario))
+            user.modificarPerfil(Cautious(user))
             recomendacion.agregarLibro(creador,libro)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
     }
     describe("perfil leedor"){
         it("puede recomendarlo en cualquier caso"){
-            usuario.modificarPerfil(Leedor())
+            user.modificarPerfil(GreatReader())
             recomendacion.agregarLibro(creador,libro)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
     }
     describe("perfil poliglota"){
         it("no puede recomendarlo ya que tiene pocos idiomas"){
-            usuario.modificarPerfil(Poliglota())
+            user.modificarPerfil(Polyglot())
             recomendacion.agregarLibro(creador,libro)
             recomendacion.agregarLibro(creador,libro2)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
         it("es recomendable ya que tiene muchos lenguajes"){
-            usuario.modificarPerfil(Poliglota())
+            user.modificarPerfil(Polyglot())
             recomendacion.agregarLibro(creador,libro)
             recomendacion.agregarLibro(creador,libro3)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
 
     }
     describe("perfil nativista"){
         it("puede recomendarlo ya que tanto el autor como el usuario tienen el español como lenguaje nativo"){
-            usuario.modificarPerfil(Nativista(usuario))
+            user.modificarPerfil(Nativist(user))
             recomendacion.agregarLibro(creador,libro)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("no puede recomendarlo ya que no tienen el mismo lenguaje nativo"){
-            usuario.modificarPerfil(Nativista(usuario))
+            user.modificarPerfil(Nativist(user))
             recomendacion.agregarLibro(creador,libro2)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
     }
 
     describe("perfil calculador"){
         it("es recomendable ya que el tiempo cumple con los requisitos"){
-            usuario.modificarPerfil(calculador)
+            user.modificarPerfil(calculator)
             recomendacion.agregarLibro(creador,libro2)
             recomendacion.agregarLibro(creador,libro3)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("no es recomendable ya que el tiempo sobrepasa los requisitos"){
-            usuario.modificarPerfil(calculador)
+            user.modificarPerfil(calculator)
             recomendacion.agregarLibro(creador,libro)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
         it("no es recomendable ya que el tiempo es demasiado bajo"){
-            usuario.modificarPerfil(calculador)
+            user.modificarPerfil(calculator)
             recomendacion.agregarLibro(creador,libro3)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
     }
 
@@ -208,45 +208,45 @@ class PerfilSpec : DescribeSpec ({
         it("es recomendable ya que tiene de promedio de valoracion un 4"){
             recomendacion.agregarValoracion(valoracion1)
             recomendacion.agregarValoracion(valoracion2)
-            usuario.modificarPerfil(Demandante())
+            user.modificarPerfil(Claimant())
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("no es recomendable ya que yiene de promedio de valoracion un 2"){
             recomendacion.agregarValoracion(valoracion2)
             recomendacion.agregarValoracion(valoracion3)
-            usuario.modificarPerfil(Demandante())
+            user.modificarPerfil(Claimant())
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
     }
 
     describe("perfil experimentado"){
         it("se puede recomendar ya que el autor tiene mas de 50 años"){
-            usuario.modificarPerfil(Experimentado())
+            user.modificarPerfil(Experiencied())
             recomendacion.agregarLibro(creador,libro)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("se puede recomendar ya que el autor gano un premio"){
-            usuario.modificarPerfil(Experimentado())
+            user.modificarPerfil(Experiencied())
             autor2.ganarPremio(premio)
             recomendacion.agregarLibro(creador,libro2)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("no se puede recomendar ya que el autor es muy joven y no gano nungun premio"){
-            usuario.modificarPerfil(Experimentado())
+            user.modificarPerfil(Experiencied())
             recomendacion.agregarLibro(creador,libro3)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
     }
 
     describe("perfil cambiante"){
         it("al ser joven siempre será recomendable"){
-            usuario.modificarPerfil(cambianteUsuario)
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.modificarPerfil(cambianteUsuario)
+            user.esRecomendable(recomendacion) shouldBe true
         }
         it("como es mas adulto, será recomendable ya que está en su limite de tiempo"){
             amigo.modificarPerfil(cambianteAmigo)
@@ -271,25 +271,25 @@ class PerfilSpec : DescribeSpec ({
 
     describe("perfil combinado"){
         it("no puede recomendarlo ya que tiene pocos idiomas"){
-            usuario.modificarPerfil(combinado)
+            user.modificarPerfil(combined)
             recomendacion.agregarLibro(creador,libro)
             recomendacion.agregarLibro(creador,libro2)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
         it("no puede recomendarlo ya que valoracion baja"){
-            usuario.modificarPerfil(combinado)
+            user.modificarPerfil(combined)
             recomendacion.agregarLibro(creador,libro3)
             recomendacion.agregarValoracion(valoracion3)
 
-            usuario.esRecomendable(recomendacion) shouldBe false
+            user.esRecomendable(recomendacion) shouldBe false
         }
         it("es recomendable ya que tiene muchos lenguajes y valoracion alta"){
-            usuario.modificarPerfil(combinado)
+            user.modificarPerfil(combined)
             recomendacion.agregarLibro(creador,libro3)
             recomendacion.agregarValoracion(valoracion1)
 
-            usuario.esRecomendable(recomendacion) shouldBe true
+            user.esRecomendable(recomendacion) shouldBe true
         }
     }
 })

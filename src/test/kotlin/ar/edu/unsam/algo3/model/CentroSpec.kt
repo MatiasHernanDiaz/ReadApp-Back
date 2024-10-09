@@ -57,82 +57,82 @@ class CentroSpec : DescribeSpec({
             Lenguaje.FRANCES
         )
     )
-    val usuario = Usuario(
-        nombre = "Marty",
-        apellido = "McFly",
-        userName = "Condensador_De_Flujo",
+    val user = User(
+        firstName = "Marty",
+        lastName = "McFly",
+        username = "Condensador_De_Flujo",
         email = "volverAlFuturo@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf()
     )
-    val usuario1 = Usuario(
-        nombre = "Juan",
-        apellido = "Perez",
-        userName = "juPerez",
+    val user1 = User(
+        firstName = "Juan",
+        lastName = "Perez",
+        username = "juPerez",
         email = "jperez@gmail.com",
-        fechaNacimiento = LocalDate.of(1988, 1, 12),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        tipoLector = LectorAnsioso
+        birthday = LocalDate.of(1988, 1, 12),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readMode = LectorAnsioso
     )
 
-    val usuario2 = Usuario(
-        nombre = "Pablo",
-        apellido = "Alvarez",
-        userName = "pAlvarez",
+    val user2 = User(
+        firstName = "Pablo",
+        lastName = "Alvarez",
+        username = "pAlvarez",
         email = "pablitoAlvarez@gmail.com",
-        fechaNacimiento = LocalDate.of(1998, 6, 1),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        tipoLector = LectorFanatico
+        birthday = LocalDate.of(1998, 6, 1),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readMode = LectorFanatico
     )
-    val usuario3 = Usuario(
-        nombre = "Martin",
-        apellido = "Palermo",
-        userName = "loco22titan",
+    val user3 = User(
+        firstName = "Martin",
+        lastName = "Palermo",
+        username = "loco22titan",
         email = "elLoco22Titan@gmail.com",
-        fechaNacimiento = LocalDate.of(1973, 11, 7),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        tipoLector = LectorRecurrente
+        birthday = LocalDate.of(1973, 11, 7),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readMode = LectorRecurrente
     )
-    val usuario4 = Usuario(
-        nombre = "Tony",
-        apellido = "Stark",
-        userName = "ironMan",
+    val user4 = User(
+        firstName = "Tony",
+        lastName = "Stark",
+        username = "ironMan",
         email = "ironman@gmail.com",
-        fechaNacimiento = LocalDate.of(1973, 11, 7),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.INGLES,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        tipoLector = LectorRecurrente
+        birthday = LocalDate.of(1973, 11, 7),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.INGLES,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readMode = LectorRecurrente
     )
 
     val centro1 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario, usuario1),
+        listaDeUserConReserva = mutableSetOf(user, user1),
         organizador = organizador1,
         fechas = mutableSetOf(LocalDate.of(2025, 6, 9)),
         libro = donQuijote
     )
     val centro1bis = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(),
+        listaDeUserConReserva = mutableSetOf(),
         organizador = organizador5,
         fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
         libro = donQuijote
     )
 
     val centro2 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario, usuario1),
+        listaDeUserConReserva = mutableSetOf(user, user1),
         organizador = organizador1,
         fechas = mutableSetOf(
             LocalDate.of(2023, 6, 9),
@@ -142,7 +142,7 @@ class CentroSpec : DescribeSpec({
         libro = donQuijote
     )
     val centro3 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario, usuario1, usuario2),
+        listaDeUserConReserva = mutableSetOf(user, user1, user2),
         organizador = organizador2,
         fechas = mutableSetOf(
             LocalDate.of(2024, 7, 9),
@@ -153,7 +153,7 @@ class CentroSpec : DescribeSpec({
     )
 
     val centro4 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario, usuario1, usuario2),
+        listaDeUserConReserva = mutableSetOf(user, user1, user2),
         organizador = organizador2,
         fechas = mutableSetOf(
             LocalDate.of(2024, 7, 9),
@@ -163,7 +163,7 @@ class CentroSpec : DescribeSpec({
         libro = guiaCocina
     )
     val centro4bis = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario, usuario1, usuario2),
+        listaDeUserConReserva = mutableSetOf(user, user1, user2),
         organizador = organizador4,
         fechas = mutableSetOf(
             LocalDate.of(2024, 7, 9),
@@ -173,7 +173,7 @@ class CentroSpec : DescribeSpec({
         libro = guiaCocina
     )
     val centro5 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario, usuario1, usuario2, usuario3),
+        listaDeUserConReserva = mutableSetOf(user, user1, user2, user3),
         organizador = organizador3,
         fechas = mutableSetOf(
             LocalDate.of(2024, 7, 9),
@@ -184,7 +184,7 @@ class CentroSpec : DescribeSpec({
         libro = guiaCocina
     )
     val centro6 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario, usuario1, usuario2, usuario3),
+        listaDeUserConReserva = mutableSetOf(user, user1, user2, user3),
         organizador = organizador3,
         fechas = mutableSetOf(
             LocalDate.of(2024, 7, 1),
@@ -216,23 +216,23 @@ class CentroSpec : DescribeSpec({
             centro2.expiroPlublicacion() shouldBe true
         }
         it("el primer centro expiro ya que tiene demasiados usuarios incluso aunque sus fechas no ocurrieron aun") {
-            centro1.reservarUsuario(usuario2)
+            centro1.reservarUsuario(user2)
             centro1.expiroPlublicacion() shouldBe true
         }
         it("tira excepcion al mandar demasiados usuarios") {
-            centro1.reservarUsuario(usuario2)
+            centro1.reservarUsuario(user2)
             // centro.reservarUsuario(Usuario(nombre = "Marty", apellido = "McFly", userName = "Condensador_De_Flujo", email = "volverAlFuturo@gmail.com", fechaNacimiento = LocalDate.of(1968, 6, 9), perfil = Leedor(), lenguajeNativo = Lenguaje.ESPANIOL, palabrasXMinuto = 30, amigos = mutableSetOf()))
-            shouldThrow<Exception> { centro1.reservarUsuario(usuario2) }
+            shouldThrow<Exception> { centro1.reservarUsuario(user2) }
         }
 
         it("agrego a un centro particular y evaluo lo por costo al agregar"){
-            centro1bis.reservarUsuario(usuario)
+            centro1bis.reservarUsuario(user)
             centro1bis.costoReserva() shouldBe 1000f
-            centro1bis.reservarUsuario(usuario1)
+            centro1bis.reservarUsuario(user1)
             centro1bis.costoReserva() shouldBe 1000f
-            centro1bis.reservarUsuario(usuario2)
+            centro1bis.reservarUsuario(user2)
             centro1bis.costoReserva() shouldBe 1500f
-            centro1bis.reservarUsuario(usuario3)
+            centro1bis.reservarUsuario(user3)
             centro1bis.costoReserva() shouldBe 1500f
         }
 
@@ -252,7 +252,7 @@ class CentroSpec : DescribeSpec({
         }
 
         it ("En un centro Editorial si el autor no esta presente"){
-            centro4bis.reservarUsuario(usuario4)
+            centro4bis.reservarUsuario(user4)
             centro4bis.costoReserva() shouldBe 1800F //1000 base+800  +200 = 3.300
         }
     }

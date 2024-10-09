@@ -36,7 +36,7 @@ class EliminadorUsuario() : AccionRepositorio{
                 && !esConcideradoAmigoPorOtro(it, repositorioUsuarios)  }.forEach({repositorioUsuarios.eliminarItem(it)})
     }
 
-    private fun esConcideradoAmigoPorOtro(usuario: Usuario, repo: Repositorio<Usuario>): Boolean = repo.items().any({it.esAmigo(usuario)})
+    private fun esConcideradoAmigoPorOtro(user: User, repo: Repositorio<User>): Boolean = repo.items().any({it.esAmigo(user)})
 }
 
 class ActualizadorLibros : AccionRepositorio{

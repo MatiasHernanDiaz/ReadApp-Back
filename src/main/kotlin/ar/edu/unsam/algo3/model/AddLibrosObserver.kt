@@ -1,11 +1,11 @@
 package ar.edu.unsam.algo3
 
 interface AddLibrosObserver {
-    fun libroAgregado(editor: Usuario, nuevoLibro: Libro): Unit
+    fun libroAgregado(editor: User, nuevoLibro: Libro): Unit
 
 }
 
-class Aportes(val usuario: Usuario,val librosAgregados: MutableSet<Libro>){
+class Aportes(val user: User, val librosAgregados: MutableSet<Libro>){
     fun nuevoAporte(libro:Libro){
         librosAgregados.add(libro)
     }
@@ -14,13 +14,13 @@ class Aportes(val usuario: Usuario,val librosAgregados: MutableSet<Libro>){
 }
 
 class NotificacionUsuario(private val enviadorMail: EnviaMail,val recomendacion: Recomendacion) : AddLibrosObserver {
-    override fun libroAgregado(usuario: Usuario, libro: Libro) {
-        if (usuario != recomendacion.creador()) {
+    override fun libroAgregado(user: User, libro: Libro) {
+        if (user != recomendacion.creador()) {
             val mail = Mail(
                 from = "Notificaciones@readapp.com.ar",
                 to = recomendacion.creador().getMail(),
                 subject = "Se agregó un Libro",
-                content = "El usuario: ${usuario.nombreCompleto()} agregó el Libro ${libro.titulo()} " +
+                content = "El usuario: ${user.nombreCompleto()} agregó el Libro ${libro.titulo()} " +
                         "a la recomendación que tenía estos " +
                         "Títulos: ${recomendacion.libros().joinToString(", ") { it.titulo() }}"
             )
@@ -32,47 +32,47 @@ class NotificacionUsuario(private val enviadorMail: EnviaMail,val recomendacion:
 
 class RegistroAportes : AddLibrosObserver{
     val aportes: MutableList<Aportes> = mutableListOf()
-    override fun libroAgregado(editor: Usuario, nuevoLibro: Libro) {
+    override fun libroAgregado(editor: User, nuevoLibro: Libro) {
         //THEO
-        if(!aportes.map{aporte -> aporte.usuario}.contains(editor)){
-            aportes.add(Aportes(usuario = editor, librosAgregados = mutableSetOf()))
+        if(!aportes.map{aporte -> aporte.user}.contains(editor)){
+            aportes.add(Aportes(user = editor, librosAgregados = mutableSetOf()))
         }
         aporteUsuario(editor).nuevoAporte(nuevoLibro)
     }
 
-    fun aporteUsuario(usuario: Usuario): Aportes{
-        return aportes.filter{ aporte -> aporte.usuario == usuario}.first()
+    fun aporteUsuario(user: User): Aportes{
+        return aportes.filter{ aporte -> aporte.user == user}.first()
     }
-    fun cantAportes(usuario: Usuario): Int = aporteUsuario(usuario).cantAportados()
-    fun librosAportadosPor(usuario: Usuario): Set<Libro> = aporteUsuario(usuario).librosAportados()
+    fun cantAportes(user: User): Int = aporteUsuario(user).cantAportados()
+    fun librosAportadosPor(user: User): Set<Libro> = aporteUsuario(user).librosAportados()
 }
 
 class LimitadorLibrosAgregados(val recomendacion: Recomendacion,var limiteLibros: Int) : AddLibrosObserver{
 
-    private val mapaUsuarioLibros: MutableMap<Usuario, Int> = mutableMapOf()
+    private val mapaUserLibros: MutableMap<User, Int> = mutableMapOf()
 
-    override fun libroAgregado(editor: Usuario, nuevoLibro: Libro) {
+    override fun libroAgregado(editor: User, nuevoLibro: Libro) {
 
-        if(mapaUsuarioLibros.containsKey(editor)){
-            mapaUsuarioLibros[editor] = mapaUsuarioLibros[editor]!! + 1
+        if(mapaUserLibros.containsKey(editor)){
+            mapaUserLibros[editor] = mapaUserLibros[editor]!! + 1
         }
         else{
-            mapaUsuarioLibros[editor] = 1
+            mapaUserLibros[editor] = 1
         }
 
-        if(limiteLibros <= mapaUsuarioLibros[editor]!!){
+        if(limiteLibros <= mapaUserLibros[editor]!!){
             recomendacion.creador().eliminarAmigo(editor)
         }
     }
 
     fun cambiarLimite(limite: Int): Unit { limiteLibros = limite }
 
-    fun getCantidadLibros(usuario: Usuario) = mapaUsuarioLibros[usuario]
+    fun getCantidadLibros(user: User) = mapaUserLibros[user]
 
 }
 
 class ValoracionAutomatica(val recomendacion: Recomendacion) : AddLibrosObserver {
-    override fun libroAgregado(editor: Usuario, nuevoLibro: Libro) {
+    override fun libroAgregado(editor: User, nuevoLibro: Libro) {
         if( editor !== recomendacion.creador() && !recomendacion.usuarioValoro(editor) ) {
             recomendacion.agregarValoracion(Valoracion(5, "Excelente 100% recomendable", editor))
         }

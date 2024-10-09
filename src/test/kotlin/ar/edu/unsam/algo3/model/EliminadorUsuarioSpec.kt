@@ -33,50 +33,50 @@ class EliminadorUsuarioSpec : DescribeSpec ({
 
     //USUARIOS
 
-    val usuario = Usuario(
-        nombre = "Marty",
-        apellido = "McFly",
-        userName = "Condensador",
+    val user = User(
+        firstName = "Marty",
+        lastName = "McFly",
+        username = "Condensador",
         email = "volverAlFuturo@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf()
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf()
     )
 
-    val usuario2 = Usuario(
-        nombre = "Martin",
-        apellido = "Martillo",
-        userName = "Flujo",
+    val user2 = User(
+        firstName = "Martin",
+        lastName = "Martillo",
+        username = "Flujo",
         email = "volverAlFuturo2@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf()
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf()
     )
 
-    val usuario3 = Usuario(
-        nombre = "Felix",
-        apellido = "Cat",
-        userName = "Felix_el_Gato",
+    val user3 = User(
+        firstName = "Felix",
+        lastName = "Cat",
+        username = "Felix_el_Gato",
         email = "felixCat@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf()
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf()
     )
     //ACT
     repositorioUsuarios.limpiarParaTest()
     repositorioUsuarios.apply {
-        crearItem(usuario)
-        crearItem(usuario2)
-        crearItem(usuario3)
+        crearItem(user)
+        crearItem(user2)
+        crearItem(user3)
     }
     val eliminarInactivos = EliminadorUsuario()
 
@@ -91,39 +91,39 @@ class EliminadorUsuarioSpec : DescribeSpec ({
         }
         it("Un usuario es conciderado amigo de otro"){
             //act
-            usuario.agregarAmigo(usuario2)
+            user.agregarAmigo(user2)
             repositorioUsuarios.ejecutarAccion(eliminarInactivos)
             repositorioUsuarios.items().size shouldBe 1
         }
         it("Un usuario hace una recomendacion"){
-            usuario.agregarLibroLeido(libro1)
+            user.agregarLibroLeido(libro1)
             val recomendacion1 = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros estan buenisimos!",
                 libros = mutableSetOf(libro1))
             repositorioUsuarios.ejecutarAccion(eliminarInactivos)
             repositorioUsuarios.items().size shouldBe 1
         }
         it("Un usuario hace una valoracion de una recomendacion"){
-            usuario.agregarLibroLeido(libro1)
-            usuario2.agregarLibroLeido(libro1)
+            user.agregarLibroLeido(libro1)
+            user2.agregarLibroLeido(libro1)
             val recomendacion1 = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros estan buenisimos!",
                 libros = mutableSetOf(libro1))
-            usuario2.valorarRecomendacion(recomendacion1, 5, "excelente")
+            user2.valorarRecomendacion(recomendacion1, 5, "excelente")
             repositorioUsuarios.ejecutarAccion(eliminarInactivos)
             repositorioUsuarios.items().size shouldBe 2
         }
         it("Los 3 usuarios son activos"){
-            usuario.agregarLibroLeido(libro1)
-            usuario2.agregarLibroLeido(libro1)
+            user.agregarLibroLeido(libro1)
+            user2.agregarLibroLeido(libro1)
             val recomendacion1 = Recomendacion(
-                creador = usuario,
+                creador = user,
                 resegna = "Estos libros estan buenisimos!",
                 libros = mutableSetOf(libro1))
-            usuario.agregarAmigo(usuario3)
-            usuario2.valorarRecomendacion(recomendacion1, 5, "excelente")
+            user.agregarAmigo(user3)
+            user2.valorarRecomendacion(recomendacion1, 5, "excelente")
             repositorioUsuarios.ejecutarAccion(eliminarInactivos)
             repositorioUsuarios.items().size shouldBe 3
         }

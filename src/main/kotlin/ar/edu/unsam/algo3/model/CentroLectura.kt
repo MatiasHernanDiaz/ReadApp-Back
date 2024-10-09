@@ -5,7 +5,7 @@ import java.time.LocalDate
 
 class CentroLectura(
     val libro: Libro,
-    val listaDeUsuarioConReserva : MutableSet<Usuario>,
+    val listaDeUserConReserva : MutableSet<User>,
     val organizador:Organizador,
     val fechas : MutableSet<LocalDate>
 ) : ItemRepo {
@@ -14,14 +14,14 @@ class CentroLectura(
     fun costoReserva(): Float = organizador.costoReserva(this)
     fun cantMaxParicipantes(): Int = organizador.cantMaxParticipantes()
 
-    fun reservarUsuario(usuario: Usuario) {
+    fun reservarUsuario(user: User) {
         if(superamosUsuarios()){
             throw Exception("La lista de usuarios está llena")
         }
-        listaDeUsuarioConReserva.add(usuario)
+        listaDeUserConReserva.add(user)
 
     }
-    fun superamosUsuarios() = listaDeUsuarioConReserva.size >= cantMaxParicipantes()
+    fun superamosUsuarios() = listaDeUserConReserva.size >= cantMaxParicipantes()
 
     fun expiroPlublicacion() = (fechas.all{fecha -> fecha < LocalDate.now()}) || (superamosUsuarios())
 }

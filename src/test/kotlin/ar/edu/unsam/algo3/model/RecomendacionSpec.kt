@@ -11,51 +11,51 @@ class RecomendacionSpec : DescribeSpec({
     // isolationMode = IsolationMode.InstancePerLeaf
     
     // Arrange
-    val amigoDelCreador = Usuario(
-        nombre = "Juan Luis",
-        apellido = "Guerra",
-        userName = "pez",
+    val amigoDelCreador = User(
+        firstName = "Juan Luis",
+        lastName = "Guerra",
+        username = "pez",
         email = "pez@gmail.com",
-        fechaNacimiento = LocalDate.of(1988, 8, 15),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1988, 8, 15),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf()
     )
 
-    val otroAmigoDelCreador = Usuario(
-        nombre = "Rubén",
-        apellido = "Rada",
-        userName = "negro",
+    val otroAmigoDelCreador = User(
+        firstName = "Rubén",
+        lastName = "Rada",
+        username = "negro",
         email = "negrorada@gmail.com",
-        fechaNacimiento = LocalDate.of(1958, 2, 15),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1958, 2, 15),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf()
     )
 
-    val usuarioCualquiera = Usuario(
-        nombre = "Leonor",
-        apellido = "Benedetto",
-        userName = "leona",
+    val userCualquiera = User(
+        firstName = "Leonor",
+        lastName = "Benedetto",
+        username = "leona",
         email = "leo@gmail.com",
-        fechaNacimiento = LocalDate.of(1978, 8, 25),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1978, 8, 25),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf()
     )
-    val creadorRecom = Usuario(
-        nombre = "Pedro",
-        apellido = "Picapiedras",
-        userName = "piedra",
+    val creadorRecom = User(
+        firstName = "Pedro",
+        lastName = "Picapiedras",
+        username = "piedra",
         email = "piedra@gmail.com",
-        fechaNacimiento = LocalDate.of(1990, 8, 24),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf(amigoDelCreador, otroAmigoDelCreador)
+        birthday = LocalDate.of(1990, 8, 24),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf(amigoDelCreador, otroAmigoDelCreador)
     )
 
     val autorPreferido = Autor(
@@ -113,7 +113,7 @@ class RecomendacionSpec : DescribeSpec({
         traducciones = mutableSetOf(Lenguaje.INGLES)
     )
 
-    val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = usuarioCualquiera)
+    val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = userCualquiera)
 
     creadorRecom.agregarLibroLeido(libroAutorPreferido)
     creadorRecom.agregarLibroLeido(libroOtroAutorPreferido)
@@ -130,7 +130,7 @@ class RecomendacionSpec : DescribeSpec({
             it("si el creador de la recomendación no leyó todos los libros de la recomendación, lanza una excepción") {
                 shouldThrow<Exception> {
                     Recomendacion(
-                        creador = usuarioCualquiera,
+                        creador = userCualquiera,
                         resegna = "Estos libros están buenísimos!",
                         libros = mutableSetOf(libroAutorPreferido, libroOtroAutorPreferido, libroAutorNoPreferido)
                     )
@@ -138,13 +138,13 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si el creador lee los libro de la recomendación, la misma puede instanciarse") {
                 // Act
-                usuarioCualquiera.agregarLibroLeido(libroAutorPreferido)
-                usuarioCualquiera.agregarLibroLeido(libroOtroAutorPreferido)
-                usuarioCualquiera.agregarLibroLeido(libroAutorNoPreferido)
+                userCualquiera.agregarLibroLeido(libroAutorPreferido)
+                userCualquiera.agregarLibroLeido(libroOtroAutorPreferido)
+                userCualquiera.agregarLibroLeido(libroAutorNoPreferido)
                 // Assert
                 shouldNotThrow<Exception> {
                     Recomendacion(
-                        creador = usuarioCualquiera,
+                        creador = userCualquiera,
                         resegna = "Estos libros están buenísimos!",
                         libros = mutableSetOf(libroAutorPreferido, libroOtroAutorPreferido, libroAutorNoPreferido)
                     )
@@ -161,7 +161,7 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si un usuario cualquiera cambia la privacidad, lanza una excepción") {
                 // Assert
-                shouldThrow<Exception> { recomCompleta.cambiarPrivacidad(usuarioCualquiera) }
+                shouldThrow<Exception> { recomCompleta.cambiarPrivacidad(userCualquiera) }
             }
             it("si vuelve a editar un amigo que leyó todos los libros, la recomendación vuelve a ser privada") {
                 // Act
@@ -231,9 +231,9 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si un editor no autorizado intenta eliminar un libro, lanza una excepción, aunque haya leido el libro") {
                 // Act
-                usuarioCualquiera.agregarLibroLeido(nuevoLibro)
+                userCualquiera.agregarLibroLeido(nuevoLibro)
                 // Assert
-                shouldThrow<Exception> { recomCompleta.eliminarLibro(usuarioCualquiera, nuevoLibro) }
+                shouldThrow<Exception> { recomCompleta.eliminarLibro(userCualquiera, nuevoLibro) }
             }
             it("si un amigo que leyó todos los libros intenta agregar un libro que no leyó, lanza una excepción") {
                 // Act
@@ -320,12 +320,12 @@ class RecomendacionSpec : DescribeSpec({
                 recomCompleta.promedioValoraciones() shouldBe 3.3333333333333335
             }
             it("El autor de la valoracion puede editar comentario"){
-                valoracion.editarComentario(usuarioCualquiera, "Buenisimo KPO")
+                valoracion.editarComentario(userCualquiera, "Buenisimo KPO")
                 valoracion.getComentario() shouldBe "Buenisimo KPO"
             }
 
             it("El autor de la valoracion puede editar puntuacion"){
-                valoracion.editarPuntuacion(usuarioCualquiera, 3)
+                valoracion.editarPuntuacion(userCualquiera, 3)
                 valoracion.getPuntuacion() shouldBe 3
             }
 

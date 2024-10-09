@@ -13,7 +13,7 @@ class Particular(val cantidadMaxima: Int, val porcentajeAdicional: Float) : Orga
     }
 
     override fun costoReserva(centroLectura: CentroLectura): Float {
-        if (centroLectura.listaDeUsuarioConReserva.size > (cantidadMaxima *porcentajeAdicional)) {
+        if (centroLectura.listaDeUserConReserva.size > (cantidadMaxima *porcentajeAdicional)) {
             return costoBase() + 500
         }
         return costoBase()
@@ -64,7 +64,7 @@ class Biblioteca(
         } else {
             0.5F
         }
-        return (gastosFijos() * (1 + margen)) / centroLectura.listaDeUsuarioConReserva.size
+        return (gastosFijos() * (1 + margen)) / centroLectura.listaDeUserConReserva.size
 
 
     }

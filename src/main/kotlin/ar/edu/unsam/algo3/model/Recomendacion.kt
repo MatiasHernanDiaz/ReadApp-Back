@@ -3,7 +3,7 @@ package ar.edu.unsam.algo3
 import ar.edu.unsam.algo3.repos.ItemRepo
 
 class Recomendacion(
-    val creador: Usuario,
+    val creador: User,
     val titulo: String="",
     var resegna: String,
     val libros: MutableSet<Libro> = mutableSetOf(),
@@ -22,20 +22,20 @@ class Recomendacion(
 
     fun creador() = creador
 
-    private fun puedeEditar(posibleEditor: Usuario): Boolean =
+    private fun puedeEditar(posibleEditor: User): Boolean =
         posibleEditor === creador || (creador.esAmigo(posibleEditor) &&
                 posibleEditor.todosLosLibrosLeidos(this))
 
-    private fun puedeAgregarLibro(editor: Usuario, libro: Libro) = editor.libroLeido(libro) &&
+    private fun puedeAgregarLibro(editor: User, libro: Libro) = editor.libroLeido(libro) &&
             creador.libroLeido(libro)
 
-    private fun puedeValorar(valorador: Usuario) =
+    private fun puedeValorar(valorador: User) =
         valorador !== creador &&
                 (valorador.todosLosLibrosLeidos(this) ||
                         (libros.all { it.autor() === libros.first().autor() } &&
                                 valorador.esAutorPreferido(libros.first().autor())))
 
-    fun cambiarPrivacidad(editor: Usuario) {
+    fun cambiarPrivacidad(editor: User) {
         if(puedeEditar(editor)) {
             publica = !publica
         } else {
@@ -45,7 +45,7 @@ class Recomendacion(
 
     fun esPublica(): Boolean = publica
 
-    fun editarResegna(editor: Usuario, nuevaResegna: String) {
+    fun editarResegna(editor: User, nuevaResegna: String) {
         if(puedeEditar(editor)) {
             resegna = nuevaResegna
         } else {
@@ -55,7 +55,7 @@ class Recomendacion(
 
     fun resegna(): String = resegna
 
-    fun agregarLibro(editor: Usuario, nuevoLibro: Libro) {
+    fun agregarLibro(editor: User, nuevoLibro: Libro) {
         if(puedeEditar(editor) && puedeAgregarLibro(editor, nuevoLibro)) {
             libros.add(nuevoLibro)
         }
@@ -65,7 +65,7 @@ class Recomendacion(
         observers.forEach { it.libroAgregado(editor,nuevoLibro) }
     }
 
-    fun eliminarLibro(editor: Usuario, libroAEliminar: Libro) {
+    fun eliminarLibro(editor: User, libroAEliminar: Libro) {
         if(puedeEditar(editor)) {
             libros.remove(libroAEliminar)
         }
@@ -76,14 +76,14 @@ class Recomendacion(
 
     fun libros(): MutableSet<Libro> = libros
 
-    fun tiempoLecturaRecomendacion(usuario: Usuario): Double =
-        libros.sumOf { usuario.tiempoLecturaLibro(it) }
+    fun tiempoLecturaRecomendacion(user: User): Double =
+        libros.sumOf { user.tiempoLecturaLibro(it) }
 
-    fun tiempoLecturaAhorrado(usuario: Usuario): Double =
-        libros.filter { usuario.libroLeido(it) } .sumOf { usuario.tiempoLecturaLibro(it) }
+    fun tiempoLecturaAhorrado(user: User): Double =
+        libros.filter { user.libroLeido(it) } .sumOf { user.tiempoLecturaLibro(it) }
 
-    fun tiempoLecturaNeto(usuario: Usuario): Double =
-        tiempoLecturaRecomendacion(usuario) - tiempoLecturaAhorrado(usuario)
+    fun tiempoLecturaNeto(user: User): Double =
+        tiempoLecturaRecomendacion(user) - tiempoLecturaAhorrado(user)
 
     fun valoraciones() = valoraciones
     fun agregarValoracion(valoracion: Valoracion) {
@@ -94,7 +94,7 @@ class Recomendacion(
         }
     }
 
-    fun usuarioValoro(usuario: Usuario) = valoraciones.any { it.autor === usuario }
+    fun usuarioValoro(user: User) = valoraciones.any { it.autor === user }
 
     fun promedioValoraciones(): Double = valoraciones.map{ it.puntuacion }.average()
 

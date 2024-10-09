@@ -5,7 +5,10 @@ import ar.edu.unsam.algo3.*
 abstract class Repositorio<T:ItemRepo> {
     abstract val items: MutableSet<T>
 
-    private fun existeItem(item: T): Boolean = items.map { it.id }.contains(item.id)
+    private fun existeItem(item: T): Boolean {
+        println("ids: ${item.id}")
+        return items.map { it.id }.contains(item.id)
+    }
 
     fun crearItem(item: T) {
         if (existeItem(item)) {

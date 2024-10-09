@@ -31,25 +31,25 @@ class RegistroAportesSpec: DescribeSpec ({
         lecturaCompleja = false,
         traducciones = mutableSetOf(Lenguaje.INGLES),)
 
-    val amigoCreador = Usuario(
-        nombre = "Martin",
-        apellido = "Esperanza",
-        userName = "tiburon",
+    val amigoCreador = User(
+        firstName = "Martin",
+        lastName = "Esperanza",
+        username = "tiburon",
         email = "tiburon@hotmail.com",
-        fechaNacimiento = LocalDate.of(1958, 10, 30),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 200,
-        librosLeidos = mutableListOf(libro1,libro2),
-        amigos = mutableSetOf())
+        birthday = LocalDate.of(1958, 10, 30),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 200,
+        readBooks = mutableListOf(libro1,libro2),
+        friends = mutableSetOf())
 
-    val creador = Usuario(
+    val creador = User(
         "Juan Luis",
         "Guerra",
         "pez",
         "pez@gmail.com",
         LocalDate.of(1998, 8, 15),
-        Leedor(),
+        GreatReader(),
         Lenguaje.ESPANIOL,
         300,
         mutableSetOf(),

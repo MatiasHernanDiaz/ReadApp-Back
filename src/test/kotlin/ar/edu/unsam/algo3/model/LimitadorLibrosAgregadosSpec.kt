@@ -9,40 +9,40 @@ import java.time.LocalDate
 class LimitadorLibrosAgregadosSpec: DescribeSpec({
     isolationMode = IsolationMode.InstancePerTest
     // Arrange
-    val amigoDelCreador = Usuario(
-        nombre = "Juan Luis",
-        apellido = "Guerra",
-        userName = "pez",
+    val amigoDelCreador = User(
+        firstName = "Juan Luis",
+        lastName = "Guerra",
+        username = "pez",
         email = "pez@gmail.com",
-        fechaNacimiento = LocalDate.of(1988, 8, 15),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1988, 8, 15),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf()
     )
 
-    val otroAmigoDelCreador = Usuario(
-        nombre = "Rubén",
-        apellido = "Rada",
-        userName = "negro",
+    val otroAmigoDelCreador = User(
+        firstName = "Rubén",
+        lastName = "Rada",
+        username = "negro",
         email = "negrorada@gmail.com",
-        fechaNacimiento = LocalDate.of(1958, 2, 15),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1958, 2, 15),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf()
     )
 
-    val creadorRecom = Usuario(
-        nombre = "Pedro",
-        apellido = "Picapiedras",
-        userName = "piedra",
+    val creadorRecom = User(
+        firstName = "Pedro",
+        lastName = "Picapiedras",
+        username = "piedra",
         email = "piedra@gmail.com",
-        fechaNacimiento = LocalDate.of(1990, 8, 24),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf(amigoDelCreador, otroAmigoDelCreador)
+        birthday = LocalDate.of(1990, 8, 24),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf(amigoDelCreador, otroAmigoDelCreador)
     )
 
     val autor = Autor(

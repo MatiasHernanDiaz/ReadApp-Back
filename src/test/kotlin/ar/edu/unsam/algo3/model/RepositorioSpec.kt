@@ -84,62 +84,62 @@ class RepositorioSpec : DescribeSpec({
 
     //USUARIOS
 
-    val usuario = Usuario(
-        nombre = "Marty",
-        apellido = "McFly",
-        userName = "Condensador",
+    val user = User(
+        firstName = "Marty",
+        lastName = "McFly",
+        username = "Condensador",
         email = "volverAlFuturo@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf(libro1)
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf(libro1)
     )
 
-    val usuario2 = Usuario(
-        nombre = "Martin",
-        apellido = "Martillo",
-        userName = "Flujo",
+    val user2 = User(
+        firstName = "Martin",
+        lastName = "Martillo",
+        username = "Flujo",
         email = "volverAlFuturo2@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf(libro2)
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf(libro2)
     )
 
-    val usuario3 = Usuario(
-        nombre = "Felix",
-        apellido = "Cat",
-        userName = "Felix_el_Gato",
+    val user3 = User(
+        firstName = "Felix",
+        lastName = "Cat",
+        username = "Felix_el_Gato",
         email = "felixCat@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf(libro3)
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Lenguaje.ESPANIOL,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf(libro3)
     )
 
 
     //RECOMENDACIONES
 
     val recomendacion1 = Recomendacion(
-        creador = usuario,
+        creador = user,
         resegna = "Estos libros estan buenisimos!",
         libros = mutableSetOf(libro1)
     )
 
     val recomendacion2 = Recomendacion(
-        creador = usuario2,
+        creador = user2,
         resegna = "Libros de nivel!",
         libros = mutableSetOf(libro2)
     )
 
     val recomendacion3 = Recomendacion(
-        creador = usuario3,
+        creador = user3,
         resegna = "Magnifico!",
         libros = mutableSetOf(libro3)
     )
@@ -147,21 +147,21 @@ class RepositorioSpec : DescribeSpec({
     val organizador1 = Particular(cantidadMaxima = 3, porcentajeAdicional = 0.05F)
 
     val centro1 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario),
+        listaDeUserConReserva = mutableSetOf(user),
         organizador = organizador1,
         fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
         libro = libro1
     )
 
     val centro2 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario),
+        listaDeUserConReserva = mutableSetOf(user),
         organizador = organizador1,
         fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
         libro = libro1
     )
 
     val centro3 = CentroLectura(
-        listaDeUsuarioConReserva = mutableSetOf(usuario),
+        listaDeUserConReserva = mutableSetOf(user),
         organizador = organizador1,
         fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
         libro = libro1
@@ -179,24 +179,24 @@ class RepositorioSpec : DescribeSpec({
             it("CREA primer usuario") {
 
                 //Act
-                repositorioUsuarios.crearItem(usuario)
+                repositorioUsuarios.crearItem(user)
 
                 //Assert
-                usuario.id shouldBe 1u
+                user.id shouldBe 1u
             }
 
             it("CREA segundo usuario, y obtiene por itemPorId") {
 
                 //Act
-                repositorioUsuarios.crearItem(usuario2)
+                repositorioUsuarios.crearItem(user2)
 
                 //Assert
-                repositorioUsuarios.itemPorId(2u) shouldBe usuario2
+                repositorioUsuarios.itemPorId(2u) shouldBe user2
             }
 
             it("CREA un usuario ya existente") {
 
-                shouldThrow<Exception> { repositorioUsuarios.crearItem(usuario) }
+                shouldThrow<Exception> { repositorioUsuarios.crearItem(user) }
             }
         }
 
@@ -205,15 +205,15 @@ class RepositorioSpec : DescribeSpec({
             it("BUSCA un usuario por nombre completo") {
 
                 //Assert
-                repositorioUsuarios.buscarItems(usuario.nombreCompleto()) shouldBe mutableListOf(usuario)
+                repositorioUsuarios.buscarItems(user.nombreCompleto()) shouldBe mutableListOf(user)
             }
 
             it("BUSCA usuario por nombre parcial") {
-                repositorioUsuarios.buscarItems("art") shouldBe mutableListOf(usuario, usuario2)
+                repositorioUsuarios.buscarItems("art") shouldBe mutableListOf(user, user2)
             }
 
             it("BUSCA usuario por username") {
-                repositorioUsuarios.buscarItems("Flujo") shouldBe mutableListOf(usuario2)
+                repositorioUsuarios.buscarItems("Flujo") shouldBe mutableListOf(user2)
             }
         }
 
@@ -221,29 +221,29 @@ class RepositorioSpec : DescribeSpec({
 
             it("ACTUALIZAR usuario en repo") {
 
-                val usuario2Actualizado = Usuario(
-                    nombre = "Martin",
-                    apellido = "Martillo",
-                    userName = "Flujo",
+                val user2Actualizado = User(
+                    firstName = "Martin",
+                    lastName = "Martillo",
+                    username = "Flujo",
                     email = "volverAlFuturo2@gmail.com",
-                    fechaNacimiento = LocalDate.of(1968, 6, 9),
-                    perfil = Leedor(),
-                    lenguajeNativo = Lenguaje.ESPANIOL,
-                    palabrasXMinuto = 30,
-                    amigos = mutableSetOf(),
-                    librosLeidos = mutableListOf(libro2)
+                    birthday = LocalDate.of(1968, 6, 9),
+                    searchCriteria = GreatReader(),
+                    nativeLanguage = Lenguaje.ESPANIOL,
+                    readTimeMinAvg = 30,
+                    friends = mutableSetOf(),
+                    readBooks = mutableListOf(libro2)
                 )
 
-                usuario2Actualizado.id = 2u
+                user2Actualizado.id = 2u
 
-                repositorioUsuarios.actualizarItem(usuario2Actualizado)
+                repositorioUsuarios.actualizarItem(user2Actualizado)
 
-                repositorioUsuarios.itemPorId(2u) shouldBe usuario2Actualizado
+                repositorioUsuarios.itemPorId(2u) shouldBe user2Actualizado
             }
 
             it("ACTUALIZAR usuario inexistente") {
 
-                shouldThrow<Exception> { repositorioUsuarios.actualizarItem(usuario3) }
+                shouldThrow<Exception> { repositorioUsuarios.actualizarItem(user3) }
             }
         }
 
@@ -252,14 +252,14 @@ class RepositorioSpec : DescribeSpec({
             it("ELIMINAR un usuario de 2") {
 
                 //act
-                repositorioUsuarios.eliminarItem(usuario)
+                repositorioUsuarios.eliminarItem(user)
 
                 //assert
-                repositorioUsuarios.buscarItems(usuario.nombreCompleto()) shouldBe mutableListOf()
+                repositorioUsuarios.buscarItems(user.nombreCompleto()) shouldBe mutableListOf()
             }
 
             it("ELIMINAR usuario inexistente") {
-                shouldThrow<Exception> { repositorioUsuarios.eliminarItem(usuario) }
+                shouldThrow<Exception> { repositorioUsuarios.eliminarItem(user) }
             }
         }
     }
@@ -402,7 +402,7 @@ class RepositorioSpec : DescribeSpec({
             it("ACTUALIZAR recomendacion en repo") {
 
                 val recomendacion1Actualizado = Recomendacion(
-                    creador = usuario,
+                    creador = user,
                     resegna = "Actualizado!",
                     libros = mutableSetOf(libro1)
                 )
@@ -596,7 +596,7 @@ class RepositorioSpec : DescribeSpec({
             it("ACTUALIZAR centro") {
 
                 val centro2Actualizado = CentroLectura(
-                    listaDeUsuarioConReserva = mutableSetOf(usuario),
+                    listaDeUserConReserva = mutableSetOf(user),
                     organizador = organizador1,
                     fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
                     libro = libro1
