@@ -9,17 +9,12 @@ import org.springframework.stereotype.Component
 class RepositorioLibros : Repositorio<Libro>() {
     override val items = mutableSetOf<Libro>()
     lateinit var service: ServiceLibros
-    override fun buscarItems(patron: String) = items.filter { patron.lowercase() in it.titulo().lowercase()
+    override fun buscarItems(patron: String??) = items.filter { patron!!.lowercase() in it.titulo().lowercase()
             || patron.lowercase() in it.autor().apellido().lowercase() }
 
-//    @Serializable
-//    data class LibroPayload(
-//        val id: Int,
-//        val ediciones: Int,
-//        val ventasSemanales: Int
-//    )
 
    fun actualizarLibros() {
+       // TODO: Terminar
 //        val payload = Json.decodeFromString<List<LibroPayload>>(service.getLibros())
 //
 //        payload.forEach { pay ->

@@ -13,7 +13,7 @@ class RecomController (val recomService: RecomService){
 
     @CrossOrigin(origins = ["*"])
     @GetMapping("/recommendations")
-    fun recommendation(@RequestParam("id") id: Int?) = recomService.getAllRecoms(id).map{it.toDTO()}
+    fun recommendation(@RequestParam("id") id: Int?, @RequestParam("text") text: String?) = recomService.getAllRecoms(id, text).map{it.toDTO()}
 
     @CrossOrigin(origins = ["*"])
     @GetMapping("/recommendations/{id}")
