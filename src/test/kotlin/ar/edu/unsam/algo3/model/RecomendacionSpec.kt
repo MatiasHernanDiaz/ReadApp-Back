@@ -119,9 +119,9 @@ class RecomendacionSpec : DescribeSpec({
 
     val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = userCualquiera)
 
-    creadorRecom.agregarLibroLeido(libroAutorPreferido)
-    creadorRecom.agregarLibroLeido(libroOtroAutorPreferido)
-    creadorRecom.agregarLibroLeido(libroAutorNoPreferido)
+    creadorRecom.addReadBook(libroAutorPreferido)
+    creadorRecom.addReadBook(libroOtroAutorPreferido)
+    creadorRecom.addReadBook(libroAutorNoPreferido)
 
     val recomCompleta = Recomendacion(
         creador = creadorRecom,
@@ -142,9 +142,9 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si el creador lee los libro de la recomendación, la misma puede instanciarse") {
                 // Act
-                userCualquiera.agregarLibroLeido(libroAutorPreferido)
-                userCualquiera.agregarLibroLeido(libroOtroAutorPreferido)
-                userCualquiera.agregarLibroLeido(libroAutorNoPreferido)
+                userCualquiera.addReadBook(libroAutorPreferido)
+                userCualquiera.addReadBook(libroOtroAutorPreferido)
+                userCualquiera.addReadBook(libroAutorNoPreferido)
                 // Assert
                 shouldNotThrow<Exception> {
                     Recomendacion(
@@ -169,16 +169,16 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si vuelve a editar un amigo que leyó todos los libros, la recomendación vuelve a ser privada") {
                 // Act
-                amigoDelCreador.agregarLibroLeido(libroAutorPreferido)
-                amigoDelCreador.agregarLibroLeido(libroOtroAutorPreferido)
-                amigoDelCreador.agregarLibroLeido(libroAutorNoPreferido)
+                amigoDelCreador.addReadBook(libroAutorPreferido)
+                amigoDelCreador.addReadBook(libroOtroAutorPreferido)
+                amigoDelCreador.addReadBook(libroAutorNoPreferido)
                 recomCompleta.cambiarPrivacidad(amigoDelCreador)
 
                 recomCompleta.esPublica() shouldBe false
             }
             it("si vuelve a editar un amigo que no leyó todos los libros, lanza una excpeción") {
                 // Act
-                otroAmigoDelCreador.agregarLibroLeido(libroAutorPreferido)
+                otroAmigoDelCreador.addReadBook(libroAutorPreferido)
                 shouldThrow<Exception> { recomCompleta.cambiarPrivacidad(otroAmigoDelCreador) }
             }
         }
@@ -228,32 +228,32 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si el creador agrega un libro que leyó, la cantidad de libros totales debe ser 4") {
                 // Act
-                creadorRecom.agregarLibroLeido(nuevoLibro)
+                creadorRecom.addReadBook(nuevoLibro)
                 recomCompleta.agregarLibro(creadorRecom, nuevoLibro)
                 // Assert
                 recomCompleta.libros().count() shouldBe  4
             }
             it("si un editor no autorizado intenta eliminar un libro, lanza una excepción, aunque haya leido el libro") {
                 // Act
-                userCualquiera.agregarLibroLeido(nuevoLibro)
+                userCualquiera.addReadBook(nuevoLibro)
                 // Assert
                 shouldThrow<Exception> { recomCompleta.eliminarLibro(userCualquiera, nuevoLibro) }
             }
             it("si un amigo que leyó todos los libros intenta agregar un libro que no leyó, lanza una excepción") {
                 // Act
-                amigoDelCreador.agregarLibroLeido(nuevoLibro)
+                amigoDelCreador.addReadBook(nuevoLibro)
                 // Assert
                 shouldThrow<Exception> { recomCompleta.agregarLibro(amigoDelCreador, otroNuevoLibro) }
             }
             it("si un amigo que leyó todos los libros intenta agregar un libro que él leyó pero no leyó el creador, lanza una excepción") {
                 // Act
-                amigoDelCreador.agregarLibroLeido(otroNuevoLibro)
+                amigoDelCreador.addReadBook(otroNuevoLibro)
                 // Assert
                 shouldThrow<Exception> { recomCompleta.agregarLibro(amigoDelCreador, otroNuevoLibro) }
             }
             it("si un amigo que leyó todos los libros intenta agregar un libro que leyó él y el creador, la cantidad de libros totales debe ser 5") {
                 // Act
-                creadorRecom.agregarLibroLeido(otroNuevoLibro)
+                creadorRecom.addReadBook(otroNuevoLibro)
                 recomCompleta.agregarLibro(amigoDelCreador, otroNuevoLibro)
                 // Assert
                 recomCompleta.libros().count() shouldBe  5
@@ -273,15 +273,15 @@ class RecomendacionSpec : DescribeSpec({
         describe("Métodos sobre las valoraciones") {
             it("si el creador valora la reseña, lanza una excepción") {
                 // Assert
-                shouldThrow<Exception> { creadorRecom.valorarRecomendacion(recomCompleta, 4, "Tá buenís!") }
+                shouldThrow<Exception> { creadorRecom.rateRecom(recomCompleta, 4, "Tá buenís!") }
             }
             it("si un amigo que no leyó todos los libros valora la reseña, lanza una excepción") {
                 // Assert
-                shouldThrow<Exception> { otroAmigoDelCreador.valorarRecomendacion(recomCompleta, 4, "Tá buenís!") }
+                shouldThrow<Exception> { otroAmigoDelCreador.rateRecom(recomCompleta, 4, "Tá buenís!") }
             }
             it("si un amigo que leyó todos los libros valora la reseña, la cantidad de valoraciones es 1.") {
                 // Act
-                amigoDelCreador.valorarRecomendacion(recomCompleta, 4, "Tá buenís!")
+                amigoDelCreador.rateRecom(recomCompleta, 4, "Tá buenís!")
                 // Assert
                 recomCompleta.valoraciones().count() shouldBe 1
             }
@@ -297,28 +297,28 @@ class RecomendacionSpec : DescribeSpec({
                     lecturaCompleja = false,
                     traducciones = mutableSetOf(Language.ENGLISH),
                 )
-                creadorRecom.agregarLibroLeido(otroLibroDeAutorPreferido)
+                creadorRecom.addReadBook(otroLibroDeAutorPreferido)
                 val recomDeAutorPreferido = Recomendacion(
                     creador = creadorRecom,
                     resegna = "Estos libros están buenísimos!",
                     libros = mutableSetOf(libroAutorPreferido, otroLibroDeAutorPreferido)
                 )
                 // Act
-                otroAmigoDelCreador.agregarAutorPreferido(autorPreferido)
-                otroAmigoDelCreador.valorarRecomendacion(recomDeAutorPreferido, 4, "Tá muy bué!")
+                otroAmigoDelCreador.addFavouriteAuthor(autorPreferido)
+                otroAmigoDelCreador.rateRecom(recomDeAutorPreferido, 4, "Tá muy bué!")
                 // Assert
                 recomDeAutorPreferido.valoraciones().count() shouldBe 1
             }
             it("si sumo una valoración de 3 puntos, el promedio debe dar 3.5") {
                 // Act
-                amigoDelCreador.valorarRecomendacion(
+                amigoDelCreador.rateRecom(
                     recomCompleta, 3, "Muy bué!"
                 )
                 recomCompleta.promedioValoraciones() shouldBe 3.5
             }
             it("si sumo otra valoración de 3 puntos, el promedio debe dar 3.33") {
                 // Act
-                amigoDelCreador.valorarRecomendacion(
+                amigoDelCreador.rateRecom(
                     recomCompleta, 3, "Re bué!"
                 )
                 recomCompleta.promedioValoraciones() shouldBe 3.3333333333333335

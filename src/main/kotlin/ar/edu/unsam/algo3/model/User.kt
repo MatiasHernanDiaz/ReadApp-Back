@@ -25,98 +25,97 @@ class User(
     var readMode: ReadMode = AvgReader,
     var avatar: String = ""
 ): ItemRepo {
-    fun edad(): Int = Period.between(birthday, LocalDate.now()).years
+    fun age(): Int = Period.between(birthday, LocalDate.now()).years
 
-    fun tiempoLecturaPromedio(libro: Libro): Double =
+    fun readTimeAvg(libro: Libro): Double =
         if (libro.esDesafiante()) (libro.palabras().toDouble() / readTimeMinAvg) * 2 else (libro.palabras()
             .toDouble() / readTimeMinAvg)
 
     //fun crearRecomendacion(libros: MutableSet<Libro>, resegnia: String): Recomendacion =
     //    Recomendacion(this, resegnia, libros)
 
-    fun agregarLibroLeido(libro: Libro) {
+    fun addReadBook(libro: Libro) {
         readBooks.add(libro)
     }
 
-    fun perfil(): SearchCriteria = searchCriteria
+    fun searchCriteria(): SearchCriteria = searchCriteria
 
-    fun listaLibrosLeidos(): MutableList<Libro> = readBooks
+    fun readBooks(): MutableList<Libro> = readBooks
 
-    fun libroLeido(libro: Libro): Boolean = readBooks.contains(libro)
+    fun bookIsRead(libro: Libro): Boolean = readBooks.contains(libro)
 
-    fun todosLosLibrosLeidos(recomendacion: Recomendacion) =
+    fun recomBooksAreRead(recomendacion: Recomendacion) =
         recomendacion.libros().all({ readBooks.contains(it) })
 
-    fun agregarLibroALeer(libro: Libro) {
+    fun addBookToRead(libro: Libro) {
         booksToRead.add(libro)
     }
 
-    fun listaDeLibrosALeer(): MutableSet<Libro> = booksToRead
+    fun booksToRead(): MutableSet<Libro> = booksToRead
 
-    fun valorarRecomendacion(recomendacion: Recomendacion, puntuacion: Int, comentario: String): Unit {
+    fun rateRecom(recomendacion: Recomendacion, puntuacion: Int, comentario: String): Unit {
         val valoracion = Valoracion(puntuacion, comentario, this)
         recomendacion.agregarValoracion(valoracion)
         ratings.add(valoracion)
     }
 
-    fun amigos() = friends
+    fun friends() = friends
 
-    fun agregarAmigo(user: User) {
-        if (!esAmigo(user)) {
+    fun addFriend(user: User) {
+        if (!isFriend(user)) {
             friends.add(user)
         } else {
-            throw Exception("${user.nombreCompleto()} ya pertenece a la lista de amigos.")
+            throw Exception("${user.displayName()} ya pertenece a la lista de amigos.")
         }
     }
 
-    fun eliminarAmigo(user: User) {
-        if (esAmigo(user)) {
+    fun deleteFriend(user: User) {
+        if (isFriend(user)) {
             friends.remove(user)
         }
         else {
-            throw Exception("${user.nombreCompleto()} no pertenece a la lista de amigos.")
+            throw Exception("${user.displayName()} no pertenece a la lista de amigos.")
         }
     }
 
-    fun modificarPerfil(nuevoSearchCriteria: SearchCriteria) {
+    fun updateSearchCriteria(nuevoSearchCriteria: SearchCriteria) {
         searchCriteria = nuevoSearchCriteria
     }
 
-    fun cantidadDeReleida(libro: Libro): Int = readBooks.count({ it == libro })
+    fun reReadAmount(libro: Libro): Int = readBooks.count({ it == libro })
 
-    fun esAmigo(amigo: User): Boolean = friends.contains(amigo)
+    fun isFriend(amigo: User): Boolean = friends.contains(amigo)
 
-    fun esAutorPreferido(autor: Autor): Boolean = favouriteAuthors.contains(autor)
+    fun isFavouriteAuthor(autor: Autor): Boolean = favouriteAuthors.contains(autor)
 
-    fun cambiarTipoLector(tipo: ReadMode) { readMode = tipo }
+    fun updateReadMode(tipo: ReadMode) { readMode = tipo }
 
-    fun esRecomendable(recomendacion: Recomendacion): Boolean {
-        return perfil().esRecomendable(recomendacion)
+    fun isRecommendable(recomendacion: Recomendacion): Boolean {
+        return searchCriteria().esRecomendable(recomendacion)
     }
 
-    fun tiempoLecturaLibro(libro: Libro) = readMode.readTime(libro, this)
+    fun bookReadTime(libro: Libro) = readMode.readTime(libro, this)
 
-    fun tipoDeLector() = readMode
+    fun readMode() = readMode
 
-    fun agregarAutorPreferido(autor: Autor) = favouriteAuthors.add(autor)
+    fun addFavouriteAuthor(autor: Autor) = favouriteAuthors.add(autor)
 
-    fun fechaNacimiento() = birthday
-    fun lenguajeNativo() = nativeLanguage
+    fun birthday() = birthday
+    fun nativeLanguage() = nativeLanguage
 
-    fun nombreCompleto() = firstName + " " + lastName
+    fun displayName() = firstName + " " + lastName
 
-    fun apellido() = lastName
+    fun lastName() = lastName
 
-    fun userName() = username
+    fun username() = username
 
-    fun agregarRecomendacion(reco: Recomendacion){ recommendations.add(reco)}
+    fun addRecom(reco: Recomendacion){ recommendations.add(reco)}
 
-    fun tieneRecomendaciones(): Boolean = !recommendations.isEmpty()
+    fun hasRecoms(): Boolean = !recommendations.isEmpty()
 
-    fun tieneValoraciones(): Boolean = !ratings.isEmpty()
+    fun hasRatings(): Boolean = !ratings.isEmpty()
 
     fun getMail()=email
-
 }
 
 

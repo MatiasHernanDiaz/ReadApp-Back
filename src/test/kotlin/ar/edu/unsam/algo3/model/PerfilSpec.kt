@@ -125,85 +125,85 @@ class PerfilSpec : DescribeSpec ({
 
     describe("perfil precavido"){
         it("puede leer ya que está en su lista de noLeidos"){
-            user.modificarPerfil(Cautious(user))
-            user.agregarLibroALeer(libro)
+            user.updateSearchCriteria(Cautious(user))
+            user.addBookToRead(libro)
             recomendacion.agregarLibro(creador,libro)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("puede recomendarlo ya que un amigo lo leyó"){
-            user.modificarPerfil(Cautious(user))
-            amigo.agregarLibroLeido(libro)
+            user.updateSearchCriteria(Cautious(user))
+            amigo.addReadBook(libro)
             recomendacion.agregarLibro(creador,libro)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("no lo puede recomendar"){
-            user.modificarPerfil(Cautious(user))
+            user.updateSearchCriteria(Cautious(user))
             recomendacion.agregarLibro(creador,libro)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
     }
     describe("perfil leedor"){
         it("puede recomendarlo en cualquier caso"){
-            user.modificarPerfil(GreatReader())
+            user.updateSearchCriteria(GreatReader())
             recomendacion.agregarLibro(creador,libro)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
     }
     describe("perfil poliglota"){
         it("no puede recomendarlo ya que tiene pocos idiomas"){
-            user.modificarPerfil(Polyglot())
+            user.updateSearchCriteria(Polyglot())
             recomendacion.agregarLibro(creador,libro)
             recomendacion.agregarLibro(creador,libro2)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
         it("es recomendable ya que tiene muchos lenguajes"){
-            user.modificarPerfil(Polyglot())
+            user.updateSearchCriteria(Polyglot())
             recomendacion.agregarLibro(creador,libro)
             recomendacion.agregarLibro(creador,libro3)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
 
     }
     describe("perfil nativista"){
         it("puede recomendarlo ya que tanto el autor como el usuario tienen el español como lenguaje nativo"){
-            user.modificarPerfil(Nativist(user))
+            user.updateSearchCriteria(Nativist(user))
             recomendacion.agregarLibro(creador,libro)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("no puede recomendarlo ya que no tienen el mismo lenguaje nativo"){
-            user.modificarPerfil(Nativist(user))
+            user.updateSearchCriteria(Nativist(user))
             recomendacion.agregarLibro(creador,libro2)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
     }
 
     describe("perfil calculador"){
         it("es recomendable ya que el tiempo cumple con los requisitos"){
-            user.modificarPerfil(calculator)
+            user.updateSearchCriteria(calculator)
             recomendacion.agregarLibro(creador,libro2)
             recomendacion.agregarLibro(creador,libro3)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("no es recomendable ya que el tiempo sobrepasa los requisitos"){
-            user.modificarPerfil(calculator)
+            user.updateSearchCriteria(calculator)
             recomendacion.agregarLibro(creador,libro)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
         it("no es recomendable ya que el tiempo es demasiado bajo"){
-            user.modificarPerfil(calculator)
+            user.updateSearchCriteria(calculator)
             recomendacion.agregarLibro(creador,libro3)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
     }
 
@@ -211,88 +211,88 @@ class PerfilSpec : DescribeSpec ({
         it("es recomendable ya que tiene de promedio de valoracion un 4"){
             recomendacion.agregarValoracion(valoracion1)
             recomendacion.agregarValoracion(valoracion2)
-            user.modificarPerfil(Claimant())
+            user.updateSearchCriteria(Claimant())
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("no es recomendable ya que yiene de promedio de valoracion un 2"){
             recomendacion.agregarValoracion(valoracion2)
             recomendacion.agregarValoracion(valoracion3)
-            user.modificarPerfil(Claimant())
+            user.updateSearchCriteria(Claimant())
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
     }
 
     describe("perfil experimentado"){
         it("se puede recomendar ya que el autor tiene mas de 50 años"){
-            user.modificarPerfil(Experiencied())
+            user.updateSearchCriteria(Experiencied())
             recomendacion.agregarLibro(creador,libro)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("se puede recomendar ya que el autor gano un premio"){
-            user.modificarPerfil(Experiencied())
+            user.updateSearchCriteria(Experiencied())
             autor2.ganarPremio(premio)
             recomendacion.agregarLibro(creador,libro2)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("no se puede recomendar ya que el autor es muy joven y no gano nungun premio"){
-            user.modificarPerfil(Experiencied())
+            user.updateSearchCriteria(Experiencied())
             recomendacion.agregarLibro(creador,libro3)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
     }
 
     describe("perfil cambiante"){
         it("al ser joven siempre será recomendable"){
-            user.modificarPerfil(cambianteUsuario)
-            user.esRecomendable(recomendacion) shouldBe true
+            user.updateSearchCriteria(cambianteUsuario)
+            user.isRecommendable(recomendacion) shouldBe true
         }
         it("como es mas adulto, será recomendable ya que está en su limite de tiempo"){
-            amigo.modificarPerfil(cambianteAmigo)
+            amigo.updateSearchCriteria(cambianteAmigo)
             recomendacion.agregarLibro(creador,libro2)
             recomendacion.agregarLibro(creador,libro3)
 
-            amigo.esRecomendable(recomendacion) shouldBe true
+            amigo.isRecommendable(recomendacion) shouldBe true
         }
         it("como tiene mayor edad, no sera recomendable ya que el tiempo es demasiado alto"){
-            amigo.modificarPerfil(cambianteAmigo)
+            amigo.updateSearchCriteria(cambianteAmigo)
             recomendacion.agregarLibro(creador,libro)
 
-            amigo.esRecomendable(recomendacion) shouldBe false
+            amigo.isRecommendable(recomendacion) shouldBe false
         }
         it("como tiene mayor edad, no sera recomendable ya que el tiempo es demasiado bajo"){
-            amigo.modificarPerfil(cambianteAmigo)
+            amigo.updateSearchCriteria(cambianteAmigo)
             recomendacion.agregarLibro(creador,libro3)
 
-            amigo.esRecomendable(recomendacion) shouldBe false
+            amigo.isRecommendable(recomendacion) shouldBe false
         }
     }
 
     describe("perfil combinado"){
         it("no puede recomendarlo ya que tiene pocos idiomas"){
-            user.modificarPerfil(combined)
+            user.updateSearchCriteria(combined)
             recomendacion.agregarLibro(creador,libro)
             recomendacion.agregarLibro(creador,libro2)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
         it("no puede recomendarlo ya que valoracion baja"){
-            user.modificarPerfil(combined)
+            user.updateSearchCriteria(combined)
             recomendacion.agregarLibro(creador,libro3)
             recomendacion.agregarValoracion(valoracion3)
 
-            user.esRecomendable(recomendacion) shouldBe false
+            user.isRecommendable(recomendacion) shouldBe false
         }
         it("es recomendable ya que tiene muchos lenguajes y valoracion alta"){
-            user.modificarPerfil(combined)
+            user.updateSearchCriteria(combined)
             recomendacion.agregarLibro(creador,libro3)
             recomendacion.agregarValoracion(valoracion1)
 
-            user.esRecomendable(recomendacion) shouldBe true
+            user.isRecommendable(recomendacion) shouldBe true
         }
     }
 })

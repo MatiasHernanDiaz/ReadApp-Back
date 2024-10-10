@@ -8,11 +8,6 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.shouldBe
-import io.mockk.every
-import io.mockk.mockk
-import kotlinx.serialization.Serializable
-import kotlinx.serialization.encodeToString
-import kotlinx.serialization.json.Json
 import java.time.LocalDate
 
 class RepositorioSpec : DescribeSpec({
@@ -190,7 +185,7 @@ class RepositorioSpec : DescribeSpec({
             it("BUSCA un usuario por nombre completo") {
 
                 //Assert
-                repositorioUsuarios.searchItems(user.nombreCompleto()) shouldBe mutableListOf(user)
+                repositorioUsuarios.searchItems(user.displayName()) shouldBe mutableListOf(user)
             }
 
             it("BUSCA usuario por nombre parcial") {
@@ -241,7 +236,7 @@ class RepositorioSpec : DescribeSpec({
                 repositorioUsuarios.deleteItem(user)
 
                 //assert
-                repositorioUsuarios.searchItems(user.nombreCompleto()) shouldBe mutableListOf()
+                repositorioUsuarios.searchItems(user.displayName()) shouldBe mutableListOf()
             }
 
             it("ELIMINAR usuario inexistente") {

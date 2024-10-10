@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component
 @Component
 class UserRepository : Repository<User>() {
     override val items = mutableSetOf<User>()
-    override fun searchItems(patron: String) = items.filter { patron.lowercase() in it.nombreCompleto().lowercase()
-            || patron.lowercase() == it.userName().lowercase() }
+    override fun searchItems(patron: String) = items.filter { patron.lowercase() in it.displayName().lowercase()
+            || patron.lowercase() == it.username().lowercase() }
 }
 

@@ -7,7 +7,7 @@ import org.springframework.stereotype.Component
 class RepositorioRecomendaciones : Repository<Recomendacion>() {
     override val items = mutableSetOf<Recomendacion>()
     override fun searchItems(patron: String) = items.filter {
-        patron.lowercase() == it.creador().apellido().lowercase() || patron.lowercase() in it.resegna().lowercase()
+        patron.lowercase() == it.creador().lastName().lowercase() || patron.lowercase() in it.resegna().lowercase()
                 || it.libros().any { l -> patron.lowercase() in l.titulo().lowercase() }
     }
 }

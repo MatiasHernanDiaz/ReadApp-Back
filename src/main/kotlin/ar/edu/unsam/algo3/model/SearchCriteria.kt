@@ -24,7 +24,7 @@ interface SearchCriteria{
 
 class Cautious(val user: User): SearchCriteria {
     override fun esRecomendable(recomendacion: Recomendacion): Boolean {
-        return (recomendacion.libros().any{ libro -> user.listaDeLibrosALeer().contains(libro)}) || (recomendacion.libros().any{ libro -> user.amigos().any{ amigo -> amigo.libroLeido(libro)}})
+        return (recomendacion.libros().any{ libro -> user.booksToRead().contains(libro)}) || (recomendacion.libros().any{ libro -> user.friends().any{ amigo -> amigo.bookIsRead(libro)}})
     }
 
     override fun toCustomString(): String = "Precavido"
@@ -42,7 +42,7 @@ class Polyglot: SearchCriteria{
 }
 class Nativist(val user: User): SearchCriteria{
     override fun esRecomendable(recomendacion: Recomendacion): Boolean{
-        return recomendacion.libros().any{ libro -> user.lenguajeNativo() == libro.idiomaOriginal()}
+        return recomendacion.libros().any{ libro -> user.nativeLanguage() == libro.idiomaOriginal()}
     }
 
     override fun toCustomString(): String = "Nativista"
@@ -71,7 +71,7 @@ class Experiencied: SearchCriteria{
 class Inconstant(val user: User, val calculator: Calculator): SearchCriteria{
     val greatReader = GreatReader()
     override fun esRecomendable(recomendacion: Recomendacion): Boolean{
-        if(user.edad() < 25){
+        if(user.age() < 25){
             return greatReader.esRecomendable(recomendacion)
         }
         else return calculator.esRecomendable(recomendacion)

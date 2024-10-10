@@ -14,7 +14,7 @@ class Recomendacion(
     val valoraciones: MutableList<Valoracion> = mutableListOf()
 
     init {
-        creador.agregarRecomendacion(this)
+        creador.addRecom(this)
         if(!libros.all { puedeAgregarLibro(creador, it) })
             throw Exception("La lista de libros no es válida.")
     }
@@ -22,17 +22,17 @@ class Recomendacion(
     fun creador() = creador
 
     private fun puedeEditar(posibleEditor: User): Boolean =
-        posibleEditor === creador || (creador.esAmigo(posibleEditor) &&
-                posibleEditor.todosLosLibrosLeidos(this))
+        posibleEditor === creador || (creador.isFriend(posibleEditor) &&
+                posibleEditor.recomBooksAreRead(this))
 
-    private fun puedeAgregarLibro(editor: User, libro: Libro) = editor.libroLeido(libro) &&
-            creador.libroLeido(libro)
+    private fun puedeAgregarLibro(editor: User, libro: Libro) = editor.bookIsRead(libro) &&
+            creador.bookIsRead(libro)
 
     private fun puedeValorar(valorador: User) =
         valorador !== creador &&
-                (valorador.todosLosLibrosLeidos(this) ||
+                (valorador.recomBooksAreRead(this) ||
                         (libros.all { it.autor() === libros.first().autor() } &&
-                                valorador.esAutorPreferido(libros.first().autor())))
+                                valorador.isFavouriteAuthor(libros.first().autor())))
 
     fun cambiarPrivacidad(editor: User) {
         if(puedeEditar(editor)) {
@@ -75,10 +75,10 @@ class Recomendacion(
     fun libros(): MutableSet<Libro> = libros
 
     fun tiempoLecturaRecomendacion(user: User): Double =
-        libros.sumOf { user.tiempoLecturaLibro(it) }
+        libros.sumOf { user.bookReadTime(it) }
 
     fun tiempoLecturaAhorrado(user: User): Double =
-        libros.filter { user.libroLeido(it) } .sumOf { user.tiempoLecturaLibro(it) }
+        libros.filter { user.bookIsRead(it) } .sumOf { user.bookReadTime(it) }
 
     fun tiempoLecturaNeto(user: User): Double =
         tiempoLecturaRecomendacion(user) - tiempoLecturaAhorrado(user)

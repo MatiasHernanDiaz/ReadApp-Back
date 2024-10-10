@@ -13,7 +13,7 @@ data class Valoracion (var puntuacion: Int, var comentario: String, val autor: U
             this.comentario = comentario
         }
         else{
-            throw Exception("${user.nombreCompleto()} no es capaz de editar comentario")
+            throw Exception("${user.displayName()} no es capaz de editar comentario")
         }
     }
     fun editarPuntuacion(user: User, puntuacion: Int){
@@ -21,7 +21,7 @@ data class Valoracion (var puntuacion: Int, var comentario: String, val autor: U
             this.puntuacion = puntuacion
         }
         else{
-            throw Exception("${user.nombreCompleto()} no es capaz de editar puntuación")
+            throw Exception("${user.displayName()} no es capaz de editar puntuación")
         }
     }
 }
