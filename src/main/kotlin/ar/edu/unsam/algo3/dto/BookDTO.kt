@@ -15,4 +15,4 @@ data class BookDTO(
     }
 }
 
-fun Libro.toEditProfileDTO() = BookDTO(id = id, title = titulo, autor = autor.toEditProfileDTO(), pages = paginas, words = palabras)
+fun Libro.toDTO() = BookDTO(id = id, title = titulo, autor = autor.toDTO(), pages = paginas, words = palabras)

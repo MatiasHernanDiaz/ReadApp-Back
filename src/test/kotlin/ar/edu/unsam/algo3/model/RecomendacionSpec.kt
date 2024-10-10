@@ -62,26 +62,26 @@ class RecomendacionSpec : DescribeSpec({
         password = "sarasa"
     )
 
-    val autorPreferido = Autor(
-        nombre = "Jorge Luis",
-        apellido = "Borges",
-        seudonimo = "cieguito",
-        idiomaNativo = Language.SPANISH,
-        fechaNacimiento = LocalDate.of(1978, 6, 1)
+    val autorPreferido = Author(
+        firstName = "Jorge Luis",
+        lastName = "Borges",
+        alias = "cieguito",
+        nativeLanguage = Language.SPANISH,
+        birthday = LocalDate.of(1978, 6, 1)
     )
-    val otroAutorPreferido = Autor(
-        nombre = "Julio",
-        apellido = "Cortázar",
-        seudonimo = "Julito",
-        idiomaNativo = Language.ENGLISH,
-        fechaNacimiento = LocalDate.of(1978, 6, 1)
+    val otroAutorPreferido = Author(
+        firstName = "Julio",
+        lastName = "Cortázar",
+        alias = "Julito",
+        nativeLanguage = Language.ENGLISH,
+        birthday = LocalDate.of(1978, 6, 1)
     )
-    val autorNoPreferido = Autor(
-        nombre = "Bernardo",
-        apellido = "Stamateas",
-        seudonimo = "berni",
-        idiomaNativo = Language.SPANISH,
-        fechaNacimiento = LocalDate.of(1978, 6, 1)
+    val autorNoPreferido = Author(
+        firstName = "Bernardo",
+        lastName = "Stamateas",
+        alias = "berni",
+        nativeLanguage = Language.SPANISH,
+        birthday = LocalDate.of(1978, 6, 1)
     )
 
     val libroAutorPreferido = Libro(
@@ -202,7 +202,7 @@ class RecomendacionSpec : DescribeSpec({
             // Arrange
             val nuevoLibro = Libro(
                 titulo = "Un libro nuevo",
-                autor = Autor(nombre = "Rolando", apellido = "Hanglin", seudonimo = "rolo", idiomaNativo = Language.SPANISH, fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf()),
+                autor = Author(firstName = "Rolando", lastName = "Hanglin", alias = "rolo", nativeLanguage = Language.SPANISH, birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf()),
                 paginas = 200,
                 palabras = 10_000,
                 ediciones = 1,
@@ -213,7 +213,7 @@ class RecomendacionSpec : DescribeSpec({
 
             val otroNuevoLibro = Libro(
                 titulo = "Otro libro nuevo",
-                autor = Autor(nombre = "Beto", apellido = "Cascella", seudonimo = "beto", idiomaNativo = Language.SPANISH, fechaNacimiento = LocalDate.of(1978, 6, 1)),
+                autor = Author(firstName = "Beto", lastName = "Cascella", alias = "beto", nativeLanguage = Language.SPANISH, birthday = LocalDate.of(1978, 6, 1)),
                 paginas = 200,
                 palabras = 10_000,
                 ediciones = 1,

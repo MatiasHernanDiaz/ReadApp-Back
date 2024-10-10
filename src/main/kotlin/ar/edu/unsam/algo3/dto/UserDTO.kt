@@ -21,7 +21,7 @@ data class UserDTO(
 //    val ratings
 )
 
-fun User.toEditProfileDTO() = UserDTO(
+fun User.toDTO() = UserDTO(
     id = id,
     firstName = firstName,
     lastName = lastName,

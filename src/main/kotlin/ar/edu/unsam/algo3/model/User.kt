@@ -19,7 +19,7 @@ class User(
     val friends: MutableSet<User> = mutableSetOf(),
     val readBooks: MutableList<Libro> = mutableListOf(),
     val booksToRead: MutableSet<Libro> = mutableSetOf(),
-    val favouriteAuthors: MutableSet<Autor> = mutableSetOf(),
+    val favouriteAuthors: MutableSet<Author> = mutableSetOf(),
     val recommendations: MutableList<Recomendacion> = mutableListOf(),
     val ratings: MutableList<Valoracion> = mutableListOf(),
     var readMode: ReadMode = AvgReader,
@@ -86,7 +86,7 @@ class User(
 
     fun isFriend(amigo: User): Boolean = friends.contains(amigo)
 
-    fun isFavouriteAuthor(autor: Autor): Boolean = favouriteAuthors.contains(autor)
+    fun isFavouriteAuthor(autor: Author): Boolean = favouriteAuthors.contains(autor)
 
     fun updateReadMode(tipo: ReadMode) { readMode = tipo }
 
@@ -98,7 +98,7 @@ class User(
 
     fun readMode() = readMode
 
-    fun addFavouriteAuthor(autor: Autor) = favouriteAuthors.add(autor)
+    fun addFavouriteAuthor(autor: Author) = favouriteAuthors.add(autor)
 
     fun birthday() = birthday
     fun nativeLanguage() = nativeLanguage

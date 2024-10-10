@@ -7,7 +7,7 @@ import java.time.LocalDate
 class LibroSpec : DescribeSpec({
     describe("Desafiante/LecturaCompleja") {
         it("Best seller con muchas ventas y lenguajes") {
-            val miguel = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val miguel = Author(firstName = "Miguel", lastName = "de Cervantes", alias = "El manco", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val donQuijote = Libro(
                 titulo = "Don Quijote de la mancha",
                 autor = miguel,
@@ -22,7 +22,7 @@ class LibroSpec : DescribeSpec({
             donQuijote.esBestSeller() shouldBe true
         }
         it("Best seller con muchas ventas y ediciones") {
-            val miyamoto = Autor(nombre = "shigeru", apellido = "miyamoto", seudonimo = "Ponja", idiomaNativo = Language.JAPANESE,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val miyamoto = Author(firstName = "shigeru", lastName = "miyamoto", alias = "Ponja", nativeLanguage = Language.JAPANESE,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val zelda = Libro(
                 titulo = "The legend of Zelda: ocarina of time. the book",
                 autor = miyamoto,
@@ -37,7 +37,7 @@ class LibroSpec : DescribeSpec({
             zelda.esBestSeller() shouldBe true
         }
         it("Fracazo con muchas ventas") {
-            val mama = Autor(nombre = "Mama", apellido = "Fresh", seudonimo = "Mamerto", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val mama = Author(firstName = "Mama", lastName = "Fresh", alias = "Mamerto", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val guiaCocina = Libro(
                 titulo = "aprende a cocinar con Mama Fresh",
                 autor = mama,
@@ -52,7 +52,7 @@ class LibroSpec : DescribeSpec({
             guiaCocina.esBestSeller() shouldBe false
         }
         it("fracazo con pocas ventas y muchas ediciones") {
-            val araki = Autor(nombre = "Hirohiko", apellido = "Araki", seudonimo = "Harakiri", idiomaNativo = Language.JAPANESE,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val araki = Author(firstName = "Hirohiko", lastName = "Araki", alias = "Harakiri", nativeLanguage = Language.JAPANESE,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val jojos = Libro(
                 titulo = "jojos bizzare adventure: phantom blood cap 1",
                 autor = araki,
@@ -67,7 +67,7 @@ class LibroSpec : DescribeSpec({
             jojos.esBestSeller() shouldBe false
         }
         it("fracazo con pocas ventas y muchos idiomas") {
-            val matel = Autor(nombre = "editorial Matel", apellido = "S/A", seudonimo = "", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val matel = Author(firstName = "editorial Matel", lastName = "S/A", alias = "", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val historia = Libro(
                 titulo = "Libro de historia para cuarto grado",
                 autor = matel,
@@ -83,7 +83,7 @@ class LibroSpec : DescribeSpec({
         }
     }
     describe("Es desafiante con muchas paginas") {
-        val german = Autor(nombre = "Héctor Germán", apellido = "Oesterheld", seudonimo = "Eter", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+        val german = Author(firstName = "Héctor Germán", lastName = "Oesterheld", alias = "Eter", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
         it(" BestSeller Muchas ventas,Muchas ediciones y poco lenguajes") {
             val elEternauta = Libro(
                 titulo = "el Eternauta PARTE 1",
@@ -99,7 +99,7 @@ class LibroSpec : DescribeSpec({
             elEternauta.esBestSeller() shouldBe true
         }
         it(" BestSeller Muchas ventas,Pocas ediciones y Muchos lenguajes") {
-            val marquez = Autor(nombre = "Gabriel", apellido = "García Márquez", seudonimo = "Gabo", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val marquez = Author(firstName = "Gabriel", lastName = "García Márquez", alias = "Gabo", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val cronicasDeUnaMuerte = Libro(
                 titulo = "Cronicas de una muerte anunciada",
                 autor = marquez,
@@ -114,7 +114,7 @@ class LibroSpec : DescribeSpec({
             cronicasDeUnaMuerte.esBestSeller() shouldBe true
         }
         it(" No bestSeller pocas ediciones,Pocos lenguajes") {
-            val zenon = Autor(nombre = "mister", apellido = "zenon", seudonimo = "El gaucho", idiomaNativo = Language.RUSSIAN,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val zenon = Author(firstName = "mister", lastName = "zenon", alias = "El gaucho", nativeLanguage = Language.RUSSIAN,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val laGranjaDeZenon = Libro(
                 titulo = "la granja de zenon",
                 autor = zenon,
@@ -129,7 +129,7 @@ class LibroSpec : DescribeSpec({
             laGranjaDeZenon.esBestSeller() shouldBe false
         }
         it(" No bestSeller muchas ediciones,Pocas lenguajes") {
-            val vasconcelos = Autor(nombre = "José", apellido = "de Vasconcelos", seudonimo = "brazuca", idiomaNativo = Language.RUSSIAN,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val vasconcelos = Author(firstName = "José", lastName = "de Vasconcelos", alias = "brazuca", nativeLanguage = Language.RUSSIAN,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val elPalacioJapones = Libro(
                 titulo = "El palacio japones",
                 autor = vasconcelos,
@@ -149,7 +149,7 @@ class LibroSpec : DescribeSpec({
     describe("No es desafiante") {
         //faltan Best Seller y No Best Seller
         it("Es corto y no es de lectura compleja") {
-            val perrault = Autor(nombre = "Charles", apellido = "Perrault", seudonimo = "Caperucito", idiomaNativo = Language.FRENCH,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+            val perrault = Author(firstName = "Charles", lastName = "Perrault", alias = "Caperucito", nativeLanguage = Language.FRENCH,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
             val caperucita = Libro(
                 titulo = "La Caperucita Roja",
                 autor = perrault,
@@ -167,7 +167,7 @@ class LibroSpec : DescribeSpec({
     }
 
     describe("Autor y Traducciones"){
-        val perrault = Autor(nombre = "Charles", apellido = "Perrault", seudonimo = "Caperucito", idiomaNativo = Language.FRENCH,fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf())
+        val perrault = Author(firstName = "Charles", lastName = "Perrault", alias = "Caperucito", nativeLanguage = Language.FRENCH,birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf())
         it("Idioma original") {
             val pulgarcito = Libro(
                 titulo = "Pulgarcito",

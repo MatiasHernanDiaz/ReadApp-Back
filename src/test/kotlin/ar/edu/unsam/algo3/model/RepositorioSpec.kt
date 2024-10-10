@@ -19,31 +19,31 @@ class RepositorioSpec : DescribeSpec({
 
     //AUTORES
 
-    val autor1 = Autor(
-        nombre = "autor1",
-        apellido = "apellidoAutor1",
-        seudonimo = "king",
-        idiomaNativo = Language.SPANISH,
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        premios = mutableListOf()
+    val autor1 = Author(
+        firstName = "autor1",
+        lastName = "lastNameAutor1",
+        alias = "king",
+        nativeLanguage = Language.SPANISH,
+        birthday = LocalDate.of(1968, 6, 9),
+        prices = mutableListOf()
     )
 
-    val autor2 = Autor(
-        nombre = "autor2",
-        apellido = "apellidoAutor2",
-        seudonimo = "king",
-        idiomaNativo = Language.ENGLISH,
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        premios = mutableListOf()
+    val autor2 = Author(
+        firstName = "autor2",
+        lastName = "lastNameAutor2",
+        alias = "king",
+        nativeLanguage = Language.ENGLISH,
+        birthday = LocalDate.of(1968, 6, 9),
+        prices = mutableListOf()
     )
 
-    val autor3 = Autor(
-        nombre = "autor3",
-        apellido = "apellidoAutor3",
-        seudonimo = "king",
-        idiomaNativo = Language.FRENCH,
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        premios = mutableListOf()
+    val autor3 = Author(
+        firstName = "autor3",
+        lastName = "lastNameAutor3",
+        alias = "king",
+        nativeLanguage = Language.FRENCH,
+        birthday = LocalDate.of(1968, 6, 9),
+        prices = mutableListOf()
     )
 
     //LIBROS
@@ -182,13 +182,13 @@ class RepositorioSpec : DescribeSpec({
 
         describe("Dada un repositorio con 2 usuarios") {
 
-            it("BUSCA un usuario por nombre completo") {
+            it("BUSCA un usuario por firstName completo") {
 
                 //Assert
                 repositorioUsuarios.searchItems(user.displayName()) shouldBe mutableListOf(user)
             }
 
-            it("BUSCA usuario por nombre parcial") {
+            it("BUSCA usuario por firstName parcial") {
                 repositorioUsuarios.searchItems("art") shouldBe mutableListOf(user, user2)
             }
 
@@ -273,18 +273,18 @@ class RepositorioSpec : DescribeSpec({
 
         describe("Dada un repositorio con 2 autores") {
 
-            it("BUSCA un autor por nombre parcial") {
+            it("BUSCA un autor por firstName parcial") {
 
                 //Assert
                 repositorioAutores.searchItems("1") shouldBe mutableListOf(autor1)
             }
 
-            it("BUSCA usuario por apellido parcial") {
+            it("BUSCA usuario por lastName parcial") {
                 repositorioAutores.createItem(autor2)
                 repositorioAutores.searchItems("ape") shouldBe mutableListOf(autor1, autor2)
             }
 
-            it("BUSCA usuario por pseudonimo") {
+            it("BUSCA usuario por palias") {
                 repositorioAutores.searchItems("king") shouldBe mutableListOf(autor1, autor2)
             }
         }
@@ -293,13 +293,13 @@ class RepositorioSpec : DescribeSpec({
 
             it("ACTUALIZAR autor en repo") {
 
-                val autor2Actualizado = Autor(
-                    nombre = "autor2",
-                    apellido = "apellidoAutor2",
-                    seudonimo = "king",
-                    idiomaNativo = Language.ENGLISH,
-                    fechaNacimiento = LocalDate.of(1968, 6, 9),
-                    premios = mutableListOf()
+                val autor2Actualizado = Author(
+                    firstName = "autor2",
+                    lastName = "lastNameAutor2",
+                    alias = "king",
+                    nativeLanguage = Language.ENGLISH,
+                    birthday = LocalDate.of(1968, 6, 9),
+                    prices = mutableListOf()
                 )
 
                 autor2Actualizado.id = 2
@@ -361,7 +361,7 @@ class RepositorioSpec : DescribeSpec({
 
             repositorioRecomendaciones.createItem(recomendacion2)
 
-            it("BUSCA un recomendacion por apellido completo de creador") {
+            it("BUSCA un recomendacion por lastName completo de creador") {
 
                 //Assert
                 repositorioRecomendaciones.searchItems("McFly") shouldBe mutableListOf(recomendacion1)
@@ -453,9 +453,9 @@ class RepositorioSpec : DescribeSpec({
                 repositorioLibros.searchItems("tulo") shouldBe mutableListOf(libro1, libro2)
             }
 
-            it("BUSCA libro por apellido autor") {
+            it("BUSCA libro por lastName autor") {
                 //NO ES CASE SENSITIVE
-                repositorioLibros.searchItems("apellidoAutor1") shouldBe mutableListOf(libro1)
+                repositorioLibros.searchItems("lastNameAutor1") shouldBe mutableListOf(libro1)
             }
         }
 

@@ -63,7 +63,7 @@ class Claimant: SearchCriteria{
 }
 class Experiencied: SearchCriteria{
     override fun esRecomendable(recomendacion: Recomendacion): Boolean{
-        return recomendacion.libros().any{ libro -> libro.autor().esConsagrado()}
+        return recomendacion.libros().any{ libro -> libro.autor().isDedicated()}
     }
 
     override fun toCustomString(): String = "Experimentado"

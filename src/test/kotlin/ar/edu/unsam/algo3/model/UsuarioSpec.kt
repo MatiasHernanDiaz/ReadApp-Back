@@ -11,8 +11,8 @@ import java.time.Period
 class UsuarioSpec : DescribeSpec({
     describe("dado un usuario nacido en 1968 y lee 30 palabras por min") {
 
-        val miguel = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1978, 6, 1), premios= mutableListOf())
-        val tolkien = Autor(nombre = "J. R. R.", apellido = "Tolkien", seudonimo = "Hobbit", idiomaNativo = Language.ENGLISH,fechaNacimiento = LocalDate.of(1978, 6, 1), premios= mutableListOf())
+        val miguel = Author(firstName = "Miguel", lastName = "de Cervantes", alias = "El manco", nativeLanguage = Language.SPANISH, birthday = LocalDate.of(1978, 6, 1), prices= mutableListOf())
+        val tolkien = Author(firstName = "J. R. R.", lastName = "Tolkien", alias = "Hobbit", nativeLanguage = Language.ENGLISH,birthday = LocalDate.of(1978, 6, 1), prices= mutableListOf())
 
         //Arrange
         //Creacion de Lectores

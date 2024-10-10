@@ -6,7 +6,7 @@ import java.time.LocalDate
 class ValoracionAutomaticaSpec : DescribeSpec({
     val libroOriginalRecom = Libro(
         titulo = "Don Quijote de la mancha",
-        autor = Autor(
+        autor = Author(
             "Cervantes",
             "Miguel",
             "Manco",
@@ -22,7 +22,7 @@ class ValoracionAutomaticaSpec : DescribeSpec({
 
     val primerLibroAgregado = Libro(
         titulo = "Comedias",
-        autor = Autor(
+        autor = Author(
             "Cervantes",
             "Miguel",
             "Manco",
@@ -38,7 +38,7 @@ class ValoracionAutomaticaSpec : DescribeSpec({
 
     val segundoLibroAgregado = Libro(
         titulo = "Cuentos",
-        autor = Autor(
+        autor = Author(
             "Cervantes",
             "Miguel",
             "Manco",

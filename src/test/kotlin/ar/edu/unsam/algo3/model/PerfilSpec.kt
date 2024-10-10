@@ -9,7 +9,7 @@ class PerfilSpec : DescribeSpec ({
     isolationMode = IsolationMode.InstancePerTest
 
     val premio = Premio()
-    val autor = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1958, 6, 9), premios= mutableListOf())
+    val autor = Author(firstName = "Miguel", lastName = "de Cervantes", alias = "El manco", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1958, 6, 9), prices= mutableListOf())
     val libro = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor,
@@ -20,7 +20,7 @@ class PerfilSpec : DescribeSpec ({
         lecturaCompleja = true,
         traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH)
     )
-    val autor2 = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.ENGLISH,fechaNacimiento = LocalDate.of(1988, 6, 9), premios= mutableListOf())
+    val autor2 = Author(firstName = "Miguel", lastName = "de Cervantes", alias = "El manco", nativeLanguage = Language.ENGLISH,birthday = LocalDate.of(1988, 6, 9), prices= mutableListOf())
     val libro2 = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor2,
@@ -31,7 +31,7 @@ class PerfilSpec : DescribeSpec ({
         lecturaCompleja = true,
         traducciones = mutableSetOf(Language.SPANISH)
     )
-    val autor3 = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1988, 6, 9), premios= mutableListOf())
+    val autor3 = Author(firstName = "Miguel", lastName = "de Cervantes", alias = "El manco", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1988, 6, 9), prices= mutableListOf())
     val libro3 = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor3,
@@ -233,7 +233,7 @@ class PerfilSpec : DescribeSpec ({
         }
         it("se puede recomendar ya que el autor gano un premio"){
             user.updateSearchCriteria(Experiencied())
-            autor2.ganarPremio(premio)
+            autor2.winPrice(premio)
             recomendacion.agregarLibro(creador,libro2)
 
             user.isRecommendable(recomendacion) shouldBe true

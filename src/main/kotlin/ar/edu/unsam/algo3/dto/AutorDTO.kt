@@ -8,4 +8,4 @@ data class AutorDTO(
     val nativeLanguage: Language,
     val id:Int
 )
-fun Autor.toEditProfileDTO()= AutorDTO(id=id, lastName = apellido, firstName = nombre, nativeLanguage = idiomaNativo)
+fun Author.toDTO()= AutorDTO(id=id, lastName = lastName, firstName = firstName, nativeLanguage = nativeLanguage)

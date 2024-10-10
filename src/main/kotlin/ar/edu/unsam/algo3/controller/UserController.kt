@@ -1,7 +1,7 @@
 package ar.edu.unsam.algo3.controller
 
 import ar.edu.unsam.algo3.dto.UserDTO
-import ar.edu.unsam.algo3.dto.toEditProfileDTO
+import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.errors.NoIdException
 import ar.edu.unsam.algo3.service.UserService
 import org.springframework.web.bind.annotation.*
@@ -12,7 +12,7 @@ class UserController (val userService: UserService){
 
 
     @GetMapping("")
-    fun users() = userService.getAllUser().map { it.toEditProfileDTO() }
+    fun users() = userService.getAllUser().map { it.toDTO() }
 
 
     @PutMapping("editprofile")
