@@ -9,7 +9,7 @@ class PerfilSpec : DescribeSpec ({
     isolationMode = IsolationMode.InstancePerTest
 
     val premio = Premio()
-    val autor = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Lenguaje.ESPANIOL,fechaNacimiento = LocalDate.of(1958, 6, 9), premios= mutableListOf())
+    val autor = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1958, 6, 9), premios= mutableListOf())
     val libro = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor,
@@ -18,9 +18,9 @@ class PerfilSpec : DescribeSpec ({
         ediciones = 1,
         ventasSemanales = 6000,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.FRANCES)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH)
     )
-    val autor2 = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Lenguaje.INGLES,fechaNacimiento = LocalDate.of(1988, 6, 9), premios= mutableListOf())
+    val autor2 = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.ENGLISH,fechaNacimiento = LocalDate.of(1988, 6, 9), premios= mutableListOf())
     val libro2 = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor2,
@@ -29,9 +29,9 @@ class PerfilSpec : DescribeSpec ({
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.ESPANIOL)
+        traducciones = mutableSetOf(Language.SPANISH)
     )
-    val autor3 = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Lenguaje.ESPANIOL,fechaNacimiento = LocalDate.of(1988, 6, 9), premios= mutableListOf())
+    val autor3 = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1988, 6, 9), premios= mutableListOf())
     val libro3 = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor3,
@@ -40,7 +40,7 @@ class PerfilSpec : DescribeSpec ({
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf( Lenguaje.ITALIANO, Lenguaje.PORTUGUES,Lenguaje.INGLES, Lenguaje.FRANCES)
+        traducciones = mutableSetOf( Language.ITALIAN, Language.PORTUGUESE,Language.ENGLISH, Language.FRENCH)
     )
 
     val amigo = User(
@@ -50,10 +50,11 @@ class PerfilSpec : DescribeSpec ({
         email = "volverAlFuturo@gmail.com",
         birthday = LocalDate.of(1938, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
         friends = mutableSetOf(),
-        readBooks = mutableListOf(libro2,libro3)
+        readBooks = mutableListOf(libro2,libro3),
+        password = "sarasa"
     )
     val user = User(
         firstName = "Marty",
@@ -62,9 +63,10 @@ class PerfilSpec : DescribeSpec ({
         email = "volverAlFuturo@gmail.com",
         birthday = LocalDate.of(2008, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
-        friends = mutableSetOf(amigo)
+        friends = mutableSetOf(amigo),
+        password = "sarasa"
     )
     val creador = User(
         firstName = "Josuke",
@@ -73,10 +75,11 @@ class PerfilSpec : DescribeSpec ({
         email = "Jojo@gmail.com",
         birthday = LocalDate.of(1968, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
         readBooks = mutableListOf(libro,libro2,libro3),
-        friends = mutableSetOf()
+        friends = mutableSetOf(),
+        password = "sarasa"
     )
     val recomendacion = Recomendacion(
         creador = creador,
@@ -105,12 +108,12 @@ class PerfilSpec : DescribeSpec ({
         tiempoMaximo = 400.0,
         tiempoMinimo = 210.3
     )
-    val cambianteUsuario = Cambiante(
+    val cambianteUsuario = Inconstant(
         user = user,
         calculator = calculator
     )
 
-    val cambianteAmigo = Cambiante(
+    val cambianteAmigo = Inconstant(
         user = amigo,
         calculator = calculator
     )

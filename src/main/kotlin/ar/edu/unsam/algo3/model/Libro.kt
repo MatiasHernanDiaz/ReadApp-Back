@@ -12,7 +12,7 @@ class Libro(
     var ediciones: Int,
     var ventasSemanales: Int,
     val lecturaCompleja: Boolean,
-    val traducciones: MutableSet<Lenguaje> = mutableSetOf(),
+    val traducciones: MutableSet<Language> = mutableSetOf(),
 
     ) : ItemRepo {
     companion object maxPag {
@@ -29,8 +29,8 @@ class Libro(
 
     fun traducciones() = traducciones
 
-    fun idiomaOriginal(): Lenguaje = autor.idiomaNativo()
-    fun lenguajes() : List<Lenguaje> = traducciones.plus(idiomaOriginal()).toList()
+    fun idiomaOriginal(): Language = autor.idiomaNativo()
+    fun lenguajes() : List<Language> = traducciones.plus(idiomaOriginal()).toList()
 
     fun paginas(): Int = paginas // Necesita acceder Usuario
 

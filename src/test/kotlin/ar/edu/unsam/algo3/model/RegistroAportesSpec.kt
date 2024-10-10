@@ -1,7 +1,6 @@
 import ar.edu.unsam.algo3.*
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.DescribeSpec
-import io.kotest.matchers.shouldBe
 import java.time.LocalDate
 
 class RegistroAportesSpec: DescribeSpec ({
@@ -11,7 +10,7 @@ class RegistroAportesSpec: DescribeSpec ({
         nombre = "Jorge Luis",
         apellido = "Borges",
         seudonimo = "cieguito",
-        idiomaNativo = Lenguaje.ESPANIOL,
+        idiomaNativo = Language.SPANISH,
         fechaNacimiento = LocalDate.of(1978, 6, 1)
     )
     val libro1 = Libro(titulo = "Aleph",
@@ -21,7 +20,7 @@ class RegistroAportesSpec: DescribeSpec ({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES),)
+        traducciones = mutableSetOf(Language.ENGLISH),)
     val libro2 = Libro(titulo = "Rayuela",
         autor = autor,
         paginas = 180,
@@ -29,7 +28,7 @@ class RegistroAportesSpec: DescribeSpec ({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES),)
+        traducciones = mutableSetOf(Language.ENGLISH),)
 
     val amigoCreador = User(
         firstName = "Martin",
@@ -38,61 +37,31 @@ class RegistroAportesSpec: DescribeSpec ({
         email = "tiburon@hotmail.com",
         birthday = LocalDate.of(1958, 10, 30),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 200,
         readBooks = mutableListOf(libro1,libro2),
-        friends = mutableSetOf())
+        friends = mutableSetOf(),
+        password = "sarasa")
 
     val creador = User(
-        "Juan Luis",
-        "Guerra",
-        "pez",
-        "pez@gmail.com",
-        LocalDate.of(1998, 8, 15),
-        GreatReader(),
-        Lenguaje.ESPANIOL,
-        300,
-        mutableSetOf(),
-        mutableListOf(libro1,libro2)
+        firstName = "Juan Luis",
+        lastName = "Guerra",
+        username = "pez",
+        email = "pez@gmail.com",
+        birthday = LocalDate.of(1998, 8, 15),
+        nativeLanguage = Language.SPANISH,
+        readTimeMinAvg =  300,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf(libro1,libro2),
+        booksToRead = mutableSetOf(),
+        password = "sarasa"
     )
 
 
-    val observer = RegistroAportes()
     val recomendacion = Recomendacion(
         creador = creador,
         resegna = "Estos libros están buenísimos!",
         libros = mutableSetOf()
     )
-
-    describe("el creador agrega todos los libros"){
-        recomendacion.agregarAddLibrosObserver(observer)
-        it("el creador agrega un libro y no hay problema"){
-            recomendacion.agregarLibro(creador,libro1)
-            observer.cantAportes(creador) shouldBe 1
-        }
-        it("el creador agregó mas de un libro y la cantidad de aportes cambia"){
-            recomendacion.agregarLibro(creador,libro1)
-            recomendacion.agregarLibro(creador,libro2)
-            observer.cantAportes(creador) shouldBe 2
-        }
-    }
-    describe("el amigo tambien participa"){
-        amigoCreador.agregarAmigo(creador)
-        creador.agregarAmigo(amigoCreador)
-        recomendacion.agregarAddLibrosObserver(observer)
-
-        it("el creador agrega un libro y el amigo otro"){
-            recomendacion.agregarLibro(creador,libro1)
-            recomendacion.agregarLibro(amigoCreador,libro2)
-            observer.cantAportes(creador) shouldBe 1
-            observer.cantAportes(amigoCreador) shouldBe 1
-        }
-        it("los aportes de cada creador son distintos"){
-            recomendacion.agregarLibro(creador,libro1)
-            recomendacion.agregarLibro(amigoCreador,libro2)
-            observer.librosAportadosPor(creador) shouldBe setOf(libro1)
-            observer.librosAportadosPor(amigoCreador) shouldBe setOf(libro2)
-        }
-    }
 })
 

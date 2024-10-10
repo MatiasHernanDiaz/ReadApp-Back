@@ -11,13 +11,13 @@ class ValoracionAutomaticaSpec : DescribeSpec({
             "Miguel",
             "Manco",
             LocalDate.of(1648, 1, 1),
-            Lenguaje.ESPANIOL),
+            Language.SPANISH),
         paginas = 300,
         palabras = 50000,
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
     )
 
     val primerLibroAgregado = Libro(
@@ -27,13 +27,13 @@ class ValoracionAutomaticaSpec : DescribeSpec({
             "Miguel",
             "Manco",
             LocalDate.of(1648, 1, 1),
-            Lenguaje.ESPANIOL),
+            Language.SPANISH),
         paginas = 200,
         palabras = 10000,
         ediciones = 5,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
     )
 
     val segundoLibroAgregado = Libro(
@@ -43,13 +43,13 @@ class ValoracionAutomaticaSpec : DescribeSpec({
             "Miguel",
             "Manco",
             LocalDate.of(1648, 1, 1),
-            Lenguaje.ESPANIOL),
+            Language.SPANISH),
         paginas = 200,
         palabras = 40000,
         ediciones = 5,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
     )
 
     val userEditor = User(
@@ -59,10 +59,11 @@ class ValoracionAutomaticaSpec : DescribeSpec({
         email = "jogobonito@gmail.com",
         birthday = LocalDate.of(1968, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
         friends = mutableSetOf(),
-        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado)
+        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado),
+        password = "sarasa"
     )
 
     val userCreador = User(
@@ -72,29 +73,11 @@ class ValoracionAutomaticaSpec : DescribeSpec({
         email = "volverAlFuturo@gmail.com",
         birthday = LocalDate.of(1968, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
         friends = mutableSetOf(userEditor),
-        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado)
+        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado),
+        password = "sarasa"
     )
 
-    val recomendacionConValoracionAutomatica = Recomendacion(
-        creador = userCreador,
-        resegna = "Algunos libros interesantes",
-        libros = mutableSetOf(libroOriginalRecom)
-    ).apply { agregarAddLibrosObserver(ValoracionAutomatica(this)) }
-
-    describe("Dadas dos ediciones consecutivas del usuarioEditor...") {
-        recomendacionConValoracionAutomatica.agregarLibro(userEditor, primerLibroAgregado)
-
-        it("La primera edición debe agregar una valoración automáticamente") {
-            recomendacionConValoracionAutomatica.valoraciones().size shouldBe 1
-        }
-
-        recomendacionConValoracionAutomatica.agregarLibro(userEditor, segundoLibroAgregado)
-
-        it("La segunda edición no debe tener ningún efecto sobre las valoraciones") {
-            recomendacionConValoracionAutomatica.valoraciones().size shouldBe 1
-        }
-    }
 })

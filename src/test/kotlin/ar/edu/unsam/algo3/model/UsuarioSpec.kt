@@ -11,8 +11,8 @@ import java.time.Period
 class UsuarioSpec : DescribeSpec({
     describe("dado un usuario nacido en 1968 y lee 30 palabras por min") {
 
-        val miguel = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Lenguaje.ESPANIOL,fechaNacimiento = LocalDate.of(1978, 6, 1), premios= mutableListOf())
-        val tolkien = Autor(nombre = "J. R. R.", apellido = "Tolkien", seudonimo = "Hobbit", idiomaNativo = Lenguaje.INGLES,fechaNacimiento = LocalDate.of(1978, 6, 1), premios= mutableListOf())
+        val miguel = Autor(nombre = "Miguel", apellido = "de Cervantes", seudonimo = "El manco", idiomaNativo = Language.SPANISH,fechaNacimiento = LocalDate.of(1978, 6, 1), premios= mutableListOf())
+        val tolkien = Autor(nombre = "J. R. R.", apellido = "Tolkien", seudonimo = "Hobbit", idiomaNativo = Language.ENGLISH,fechaNacimiento = LocalDate.of(1978, 6, 1), premios= mutableListOf())
 
         //Arrange
         //Creacion de Lectores
@@ -24,9 +24,10 @@ class UsuarioSpec : DescribeSpec({
             email = "volverAlFuturo@gmail.com",
             birthday = LocalDate.of(1968, 6, 9),
             searchCriteria = GreatReader(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 30,
-            friends = mutableSetOf()
+            friends = mutableSetOf(),
+            password = "sarasa"
         )
         val user1 = User(
             firstName = "Juan",
@@ -35,10 +36,11 @@ class UsuarioSpec : DescribeSpec({
             email = "jperez@gmail.com",
             birthday = LocalDate.of(1988, 1, 12),
             searchCriteria = GreatReader(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 30,
             friends = mutableSetOf(),
-            readMode = LectorAnsioso
+            readMode = anxiousReader,
+            password = "sarasa"
         )
 
         val user2 = User(
@@ -48,10 +50,11 @@ class UsuarioSpec : DescribeSpec({
             email = "pablitoAlvarez@gmail.com",
             birthday = LocalDate.of(1998, 6, 1),
             searchCriteria = GreatReader(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 30,
             friends = mutableSetOf(),
-            readMode = LectorFanatico
+            readMode = fanaticReader,
+            password = "sarasa"
         )
         user2.agregarAutorPreferido(miguel)//agrego que es un autor favorito
 
@@ -62,10 +65,11 @@ class UsuarioSpec : DescribeSpec({
             email = "elLoco22Titan@gmail.com",
             birthday = LocalDate.of(1973, 11, 7),
             searchCriteria = GreatReader(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 30,
             friends = mutableSetOf(),
-            readMode = LectorRecurrente
+            readMode = recurrentReader,
+            password = "sarasa"
         )
 
 
@@ -79,7 +83,7 @@ class UsuarioSpec : DescribeSpec({
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL),
+            traducciones = mutableSetOf(Language.SPANISH),
         )
 
         val lasDosTorres = Libro(
@@ -90,7 +94,7 @@ class UsuarioSpec : DescribeSpec({
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL),
+            traducciones = mutableSetOf(Language.SPANISH),
         )
 
         val elRetornoDelRey = Libro(
@@ -101,7 +105,7 @@ class UsuarioSpec : DescribeSpec({
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL),
+            traducciones = mutableSetOf(Language.SPANISH),
         )
         val donQuijote = Libro(
             titulo = "Don Quijote de la mancha",
@@ -111,7 +115,7 @@ class UsuarioSpec : DescribeSpec({
             ediciones = 1,
             ventasSemanales = 10001,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
         )
         val donQuijote2 = Libro(
             titulo = "Don Quijote de la mancha 2 ",
@@ -121,7 +125,7 @@ class UsuarioSpec : DescribeSpec({
             ediciones = 1,
             ventasSemanales = 10001,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
         )
 
 
@@ -260,9 +264,10 @@ class UsuarioSpec : DescribeSpec({
                 email = "volverAlFuturo@gmail.com",
                 birthday = LocalDate.of(1968, 6, 9),
                 searchCriteria = GreatReader(),
-                nativeLanguage = Lenguaje.ESPANIOL,
+                nativeLanguage = Language.SPANISH,
                 readTimeMinAvg = 30,
-                friends = mutableSetOf()
+                friends = mutableSetOf(),
+                password = "sarasa"
             )
             //Act
             lectorPromedio.agregarLibroLeido(laComunidadDelAnillo)
@@ -292,9 +297,10 @@ class UsuarioSpec : DescribeSpec({
                 email = "volverAlFuturo@gmail.com",
                 birthday = LocalDate.of(1968, 6, 9),
                 searchCriteria = GreatReader(),
-                nativeLanguage = Lenguaje.ESPANIOL,
+                nativeLanguage = Language.SPANISH,
                 readTimeMinAvg = 30,
-                friends = mutableSetOf()
+                friends = mutableSetOf(),
+                password = "sarasa"
             )
 
             //Act
@@ -308,7 +314,7 @@ class UsuarioSpec : DescribeSpec({
         }
         //-----------------------LectorAnsioso
         it("Usuario1 es un lector Ansioso"){
-            user1.tipoDeLector() shouldBe LectorAnsioso
+            user1.tipoDeLector() shouldBe anxiousReader
         }
 
         it("Un lector ansioso reduce el tiempo promedio 20% de un libro no desafiante "){
@@ -325,7 +331,7 @@ class UsuarioSpec : DescribeSpec({
         }
 //-----------------------LectorFanatico
         it("Usuario2 es un lector Fanatico"){
-            user2.tipoDeLector() shouldBe LectorFanatico
+            user2.tipoDeLector() shouldBe fanaticReader
         }
 
         it("Un lector fanatico(Usuario2) tiene un autor preferido que es miguel"){
@@ -352,7 +358,7 @@ class UsuarioSpec : DescribeSpec({
         }
 //---------------------LectorRecurrente
         it("Usuario3 es un lector Recurrente"){
-            user3.tipoDeLector() shouldBe LectorRecurrente
+            user3.tipoDeLector() shouldBe recurrentReader
         }
 
         it("Un lector Recurrente (Usuario3) no leyo ninguna vez"){
@@ -397,9 +403,10 @@ class UsuarioSpec : DescribeSpec({
             email = "volverAlFuturo@gmail.com",
             birthday = LocalDate.of(1968, 6, 9),
             searchCriteria = GreatReader(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 30,
-            friends = mutableSetOf()
+            friends = mutableSetOf(),
+            password = "sarasa"
         )
         val amigo = User(
             firstName = "Juan",
@@ -408,10 +415,11 @@ class UsuarioSpec : DescribeSpec({
             email = "jperez@gmail.com",
             birthday = LocalDate.of(1988, 1, 12),
             searchCriteria = GreatReader(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 30,
             friends = mutableSetOf(),
-            readMode = LectorAnsioso
+            readMode = anxiousReader,
+            password = "sarasa"
         )
 
         it("Agrega un amigo a su lista de amigos"){

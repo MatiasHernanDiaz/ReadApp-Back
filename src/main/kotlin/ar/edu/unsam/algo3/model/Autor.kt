@@ -9,7 +9,7 @@ class Autor (
     var nombre: String,
     val seudonimo: String,
     val fechaNacimiento : LocalDate,
-    val idiomaNativo: Lenguaje,
+    val idiomaNativo: Language,
     val premios : MutableList<Premio> = mutableListOf()
 ) : ItemRepo {
     override var id: Int = -1
@@ -17,7 +17,7 @@ class Autor (
     fun apellido() = apellido
     fun nombre() = nombre
     fun seudonimo() = seudonimo
-    fun idiomaNativo(): Lenguaje = idiomaNativo
+    fun idiomaNativo(): Language = idiomaNativo
     fun edad(): Int = Period.between(fechaNacimiento, LocalDate.now()).years
     fun esConsagrado(): Boolean = premios.isNotEmpty() or (edad() >= 50)
 

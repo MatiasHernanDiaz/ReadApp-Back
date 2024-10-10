@@ -18,9 +18,10 @@ class RecomendacionSpec : DescribeSpec({
         email = "pez@gmail.com",
         birthday = LocalDate.of(1988, 8, 15),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 300,
-        friends = mutableSetOf()
+        friends = mutableSetOf(),
+        password = "sarasa"
     )
 
     val otroAmigoDelCreador = User(
@@ -30,9 +31,10 @@ class RecomendacionSpec : DescribeSpec({
         email = "negrorada@gmail.com",
         birthday = LocalDate.of(1958, 2, 15),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 300,
-        friends = mutableSetOf()
+        friends = mutableSetOf(),
+        password = "sarasa"
     )
 
     val userCualquiera = User(
@@ -42,9 +44,10 @@ class RecomendacionSpec : DescribeSpec({
         email = "leo@gmail.com",
         birthday = LocalDate.of(1978, 8, 25),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 300,
-        friends = mutableSetOf()
+        friends = mutableSetOf(),
+        password = "sarasa"
     )
     val creadorRecom = User(
         firstName = "Pedro",
@@ -53,30 +56,31 @@ class RecomendacionSpec : DescribeSpec({
         email = "piedra@gmail.com",
         birthday = LocalDate.of(1990, 8, 24),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 300,
-        friends = mutableSetOf(amigoDelCreador, otroAmigoDelCreador)
+        friends = mutableSetOf(amigoDelCreador, otroAmigoDelCreador),
+        password = "sarasa"
     )
 
     val autorPreferido = Autor(
         nombre = "Jorge Luis",
         apellido = "Borges",
         seudonimo = "cieguito",
-        idiomaNativo = Lenguaje.ESPANIOL,
+        idiomaNativo = Language.SPANISH,
         fechaNacimiento = LocalDate.of(1978, 6, 1)
     )
     val otroAutorPreferido = Autor(
         nombre = "Julio",
         apellido = "Cortázar",
         seudonimo = "Julito",
-        idiomaNativo = Lenguaje.INGLES,
+        idiomaNativo = Language.ENGLISH,
         fechaNacimiento = LocalDate.of(1978, 6, 1)
     )
     val autorNoPreferido = Autor(
         nombre = "Bernardo",
         apellido = "Stamateas",
         seudonimo = "berni",
-        idiomaNativo = Lenguaje.ESPANIOL,
+        idiomaNativo = Language.SPANISH,
         fechaNacimiento = LocalDate.of(1978, 6, 1)
     )
 
@@ -88,7 +92,7 @@ class RecomendacionSpec : DescribeSpec({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES),
+        traducciones = mutableSetOf(Language.ENGLISH),
     )
 
     val libroOtroAutorPreferido = Libro(
@@ -99,7 +103,7 @@ class RecomendacionSpec : DescribeSpec({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES),
+        traducciones = mutableSetOf(Language.ENGLISH),
     )
 
     val libroAutorNoPreferido = Libro(
@@ -110,7 +114,7 @@ class RecomendacionSpec : DescribeSpec({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES)
+        traducciones = mutableSetOf(Language.ENGLISH)
     )
 
     val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = userCualquiera)
@@ -198,7 +202,7 @@ class RecomendacionSpec : DescribeSpec({
             // Arrange
             val nuevoLibro = Libro(
                 titulo = "Un libro nuevo",
-                autor = Autor(nombre = "Rolando", apellido = "Hanglin", seudonimo = "rolo", idiomaNativo = Lenguaje.ESPANIOL, fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf()),
+                autor = Autor(nombre = "Rolando", apellido = "Hanglin", seudonimo = "rolo", idiomaNativo = Language.SPANISH, fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf()),
                 paginas = 200,
                 palabras = 10_000,
                 ediciones = 1,
@@ -209,7 +213,7 @@ class RecomendacionSpec : DescribeSpec({
 
             val otroNuevoLibro = Libro(
                 titulo = "Otro libro nuevo",
-                autor = Autor(nombre = "Beto", apellido = "Cascella", seudonimo = "beto", idiomaNativo = Lenguaje.ESPANIOL, fechaNacimiento = LocalDate.of(1978, 6, 1)),
+                autor = Autor(nombre = "Beto", apellido = "Cascella", seudonimo = "beto", idiomaNativo = Language.SPANISH, fechaNacimiento = LocalDate.of(1978, 6, 1)),
                 paginas = 200,
                 palabras = 10_000,
                 ediciones = 1,
@@ -291,7 +295,7 @@ class RecomendacionSpec : DescribeSpec({
                     ediciones = 4,
                     ventasSemanales = 120,
                     lecturaCompleja = false,
-                    traducciones = mutableSetOf(Lenguaje.INGLES),
+                    traducciones = mutableSetOf(Language.ENGLISH),
                 )
                 creadorRecom.agregarLibroLeido(otroLibroDeAutorPreferido)
                 val recomDeAutorPreferido = Recomendacion(
@@ -321,12 +325,12 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("El autor de la valoracion puede editar comentario"){
                 valoracion.editarComentario(userCualquiera, "Buenisimo KPO")
-                valoracion.getComentario() shouldBe "Buenisimo KPO"
+                valoracion.comentario shouldBe "Buenisimo KPO"
             }
 
             it("El autor de la valoracion puede editar puntuacion"){
                 valoracion.editarPuntuacion(userCualquiera, 3)
-                valoracion.getPuntuacion() shouldBe 3
+                valoracion.puntuacion shouldBe 3
             }
 
             it("Un usuario que no es el autor de la valoracion no puede editar puntuacion"){

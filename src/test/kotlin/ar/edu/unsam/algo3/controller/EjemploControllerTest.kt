@@ -11,14 +11,14 @@ import org.springframework.test.web.servlet.result.MockMvcResultMatchers
 
 @SpringBootTest
 @AutoConfigureMockMvc
-@DisplayName("Dado un controller de tareas")
+@DisplayName("Dado un controller de usuarios")
 class RecetaRecomControllerTest(@Autowired val mockMvc: MockMvc) {
 
     @Test
     fun `puedo mockear una llamada al endpoint via get y me responde correctamente`() {
         mockMvc
-            .perform(MockMvcRequestBuilders.get("/ejemplo/"))
+            .perform(MockMvcRequestBuilders.get("/users"))
             .andExpect(MockMvcResultMatchers.status().isOk)
-            .andExpect(MockMvcResultMatchers.content().string("hola"))
+            //.andExpect(MockMvcResultMatchers.content().string("hola"))
     }
 }

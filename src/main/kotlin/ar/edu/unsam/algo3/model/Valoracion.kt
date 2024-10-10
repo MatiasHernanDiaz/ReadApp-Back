@@ -4,12 +4,6 @@ package ar.edu.unsam.algo3
 // valoraciones iguales, pero no serían la misma.
 data class Valoracion (var puntuacion: Int, var comentario: String, val autor: User){
 
-    //fun getComentario() = comentario
-
-    //fun getAutor() = autor
-
-    //fun getPuntuacion() = puntuacion
-
     fun capazDeEditar(user: User): Boolean{
         return user === autor
 

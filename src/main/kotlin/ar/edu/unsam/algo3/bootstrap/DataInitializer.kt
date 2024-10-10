@@ -4,7 +4,7 @@ import ar.edu.unsam.algo3.*
 import ar.edu.unsam.algo3.repos.RepositorioAutores
 import ar.edu.unsam.algo3.repos.RepositorioLibros
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
-import ar.edu.unsam.algo3.repos.RepositoriosUsuarios
+import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
@@ -15,7 +15,7 @@ class DataInitializer(
     @Autowired val repoBook: RepositorioLibros,
     @Autowired val repoAutor: RepositorioAutores,
     @Autowired val repoRecom: RepositorioRecomendaciones,
-    @Autowired val repoUser: RepositoriosUsuarios
+    @Autowired val repoUser: UserRepository
 ) : CommandLineRunner {
 
     override fun run(vararg args: String?) {
@@ -24,67 +24,67 @@ class DataInitializer(
             nombre = "Jorge Luis",
             apellido = "Borges",
             seudonimo = "cieguito",
-            idiomaNativo = Lenguaje.ESPANIOL,
+            idiomaNativo = Language.SPANISH,
             fechaNacimiento = LocalDate.of(1978, 6, 1)
         )
         val cortazar = Autor(
             nombre = "Julio",
             apellido = "Cortázar",
             seudonimo = "Julito",
-            idiomaNativo = Lenguaje.INGLES,
+            idiomaNativo = Language.ENGLISH,
             fechaNacimiento = LocalDate.of(1975, 11, 5)
         )
         val stamateas = Autor(
             nombre = "Bernardo",
             apellido = "Stamateas",
             seudonimo = "berni",
-            idiomaNativo = Lenguaje.ESPANIOL,
+            idiomaNativo = Language.SPANISH,
             fechaNacimiento = LocalDate.of(1985, 12, 9)
         )
         val hirsch = Autor(
             nombre = "Alex",
             apellido = "Hirsch",
             seudonimo = "elAlex",
-            idiomaNativo = Lenguaje.ESPANIOL,
+            idiomaNativo = Language.SPANISH,
             fechaNacimiento = LocalDate.of(1965, 5, 10)
         )
         val toriyama = Autor(
             nombre = "Akira",
             apellido = "Toriyama",
             seudonimo = "tori",
-            idiomaNativo = Lenguaje.FRANCES,
+            idiomaNativo = Language.FRENCH,
             fechaNacimiento = LocalDate.of(1955, 3, 10)
         )
         val Gombrich = Autor(
             nombre = "Ernst",
             apellido = "Gombrich",
             seudonimo = "gom",
-            idiomaNativo = Lenguaje.INGLES,
+            idiomaNativo = Language.ENGLISH,
             fechaNacimiento = LocalDate.of(1955, 3, 10)
         )
         val nik = Autor(
             nombre = "Nicolas",
             apellido = "Blandi",
             seudonimo = "nik",
-            idiomaNativo = Lenguaje.ESPANIOL,
+            idiomaNativo = Language.SPANISH,
             fechaNacimiento = LocalDate.of(1955, 3, 10)
         )
         val lovecraft = Autor(
             nombre = "Howard Phillips",
             apellido = "Lovecraft",
             seudonimo = "HP",
-            idiomaNativo = Lenguaje.INGLES,
+            idiomaNativo = Language.ENGLISH,
             fechaNacimiento = LocalDate.of(1955, 3, 10)
         )
 
-        repoAutor.crearItem(borges)
-        repoAutor.crearItem(cortazar)
-        repoAutor.crearItem(stamateas)
-        repoAutor.crearItem(hirsch)
-        repoAutor.crearItem(toriyama)
-        repoAutor.crearItem(Gombrich)
-        repoAutor.crearItem(nik)
-        repoAutor.crearItem(lovecraft)
+        repoAutor.createItem(borges)
+        repoAutor.createItem(cortazar)
+        repoAutor.createItem(stamateas)
+        repoAutor.createItem(hirsch)
+        repoAutor.createItem(toriyama)
+        repoAutor.createItem(Gombrich)
+        repoAutor.createItem(nik)
+        repoAutor.createItem(lovecraft)
 
         val historiaDelArte = Libro(
             titulo = "Historia Del Arte",
@@ -94,7 +94,7 @@ class DataInitializer(
             ediciones = 2,
             ventasSemanales = 100,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ITALIANO),
+            traducciones = mutableSetOf(Language.ITALIAN),
         )
 
         val gaturro = Libro(
@@ -116,7 +116,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 223,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL,Lenguaje.INGLES,Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.SPANISH,Language.ENGLISH,Language.ITALIAN)
         )
 
         val cthulhu = Libro(
@@ -127,7 +127,7 @@ class DataInitializer(
             ediciones = 3,
             ventasSemanales = 21,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ITALIANO,Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ITALIAN,Language.SPANISH)
         )
 
         val bill = Libro(
@@ -138,7 +138,7 @@ class DataInitializer(
             ediciones = 2,
             ventasSemanales = 150,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ARABE,Lenguaje.BENGALI),
+            traducciones = mutableSetOf(Language.ARAB,Language.BENGALI),
         )
 
         val aleph = Libro(
@@ -149,7 +149,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES),
+            traducciones = mutableSetOf(Language.ENGLISH),
         )
 
         val rayuela = Libro(
@@ -160,7 +160,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES),
+            traducciones = mutableSetOf(Language.ENGLISH),
         )
 
         val genteToxica = Libro(
@@ -171,17 +171,17 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.ENGLISH)
         )
 
-        repoBook.crearItem(aleph)
-        repoBook.crearItem(rayuela)
-        repoBook.crearItem(genteToxica)
-        repoBook.crearItem(bill)
-        repoBook.crearItem(dragonBall)
-        repoBook.crearItem(historiaDelArte)
-        repoBook.crearItem(gaturro)
-        repoBook.crearItem(cthulhu)
+        repoBook.createItem(aleph)
+        repoBook.createItem(rayuela)
+        repoBook.createItem(genteToxica)
+        repoBook.createItem(bill)
+        repoBook.createItem(dragonBall)
+        repoBook.createItem(historiaDelArte)
+        repoBook.createItem(gaturro)
+        repoBook.createItem(cthulhu)
 
         val homero = User(
             firstName = "Homero",
@@ -191,7 +191,7 @@ class DataInitializer(
             email = "homer@simps.com",
             birthday = LocalDate.of(1968, 4, 4),
 //            searchCriteria = Leedor(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(),
             readBooks = mutableListOf(bill,genteToxica,aleph)
@@ -205,7 +205,7 @@ class DataInitializer(
             email = "marge@simps.com",
             birthday = LocalDate.of(1970, 2, 15),
 //            searchCriteria = Leedor(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf()
         )
@@ -218,7 +218,7 @@ class DataInitializer(
             email = "bart@simps.com",
             birthday = LocalDate.of(1989, 8, 25),
 //            searchCriteria = Leedor(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(),
             readBooks = mutableListOf(dragonBall,historiaDelArte,aleph)
@@ -231,7 +231,7 @@ class DataInitializer(
             email = "lisa@simps.com",
             birthday = LocalDate.of(1990, 8, 24),
 //            searchCriteria = Leedor(),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(homero, marge, bart),
             readBooks = mutableListOf(aleph, rayuela, genteToxica)
@@ -245,11 +245,11 @@ class DataInitializer(
             email = "selma@simps.com",
             birthday = LocalDate.of(1951,6,2),
 //            searchCriteria = Poliglota(),
-            nativeLanguage = Lenguaje.FRANCES,
+            nativeLanguage = Language.FRENCH,
             readTimeMinAvg = 250,
             friends = mutableSetOf (marge, lisa),    // problema no puedo agregar amigos que creo abajo
             readBooks = mutableListOf(rayuela),
-            readToBooks = mutableSetOf(genteToxica),
+            booksToRead = mutableSetOf(genteToxica),
             favouriteAuthors = mutableSetOf(borges,cortazar),
         )
         val patty = User(
@@ -260,11 +260,11 @@ class DataInitializer(
             email = "patty@simps.com",
             birthday = LocalDate.of(1951,6,2),
 //            searchCriteria = Precavido(selma),
-            nativeLanguage = Lenguaje.FRANCES,
+            nativeLanguage = Language.FRENCH,
             readTimeMinAvg = 150,
             friends = mutableSetOf (selma, marge,lisa),
             readBooks = mutableListOf(aleph),
-            readToBooks = mutableSetOf(genteToxica),
+            booksToRead = mutableSetOf(genteToxica),
             favouriteAuthors = mutableSetOf(borges,stamateas),
         )
 
@@ -276,11 +276,11 @@ class DataInitializer(
             email = "milhouse@simps.com",
             birthday = LocalDate.of(1989,6,2),
 //            searchCriteria = Precavido(selma),
-            nativeLanguage = Lenguaje.ESPANIOL,
+            nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 150,
             friends = mutableSetOf (bart,homero, lisa),
             readBooks = mutableListOf(rayuela),
-            readToBooks = mutableSetOf(genteToxica),
+            booksToRead = mutableSetOf(genteToxica),
             favouriteAuthors = mutableSetOf(stamateas),
         )
 
@@ -292,11 +292,11 @@ class DataInitializer(
             email = "barney@simps.com",
             birthday = LocalDate.of(1956,6,2),
 //            searchCriteria = Nativista(selma),
-            nativeLanguage = Lenguaje.BENGALI,
+            nativeLanguage = Language.BENGALI,
             readTimeMinAvg = 150,
             friends = mutableSetOf (homero, bart, selma),
             readBooks = mutableListOf(cthulhu,gaturro),
-            readToBooks = mutableSetOf(genteToxica),
+            booksToRead = mutableSetOf(genteToxica),
             favouriteAuthors = mutableSetOf(cortazar),
         )
         val nelson = User(
@@ -307,11 +307,11 @@ class DataInitializer(
             email = "nelson@simps.com",
             birthday = LocalDate.of(1985,6,2),
 //            searchCriteria = Leedor(),
-            nativeLanguage = Lenguaje.INGLES,
+            nativeLanguage = Language.ENGLISH,
             readTimeMinAvg = 150,
             friends = mutableSetOf (bart, lisa, marge, homero),
             readBooks = mutableListOf(genteToxica),
-            readToBooks = mutableSetOf(aleph),
+            booksToRead = mutableSetOf(aleph),
             favouriteAuthors = mutableSetOf(borges),
         )
         val carl = User(
@@ -322,24 +322,24 @@ class DataInitializer(
             email = "carl@simps.com",
             birthday = LocalDate.of(1956,6,2),
 //            searchCriteria = Leedor(),
-            nativeLanguage = Lenguaje.ARABE,
+            nativeLanguage = Language.ARAB,
             readTimeMinAvg = 150,
             friends = mutableSetOf (homero, bart, selma, marge, nelson),
             readBooks = mutableListOf(rayuela),
-            readToBooks = mutableSetOf(aleph),
+            booksToRead = mutableSetOf(aleph),
             favouriteAuthors = mutableSetOf(borges),
         )
 
-        repoUser.crearItem(homero)
-        repoUser.crearItem(marge)
-        repoUser.crearItem(bart)
-        repoUser.crearItem(lisa)
-        repoUser.crearItem(selma)
-        repoUser.crearItem(patty)
-        repoUser.crearItem(barney)
-        repoUser.crearItem(milhouse)
-        repoUser.crearItem(nelson)
-        repoUser.crearItem(carl)
+        repoUser.createItem(homero)
+        repoUser.createItem(marge)
+        repoUser.createItem(bart)
+        repoUser.createItem(lisa)
+        repoUser.createItem(selma)
+        repoUser.createItem(patty)
+        repoUser.createItem(barney)
+        repoUser.createItem(milhouse)
+        repoUser.createItem(nelson)
+        repoUser.createItem(carl)
 
 
         val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = homero)
@@ -368,10 +368,10 @@ class DataInitializer(
             libros = mutableSetOf(dragonBall,historiaDelArte,aleph)
         )
 
-        repoRecom.crearItem(recomCompleta)
-        repoRecom.crearItem(recomCompleta2)
-        repoRecom.crearItem(recomCompleta3)
-        repoRecom.crearItem(recomCompleta4)
+        repoRecom.createItem(recomCompleta)
+        repoRecom.createItem(recomCompleta2)
+        repoRecom.createItem(recomCompleta3)
+        repoRecom.createItem(recomCompleta4)
     }
 
 }

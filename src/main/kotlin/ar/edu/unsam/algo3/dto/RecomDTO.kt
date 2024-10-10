@@ -11,5 +11,5 @@ data class RecomDTO(
     val id: Int
 )
 
-fun Recomendacion.toDTO() =
-    RecomDTO(id = id, title = titulo, description = resegna, books = libros.map { it.toDTO() }, isPublic = publica, creator = creador.toDTO())
+fun Recomendacion.toEditProfileDTO() =
+    RecomDTO(id = id, title = titulo, description = resegna, books = libros.map { it.toEditProfileDTO() }, isPublic = publica, creator = creador.toEditProfileDTO())

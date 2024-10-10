@@ -13,16 +13,16 @@ class User(
     var password: String?,
     var email: String,
     var birthday: LocalDate,
-    var nativeLanguage: Lenguaje,
+    var nativeLanguage: Language,
     var readTimeMinAvg: Int,
     var searchCriteria: SearchCriteria = GreatReader(),
     val friends: MutableSet<User> = mutableSetOf(),
     val readBooks: MutableList<Libro> = mutableListOf(),
-    val readToBooks: MutableSet<Libro> = mutableSetOf(),
+    val booksToRead: MutableSet<Libro> = mutableSetOf(),
     val favouriteAuthors: MutableSet<Autor> = mutableSetOf(),
     val recommendations: MutableList<Recomendacion> = mutableListOf(),
     val ratings: MutableList<Valoracion> = mutableListOf(),
-    var readMode: TipoLector = LectorPromedio,
+    var readMode: ReadMode = AvgReader,
     var avatar: String = ""
 ): ItemRepo {
     fun edad(): Int = Period.between(birthday, LocalDate.now()).years
@@ -48,10 +48,10 @@ class User(
         recomendacion.libros().all({ readBooks.contains(it) })
 
     fun agregarLibroALeer(libro: Libro) {
-        readToBooks.add(libro)
+        booksToRead.add(libro)
     }
 
-    fun listaDeLibrosALeer(): MutableSet<Libro> = readToBooks
+    fun listaDeLibrosALeer(): MutableSet<Libro> = booksToRead
 
     fun valorarRecomendacion(recomendacion: Recomendacion, puntuacion: Int, comentario: String): Unit {
         val valoracion = Valoracion(puntuacion, comentario, this)
@@ -88,13 +88,13 @@ class User(
 
     fun esAutorPreferido(autor: Autor): Boolean = favouriteAuthors.contains(autor)
 
-    fun cambiarTipoLector(tipo: TipoLector) { readMode = tipo }
+    fun cambiarTipoLector(tipo: ReadMode) { readMode = tipo }
 
     fun esRecomendable(recomendacion: Recomendacion): Boolean {
         return perfil().esRecomendable(recomendacion)
     }
 
-    fun tiempoLecturaLibro(libro: Libro) = readMode.tiempoLectura(libro, this)
+    fun tiempoLecturaLibro(libro: Libro) = readMode.readTime(libro, this)
 
     fun tipoDeLector() = readMode
 

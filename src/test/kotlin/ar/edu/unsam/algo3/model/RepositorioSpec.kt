@@ -1,5 +1,9 @@
 
 import ar.edu.unsam.algo3.*
+import ar.edu.unsam.algo3.repos.RepositorioAutores
+import ar.edu.unsam.algo3.repos.RepositorioLibros
+import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
+import ar.edu.unsam.algo3.repos.UserRepository
 import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.IsolationMode
 import io.kotest.core.spec.style.DescribeSpec
@@ -24,7 +28,7 @@ class RepositorioSpec : DescribeSpec({
         nombre = "autor1",
         apellido = "apellidoAutor1",
         seudonimo = "king",
-        idiomaNativo = Lenguaje.ESPANIOL,
+        idiomaNativo = Language.SPANISH,
         fechaNacimiento = LocalDate.of(1968, 6, 9),
         premios = mutableListOf()
     )
@@ -33,7 +37,7 @@ class RepositorioSpec : DescribeSpec({
         nombre = "autor2",
         apellido = "apellidoAutor2",
         seudonimo = "king",
-        idiomaNativo = Lenguaje.INGLES,
+        idiomaNativo = Language.ENGLISH,
         fechaNacimiento = LocalDate.of(1968, 6, 9),
         premios = mutableListOf()
     )
@@ -42,7 +46,7 @@ class RepositorioSpec : DescribeSpec({
         nombre = "autor3",
         apellido = "apellidoAutor3",
         seudonimo = "king",
-        idiomaNativo = Lenguaje.FRANCES,
+        idiomaNativo = Language.FRENCH,
         fechaNacimiento = LocalDate.of(1968, 6, 9),
         premios = mutableListOf()
     )
@@ -57,7 +61,7 @@ class RepositorioSpec : DescribeSpec({
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES)
+        traducciones = mutableSetOf(Language.ENGLISH)
     )
 
     val libro2 = Libro(
@@ -68,7 +72,7 @@ class RepositorioSpec : DescribeSpec({
         ediciones = 2,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES)
+        traducciones = mutableSetOf(Language.ENGLISH)
     )
 
     val libro3 = Libro(
@@ -79,7 +83,7 @@ class RepositorioSpec : DescribeSpec({
         ediciones = 3,
         ventasSemanales = 10001,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES)
+        traducciones = mutableSetOf(Language.ENGLISH)
     )
 
     //USUARIOS
@@ -91,10 +95,11 @@ class RepositorioSpec : DescribeSpec({
         email = "volverAlFuturo@gmail.com",
         birthday = LocalDate.of(1968, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
         friends = mutableSetOf(),
-        readBooks = mutableListOf(libro1)
+        readBooks = mutableListOf(libro1),
+        password = "sarasa"
     )
 
     val user2 = User(
@@ -104,10 +109,11 @@ class RepositorioSpec : DescribeSpec({
         email = "volverAlFuturo2@gmail.com",
         birthday = LocalDate.of(1968, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
         friends = mutableSetOf(),
-        readBooks = mutableListOf(libro2)
+        readBooks = mutableListOf(libro2),
+        password = "sarasa"
     )
 
     val user3 = User(
@@ -117,10 +123,11 @@ class RepositorioSpec : DescribeSpec({
         email = "felixCat@gmail.com",
         birthday = LocalDate.of(1968, 6, 9),
         searchCriteria = GreatReader(),
-        nativeLanguage = Lenguaje.ESPANIOL,
+        nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
         friends = mutableSetOf(),
-        readBooks = mutableListOf(libro3)
+        readBooks = mutableListOf(libro3),
+        password = "sarasa"
     )
 
 
@@ -144,33 +151,11 @@ class RepositorioSpec : DescribeSpec({
         libros = mutableSetOf(libro3)
     )
 
-    val organizador1 = Particular(cantidadMaxima = 3, porcentajeAdicional = 0.05F)
+    val repositorioUsuarios = UserRepository()
+    val repositorioLibros = RepositorioLibros()
+    val repositorioAutores = RepositorioAutores()
+    val repositorioRecomendaciones = RepositorioRecomendaciones()
 
-    val centro1 = CentroLectura(
-        listaDeUserConReserva = mutableSetOf(user),
-        organizador = organizador1,
-        fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
-        libro = libro1
-    )
-
-    val centro2 = CentroLectura(
-        listaDeUserConReserva = mutableSetOf(user),
-        organizador = organizador1,
-        fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
-        libro = libro1
-    )
-
-    val centro3 = CentroLectura(
-        listaDeUserConReserva = mutableSetOf(user),
-        organizador = organizador1,
-        fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
-        libro = libro1
-    )
-
-    repositorioCentroLectura.limpiarParaTest()
-    repositorioUsuarios.limpiarParaTest()
-    repositorioLibros.limpiarParaTest()
-    repositorioAutores.limpiarParaTest()
 
     describe("REPOSITORIO USUARIO") {
 
@@ -179,24 +164,24 @@ class RepositorioSpec : DescribeSpec({
             it("CREA primer usuario") {
 
                 //Act
-                repositorioUsuarios.crearItem(user)
+                repositorioUsuarios.createItem(user)
 
                 //Assert
-                user.id shouldBe 1u
+                user.id shouldBe 1
             }
 
-            it("CREA segundo usuario, y obtiene por itemPorId") {
+            it("CREA segundo usuario, y obtiene por itemById") {
 
                 //Act
-                repositorioUsuarios.crearItem(user2)
+                repositorioUsuarios.createItem(user2)
 
                 //Assert
-                repositorioUsuarios.itemPorId(2u) shouldBe user2
+                repositorioUsuarios.itemById(2) shouldBe user2
             }
 
             it("CREA un usuario ya existente") {
 
-                shouldThrow<Exception> { repositorioUsuarios.crearItem(user) }
+                shouldThrow<Exception> { repositorioUsuarios.createItem(user) }
             }
         }
 
@@ -205,15 +190,15 @@ class RepositorioSpec : DescribeSpec({
             it("BUSCA un usuario por nombre completo") {
 
                 //Assert
-                repositorioUsuarios.buscarItems(user.nombreCompleto()) shouldBe mutableListOf(user)
+                repositorioUsuarios.searchItems(user.nombreCompleto()) shouldBe mutableListOf(user)
             }
 
             it("BUSCA usuario por nombre parcial") {
-                repositorioUsuarios.buscarItems("art") shouldBe mutableListOf(user, user2)
+                repositorioUsuarios.searchItems("art") shouldBe mutableListOf(user, user2)
             }
 
             it("BUSCA usuario por username") {
-                repositorioUsuarios.buscarItems("Flujo") shouldBe mutableListOf(user2)
+                repositorioUsuarios.searchItems("Flujo") shouldBe mutableListOf(user2)
             }
         }
 
@@ -228,22 +213,23 @@ class RepositorioSpec : DescribeSpec({
                     email = "volverAlFuturo2@gmail.com",
                     birthday = LocalDate.of(1968, 6, 9),
                     searchCriteria = GreatReader(),
-                    nativeLanguage = Lenguaje.ESPANIOL,
+                    nativeLanguage = Language.SPANISH,
                     readTimeMinAvg = 30,
                     friends = mutableSetOf(),
-                    readBooks = mutableListOf(libro2)
+                    readBooks = mutableListOf(libro2),
+                    password = "sarasa"
                 )
 
-                user2Actualizado.id = 2u
+                user2Actualizado.id = 2
 
-                repositorioUsuarios.actualizarItem(user2Actualizado)
+                repositorioUsuarios.updateItem(user2Actualizado)
 
-                repositorioUsuarios.itemPorId(2u) shouldBe user2Actualizado
+                repositorioUsuarios.itemById(2) shouldBe user2Actualizado
             }
 
             it("ACTUALIZAR usuario inexistente") {
 
-                shouldThrow<Exception> { repositorioUsuarios.actualizarItem(user3) }
+                shouldThrow<Exception> { repositorioUsuarios.updateItem(user3) }
             }
         }
 
@@ -252,14 +238,14 @@ class RepositorioSpec : DescribeSpec({
             it("ELIMINAR un usuario de 2") {
 
                 //act
-                repositorioUsuarios.eliminarItem(user)
+                repositorioUsuarios.deleteItem(user)
 
                 //assert
-                repositorioUsuarios.buscarItems(user.nombreCompleto()) shouldBe mutableListOf()
+                repositorioUsuarios.searchItems(user.nombreCompleto()) shouldBe mutableListOf()
             }
 
             it("ELIMINAR usuario inexistente") {
-                shouldThrow<Exception> { repositorioUsuarios.eliminarItem(user) }
+                shouldThrow<Exception> { repositorioUsuarios.deleteItem(user) }
             }
         }
     }
@@ -270,14 +256,14 @@ class RepositorioSpec : DescribeSpec({
 
             it("CREA primer autor") {
 
-                repositorioAutores.crearItem(autor1)
+                repositorioAutores.createItem(autor1)
 
-                autor1.id shouldBe 1u
+                autor1.id shouldBe 1
             }
 
             it("CREAR un autor ya existente") {
 
-                shouldThrow<Exception> { repositorioAutores.crearItem(autor1) }
+                shouldThrow<Exception> { repositorioAutores.createItem(autor1) }
             }
         }
 
@@ -285,7 +271,7 @@ class RepositorioSpec : DescribeSpec({
 
             it("OBTENER con id 1") {
 
-                repositorioAutores.itemPorId(1u) shouldBe autor1
+                repositorioAutores.itemById(1) shouldBe autor1
             }
         }
 
@@ -295,16 +281,16 @@ class RepositorioSpec : DescribeSpec({
             it("BUSCA un autor por nombre parcial") {
 
                 //Assert
-                repositorioAutores.buscarItems("1") shouldBe mutableListOf(autor1)
+                repositorioAutores.searchItems("1") shouldBe mutableListOf(autor1)
             }
 
             it("BUSCA usuario por apellido parcial") {
-                repositorioAutores.crearItem(autor2)
-                repositorioAutores.buscarItems("ape") shouldBe mutableListOf(autor1, autor2)
+                repositorioAutores.createItem(autor2)
+                repositorioAutores.searchItems("ape") shouldBe mutableListOf(autor1, autor2)
             }
 
             it("BUSCA usuario por pseudonimo") {
-                repositorioAutores.buscarItems("king") shouldBe mutableListOf(autor1, autor2)
+                repositorioAutores.searchItems("king") shouldBe mutableListOf(autor1, autor2)
             }
         }
 
@@ -316,21 +302,21 @@ class RepositorioSpec : DescribeSpec({
                     nombre = "autor2",
                     apellido = "apellidoAutor2",
                     seudonimo = "king",
-                    idiomaNativo = Lenguaje.INGLES,
+                    idiomaNativo = Language.ENGLISH,
                     fechaNacimiento = LocalDate.of(1968, 6, 9),
                     premios = mutableListOf()
                 )
 
-                autor2Actualizado.id = 2u
+                autor2Actualizado.id = 2
 
-                repositorioAutores.actualizarItem(autor2Actualizado)
+                repositorioAutores.updateItem(autor2Actualizado)
 
-                repositorioAutores.itemPorId(2u) shouldBe autor2Actualizado
+                repositorioAutores.itemById(2) shouldBe autor2Actualizado
             }
 
             it("ACTUALIZAR autor inexistente") {
 
-                shouldThrow<Exception> { repositorioAutores.actualizarItem(autor3) }
+                shouldThrow<Exception> { repositorioAutores.updateItem(autor3) }
             }
         }
 
@@ -339,14 +325,14 @@ class RepositorioSpec : DescribeSpec({
             it("ELIMINAR un autor") {
 
                 //act
-                repositorioAutores.eliminarItem(autor2)
+                repositorioAutores.deleteItem(autor2)
 
                 //assert
-                repositorioAutores.itemPorId(1u) shouldBe autor1
+                repositorioAutores.itemById(1) shouldBe autor1
             }
 
             it("ELIMINAR autor inexistente") {
-                shouldThrow<Exception> { repositorioAutores.eliminarItem(autor3) }
+                shouldThrow<Exception> { repositorioAutores.deleteItem(autor3) }
             }
         }
     }
@@ -357,14 +343,14 @@ class RepositorioSpec : DescribeSpec({
 
             it("CREA primera recomendacion") {
 
-                repositorioRecomendaciones.crearItem(recomendacion1)
+                repositorioRecomendaciones.createItem(recomendacion1)
 
-                recomendacion1.id shouldBe 1u
+                recomendacion1.id shouldBe 1
             }
 
             it("CREAR una ya existente") {
 
-                shouldThrow<Exception> { repositorioRecomendaciones.crearItem(recomendacion1) }
+                shouldThrow<Exception> { repositorioRecomendaciones.createItem(recomendacion1) }
             }
         }
 
@@ -372,28 +358,28 @@ class RepositorioSpec : DescribeSpec({
 
             it("OBTENER con id") {
 
-                repositorioRecomendaciones.itemPorId(1u) shouldBe recomendacion1
+                repositorioRecomendaciones.itemById(1) shouldBe recomendacion1
             }
         }
 
         describe("Dada un repositorio con 2 recomendaciones") {
 
-            repositorioRecomendaciones.crearItem(recomendacion2)
+            repositorioRecomendaciones.createItem(recomendacion2)
 
             it("BUSCA un recomendacion por apellido completo de creador") {
 
                 //Assert
-                repositorioRecomendaciones.buscarItems("McFly") shouldBe mutableListOf(recomendacion1)
+                repositorioRecomendaciones.searchItems("McFly") shouldBe mutableListOf(recomendacion1)
             }
 
             it("BUSCA recomendacion por titulo parcial") {
                 //NO ES CASE SENSITIVE
-                repositorioRecomendaciones.buscarItems("Titu") shouldBe mutableListOf(recomendacion1, recomendacion2)
+                repositorioRecomendaciones.searchItems("Titu") shouldBe mutableListOf(recomendacion1, recomendacion2)
             }
 
             it("BUSCA recomendacion por reseña") {
                 //NO ES CASE SENSITIVE
-                repositorioRecomendaciones.buscarItems("buenisimos") shouldBe mutableListOf(recomendacion1)
+                repositorioRecomendaciones.searchItems("buenisimos") shouldBe mutableListOf(recomendacion1)
             }
         }
 
@@ -407,16 +393,16 @@ class RepositorioSpec : DescribeSpec({
                     libros = mutableSetOf(libro1)
                 )
 
-                recomendacion1Actualizado.id = 1u
+                recomendacion1Actualizado.id = 1
 
-                repositorioRecomendaciones.actualizarItem(recomendacion1Actualizado)
+                repositorioRecomendaciones.updateItem(recomendacion1Actualizado)
 
-                repositorioRecomendaciones.itemPorId(1u) shouldBe recomendacion1Actualizado
+                repositorioRecomendaciones.itemById(1) shouldBe recomendacion1Actualizado
             }
 
             it("ACTUALIZAR recomendacion inexistente") {
 
-                shouldThrow<Exception> { repositorioRecomendaciones.actualizarItem(recomendacion3) }
+                shouldThrow<Exception> { repositorioRecomendaciones.updateItem(recomendacion3) }
             }
         }
 
@@ -425,34 +411,32 @@ class RepositorioSpec : DescribeSpec({
             it("ELIMINAR un recomendacion de 2") {
 
                 //act
-                repositorioRecomendaciones.eliminarItem(recomendacion1)
+                repositorioRecomendaciones.deleteItem(recomendacion1)
 
                 //assert
-                repositorioRecomendaciones.itemPorId(1u) shouldBe null
+                repositorioRecomendaciones.itemById(1) shouldBe null
             }
 
             it("ELIMINAR recomendacion inexistente") {
-                shouldThrow<Exception> { repositorioRecomendaciones.eliminarItem(recomendacion3) }
+                shouldThrow<Exception> { repositorioRecomendaciones.deleteItem(recomendacion3) }
             }
         }
     }
 
     describe("REPOSITORIO LIBROS") {
         // Arrange
-        repositorioLibros.service = stubServiceLibros()
-
         describe("Dado un repositorio de libros vacio") {
 
             it("CREA primera libro") {
 
-                repositorioLibros.crearItem(libro1)
+                repositorioLibros.createItem(libro1)
 
-                libro1.id shouldBe 1u
+                libro1.id shouldBe 1
             }
 
             it("CREAR un libro ya existente") {
 
-                shouldThrow<Exception> { repositorioLibros.crearItem(libro1) }
+                shouldThrow<Exception> { repositorioLibros.createItem(libro1) }
             }
         }
 
@@ -460,23 +444,23 @@ class RepositorioSpec : DescribeSpec({
 
             it("OBTENER con id") {
 
-                repositorioLibros.itemPorId(1u) shouldBe libro1
+                repositorioLibros.itemById(1) shouldBe libro1
             }
         }
 
         describe("Dada un repositorio con 2 libros") {
 
-            repositorioLibros.crearItem(libro2)
+            repositorioLibros.createItem(libro2)
 
             it("BUSCA un libro por titulo") {
 
                 //Assert
-                repositorioLibros.buscarItems("tulo") shouldBe mutableListOf(libro1, libro2)
+                repositorioLibros.searchItems("tulo") shouldBe mutableListOf(libro1, libro2)
             }
 
             it("BUSCA libro por apellido autor") {
                 //NO ES CASE SENSITIVE
-                repositorioLibros.buscarItems("apellidoAutor1") shouldBe mutableListOf(libro1)
+                repositorioLibros.searchItems("apellidoAutor1") shouldBe mutableListOf(libro1)
             }
         }
 
@@ -492,19 +476,19 @@ class RepositorioSpec : DescribeSpec({
                     ediciones = 10,
                     ventasSemanales = 10001,
                     lecturaCompleja = false,
-                    traducciones = mutableSetOf(Lenguaje.INGLES)
+                    traducciones = mutableSetOf(Language.ENGLISH)
                 )
 
-                libro1Actualizado.id = 1u
+                libro1Actualizado.id = 1
 
-                repositorioLibros.actualizarItem(libro1Actualizado)
+                repositorioLibros.updateItem(libro1Actualizado)
 
-                repositorioLibros.itemPorId(1u) shouldBe libro1Actualizado
+                repositorioLibros.itemById(1) shouldBe libro1Actualizado
             }
 
             it("ACTUALIZAR recomendacion inexistente") {
 
-                shouldThrow<Exception> { repositorioLibros.actualizarItem(libro3) }
+                shouldThrow<Exception> { repositorioLibros.updateItem(libro3) }
             }
         }
 
@@ -513,140 +497,15 @@ class RepositorioSpec : DescribeSpec({
             it("ELIMINAR un recomendacion de 2") {
 
                 //act
-                repositorioLibros.eliminarItem(libro1)
+                repositorioLibros.deleteItem(libro1)
 
                 //assert
-                repositorioLibros.itemPorId(1u) shouldBe null
+                repositorioLibros.itemById(1) shouldBe null
             }
 
             it("ELIMINAR autor inexistente") {
-                shouldThrow<Exception> { repositorioLibros.eliminarItem(libro3) }
-            }
-        }
-
-        describe("SERVICIO DE ACTUALIZACION"){
-
-            //act
-            val service = stubServiceLibros()
-
-            it("Libro sin actualizar"){
-
-                libro2.esBestSeller() shouldBe false
-            }
-
-            it("Libro actualizado"){
-
-                repositorioLibros.crearItem(libro3)
-                repositorioLibros.actualizarLibros()
-                libro2.esBestSeller() shouldBe true
-            }
-
-            it("Se intenta actualizar libro inexistente"){
-
-                repositorioLibros.eliminarItem(libro3)
-
-                shouldThrow<Exception> { repositorioLibros.actualizarLibros() }
-            }
-        }
-    }
-
-    describe("REPOSITORIO CENTROLECTURA") {
-
-        describe("Dado un repositorio de centros de lecturas vacio") {
-
-            it("CREA primer centro") {
-
-                repositorioCentroLectura.crearItem(centro1)
-
-                centro1.id shouldBe 1u
-            }
-
-            it("CREAR uno ya existente") {
-
-                shouldThrow<Exception> { repositorioCentroLectura.crearItem(centro1) }
-            }
-        }
-
-        describe("OBTENER POR ID centro") {
-
-            it("OBTENER con id") {
-
-                repositorioCentroLectura.itemPorId(1u) shouldBe centro1
-            }
-        }
-
-        describe("Dada un repositorio con 2 centros") {
-
-            repositorioCentroLectura.crearItem(centro2)
-
-            it("BUSCA un centro por titulo de libro") {
-
-                //Assert
-                repositorioCentroLectura.buscarItems("Titulo1") shouldBe mutableListOf(centro1, centro2)
-            }
-
-            it("BUSCA centro que no coincida") {
-                //NO ES CASE SENSITIVE
-                repositorioCentroLectura.buscarItems("zzz") shouldBe mutableListOf()
-            }
-        }
-
-        describe("Dado un repositorio con 2 centros") {
-
-            it("ACTUALIZAR centro") {
-
-                val centro2Actualizado = CentroLectura(
-                    listaDeUserConReserva = mutableSetOf(user),
-                    organizador = organizador1,
-                    fechas = mutableSetOf(LocalDate.of(2024, 6, 9)),
-                    libro = libro1
-                )
-
-                centro2Actualizado.id = 2u
-
-                repositorioCentroLectura.actualizarItem(centro2Actualizado)
-
-                repositorioCentroLectura.itemPorId(2u) shouldBe centro2Actualizado
-            }
-
-            it("ACTUALIZAR centro inexistente") {
-
-                shouldThrow<Exception> { repositorioCentroLectura.actualizarItem(centro3) }
-            }
-        }
-
-        describe("Dado un repositorio con 2 centros") {
-
-            it("ELIMINAR un centro") {
-
-                //act
-                repositorioCentroLectura.eliminarItem(centro1)
-
-                //assert
-                repositorioCentroLectura.itemPorId(1u) shouldBe null
-            }
-
-            it("ELIMINAR centro inexistente") {
-                shouldThrow<Exception> { repositorioCentroLectura.eliminarItem(centro3) }
+                shouldThrow<Exception> { repositorioLibros.deleteItem(libro3) }
             }
         }
     }
 })
-
-fun stubServiceLibros(): ServiceLibros{
-    @Serializable
-    data class LibroPayload(
-        val id: UInt,
-        val ediciones: Int,
-        val ventasSemanales: Int
-    )
-
-    val service = mockk<ServiceLibros>(relaxUnitFun = true)
-
-    val json = Json.encodeToString(listOf(LibroPayload(3u, 10, 100001), LibroPayload(2u, 10, 100001)))
-
-    every { service.getLibros() } answers { json }
-
-    return service
-}
-

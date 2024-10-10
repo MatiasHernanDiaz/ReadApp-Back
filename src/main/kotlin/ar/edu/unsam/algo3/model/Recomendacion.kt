@@ -12,7 +12,6 @@ class Recomendacion(
     override var id: Int = -1
 
     val valoraciones: MutableList<Valoracion> = mutableListOf()
-    val observers: MutableSet<AddLibrosObserver> = mutableSetOf()
 
     init {
         creador.agregarRecomendacion(this)
@@ -62,7 +61,6 @@ class Recomendacion(
         else {
             throw Exception("No es un editor válido")
         }
-        observers.forEach { it.libroAgregado(editor,nuevoLibro) }
     }
 
     fun eliminarLibro(editor: User, libroAEliminar: Libro) {
@@ -97,6 +95,4 @@ class Recomendacion(
     fun usuarioValoro(user: User) = valoraciones.any { it.autor === user }
 
     fun promedioValoraciones(): Double = valoraciones.map{ it.puntuacion }.average()
-
-    fun agregarAddLibrosObserver(observer: AddLibrosObserver){ observers.add(observer) }
 }
