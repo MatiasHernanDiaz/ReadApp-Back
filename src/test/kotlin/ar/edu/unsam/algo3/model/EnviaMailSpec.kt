@@ -45,7 +45,6 @@ class EnviaMailSpec : DescribeSpec({
     val libro1 = Libro(
         titulo = "Aleph",
         autor = autorPreferido,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -57,7 +56,6 @@ class EnviaMailSpec : DescribeSpec({
     val nuevoLibro = Libro(
         titulo = "Rayuela",
         autor = autorPreferido,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,

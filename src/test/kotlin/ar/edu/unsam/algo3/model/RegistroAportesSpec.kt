@@ -16,7 +16,6 @@ class RegistroAportesSpec: DescribeSpec ({
     )
     val libro1 = Libro(titulo = "Aleph",
         autor = autor,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -25,7 +24,6 @@ class RegistroAportesSpec: DescribeSpec ({
         traducciones = mutableSetOf(Lenguaje.INGLES),)
     val libro2 = Libro(titulo = "Rayuela",
         autor = autor,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,

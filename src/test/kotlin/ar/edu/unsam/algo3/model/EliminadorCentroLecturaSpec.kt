@@ -20,7 +20,6 @@ class EliminadorCentroLecturaSpec : DescribeSpec({
     val libro1 = Libro(
         titulo = "don quijote",
         autor = autor1,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 1,

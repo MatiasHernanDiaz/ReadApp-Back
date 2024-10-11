@@ -3,7 +3,7 @@ package ar.edu.unsam.algo3
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication
 
-@SpringBootApplicationt
+@SpringBootApplication
 class ReadApp2024Grupo7
 
 fun main(args: Array<String>) {

@@ -56,7 +56,6 @@ class LimitadorLibrosAgregadosSpec: DescribeSpec({
     val libro1 = Libro(
         titulo = "Aleph",
         autor = autor,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -68,7 +67,6 @@ class LimitadorLibrosAgregadosSpec: DescribeSpec({
     val libro2 = Libro(
         titulo = "Aleph",
         autor = autor,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -80,7 +78,6 @@ class LimitadorLibrosAgregadosSpec: DescribeSpec({
     val libro3 = Libro(
         titulo = "Aleph",
         autor = autor,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -92,7 +89,6 @@ class LimitadorLibrosAgregadosSpec: DescribeSpec({
     val libro4 = Libro(
         titulo = "Aleph",
         autor = autor,
-        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
