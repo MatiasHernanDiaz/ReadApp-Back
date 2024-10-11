@@ -4,7 +4,7 @@ import ar.edu.unsam.algo3.*
 import ar.edu.unsam.algo3.repos.RepositorioAutores
 import ar.edu.unsam.algo3.repos.RepositorioLibros
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
-import ar.edu.unsam.algo3.repos.RepositoriosUsuarios
+import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
 import org.springframework.stereotype.Component
@@ -15,158 +15,159 @@ class DataInitializer(
     @Autowired val repoBook: RepositorioLibros,
     @Autowired val repoAutor: RepositorioAutores,
     @Autowired val repoRecom: RepositorioRecomendaciones,
-    @Autowired val repoUser: RepositoriosUsuarios
+    @Autowired val repoUser: UserRepository
 ) : CommandLineRunner {
 
     override fun run(vararg args: String?) {
 
-        val borges = Autor(
-            nombre = "Jorge Luis",
-            apellido = "Borges",
-            seudonimo = "cieguito",
-            idiomaNativo = Lenguaje.ESPANIOL,
-            fechaNacimiento = LocalDate.of(1978, 6, 1)
+        val borges = Author(
+            firstName = "Jorge Luis",
+            lastName = "Borges",
+            alias = "cieguito",
+            nativeLanguage = Language.SPANISH,
+            birthday = LocalDate.of(1978, 6, 1)
         )
-        val cortazar = Autor(
-            nombre = "Julio",
-            apellido = "Cortázar",
-            seudonimo = "Julito",
-            idiomaNativo = Lenguaje.INGLES,
-            fechaNacimiento = LocalDate.of(1975, 11, 5)
+        val cortazar = Author(
+            firstName = "Julio",
+            lastName = "Cortázar",
+            alias = "Julito",
+            nativeLanguage = Language.ENGLISH,
+            birthday = LocalDate.of(1975, 11, 5)
         )
-        val stamateas = Autor(
-            nombre = "Bernardo",
-            apellido = "Stamateas",
-            seudonimo = "berni",
-            idiomaNativo = Lenguaje.ESPANIOL,
-            fechaNacimiento = LocalDate.of(1985, 12, 9)
+        val stamateas = Author(
+            firstName = "Bernardo",
+            lastName = "Stamateas",
+            alias = "berni",
+            nativeLanguage = Language.SPANISH,
+            birthday = LocalDate.of(1985, 12, 9)
         )
-        val hirsch = Autor(
-            nombre = "Alex",
-            apellido = "Hirsch",
-            seudonimo = "elAlex",
-            idiomaNativo = Lenguaje.ESPANIOL,
-            fechaNacimiento = LocalDate.of(1965, 5, 10)
+        val hirsch = Author(
+            firstName = "Alex",
+            lastName = "Hirsch",
+            alias = "elAlex",
+            nativeLanguage = Language.SPANISH,
+            birthday = LocalDate.of(1965, 5, 10)
         )
-        val toriyama = Autor(
-            nombre = "Akira",
-            apellido = "Toriyama",
-            seudonimo = "tori",
-            idiomaNativo = Lenguaje.FRANCES,
-            fechaNacimiento = LocalDate.of(1955, 3, 10)
+        val toriyama = Author(
+            firstName = "Akira",
+            lastName = "Toriyama",
+            alias = "tori",
+            nativeLanguage = Language.FRENCH,
+            birthday = LocalDate.of(1955, 3, 10)
         )
-        val Gombrich = Autor(
-            nombre = "Ernst",
-            apellido = "Gombrich",
-            seudonimo = "gom",
-            idiomaNativo = Lenguaje.INGLES,
-            fechaNacimiento = LocalDate.of(1955, 3, 10)
+        val Gombrich = Author(
+            firstName = "Ernst",
+            lastName = "Gombrich",
+            alias = "gom",
+            nativeLanguage = Language.ENGLISH,
+            birthday = LocalDate.of(1955, 3, 10)
         )
-        val nik = Autor(
-            nombre = "Nicolas",
-            apellido = "Blandi",
-            seudonimo = "nik",
-            idiomaNativo = Lenguaje.ESPANIOL,
-            fechaNacimiento = LocalDate.of(1955, 3, 10)
+        val nik = Author(
+            firstName = "Nicolas",
+            lastName = "Blandi",
+            alias = "nik",
+            nativeLanguage = Language.SPANISH,
+            birthday = LocalDate.of(1955, 3, 10)
         )
-        val lovecraft = Autor(
-            nombre = "Howard Phillips",
-            apellido = "Lovecraft",
-            seudonimo = "HP",
-            idiomaNativo = Lenguaje.INGLES,
-            fechaNacimiento = LocalDate.of(1955, 3, 10)
-        )
-
-        val marquez = Autor(
-            nombre = "Gabriel",
-            apellido = "García Márquez",
-            seudonimo = "Gabo",
-            idiomaNativo = Lenguaje.ESPANIOL,
-            fechaNacimiento = LocalDate.of(1927, 3, 6)
+        val lovecraft = Author(
+            firstName = "Howard Phillips",
+            lastName = "Lovecraft",
+            alias = "HP",
+            nativeLanguage = Language.ENGLISH,
+            birthday = LocalDate.of(1955, 3, 10)
         )
 
-        val cervantes = Autor(
-            nombre = "Miguel",
-            apellido = "de Cervantes",
-            seudonimo = "",
-            idiomaNativo = Lenguaje.ESPANIOL,
-            fechaNacimiento = LocalDate.of(1547, 9, 29)
+        val marquez = Author(
+            firstName = "Gabriel",
+            lastName = "García Márquez",
+            alias = "Gabo",
+            nativeLanguage = Language.SPANISH,
+            birthday = LocalDate.of(1927, 3, 6)
         )
 
-        val shakespeare = Autor(
-            nombre = "William",
-            apellido = "Shakespeare",
-            seudonimo = "",
-            idiomaNativo = Lenguaje.INGLES,
-            fechaNacimiento = LocalDate.of(1564, 4, 26)
+        val cervantes = Author(
+            firstName = "Miguel",
+            lastName = "de Cervantes",
+            alias = "",
+            nativeLanguage = Language.SPANISH,
+            birthday = LocalDate.of(1547, 9, 29)
         )
 
-        val tolstoy = Autor(
-            nombre = "Leo",
-            apellido = "Tolstoy",
-            seudonimo = "",
-            idiomaNativo = Lenguaje.RUSO,
-            fechaNacimiento = LocalDate.of(1828, 9, 9)
+        val shakespeare = Author(
+            firstName = "William",
+            lastName = "Shakespeare",
+            alias = "",
+            nativeLanguage = Language.ENGLISH,
+            birthday = LocalDate.of(1564, 4, 26)
         )
 
-        val austen = Autor(
-            nombre = "Jane",
-            apellido = "Austen",
-            seudonimo = "",
-            idiomaNativo = Lenguaje.INGLES,
-            fechaNacimiento = LocalDate.of(1775, 12, 16)
+        val tolstoy = Author(
+            firstName = "Leo",
+            lastName = "Tolstoy",
+            alias = "",
+            nativeLanguage = Language.RUSSIAN,
+            birthday = LocalDate.of(1828, 9, 9)
         )
 
-        val kafka = Autor(
-            nombre = "Franz",
-            apellido = "Kafka",
-            seudonimo = "",
-            idiomaNativo = Lenguaje.ALEMAN,
-            fechaNacimiento = LocalDate.of(1883, 7, 3)
+        val austen = Author(
+            firstName = "Jane",
+            lastName = "Austen",
+            alias = "",
+            nativeLanguage = Language.ENGLISH,
+            birthday = LocalDate.of(1775, 12, 16)
         )
 
-        val woolf = Autor(
-            nombre = "Virginia",
-            apellido = "Woolf",
-            seudonimo = "",
-            idiomaNativo = Lenguaje.INGLES,
-            fechaNacimiento = LocalDate.of(1882, 1, 25)
+        val kafka = Author(
+            firstName = "Franz",
+            lastName = "Kafka",
+            alias = "",
+            nativeLanguage = Language.GERMAN,
+            birthday = LocalDate.of(1883, 7, 3)
         )
 
-        val dostoevsky = Autor(
-            nombre = "Fyodor",
-            apellido = "Dostoevsky",
-            seudonimo = "",
-            idiomaNativo = Lenguaje.RUSO,
-            fechaNacimiento = LocalDate.of(1821, 11, 11)
+        val woolf = Author(
+            firstName = "Virginia",
+            lastName = "Woolf",
+            alias = "",
+            nativeLanguage = Language.ENGLISH,
+            birthday = LocalDate.of(1882, 1, 25)
         )
 
-        val orwell = Autor(
-            nombre = "George",
-            apellido = "Orwell",
-            seudonimo = "Eric Arthur Blair",
-            idiomaNativo = Lenguaje.INGLES,
-            fechaNacimiento = LocalDate.of(1903, 6, 25)
+        val dostoevsky = Author(
+            firstName = "Fyodor",
+            lastName = "Dostoevsky",
+            alias = "",
+            nativeLanguage = Language.RUSSIAN,
+            birthday = LocalDate.of(1821, 11, 11)
         )
 
-        repoAutor.crearItem(borges)
-        repoAutor.crearItem(cortazar)
-        repoAutor.crearItem(stamateas)
-        repoAutor.crearItem(hirsch)
-        repoAutor.crearItem(toriyama)
-        repoAutor.crearItem(Gombrich)
-        repoAutor.crearItem(nik)
-        repoAutor.crearItem(lovecraft)
-        repoAutor.crearItem(marquez)
-        repoAutor.crearItem(orwell)
-        repoAutor.crearItem(dostoevsky)
-        repoAutor.crearItem(woolf)
-        repoAutor.crearItem(kafka)
-        repoAutor.crearItem(austen)
-        repoAutor.crearItem(tolstoy)
-        repoAutor.crearItem(shakespeare)
-        repoAutor.crearItem(cervantes)
+        val orwell = Author(
+            firstName = "George",
+            lastName = "Orwell",
+            alias = "Eric Arthur Blair",
+            nativeLanguage = Language.ENGLISH,
+            birthday = LocalDate.of(1903, 6, 25)
+        )
 
+        repoAutor.createItem(borges)
+        repoAutor.createItem(cortazar)
+        repoAutor.createItem(stamateas)
+        repoAutor.createItem(hirsch)
+        repoAutor.createItem(toriyama)
+        repoAutor.createItem(Gombrich)
+        repoAutor.createItem(nik)
+        repoAutor.createItem(lovecraft)
+        repoAutor.createItem(marquez)
+        repoAutor.createItem(orwell)
+        repoAutor.createItem(dostoevsky)
+        repoAutor.createItem(woolf)
+        repoAutor.createItem(kafka)
+        repoAutor.createItem(austen)
+        repoAutor.createItem(tolstoy)
+        repoAutor.createItem(shakespeare)
+        repoAutor.createItem(cervantes)
+
+        
         val historiaDelArte = Libro(
             titulo = "Historia Del Arte",
             autor = Gombrich,
@@ -175,7 +176,7 @@ class DataInitializer(
             ediciones = 2,
             ventasSemanales = 100,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ITALIANO),
+            traducciones = mutableSetOf(Language.ITALIAN),
         )
 
         val gaturro = Libro(
@@ -197,7 +198,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 223,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL,Lenguaje.INGLES,Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.SPANISH,Language.ENGLISH,Language.ITALIAN)
         )
 
         val cthulhu = Libro(
@@ -208,7 +209,7 @@ class DataInitializer(
             ediciones = 3,
             ventasSemanales = 21,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ITALIANO,Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ITALIAN,Language.SPANISH)
         )
 
         val bill = Libro(
@@ -219,7 +220,7 @@ class DataInitializer(
             ediciones = 2,
             ventasSemanales = 150,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ARABE,Lenguaje.BENGALI),
+            traducciones = mutableSetOf(Language.ARAB,Language.BENGALI),
         )
 
         val aleph = Libro(
@@ -230,7 +231,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES),
+            traducciones = mutableSetOf(Language.ENGLISH),
         )
 
         val rayuela = Libro(
@@ -241,7 +242,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES),
+            traducciones = mutableSetOf(Language.ENGLISH),
         )
 
         val genteToxica = Libro(
@@ -252,11 +253,10 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 120,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.ENGLISH)
         )
-
+        
 // Borges
-
         val ficciones = Libro(
             titulo = "Ficciones",
             autor = borges,
@@ -265,10 +265,9 @@ class DataInitializer(
             ediciones = 6,
             ventasSemanales = 150,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.ENGLISH)
         )
-
-
+        
         val elInformeDeBrodie = Libro(
             titulo = "El informe de Brodie",
             autor = borges,
@@ -277,7 +276,7 @@ class DataInitializer(
             ediciones = 3,
             ventasSemanales = 100,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.FRENCH)
         )
 
         val elLibroDeArena = Libro(
@@ -288,7 +287,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 110,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.INGLES, Lenguaje.ALEMAN)
+            traducciones = mutableSetOf(Language.SPANISH, Language.ENGLISH, Language.GERMAN)
         )
 
         val historiaUniversalDeLaInfamia = Libro(
@@ -299,7 +298,7 @@ class DataInitializer(
             ediciones = 2,
             ventasSemanales = 90,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.PORTUGUES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.PORTUGUESE)
         )
 
 
@@ -312,7 +311,7 @@ class DataInitializer(
             ediciones = 10,
             ventasSemanales = 500,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.INGLES, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.ENGLISH, Language.FRENCH)
         )
 
 
@@ -324,7 +323,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 350,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.SPANISH, Language.ITALIAN)
         )
 
         val cronicaDeUnaMuerteAnunciada = Libro(
@@ -335,7 +334,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 180,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.ENGLISH)
         )
 
 
@@ -347,7 +346,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 200,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.PORTUGUES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.PORTUGUESE)
         )
 
 
@@ -359,7 +358,7 @@ class DataInitializer(
             ediciones = 3,
             ventasSemanales = 150,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.SPANISH)
         )
 
 
@@ -373,7 +372,7 @@ class DataInitializer(
             ediciones = 20,
             ventasSemanales = 1000,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.INGLES, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.ENGLISH, Language.FRENCH)
         )
 
 
@@ -385,7 +384,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 250,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.SPANISH, Language.ITALIAN)
         )
 
 
@@ -397,7 +396,7 @@ class DataInitializer(
             ediciones = 7,
             ventasSemanales = 300,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.ALEMAN)
+            traducciones = mutableSetOf(Language.SPANISH, Language.GERMAN)
         )
 
         val laGalatea = Libro(
@@ -408,7 +407,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 180,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL, Lenguaje.PORTUGUES)
+            traducciones = mutableSetOf(Language.SPANISH, Language.PORTUGUESE)
         )
 
         val elViajeDelParnaso = Libro(
@@ -419,7 +418,7 @@ class DataInitializer(
             ediciones = 3,
             ventasSemanales = 120,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.SPANISH)
         )
 
         // William Shakespeare
@@ -431,7 +430,7 @@ class DataInitializer(
             ediciones = 10,
             ventasSemanales = 500,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
 
@@ -443,7 +442,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 400,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.ITALIAN)
         )
 
 
@@ -455,7 +454,7 @@ class DataInitializer(
             ediciones = 7,
             ventasSemanales = 350,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH)
         )
 
         val romeoYJulieta = Libro(
@@ -466,7 +465,7 @@ class DataInitializer(
             ediciones = 6,
             ventasSemanales = 300,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
         val julioCesar = Libro(
@@ -477,7 +476,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 250,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN)
         )
 
         // Leo Tolstoy
@@ -489,7 +488,7 @@ class DataInitializer(
             ediciones = 12,
             ventasSemanales = 900,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.INGLES, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.ENGLISH, Language.FRENCH)
         )
 
         val annaKarenina = Libro(
@@ -500,7 +499,7 @@ class DataInitializer(
             ediciones = 10,
             ventasSemanales = 750,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.ENGLISH)
         )
 
         val resurreccion = Libro(
@@ -511,7 +510,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 500,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.ITALIAN)
         )
 
         val laMuerteDeIvanIlich = Libro(
@@ -522,7 +521,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 300,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.SPANISH)
         )
 
         val hadjiMurad = Libro(
@@ -533,7 +532,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 250,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.ENGLISH)
         )
 
 
@@ -546,7 +545,7 @@ class DataInitializer(
             ediciones = 10,
             ventasSemanales = 600,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
         val sentidoYSensibilidad = Libro(
@@ -557,7 +556,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 500,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.ITALIAN)
         )
 
         val emma = Libro(
@@ -568,7 +567,7 @@ class DataInitializer(
             ediciones = 9,
             ventasSemanales = 550,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH)
         )
 
         val mansfieldPark = Libro(
@@ -579,7 +578,7 @@ class DataInitializer(
             ediciones = 6,
             ventasSemanales = 400,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
         val persuasion = Libro(
@@ -590,7 +589,7 @@ class DataInitializer(
             ediciones = 7,
             ventasSemanales = 350,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.PORTUGUES)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.PORTUGUESE)
         )
 
 
@@ -603,7 +602,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 450,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ALEMAN, Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.GERMAN, Language.ENGLISH)
         )
 
         val elProceso = Libro(
@@ -614,7 +613,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 350,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ALEMAN, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.GERMAN, Language.SPANISH)
         )
 
         val elCastillo = Libro(
@@ -625,7 +624,7 @@ class DataInitializer(
             ediciones = 7,
             ventasSemanales = 320,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.ALEMAN, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.GERMAN, Language.FRENCH)
         )
 
         val cartasAlPadre = Libro(
@@ -636,7 +635,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 280,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ALEMAN, Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.GERMAN, Language.ENGLISH)
         )
 
         val enLaColoniaPenal = Libro(
@@ -647,7 +646,7 @@ class DataInitializer(
             ediciones = 3,
             ventasSemanales = 200,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.ALEMAN, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.GERMAN, Language.SPANISH)
         )
 
 
@@ -660,7 +659,7 @@ class DataInitializer(
             ediciones = 6,
             ventasSemanales = 420,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
         val alFaro = Libro(
@@ -671,7 +670,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 350,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH)
         )
 
         val lasOlas = Libro(
@@ -682,7 +681,7 @@ class DataInitializer(
             ediciones = 7,
             ventasSemanales = 380,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.ITALIAN)
         )
 
         val orlando = Libro(
@@ -693,7 +692,7 @@ class DataInitializer(
             ediciones = 6,
             ventasSemanales = 300,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
         val unaHabitacionPropia = Libro(
@@ -704,7 +703,7 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 260,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
 
@@ -717,7 +716,7 @@ class DataInitializer(
             ediciones = 10,
             ventasSemanales = 700,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.ENGLISH, Language.SPANISH)
         )
 
         val elIdiota = Libro(
@@ -728,7 +727,7 @@ class DataInitializer(
             ediciones = 8,
             ventasSemanales = 550,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.ITALIAN)
         )
 
         val losHermanosKaramazov = Libro(
@@ -739,7 +738,7 @@ class DataInitializer(
             ediciones = 10,
             ventasSemanales = 600,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.FRENCH)
         )
 
         val demonios = Libro(
@@ -750,7 +749,7 @@ class DataInitializer(
             ediciones = 7,
             ventasSemanales = 500,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.INGLES)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.ENGLISH)
         )
 
         val elJugador = Libro(
@@ -761,7 +760,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 350,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.RUSO, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.RUSSIAN, Language.SPANISH)
         )
 
 
@@ -774,7 +773,7 @@ class DataInitializer(
             ediciones = 12,
             ventasSemanales = 900,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
         val rebelionEnLaGranja = Libro(
@@ -785,7 +784,7 @@ class DataInitializer(
             ediciones = 10,
             ventasSemanales = 700,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.FRANCES)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH)
         )
 
         val homenajeACataluna = Libro(
@@ -796,7 +795,7 @@ class DataInitializer(
             ediciones = 6,
             ventasSemanales = 400,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.ITALIAN)
         )
 
         val losDiasDeBirmania = Libro(
@@ -807,7 +806,7 @@ class DataInitializer(
             ediciones = 5,
             ventasSemanales = 300,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ESPANIOL)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.SPANISH)
         )
 
         val sinBlancaEnParisYLondres = Libro(
@@ -818,66 +817,66 @@ class DataInitializer(
             ediciones = 4,
             ventasSemanales = 250,
             lecturaCompleja = false,
-            traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ITALIANO)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.ITALIAN)
         )
 
-        repoBook.crearItem(aleph)
-        repoBook.crearItem(rayuela)
-        repoBook.crearItem(genteToxica)
-        repoBook.crearItem(bill)
-        repoBook.crearItem(dragonBall)
-        repoBook.crearItem(historiaDelArte)
-        repoBook.crearItem(gaturro)
-        repoBook.crearItem(cthulhu)
-        repoBook.crearItem(julioCesar)
-        repoBook.crearItem(romeoYJulieta)
-        repoBook.crearItem(othello)
-        repoBook.crearItem(macbeth)
-        repoBook.crearItem(hamlet)
-        repoBook.crearItem(elViajeDelParnaso)
-        repoBook.crearItem(laGalatea)
-        repoBook.crearItem(losTrabajosDePersiles)
-        repoBook.crearItem(lasNovelasEjemplares)
-        repoBook.crearItem(donQuijote)
-        repoBook.crearItem(laHojarasca)
-        repoBook.crearItem(elOtonoDelPatriarca)
-        repoBook.crearItem(cronicaDeUnaMuerteAnunciada)
-        repoBook.crearItem(cienAnosDeSoledad)
-        repoBook.crearItem(elAmorEnLosTiemposDelColera)
-        repoBook.crearItem(historiaUniversalDeLaInfamia)
-        repoBook.crearItem(elLibroDeArena)
-        repoBook.crearItem(elInformeDeBrodie)
-        repoBook.crearItem(ficciones)
-        repoBook.crearItem(sinBlancaEnParisYLondres)
-        repoBook.crearItem(_1984)
-        repoBook.crearItem(elJugador)
-        repoBook.crearItem(demonios)
-        repoBook.crearItem(losHermanosKaramazov)
-        repoBook.crearItem(elIdiota)
-        repoBook.crearItem(crimenYCastigo)
-        repoBook.crearItem(unaHabitacionPropia)
-        repoBook.crearItem(orlando)
-        repoBook.crearItem(lasOlas)
-        repoBook.crearItem(alFaro)
-        repoBook.crearItem(laSenoraDalloway)
-        repoBook.crearItem(enLaColoniaPenal)
-        repoBook.crearItem(cartasAlPadre)
-        repoBook.crearItem(elCastillo)
-        repoBook.crearItem(elProceso)
-        repoBook.crearItem(laMetamorfosis)
-        repoBook.crearItem(persuasion)
-        repoBook.crearItem(mansfieldPark)
-        repoBook.crearItem(emma)
-        repoBook.crearItem(sentidoYSensibilidad)
-        repoBook.crearItem(orgulloYPrejuicio)
-        repoBook.crearItem(hadjiMurad)
-        repoBook.crearItem(laMuerteDeIvanIlich)
-        repoBook.crearItem(resurreccion)
-        repoBook.crearItem(guerraYPaz)
-        repoBook.crearItem(annaKarenina)
-        repoBook.crearItem(rebelionEnLaGranja)
-        repoBook.crearItem(homenajeACataluna)
-        repoBook.crearItem(losDiasDeBirmania)
+        repoBook.createItem(aleph)
+        repoBook.createItem(rayuela)
+        repoBook.createItem(genteToxica)
+        repoBook.createItem(bill)
+        repoBook.createItem(dragonBall)
+        repoBook.createItem(historiaDelArte)
+        repoBook.createItem(gaturro)
+        repoBook.createItem(cthulhu)
+        repoBook.createItem(julioCesar)
+        repoBook.createItem(romeoYJulieta)
+        repoBook.createItem(othello)
+        repoBook.createItem(macbeth)
+        repoBook.createItem(hamlet)
+        repoBook.createItem(elViajeDelParnaso)
+        repoBook.createItem(laGalatea)
+        repoBook.createItem(losTrabajosDePersiles)
+        repoBook.createItem(lasNovelasEjemplares)
+        repoBook.createItem(donQuijote)
+        repoBook.createItem(laHojarasca)
+        repoBook.createItem(elOtonoDelPatriarca)
+        repoBook.createItem(cronicaDeUnaMuerteAnunciada)
+        repoBook.createItem(cienAnosDeSoledad)
+        repoBook.createItem(elAmorEnLosTiemposDelColera)
+        repoBook.createItem(historiaUniversalDeLaInfamia)
+        repoBook.createItem(elLibroDeArena)
+        repoBook.createItem(elInformeDeBrodie)
+        repoBook.createItem(ficciones)
+        repoBook.createItem(sinBlancaEnParisYLondres)
+        repoBook.createItem(_1984)
+        repoBook.createItem(elJugador)
+        repoBook.createItem(demonios)
+        repoBook.createItem(losHermanosKaramazov)
+        repoBook.createItem(elIdiota)
+        repoBook.createItem(crimenYCastigo)
+        repoBook.createItem(unaHabitacionPropia)
+        repoBook.createItem(orlando)
+        repoBook.createItem(lasOlas)
+        repoBook.createItem(alFaro)
+        repoBook.createItem(laSenoraDalloway)
+        repoBook.createItem(enLaColoniaPenal)
+        repoBook.createItem(cartasAlPadre)
+        repoBook.createItem(elCastillo)
+        repoBook.createItem(elProceso)
+        repoBook.createItem(laMetamorfosis)
+        repoBook.createItem(persuasion)
+        repoBook.createItem(mansfieldPark)
+        repoBook.createItem(emma)
+        repoBook.createItem(sentidoYSensibilidad)
+        repoBook.createItem(orgulloYPrejuicio)
+        repoBook.createItem(hadjiMurad)
+        repoBook.createItem(laMuerteDeIvanIlich)
+        repoBook.createItem(resurreccion)
+        repoBook.createItem(guerraYPaz)
+        repoBook.createItem(annaKarenina)
+        repoBook.createItem(rebelionEnLaGranja)
+        repoBook.createItem(homenajeACataluna)
+        repoBook.createItem(losDiasDeBirmania)
 //        (aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
 //        othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
 //        donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
@@ -888,19 +887,18 @@ class DataInitializer(
 //        homenajeACataluna,losDiasDeBirmania)
 
 
-
-        val homero = Usuario(
-            nombre = "Homero",
-            apellido = "Simpson",
-            userName = "hsimpson",
+        val homero = User(
+            firstName = "Homero",
+            lastName = "Simpson",
+            username = "hsimpson",
             password = "mandarina",
             email = "homer@simps.com",
-            fechaNacimiento = LocalDate.of(1968, 4, 4),
-            perfil = Leedor(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 300,
-            amigos = mutableSetOf(),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1968, 4, 4),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 300,
+            friends = mutableSetOf(),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -908,21 +906,20 @@ class DataInitializer(
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
                 homenajeACataluna,losDiasDeBirmania)
-
         )
 
-        val marge = Usuario(
-            nombre = "Marge",
-            apellido = "Simpson",
-            userName = "msimpson",
+        val marge = User(
+            firstName = "Marge",
+            lastName = "Bouvier",
+            username = "mBouvier",
             password = "mandarina",
             email = "marge@simps.com",
-            fechaNacimiento = LocalDate.of(1972, 6, 1),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 250,
-            amigos = mutableSetOf(homero),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1970, 2, 15),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 300,
+            friends = mutableSetOf(),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -932,18 +929,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-            val bart = Usuario(
-            nombre = "Bart",
-            apellido = "Simpson",
-            userName = "bsimpson",
+        val bart = User(
+            firstName = "Bart",
+            lastName = "Simpson",
+            username = "bsimpson",
             password = "mandarina",
             email = "bart@simps.com",
-            fechaNacimiento = LocalDate.of(1980, 2, 23),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 200,
-            amigos = mutableSetOf(homero, marge),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1989, 8, 25),
+            searchCriteria = GreatReader(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 300,
+            friends = mutableSetOf(),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -951,20 +948,19 @@ class DataInitializer(
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
                 homenajeACataluna,losDiasDeBirmania)
-            )
-
-        val lisa = Usuario(
-            nombre = "Lisa",
-            apellido = "Simpson",
-            userName = "lsimpson",
+        )
+        val lisa = User(
+            firstName = "Lisa",
+            lastName = "Simpson",
+            username = "lsimpson",
             password = "mandarina",
             email = "lisa@simps.com",
-            fechaNacimiento = LocalDate.of(1984, 9, 28),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 400,
-            amigos = mutableSetOf(marge, bart),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1990, 8, 24),
+//            searchCriteria = Leedor(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 300,
+            friends = mutableSetOf(homero, marge, bart),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -974,144 +970,154 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val selma = Usuario(
-            nombre = "Selma",
-            apellido = "Bouvier",
-            userName = "sbouvier",
-            password = "mandarina",
+        val selma = User(
+            firstName = "Selma",
+            lastName = "Bouvier",
+            username = "sbouvier",
+            password = "patty",
             email = "selma@simps.com",
-            fechaNacimiento = LocalDate.of(1952, 7, 2),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 250,
-            amigos = mutableSetOf(homero, marge),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1951,6,2),
+//            searchCriteria = Polyglot(),
+            nativeLanguage = Language.FRENCH,
+            readTimeMinAvg = 250,
+            friends = mutableSetOf (marge, lisa),    // problema no puedo agregar friends que creo abajo
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
                 demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+                homenajeACataluna,losDiasDeBirmania),
+            booksToRead = mutableSetOf(genteToxica),
+            favouriteAuthors = mutableSetOf(borges,cortazar),
         )
-
-        val patty = Usuario(
-            nombre = "Patty",
-            apellido = "Bouvier",
-            userName = "pbouvier",
-            password = "mandarina",
+        val patty = User(
+            firstName = "Patty",
+            lastName = "Bouvier",
+            username = "pbouvier",
+            password = "selma",
             email = "patty@simps.com",
-            fechaNacimiento = LocalDate.of(1952, 7, 2),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 230,
-            amigos = mutableSetOf(selma, marge, homero),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1951,6,2),
+//            searchCriteria = Cautious(selma),
+            nativeLanguage = Language.FRENCH,
+            readTimeMinAvg = 150,
+            friends = mutableSetOf (selma, marge,lisa),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
                 demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+                homenajeACataluna,losDiasDeBirmania),
+            booksToRead = mutableSetOf(genteToxica),
+            favouriteAuthors = mutableSetOf(borges,stamateas),
         )
 
-        val milhouse = Usuario(
-            nombre = "Milhouse",
-            apellido = "Van Houten",
-            userName = "mvanhouten",
-            password = "mandarina",
+        val milhouse = User(
+            firstName = "Milhouse",
+            lastName = "Van Houten",
+            username = "mvanhouten",
+            password = "bluehair",
             email = "milhouse@simps.com",
-            fechaNacimiento = LocalDate.of(1981, 11, 22),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 180,
-            amigos = mutableSetOf(bart, lisa),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1989,6,2),
+//            searchCriteria = Cautious(selma),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 150,
+            friends = mutableSetOf (bart,homero, lisa),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
                 demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+                homenajeACataluna,losDiasDeBirmania),
+            booksToRead = mutableSetOf(genteToxica),
+            favouriteAuthors = mutableSetOf(stamateas),
         )
 
-        val barney = Usuario(
-            nombre = "Barney",
-            apellido = "Gumble",
-            userName = "bgumble",
-            password = "mandarina",
+        val barney = User(
+            firstName = "Barney",
+            lastName = "Gumble",
+            username = "bgumble",
+            password = "moe",
             email = "barney@simps.com",
-            fechaNacimiento = LocalDate.of(1970, 3, 15),
-            perfil = Experimentado(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 150,
-            amigos = mutableSetOf(homero),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1956,6,2),
+//            searchCriteria = Nativista(selma),
+            nativeLanguage = Language.BENGALI,
+            readTimeMinAvg = 150,
+            friends = mutableSetOf (homero, bart, selma),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
                 demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
-            )
-
-        val nelson = Usuario(
-            nombre = "Nelson",
-            apellido = "Muntz",
-            userName = "nmuntz",
-            password = "mandarina",
+                homenajeACataluna,losDiasDeBirmania),
+            booksToRead = mutableSetOf(genteToxica),
+            favouriteAuthors = mutableSetOf(cortazar),
+        )
+        val nelson = User(
+            firstName = "Nelson",
+            lastName = "Muntz",
+            username = "nmuntz",
+            password = "brabucon",
             email = "nelson@simps.com",
-            fechaNacimiento = LocalDate.of(1983, 5, 15),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 220,
-            amigos = mutableSetOf(bart, milhouse),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1985,6,2),
+//            searchCriteria = Leedor(),
+            nativeLanguage = Language.ENGLISH,
+            readTimeMinAvg = 150,
+            friends = mutableSetOf (bart, lisa, marge, homero),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
                 demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+                homenajeACataluna,losDiasDeBirmania),
+            booksToRead = mutableSetOf(aleph),
+            favouriteAuthors = mutableSetOf(borges),
         )
-
-        val carl = Usuario(
-            nombre = "Carl",
-            apellido = "Carlson",
-            userName = "ccarlson",
-            password = "mandarina",
+        val carl = User(
+            firstName = "Carl",
+            lastName = "Carlson",
+            username = "ccarlson",
+            password = "lenny",
             email = "carl@simps.com",
-            fechaNacimiento = LocalDate.of(1971, 9, 12),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 280,
-            amigos = mutableSetOf(barney, nelson),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1956,6,2),
+//            searchCriteria = Leedor(),
+            nativeLanguage = Language.ARAB,
+            readTimeMinAvg = 150,
+            friends = mutableSetOf (homero, bart, selma, marge, nelson),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
                 demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
                 enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
                 orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+                homenajeACataluna,losDiasDeBirmania),
+            booksToRead = mutableSetOf(aleph),
+            favouriteAuthors = mutableSetOf(borges),
         )
 
-        val lenny = Usuario(
-            nombre = "Lenny",
-            apellido = "Leonard",
-            userName = "lleonard",
+
+        val lenny = User(
+            firstName = "Lenny",
+            lastName = "Leonard",
+            username = "lleonard",
             password = "mandarina",
             email = "lenny@simps.com",
-            fechaNacimiento = LocalDate.of(1970, 2, 10),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 290,
-            amigos = mutableSetOf(carl, barney, milhouse),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1970, 2, 10),
+            searchCriteria = Polyglot(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 290,
+            friends = mutableSetOf(carl, barney, milhouse),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1121,18 +1127,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val ned = Usuario(
-            nombre = "Ned",
-            apellido = "Flanders",
-            userName = "nflanders",
+        val ned = User(
+            firstName = "Ned",
+            lastName = "Flanders",
+            username = "nflanders",
             password = "mandarina",
             email = "ned@simps.com",
-            fechaNacimiento = LocalDate.of(1968, 5, 10),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 260,
-            amigos = mutableSetOf(marge, selma, patty),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1968, 5, 10),
+            searchCriteria = Polyglot(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 260,
+            friends = mutableSetOf(marge, selma, patty),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1142,18 +1148,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val skinner = Usuario(
-            nombre = "Seymour",
-            apellido = "Skinner",
-            userName = "sskinner",
+        val skinner = User(
+            firstName = "Seymour",
+            lastName = "Skinner",
+            username = "sskinner",
             password = "mandarina",
             email = "skinner@simps.com",
-            fechaNacimiento = LocalDate.of(1970, 1, 20),
-            perfil = Precavido(ned),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 240,
-            amigos = mutableSetOf(bart, nelson, lisa),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1970, 1, 20),
+            searchCriteria = Cautious(ned),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 240,
+            friends = mutableSetOf(bart, nelson, lisa),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1163,18 +1169,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val ralph = Usuario(
-            nombre = "Ralph",
-            apellido = "Wiggum",
-            userName = "rwiggum",
+        val ralph = User(
+            firstName = "Ralph",
+            lastName = "Wiggum",
+            username = "rwiggum",
             password = "mandarina",
             email = "ralph@simps.com",
-            fechaNacimiento = LocalDate.of(1990, 4, 15),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 130,
-            amigos = mutableSetOf(bart, milhouse, lisa),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1990, 4, 15),
+            searchCriteria = Polyglot(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 130,
+            friends = mutableSetOf(bart, milhouse, lisa),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1184,18 +1190,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val apu = Usuario(
-            nombre = "Apu",
-            apellido = "Nahasapeemapetilon",
-            userName = "anahasapeemapetilon",
+        val apu = User(
+            firstName = "Apu",
+            lastName = "Nahasapeemapetilon",
+            username = "anahasapeemapetilon",
             password = "mandarina",
             email = "apu@simps.com",
-            fechaNacimiento = LocalDate.of(1975, 12, 12),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.INGLES,
-            palabrasXMinuto = 310,
-            amigos = mutableSetOf(marge, selma, patty),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1975, 12, 12),
+            searchCriteria = Polyglot(),
+            nativeLanguage = Language.ENGLISH,
+            readTimeMinAvg = 310,
+            friends = mutableSetOf(marge, selma, patty),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1205,18 +1211,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val judy = Usuario(
-            nombre = "Judy",
-            apellido = "Hopps",
-            userName = "jhopps",
+        val judy = User(
+            firstName = "Judy",
+            lastName = "Hopps",
+            username = "jhopps",
             password = "mandarina",
             email = "judy@simps.com",
-            fechaNacimiento = LocalDate.of(1995, 3, 3),
-            perfil = Experimentado(),
-            lenguajeNativo = Lenguaje.INGLES,
-            palabrasXMinuto = 300,
-            amigos = mutableSetOf(lisa, bart, milhouse),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1995, 3, 3),
+            searchCriteria = Experiencied(),
+            nativeLanguage = Language.ENGLISH,
+            readTimeMinAvg = 300,
+            friends = mutableSetOf(lisa, bart, milhouse),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1226,18 +1232,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val groundskeeper = Usuario(
-            nombre = "Willie",
-            apellido = "MacDougal",
-            userName = "wmacdougal",
+        val groundskeeper = User(
+            firstName = "Willie",
+            lastName = "MacDougal",
+            username = "wmacdougal",
             password = "mandarina",
             email = "willie@simps.com",
-            fechaNacimiento = LocalDate.of(1965, 5, 18),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.INGLES,
-            palabrasXMinuto = 250,
-            amigos = mutableSetOf(bart, milhouse, nelson),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1965, 5, 18),
+            searchCriteria = Polyglot(),
+            nativeLanguage = Language.ENGLISH,
+            readTimeMinAvg = 250,
+            friends = mutableSetOf(bart, milhouse, nelson),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1247,18 +1253,18 @@ class DataInitializer(
                 homenajeACataluna,losDiasDeBirmania)
         )
 
-        val krusty = Usuario(
-            nombre = "Krusty",
-            apellido = "el Payaso",
-            userName = "kpayaso",
+        val krusty = User(
+            firstName = "Krusty",
+            lastName = "el Payaso",
+            username = "kpayaso",
             password = "mandarina",
             email = "krusty@simps.com",
-            fechaNacimiento = LocalDate.of(1975, 8, 4),
-            perfil = Poliglota(),
-            lenguajeNativo = Lenguaje.ESPANIOL,
-            palabrasXMinuto = 320,
-            amigos = mutableSetOf(homero, bart, milhouse),
-            librosLeidos = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            birthday = LocalDate.of(1975, 8, 4),
+            searchCriteria = Polyglot(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 320,
+            friends = mutableSetOf(homero, bart, milhouse),
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
                 historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
@@ -1269,32 +1275,32 @@ class DataInitializer(
         )
 
 
-        nelson.agregarAmigo(carl)
-        carl.agregarAmigo(lenny)
-        barney.agregarAmigo(carl)
-        barney.agregarAmigo(nelson)
-        homero.agregarAmigo(lisa)
-        homero.agregarAmigo(marge)
-        homero.agregarAmigo(carl)
+        nelson.addFriend(carl)
+        carl.addFriend(lenny)
+        barney.addFriend(carl)
+        barney.addFriend(nelson)
+        homero.addFriend(lisa)
+        homero.addFriend(marge)
+        homero.addFriend(carl)
 
-        repoUser.crearItem(homero)
-        repoUser.crearItem(marge)
-        repoUser.crearItem(bart)
-        repoUser.crearItem(lisa)
-        repoUser.crearItem(selma)
-        repoUser.crearItem(patty)
-        repoUser.crearItem(barney)
-        repoUser.crearItem(milhouse)
-        repoUser.crearItem(nelson)
-        repoUser.crearItem(carl)
-        repoUser.crearItem(krusty)
-        repoUser.crearItem(lenny)
-        repoUser.crearItem(groundskeeper)
-        repoUser.crearItem(ned)
-        repoUser.crearItem(skinner)
-        repoUser.crearItem(ralph)
-        repoUser.crearItem(judy)
-        repoUser.crearItem(apu)
+        repoUser.createItem(homero)
+        repoUser.createItem(marge)
+        repoUser.createItem(bart)
+        repoUser.createItem(lisa)
+        repoUser.createItem(selma)
+        repoUser.createItem(patty)
+        repoUser.createItem(barney)
+        repoUser.createItem(milhouse)
+        repoUser.createItem(nelson)
+        repoUser.createItem(carl)
+        repoUser.createItem(krusty)
+        repoUser.createItem(lenny)
+        repoUser.createItem(groundskeeper)
+        repoUser.createItem(ned)
+        repoUser.createItem(skinner)
+        repoUser.createItem(ralph)
+        repoUser.createItem(judy)
+        repoUser.createItem(apu)
 
         // Recomendaciones de Homero
         val recomHomero1 = Recomendacion(
@@ -1748,54 +1754,52 @@ class DataInitializer(
 
 
 
-//        repoRecom.crearItem(recomCompleta)
-//        repoRecom.crearItem(recomCompleta2)
-//        repoRecom.crearItem(recomCompleta3)
-//        repoRecom.crearItem(recomCompleta4)
-//        repoRecom.crearItem(recomCompletaConValoracion)
-        repoRecom.crearItem(recomRalph3)
-        repoRecom.crearItem(recomRalph2)
-        repoRecom.crearItem(recomRalph1)
-        repoRecom.crearItem(recomHomero1)
-        repoRecom.crearItem(recomHomero2)
-        repoRecom.crearItem(recomHomero3)
-        repoRecom.crearItem(recomLisa1)
-        repoRecom.crearItem(recomLisa2)
-        repoRecom.crearItem(recomLisa3)
-        repoRecom.crearItem(recomBart1)
-        repoRecom.crearItem(recomBart2)
-        repoRecom.crearItem(recomBart3)
-        repoRecom.crearItem(recomMarge1)
-        repoRecom.crearItem(recomMarge2)
-        repoRecom.crearItem(recomMarge3)
-        repoRecom.crearItem(recomSelma1)
-        repoRecom.crearItem(recomSelma2)
-        repoRecom.crearItem(recomSelma3)
-        repoRecom.crearItem(recomPatty1)
-        repoRecom.crearItem(recomPatty2)
-        repoRecom.crearItem(recomPatty3)
-        repoRecom.crearItem(recomMilhouse1)
-        repoRecom.crearItem(recomMilhouse2)
-        repoRecom.crearItem(recomMilhouse3)
-        repoRecom.crearItem(recomBarney1)
-        repoRecom.crearItem(recomBarney2)
-        repoRecom.crearItem(recomBarney3)
-        repoRecom.crearItem(recomNelson1)
-        repoRecom.crearItem(recomNelson2)
-        repoRecom.crearItem(recomNelson3)
-        repoRecom.crearItem(recomLenny1)
-        repoRecom.crearItem(recomLenny2)
-        repoRecom.crearItem(recomLenny3)
-        repoRecom.crearItem(recomNed1)
-        repoRecom.crearItem(recomNed2)
-        repoRecom.crearItem(recomNed3)
-        repoRecom.crearItem(recomKrusty1)
-        repoRecom.crearItem(recomKrusty2)
-        repoRecom.crearItem(recomKrusty3)
-        repoRecom.crearItem(recomSkinner1)
-        repoRecom.crearItem(recomSkinner2)
-        repoRecom.crearItem(recomSkinner3)
-
+//        repoRecom.createItem(recomCompleta)
+//        repoRecom.createItem(recomCompleta2)
+//        repoRecom.createItem(recomCompleta3)
+//        repoRecom.createItem(recomCompleta4)
+//        repoRecom.createItem(recomCompletaConValoracion)
+        repoRecom.createItem(recomRalph3)
+        repoRecom.createItem(recomRalph2)
+        repoRecom.createItem(recomRalph1)
+        repoRecom.createItem(recomHomero1)
+        repoRecom.createItem(recomHomero2)
+        repoRecom.createItem(recomHomero3)
+        repoRecom.createItem(recomLisa1)
+        repoRecom.createItem(recomLisa2)
+        repoRecom.createItem(recomLisa3)
+        repoRecom.createItem(recomBart1)
+        repoRecom.createItem(recomBart2)
+        repoRecom.createItem(recomBart3)
+        repoRecom.createItem(recomMarge1)
+        repoRecom.createItem(recomMarge2)
+        repoRecom.createItem(recomMarge3)
+        repoRecom.createItem(recomSelma1)
+        repoRecom.createItem(recomSelma2)
+        repoRecom.createItem(recomSelma3)
+        repoRecom.createItem(recomPatty1)
+        repoRecom.createItem(recomPatty2)
+        repoRecom.createItem(recomPatty3)
+        repoRecom.createItem(recomMilhouse1)
+        repoRecom.createItem(recomMilhouse2)
+        repoRecom.createItem(recomMilhouse3)
+        repoRecom.createItem(recomBarney1)
+        repoRecom.createItem(recomBarney2)
+        repoRecom.createItem(recomBarney3)
+        repoRecom.createItem(recomNelson1)
+        repoRecom.createItem(recomNelson2)
+        repoRecom.createItem(recomNelson3)
+        repoRecom.createItem(recomLenny1)
+        repoRecom.createItem(recomLenny2)
+        repoRecom.createItem(recomLenny3)
+        repoRecom.createItem(recomNed1)
+        repoRecom.createItem(recomNed2)
+        repoRecom.createItem(recomNed3)
+        repoRecom.createItem(recomKrusty1)
+        repoRecom.createItem(recomKrusty2)
+        repoRecom.createItem(recomKrusty3)
+        repoRecom.createItem(recomSkinner1)
+        repoRecom.createItem(recomSkinner2)
+        repoRecom.createItem(recomSkinner3)
     }
-
 }

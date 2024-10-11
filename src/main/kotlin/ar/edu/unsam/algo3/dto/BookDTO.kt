@@ -9,6 +9,10 @@ data class BookDTO(
     val pages: Int,
     val words: Int,
     val id: Int
-)
+) {
+    fun toBook(): Libro {
+        TODO("Not yet implemented")
+    }
+}
 
 fun Libro.toDTO() = BookDTO(id = id, title = titulo, autor = autor.toDTO(), pages = paginas, words = palabras)

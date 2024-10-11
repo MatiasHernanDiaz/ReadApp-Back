@@ -9,15 +9,12 @@ import org.springframework.web.bind.annotation.RequestParam
 import org.springframework.web.bind.annotation.RestController
 
 @RestController
+@CrossOrigin(origins = ["*"])
 class RecomController (val recomService: RecomService){
 
-    @CrossOrigin(origins = ["*"])
     @GetMapping("/recommendations")
-    fun recommendation(@RequestParam("id") id: Int?, @RequestParam("text") text: String?) = recomService.getAllRecoms(id, text).map{it.toDTO()}
+    fun recommendation(@RequestParam("id") id: Int?, @RequestParam("text") text: String = "") = recomService.getAllRecoms(id, text).map{it.toDTO()}
 
-    @CrossOrigin(origins = ["*"])
     @GetMapping("/recommendations/{id}")
     fun getRecom(@PathVariable id: Int) = recomService.getRecomById(id).toDTO()
-
-
 }

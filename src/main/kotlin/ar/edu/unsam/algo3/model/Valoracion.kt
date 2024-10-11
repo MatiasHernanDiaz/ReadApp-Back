@@ -2,32 +2,26 @@ package ar.edu.unsam.algo3
 
 // ¿Es correcto declararla como "data class"? Dos recomendaciones podrían obtener
 // valoraciones iguales, pero no serían la misma.
-data class Valoracion (var puntuacion: Int, var comentario: String, val autor: Usuario){
+data class Valoracion (var puntuacion: Int, var comentario: String, val autor: User){
 
-    //fun getComentario() = comentario
-
-    //fun getAutor() = autor
-
-    //fun getPuntuacion() = puntuacion
-
-    fun capazDeEditar(usuario: Usuario): Boolean{
-        return usuario === autor
+    fun capazDeEditar(user: User): Boolean{
+        return user === autor
 
     }
-    fun editarComentario(usuario: Usuario, comentario: String){
-        if(capazDeEditar(usuario)){
+    fun editarComentario(user: User, comentario: String){
+        if(capazDeEditar(user)){
             this.comentario = comentario
         }
         else{
-            throw Exception("${usuario.nombreCompleto()} no es capaz de editar comentario")
+            throw Exception("${user.displayName()} no es capaz de editar comentario")
         }
     }
-    fun editarPuntuacion(usuario: Usuario,puntuacion: Int){
-        if(capazDeEditar(usuario)) {
+    fun editarPuntuacion(user: User, puntuacion: Int){
+        if(capazDeEditar(user)) {
             this.puntuacion = puntuacion
         }
         else{
-            throw Exception("${usuario.nombreCompleto()} no es capaz de editar puntuación")
+            throw Exception("${user.displayName()} no es capaz de editar puntuación")
         }
     }
 }

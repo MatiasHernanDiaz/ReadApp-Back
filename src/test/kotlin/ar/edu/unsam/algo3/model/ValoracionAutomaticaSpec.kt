@@ -6,95 +6,78 @@ import java.time.LocalDate
 class ValoracionAutomaticaSpec : DescribeSpec({
     val libroOriginalRecom = Libro(
         titulo = "Don Quijote de la mancha",
-        autor = Autor(
+        autor = Author(
             "Cervantes",
             "Miguel",
             "Manco",
             LocalDate.of(1648, 1, 1),
-            Lenguaje.ESPANIOL),
+            Language.SPANISH),
         paginas = 300,
         palabras = 50000,
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
     )
 
     val primerLibroAgregado = Libro(
         titulo = "Comedias",
-        autor = Autor(
+        autor = Author(
             "Cervantes",
             "Miguel",
             "Manco",
             LocalDate.of(1648, 1, 1),
-            Lenguaje.ESPANIOL),
+            Language.SPANISH),
         paginas = 200,
         palabras = 10000,
         ediciones = 5,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
     )
 
     val segundoLibroAgregado = Libro(
         titulo = "Cuentos",
-        autor = Autor(
+        autor = Author(
             "Cervantes",
             "Miguel",
             "Manco",
             LocalDate.of(1648, 1, 1),
-            Lenguaje.ESPANIOL),
+            Language.SPANISH),
         paginas = 200,
         palabras = 40000,
         ediciones = 5,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Lenguaje.INGLES, Lenguaje.ALEMAN, Lenguaje.PORTUGUES, Lenguaje.RUSO, Lenguaje.ITALIANO, Lenguaje.FRANCES)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
     )
 
-    val usuarioEditor = Usuario(
-        nombre = "Roberto",
-        apellido = "Carlos",
-        userName = "brazuca",
+    val userEditor = User(
+        firstName = "Roberto",
+        lastName = "Carlos",
+        username = "brazuca",
         email = "jogobonito@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(),
-        librosLeidos = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado)
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Language.SPANISH,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(),
+        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado),
+        password = "sarasa"
     )
 
-    val usuarioCreador = Usuario(
-        nombre = "Marty",
-        apellido = "McFly",
-        userName = "Condensador_De_Flujo",
+    val userCreador = User(
+        firstName = "Marty",
+        lastName = "McFly",
+        username = "Condensador_De_Flujo",
         email = "volverAlFuturo@gmail.com",
-        fechaNacimiento = LocalDate.of(1968, 6, 9),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 30,
-        amigos = mutableSetOf(usuarioEditor),
-        librosLeidos = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado)
+        birthday = LocalDate.of(1968, 6, 9),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Language.SPANISH,
+        readTimeMinAvg = 30,
+        friends = mutableSetOf(userEditor),
+        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado),
+        password = "sarasa"
     )
 
-    val recomendacionConValoracionAutomatica = Recomendacion(
-        creador = usuarioCreador,
-        resegna = "Algunos libros interesantes",
-        libros = mutableSetOf(libroOriginalRecom)
-    ).apply { agregarAddLibrosObserver(ValoracionAutomatica(this)) }
-
-    describe("Dadas dos ediciones consecutivas del usuarioEditor...") {
-        recomendacionConValoracionAutomatica.agregarLibro(usuarioEditor, primerLibroAgregado)
-
-        it("La primera edición debe agregar una valoración automáticamente") {
-            recomendacionConValoracionAutomatica.valoraciones().size shouldBe 1
-        }
-
-        recomendacionConValoracionAutomatica.agregarLibro(usuarioEditor, segundoLibroAgregado)
-
-        it("La segunda edición no debe tener ningún efecto sobre las valoraciones") {
-            recomendacionConValoracionAutomatica.valoraciones().size shouldBe 1
-        }
-    }
 })

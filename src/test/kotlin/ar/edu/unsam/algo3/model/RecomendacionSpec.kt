@@ -11,73 +11,77 @@ class RecomendacionSpec : DescribeSpec({
     // isolationMode = IsolationMode.InstancePerLeaf
     
     // Arrange
-    val amigoDelCreador = Usuario(
-        nombre = "Juan Luis",
-        apellido = "Guerra",
-        userName = "pez",
+    val amigoDelCreador = User(
+        firstName = "Juan Luis",
+        lastName = "Guerra",
+        username = "pez",
         email = "pez@gmail.com",
-        fechaNacimiento = LocalDate.of(1988, 8, 15),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1988, 8, 15),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Language.SPANISH,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf(),
+        password = "sarasa"
     )
 
-    val otroAmigoDelCreador = Usuario(
-        nombre = "Rubén",
-        apellido = "Rada",
-        userName = "negro",
+    val otroAmigoDelCreador = User(
+        firstName = "Rubén",
+        lastName = "Rada",
+        username = "negro",
         email = "negrorada@gmail.com",
-        fechaNacimiento = LocalDate.of(1958, 2, 15),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1958, 2, 15),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Language.SPANISH,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf(),
+        password = "sarasa"
     )
 
-    val usuarioCualquiera = Usuario(
-        nombre = "Leonor",
-        apellido = "Benedetto",
-        userName = "leona",
+    val userCualquiera = User(
+        firstName = "Leonor",
+        lastName = "Benedetto",
+        username = "leona",
         email = "leo@gmail.com",
-        fechaNacimiento = LocalDate.of(1978, 8, 25),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf()
+        birthday = LocalDate.of(1978, 8, 25),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Language.SPANISH,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf(),
+        password = "sarasa"
     )
-    val creadorRecom = Usuario(
-        nombre = "Pedro",
-        apellido = "Picapiedras",
-        userName = "piedra",
+    val creadorRecom = User(
+        firstName = "Pedro",
+        lastName = "Picapiedras",
+        username = "piedra",
         email = "piedra@gmail.com",
-        fechaNacimiento = LocalDate.of(1990, 8, 24),
-        perfil = Leedor(),
-        lenguajeNativo = Lenguaje.ESPANIOL,
-        palabrasXMinuto = 300,
-        amigos = mutableSetOf(amigoDelCreador, otroAmigoDelCreador)
+        birthday = LocalDate.of(1990, 8, 24),
+        searchCriteria = GreatReader(),
+        nativeLanguage = Language.SPANISH,
+        readTimeMinAvg = 300,
+        friends = mutableSetOf(amigoDelCreador, otroAmigoDelCreador),
+        password = "sarasa"
     )
 
-    val autorPreferido = Autor(
-        nombre = "Jorge Luis",
-        apellido = "Borges",
-        seudonimo = "cieguito",
-        idiomaNativo = Lenguaje.ESPANIOL,
-        fechaNacimiento = LocalDate.of(1978, 6, 1)
+    val autorPreferido = Author(
+        firstName = "Jorge Luis",
+        lastName = "Borges",
+        alias = "cieguito",
+        nativeLanguage = Language.SPANISH,
+        birthday = LocalDate.of(1978, 6, 1)
     )
-    val otroAutorPreferido = Autor(
-        nombre = "Julio",
-        apellido = "Cortázar",
-        seudonimo = "Julito",
-        idiomaNativo = Lenguaje.INGLES,
-        fechaNacimiento = LocalDate.of(1978, 6, 1)
+    val otroAutorPreferido = Author(
+        firstName = "Julio",
+        lastName = "Cortázar",
+        alias = "Julito",
+        nativeLanguage = Language.ENGLISH,
+        birthday = LocalDate.of(1978, 6, 1)
     )
-    val autorNoPreferido = Autor(
-        nombre = "Bernardo",
-        apellido = "Stamateas",
-        seudonimo = "berni",
-        idiomaNativo = Lenguaje.ESPANIOL,
-        fechaNacimiento = LocalDate.of(1978, 6, 1)
+    val autorNoPreferido = Author(
+        firstName = "Bernardo",
+        lastName = "Stamateas",
+        alias = "berni",
+        nativeLanguage = Language.SPANISH,
+        birthday = LocalDate.of(1978, 6, 1)
     )
 
     val libroAutorPreferido = Libro(
@@ -88,7 +92,7 @@ class RecomendacionSpec : DescribeSpec({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES),
+        traducciones = mutableSetOf(Language.ENGLISH),
     )
 
     val libroOtroAutorPreferido = Libro(
@@ -99,7 +103,7 @@ class RecomendacionSpec : DescribeSpec({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES),
+        traducciones = mutableSetOf(Language.ENGLISH),
     )
 
     val libroAutorNoPreferido = Libro(
@@ -110,14 +114,14 @@ class RecomendacionSpec : DescribeSpec({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Lenguaje.INGLES)
+        traducciones = mutableSetOf(Language.ENGLISH)
     )
 
-    val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = usuarioCualquiera)
+    val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = userCualquiera)
 
-    creadorRecom.agregarLibroLeido(libroAutorPreferido)
-    creadorRecom.agregarLibroLeido(libroOtroAutorPreferido)
-    creadorRecom.agregarLibroLeido(libroAutorNoPreferido)
+    creadorRecom.addReadBook(libroAutorPreferido)
+    creadorRecom.addReadBook(libroOtroAutorPreferido)
+    creadorRecom.addReadBook(libroAutorNoPreferido)
 
     val recomCompleta = Recomendacion(
         creador = creadorRecom,
@@ -130,7 +134,7 @@ class RecomendacionSpec : DescribeSpec({
             it("si el creador de la recomendación no leyó todos los libros de la recomendación, lanza una excepción") {
                 shouldThrow<Exception> {
                     Recomendacion(
-                        creador = usuarioCualquiera,
+                        creador = userCualquiera,
                         resegna = "Estos libros están buenísimos!",
                         libros = mutableSetOf(libroAutorPreferido, libroOtroAutorPreferido, libroAutorNoPreferido)
                     )
@@ -138,13 +142,13 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si el creador lee los libro de la recomendación, la misma puede instanciarse") {
                 // Act
-                usuarioCualquiera.agregarLibroLeido(libroAutorPreferido)
-                usuarioCualquiera.agregarLibroLeido(libroOtroAutorPreferido)
-                usuarioCualquiera.agregarLibroLeido(libroAutorNoPreferido)
+                userCualquiera.addReadBook(libroAutorPreferido)
+                userCualquiera.addReadBook(libroOtroAutorPreferido)
+                userCualquiera.addReadBook(libroAutorNoPreferido)
                 // Assert
                 shouldNotThrow<Exception> {
                     Recomendacion(
-                        creador = usuarioCualquiera,
+                        creador = userCualquiera,
                         resegna = "Estos libros están buenísimos!",
                         libros = mutableSetOf(libroAutorPreferido, libroOtroAutorPreferido, libroAutorNoPreferido)
                     )
@@ -161,20 +165,20 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si un usuario cualquiera cambia la privacidad, lanza una excepción") {
                 // Assert
-                shouldThrow<Exception> { recomCompleta.cambiarPrivacidad(usuarioCualquiera) }
+                shouldThrow<Exception> { recomCompleta.cambiarPrivacidad(userCualquiera) }
             }
             it("si vuelve a editar un amigo que leyó todos los libros, la recomendación vuelve a ser privada") {
                 // Act
-                amigoDelCreador.agregarLibroLeido(libroAutorPreferido)
-                amigoDelCreador.agregarLibroLeido(libroOtroAutorPreferido)
-                amigoDelCreador.agregarLibroLeido(libroAutorNoPreferido)
+                amigoDelCreador.addReadBook(libroAutorPreferido)
+                amigoDelCreador.addReadBook(libroOtroAutorPreferido)
+                amigoDelCreador.addReadBook(libroAutorNoPreferido)
                 recomCompleta.cambiarPrivacidad(amigoDelCreador)
 
                 recomCompleta.esPublica() shouldBe false
             }
             it("si vuelve a editar un amigo que no leyó todos los libros, lanza una excpeción") {
                 // Act
-                otroAmigoDelCreador.agregarLibroLeido(libroAutorPreferido)
+                otroAmigoDelCreador.addReadBook(libroAutorPreferido)
                 shouldThrow<Exception> { recomCompleta.cambiarPrivacidad(otroAmigoDelCreador) }
             }
         }
@@ -198,7 +202,7 @@ class RecomendacionSpec : DescribeSpec({
             // Arrange
             val nuevoLibro = Libro(
                 titulo = "Un libro nuevo",
-                autor = Autor(nombre = "Rolando", apellido = "Hanglin", seudonimo = "rolo", idiomaNativo = Lenguaje.ESPANIOL, fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf()),
+                autor = Author(firstName = "Rolando", lastName = "Hanglin", alias = "rolo", nativeLanguage = Language.SPANISH, birthday = LocalDate.of(1968, 6, 9), prices= mutableListOf()),
                 paginas = 200,
                 palabras = 10_000,
                 ediciones = 1,
@@ -209,7 +213,7 @@ class RecomendacionSpec : DescribeSpec({
 
             val otroNuevoLibro = Libro(
                 titulo = "Otro libro nuevo",
-                autor = Autor(nombre = "Beto", apellido = "Cascella", seudonimo = "beto", idiomaNativo = Lenguaje.ESPANIOL, fechaNacimiento = LocalDate.of(1978, 6, 1)),
+                autor = Author(firstName = "Beto", lastName = "Cascella", alias = "beto", nativeLanguage = Language.SPANISH, birthday = LocalDate.of(1978, 6, 1)),
                 paginas = 200,
                 palabras = 10_000,
                 ediciones = 1,
@@ -224,32 +228,32 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("si el creador agrega un libro que leyó, la cantidad de libros totales debe ser 4") {
                 // Act
-                creadorRecom.agregarLibroLeido(nuevoLibro)
+                creadorRecom.addReadBook(nuevoLibro)
                 recomCompleta.agregarLibro(creadorRecom, nuevoLibro)
                 // Assert
                 recomCompleta.libros().count() shouldBe  4
             }
             it("si un editor no autorizado intenta eliminar un libro, lanza una excepción, aunque haya leido el libro") {
                 // Act
-                usuarioCualquiera.agregarLibroLeido(nuevoLibro)
+                userCualquiera.addReadBook(nuevoLibro)
                 // Assert
-                shouldThrow<Exception> { recomCompleta.eliminarLibro(usuarioCualquiera, nuevoLibro) }
+                shouldThrow<Exception> { recomCompleta.eliminarLibro(userCualquiera, nuevoLibro) }
             }
             it("si un amigo que leyó todos los libros intenta agregar un libro que no leyó, lanza una excepción") {
                 // Act
-                amigoDelCreador.agregarLibroLeido(nuevoLibro)
+                amigoDelCreador.addReadBook(nuevoLibro)
                 // Assert
                 shouldThrow<Exception> { recomCompleta.agregarLibro(amigoDelCreador, otroNuevoLibro) }
             }
             it("si un amigo que leyó todos los libros intenta agregar un libro que él leyó pero no leyó el creador, lanza una excepción") {
                 // Act
-                amigoDelCreador.agregarLibroLeido(otroNuevoLibro)
+                amigoDelCreador.addReadBook(otroNuevoLibro)
                 // Assert
                 shouldThrow<Exception> { recomCompleta.agregarLibro(amigoDelCreador, otroNuevoLibro) }
             }
             it("si un amigo que leyó todos los libros intenta agregar un libro que leyó él y el creador, la cantidad de libros totales debe ser 5") {
                 // Act
-                creadorRecom.agregarLibroLeido(otroNuevoLibro)
+                creadorRecom.addReadBook(otroNuevoLibro)
                 recomCompleta.agregarLibro(amigoDelCreador, otroNuevoLibro)
                 // Assert
                 recomCompleta.libros().count() shouldBe  5
@@ -269,15 +273,15 @@ class RecomendacionSpec : DescribeSpec({
         describe("Métodos sobre las valoraciones") {
             it("si el creador valora la reseña, lanza una excepción") {
                 // Assert
-                shouldThrow<Exception> { creadorRecom.valorarRecomendacion(recomCompleta, 4, "Tá buenís!") }
+                shouldThrow<Exception> { creadorRecom.rateRecom(recomCompleta, 4, "Tá buenís!") }
             }
             it("si un amigo que no leyó todos los libros valora la reseña, lanza una excepción") {
                 // Assert
-                shouldThrow<Exception> { otroAmigoDelCreador.valorarRecomendacion(recomCompleta, 4, "Tá buenís!") }
+                shouldThrow<Exception> { otroAmigoDelCreador.rateRecom(recomCompleta, 4, "Tá buenís!") }
             }
             it("si un amigo que leyó todos los libros valora la reseña, la cantidad de valoraciones es 1.") {
                 // Act
-                amigoDelCreador.valorarRecomendacion(recomCompleta, 4, "Tá buenís!")
+                amigoDelCreador.rateRecom(recomCompleta, 4, "Tá buenís!")
                 // Assert
                 recomCompleta.valoraciones().count() shouldBe 1
             }
@@ -291,42 +295,42 @@ class RecomendacionSpec : DescribeSpec({
                     ediciones = 4,
                     ventasSemanales = 120,
                     lecturaCompleja = false,
-                    traducciones = mutableSetOf(Lenguaje.INGLES),
+                    traducciones = mutableSetOf(Language.ENGLISH),
                 )
-                creadorRecom.agregarLibroLeido(otroLibroDeAutorPreferido)
+                creadorRecom.addReadBook(otroLibroDeAutorPreferido)
                 val recomDeAutorPreferido = Recomendacion(
                     creador = creadorRecom,
                     resegna = "Estos libros están buenísimos!",
                     libros = mutableSetOf(libroAutorPreferido, otroLibroDeAutorPreferido)
                 )
                 // Act
-                otroAmigoDelCreador.agregarAutorPreferido(autorPreferido)
-                otroAmigoDelCreador.valorarRecomendacion(recomDeAutorPreferido, 4, "Tá muy bué!")
+                otroAmigoDelCreador.addFavouriteAuthor(autorPreferido)
+                otroAmigoDelCreador.rateRecom(recomDeAutorPreferido, 4, "Tá muy bué!")
                 // Assert
                 recomDeAutorPreferido.valoraciones().count() shouldBe 1
             }
             it("si sumo una valoración de 3 puntos, el promedio debe dar 3.5") {
                 // Act
-                amigoDelCreador.valorarRecomendacion(
+                amigoDelCreador.rateRecom(
                     recomCompleta, 3, "Muy bué!"
                 )
                 recomCompleta.promedioValoraciones() shouldBe 3.5
             }
             it("si sumo otra valoración de 3 puntos, el promedio debe dar 3.33") {
                 // Act
-                amigoDelCreador.valorarRecomendacion(
+                amigoDelCreador.rateRecom(
                     recomCompleta, 3, "Re bué!"
                 )
                 recomCompleta.promedioValoraciones() shouldBe 3.3333333333333335
             }
             it("El autor de la valoracion puede editar comentario"){
-                valoracion.editarComentario(usuarioCualquiera, "Buenisimo KPO")
-                valoracion.getComentario() shouldBe "Buenisimo KPO"
+                valoracion.editarComentario(userCualquiera, "Buenisimo KPO")
+                valoracion.comentario shouldBe "Buenisimo KPO"
             }
 
             it("El autor de la valoracion puede editar puntuacion"){
-                valoracion.editarPuntuacion(usuarioCualquiera, 3)
-                valoracion.getPuntuacion() shouldBe 3
+                valoracion.editarPuntuacion(userCualquiera, 3)
+                valoracion.puntuacion shouldBe 3
             }
 
             it("Un usuario que no es el autor de la valoracion no puede editar puntuacion"){
