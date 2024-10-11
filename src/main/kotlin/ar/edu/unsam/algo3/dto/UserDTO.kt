@@ -7,42 +7,31 @@ data class UserDTO(
     val firstName: String,
     val lastName: String,
     val username: String,
-    val password: String,
     val email: String,
     val birthday: LocalDate,
     var searchCriteria: String,//ojo
-    val nativeLanguage: Lenguaje,
+    val nativeLanguage: Language,
     val readTimeMinAvg: Int,
-    val friends: List<FriendDTO>,
-    val readBooks: List<BookDTO>,
-    val readToBooks: List<BookDTO>,
-    val readMode: String,//ojo
     val avatar: String,
-    val id: Int
+    val readMode: String,
+    val id: Int,
+//    val friends: List<FriendDTO>,
+//    val readBooks: List<BookDTO>,
+//    val readToBooks: List<BookDTO>,
+//    val ratings
 )
 
-fun Usuario.toDTO() = UserDTO(
-    id = id, firstName = nombre, lastName = apellido,
-    username = userName, password = password, email = email,
-    birthday = fechaNacimiento, searchCriteria = perfil.toString(),
-    nativeLanguage = lenguajeNativo, readTimeMinAvg = palabrasXMinuto,
-    friends = amigos.map {
-        FriendDTO(
-            id = it.id, firstName = it.nombre, lastName = it.apellido,
-            username = it.userName, email = it.email
-        )
-    },
-    readBooks = librosLeidos.map { it.toDTO() },
-    readToBooks = librosALeer.map { it.toDTO() },
-    readMode = tipoLector.toString(),
+fun User.toDTO() = UserDTO(
+    id = id,
+    firstName = firstName,
+    lastName = lastName,
+    username = username,
+    email = email,
+    birthday = birthday,
+    searchCriteria = searchCriteria.toCustomString(),
+    nativeLanguage = nativeLanguage,
+    readTimeMinAvg = readTimeMinAvg,
+    readMode = readMode.toCustomString(),
     avatar = avatar
-
 )
 
-data class FriendDTO(
-    val firstName: String,
-    val lastName: String,
-    val username: String,
-    val email: String,
-    val id: Int
-)

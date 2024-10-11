@@ -5,7 +5,7 @@ import ar.edu.unsam.algo3.*
 data class AutorDTO(
     val lastName: String,
     var firstName: String,
-    val nativeLanguage: Lenguaje,
+    val nativeLanguage: Language,
     val id:Int
 )
-fun Autor.toDTO()= AutorDTO(id=id, lastName = apellido, firstName = nombre, nativeLanguage = idiomaNativo)
+fun Author.toDTO()= AutorDTO(id=id, lastName = lastName, firstName = firstName, nativeLanguage = nativeLanguage)
