@@ -11,6 +11,7 @@ class Libro(
     val paginas: Int,
     val palabras: Int,
     var ediciones: Int,
+    var fecha: Int,
     var ventasSemanales: Int,
     val lecturaCompleja: Boolean,
     val traducciones: MutableSet<Lenguaje> = mutableSetOf(),
