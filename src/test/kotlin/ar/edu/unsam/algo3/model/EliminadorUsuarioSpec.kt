@@ -23,6 +23,7 @@ class EliminadorUsuarioSpec : DescribeSpec ({
     val libro1 = Libro(
         titulo = "Titulo1",
         autor = autor1,
+        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 1,

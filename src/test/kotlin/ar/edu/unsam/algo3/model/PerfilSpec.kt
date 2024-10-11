@@ -13,6 +13,7 @@ class PerfilSpec : DescribeSpec ({
     val libro = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor,
+        imageURL = "",
         paginas = 300,
         palabras = 50000,
         ediciones = 1,
@@ -24,6 +25,7 @@ class PerfilSpec : DescribeSpec ({
     val libro2 = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor2,
+        imageURL = "",
         paginas = 300,
         palabras = 3000,
         ediciones = 1,
@@ -35,6 +37,7 @@ class PerfilSpec : DescribeSpec ({
     val libro3 = Libro(
         titulo = "Don Quijote de la mancha",
         autor = autor3,
+        imageURL = "",
         paginas = 300,
         palabras = 600,
         ediciones = 1,

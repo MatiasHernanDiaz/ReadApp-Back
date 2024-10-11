@@ -170,6 +170,7 @@ class DataInitializer(
         val historiaDelArte = Libro(
             titulo = "Historia Del Arte",
             autor = Gombrich,
+            imageURL = "https://m.media-amazon.com/images/I/81sawrUEiYL._AC_UF894,1000_QL80_.jpg",
             paginas = 700,
             palabras = 10_000,
             ediciones = 2,
@@ -181,6 +182,7 @@ class DataInitializer(
         val gaturro = Libro(
             titulo = "Gaturro Gigante",
             autor = nik,
+            imageURL = "https://images.cdn2.buscalibre.com/fit-in/360x360/cd/12/cd120253f636098c134b6b21e2d9a3a3.jpg",
             paginas = 105,
             palabras = 12_145,
             ediciones = 4,
@@ -192,6 +194,7 @@ class DataInitializer(
         val dragonBall = Libro(
             titulo = "Dragon Ball",
             autor = toriyama,
+            imageURL = "https://acdn.mitiendanube.com/stores/001/455/161/products/dragon-ball-saga-freezer-05-ivrea-manga-viducomics-akira-toriyama-toyotaro-z-gt-super-49e3b537e0176388f517111400543922-480-0.jpg",
             paginas = 360,
             palabras = 23_000,
             ediciones = 8,
@@ -204,6 +207,7 @@ class DataInitializer(
             titulo = "Llamada de Cthulhu",
             autor = lovecraft,
             paginas = 310,
+            imageURL = "https://data.livriz.com/media/MediaSpace/F9AFB48D-741D-4834-B760-F59344EEFF34/4/3b6448a7-76ec-4173-a173-9f04ff004233/9789878354521.jpg",
             palabras = 17_540,
             ediciones = 3,
             ventasSemanales = 21,
@@ -215,6 +219,7 @@ class DataInitializer(
             titulo = "El libro de Bill",
             autor = hirsch,
             paginas = 224,
+            imageURL = "https://data.livriz.com/media/mediaspace/F9AFB48D-741D-4834-B760-F59344EEFF34/45/af32d5ce-a12e-4055-9e9f-2a1b88131231/9789874670236.jpg",
             palabras = 15_000,
             ediciones = 2,
             ventasSemanales = 150,
@@ -226,6 +231,7 @@ class DataInitializer(
             titulo = "Aleph",
             autor = borges,
             paginas = 180,
+            imageURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/ab/b1/abb1e18f6c89a6dd0f021a63514759a9.jpg",
             palabras = 40_000,
             ediciones = 4,
             ventasSemanales = 120,
@@ -237,6 +243,7 @@ class DataInitializer(
             titulo = "Rayuela",
             autor = cortazar,
             paginas = 180,
+            imageURL = "https://acdn.mitiendanube.com/stores/001/029/689/products/rayuela1-70d4301f60dc01384c16171187155984-640-0.png",
             palabras = 40_000,
             ediciones = 4,
             ventasSemanales = 120,
@@ -248,6 +255,7 @@ class DataInitializer(
             titulo = "Gente Toxica",
             autor = stamateas,
             paginas = 180,
+            imageURL = "https://www.penguinlibros.com/ar/2181741/gente-toxica.jpg",
             palabras = 40_000,
             ediciones = 4,
             ventasSemanales = 120,
@@ -260,6 +268,7 @@ class DataInitializer(
         val ficciones = Libro(
             titulo = "Ficciones",
             autor = borges,
+            imageURL = "https://www.tematika.com/media/catalog/Ilhsa/Imagenes/616356.jpg",
             paginas = 200,
             palabras = 45_000,
             ediciones = 6,
@@ -272,6 +281,7 @@ class DataInitializer(
         val elInformeDeBrodie = Libro(
             titulo = "El informe de Brodie",
             autor = borges,
+            imageURL = "https://www.tematika.com/media/catalog/Ilhsa/Imagenes/535903.jpg",
             paginas = 160,
             palabras = 38_000,
             ediciones = 3,
@@ -283,6 +293,7 @@ class DataInitializer(
         val elLibroDeArena = Libro(
             titulo = "El libro de arena",
             autor = borges,
+            imageURL = "https://www.penguinlibros.com/ar/1598099/el-libro-de-arena.jpg",
             paginas = 190,
             palabras = 42_000,
             ediciones = 5,
@@ -294,6 +305,7 @@ class DataInitializer(
         val historiaUniversalDeLaInfamia = Libro(
             titulo = "Historia universal de la infamia",
             autor = borges,
+            imageURL = "https://www.tematika.com/media/catalog/Ilhsa/Imagenes/617808.jpg",
             paginas = 150,
             palabras = 37_000,
             ediciones = 2,
@@ -307,6 +319,7 @@ class DataInitializer(
         val cienAnosDeSoledad = Libro(
             titulo = "Cien años de soledad",
             autor = marquez,
+            imageURL = "https://www.mrbooks.com/mrbooks/portadas/9786287641587.webp",
             paginas = 500,
             palabras = 150_000,
             ediciones = 10,
@@ -319,6 +332,7 @@ class DataInitializer(
         val elAmorEnLosTiemposDelColera = Libro(
             titulo = "El amor en los tiempos del cólera",
             autor = marquez,
+            imageURL = "https://upload.wikimedia.org/wikipedia/commons/e/e9/El_amor_en_los_tiempos_del_c%C3%B3lera.png",
             paginas = 420,
             palabras = 120_000,
             ediciones = 8,
@@ -330,6 +344,7 @@ class DataInitializer(
         val cronicaDeUnaMuerteAnunciada = Libro(
             titulo = "Crónica de una muerte anunciada",
             autor = marquez,
+            imageURL = "https://covers.alibrate.com/b/59872e8dcba2bce50c1ac26b/d1492723-7107-456b-adee-014a67cc2ebe/share",
             paginas = 180,
             palabras = 50_000,
             ediciones = 5,
@@ -342,6 +357,7 @@ class DataInitializer(
         val elOtonoDelPatriarca = Libro(
             titulo = "El otoño del patriarca",
             autor = marquez,
+            imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSajJxJE7YLMypBLZf2OWc3nYwB8_N3Ysk_pw&s",
             paginas = 300,
             palabras = 80_000,
             ediciones = 4,
@@ -354,6 +370,7 @@ class DataInitializer(
         val laHojarasca = Libro(
             titulo = "La hojarasca",
             autor = marquez,
+            imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuic3uKimV28JnxskQicz_XO1oApNPKyWXlg&s",
             paginas = 220,
             palabras = 70_000,
             ediciones = 3,
@@ -368,6 +385,7 @@ class DataInitializer(
         val donQuijote = Libro(
             titulo = "Don Quijote de la Mancha",
             autor = cervantes,
+            imageURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSrckP5QO40_Rciz-hcLiIHnl3NcpEqdANYvg&s",
             paginas = 900,
             palabras = 380_000,
             ediciones = 20,
@@ -380,6 +398,7 @@ class DataInitializer(
         val lasNovelasEjemplares = Libro(
             titulo = "Las novelas ejemplares",
             autor = cervantes,
+            imageURL = "https://images.cdn1.buscalibre.com/fit-in/360x360/ed/23/ed23bc5b499b128e119a6f2397cb9bd1.jpg",
             paginas = 400,
             palabras = 120_000,
             ediciones = 8,
@@ -392,6 +411,7 @@ class DataInitializer(
         val losTrabajosDePersiles = Libro(
             titulo = "Los trabajos de Persiles y Sigismunda",
             autor = cervantes,
+            imageURL = "",
             paginas = 600,
             palabras = 200_000,
             ediciones = 7,
@@ -403,6 +423,7 @@ class DataInitializer(
         val laGalatea = Libro(
             titulo = "La Galatea",
             autor = cervantes,
+            imageURL = "",
             paginas = 350,
             palabras = 100_000,
             ediciones = 4,
@@ -414,6 +435,7 @@ class DataInitializer(
         val elViajeDelParnaso = Libro(
             titulo = "El viaje del Parnaso",
             autor = cervantes,
+            imageURL = "",
             paginas = 280,
             palabras = 85_000,
             ediciones = 3,
@@ -426,6 +448,7 @@ class DataInitializer(
         val hamlet = Libro(
             titulo = "Hamlet",
             autor = shakespeare,
+            imageURL = "",
             paginas = 320,
             palabras = 95_000,
             ediciones = 10,
@@ -438,6 +461,7 @@ class DataInitializer(
         val macbeth = Libro(
             titulo = "Macbeth",
             autor = shakespeare,
+            imageURL = "",
             paginas = 240,
             palabras = 80_000,
             ediciones = 8,
@@ -450,6 +474,7 @@ class DataInitializer(
         val othello = Libro(
             titulo = "Othello",
             autor = shakespeare,
+            imageURL = "",
             paginas = 280,
             palabras = 85_000,
             ediciones = 7,
@@ -461,6 +486,7 @@ class DataInitializer(
         val romeoYJulieta = Libro(
             titulo = "Romeo y Julieta",
             autor = shakespeare,
+            imageURL = "",
             paginas = 260,
             palabras = 78_000,
             ediciones = 6,
@@ -472,6 +498,7 @@ class DataInitializer(
         val julioCesar = Libro(
             titulo = "Julio César",
             autor = shakespeare,
+            imageURL = "",
             paginas = 250,
             palabras = 75_000,
             ediciones = 5,
@@ -484,6 +511,7 @@ class DataInitializer(
         val guerraYPaz = Libro(
             titulo = "Guerra y Paz",
             autor = tolstoy,
+            imageURL = "",
             paginas = 1225,
             palabras = 560_000,
             ediciones = 12,
@@ -495,6 +523,7 @@ class DataInitializer(
         val annaKarenina = Libro(
             titulo = "Anna Karenina",
             autor = tolstoy,
+            imageURL = "",
             paginas = 864,
             palabras = 340_000,
             ediciones = 10,
@@ -506,6 +535,7 @@ class DataInitializer(
         val resurreccion = Libro(
             titulo = "Resurrección",
             autor = tolstoy,
+            imageURL = "",
             paginas = 600,
             palabras = 260_000,
             ediciones = 8,
@@ -517,6 +547,7 @@ class DataInitializer(
         val laMuerteDeIvanIlich = Libro(
             titulo = "La muerte de Iván Ilich",
             autor = tolstoy,
+            imageURL = "",
             paginas = 140,
             palabras = 50_000,
             ediciones = 5,
@@ -528,6 +559,7 @@ class DataInitializer(
         val hadjiMurad = Libro(
             titulo = "Hadji Murad",
             autor = tolstoy,
+            imageURL = "",
             paginas = 240,
             palabras = 80_000,
             ediciones = 4,
@@ -541,6 +573,7 @@ class DataInitializer(
         val orgulloYPrejuicio = Libro(
             titulo = "Orgullo y prejuicio",
             autor = austen,
+            imageURL = "",
             paginas = 432,
             palabras = 120_000,
             ediciones = 10,
@@ -552,6 +585,7 @@ class DataInitializer(
         val sentidoYSensibilidad = Libro(
             titulo = "Sentido y sensibilidad",
             autor = austen,
+            imageURL = "",
             paginas = 368,
             palabras = 100_000,
             ediciones = 8,
@@ -563,6 +597,7 @@ class DataInitializer(
         val emma = Libro(
             titulo = "Emma",
             autor = austen,
+            imageURL = "",
             paginas = 512,
             palabras = 150_000,
             ediciones = 9,
@@ -574,6 +609,7 @@ class DataInitializer(
         val mansfieldPark = Libro(
             titulo = "Mansfield Park",
             autor = austen,
+            imageURL = "",
             paginas = 400,
             palabras = 130_000,
             ediciones = 6,
@@ -585,6 +621,7 @@ class DataInitializer(
         val persuasion = Libro(
             titulo = "Persuasión",
             autor = austen,
+            imageURL = "",
             paginas = 288,
             palabras = 90_000,
             ediciones = 7,
@@ -598,6 +635,7 @@ class DataInitializer(
         val laMetamorfosis = Libro(
             titulo = "La metamorfosis",
             autor = kafka,
+            imageURL = "",
             paginas = 96,
             palabras = 22_000,
             ediciones = 5,
@@ -609,6 +647,7 @@ class DataInitializer(
         val elProceso = Libro(
             titulo = "El proceso",
             autor = kafka,
+            imageURL = "",
             paginas = 320,
             palabras = 85_000,
             ediciones = 8,
@@ -620,6 +659,7 @@ class DataInitializer(
         val elCastillo = Libro(
             titulo = "El castillo",
             autor = kafka,
+            imageURL = "",
             paginas = 400,
             palabras = 100_000,
             ediciones = 7,
@@ -631,6 +671,7 @@ class DataInitializer(
         val cartasAlPadre = Libro(
             titulo = "Cartas al padre",
             autor = kafka,
+            imageURL = "",
             paginas = 240,
             palabras = 60_000,
             ediciones = 4,
@@ -642,6 +683,7 @@ class DataInitializer(
         val enLaColoniaPenal = Libro(
             titulo = "En la colonia penal",
             autor = kafka,
+            imageURL = "",
             paginas = 140,
             palabras = 35_000,
             ediciones = 3,
@@ -655,6 +697,7 @@ class DataInitializer(
         val laSenoraDalloway = Libro(
             titulo = "La señora Dalloway",
             autor = woolf,
+            imageURL = "",
             paginas = 304,
             palabras = 75_000,
             ediciones = 6,
@@ -666,6 +709,7 @@ class DataInitializer(
         val alFaro = Libro(
             titulo = "Al faro",
             autor = woolf,
+            imageURL = "",
             paginas = 209,
             palabras = 65_000,
             ediciones = 5,
@@ -677,6 +721,7 @@ class DataInitializer(
         val lasOlas = Libro(
             titulo = "Las olas",
             autor = woolf,
+            imageURL = "",
             paginas = 297,
             palabras = 70_000,
             ediciones = 7,
@@ -688,6 +733,7 @@ class DataInitializer(
         val orlando = Libro(
             titulo = "Orlando",
             autor = woolf,
+            imageURL = "",
             paginas = 336,
             palabras = 80_000,
             ediciones = 6,
@@ -699,6 +745,7 @@ class DataInitializer(
         val unaHabitacionPropia = Libro(
             titulo = "Una habitación propia",
             autor = woolf,
+            imageURL = "",
             paginas = 172,
             palabras = 40_000,
             ediciones = 4,
@@ -712,6 +759,7 @@ class DataInitializer(
         val crimenYCastigo = Libro(
             titulo = "Crimen y castigo",
             autor = dostoevsky,
+            imageURL = "",
             paginas = 671,
             palabras = 180_000,
             ediciones = 10,
@@ -723,6 +771,7 @@ class DataInitializer(
         val elIdiota = Libro(
             titulo = "El idiota",
             autor = dostoevsky,
+            imageURL = "",
             paginas = 656,
             palabras = 170_000,
             ediciones = 8,
@@ -734,6 +783,7 @@ class DataInitializer(
         val losHermanosKaramazov = Libro(
             titulo = "Los hermanos Karamazov",
             autor = dostoevsky,
+            imageURL = "",
             paginas = 824,
             palabras = 200_000,
             ediciones = 10,
@@ -745,6 +795,7 @@ class DataInitializer(
         val demonios = Libro(
             titulo = "Demonios",
             autor = dostoevsky,
+            imageURL = "",
             paginas = 768,
             palabras = 190_000,
             ediciones = 7,
@@ -756,6 +807,7 @@ class DataInitializer(
         val elJugador = Libro(
             titulo = "El jugador",
             autor = dostoevsky,
+            imageURL = "",
             paginas = 240,
             palabras = 60_000,
             ediciones = 5,
@@ -769,6 +821,7 @@ class DataInitializer(
         val _1984 = Libro(
             titulo = "1984",
             autor = orwell,
+            imageURL = "",
             paginas = 328,
             palabras = 90_000,
             ediciones = 12,
@@ -780,6 +833,7 @@ class DataInitializer(
         val rebelionEnLaGranja = Libro(
             titulo = "Rebelión en la granja",
             autor = orwell,
+            imageURL = "",
             paginas = 112,
             palabras = 30_000,
             ediciones = 10,
@@ -791,6 +845,7 @@ class DataInitializer(
         val homenajeACataluna = Libro(
             titulo = "Homenaje a Cataluña",
             autor = orwell,
+            imageURL = "",
             paginas = 232,
             palabras = 60_000,
             ediciones = 6,
@@ -802,6 +857,7 @@ class DataInitializer(
         val losDiasDeBirmania = Libro(
             titulo = "Los días de Birmania",
             autor = orwell,
+            imageURL = "",
             paginas = 288,
             palabras = 75_000,
             ediciones = 5,
@@ -813,6 +869,7 @@ class DataInitializer(
         val sinBlancaEnParisYLondres = Libro(
             titulo = "Sin blanca en París y Londres",
             autor = orwell,
+            imageURL = "",
             paginas = 232,
             palabras = 60_000,
             ediciones = 4,

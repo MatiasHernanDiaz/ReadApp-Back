@@ -74,6 +74,7 @@ class UsuarioSpec : DescribeSpec({
         val laComunidadDelAnillo = Libro(
             titulo = "Juan Salvador Gabiota",
             autor = tolkien,
+            imageURL = "",
             paginas = 180,
             palabras = 40_000,
             ediciones = 4,
@@ -85,6 +86,7 @@ class UsuarioSpec : DescribeSpec({
         val lasDosTorres = Libro(
             titulo = "Las dos torres",
             autor = tolkien,
+            imageURL = "",
             paginas = 180,
             palabras = 40_000,
             ediciones = 4,
@@ -96,6 +98,7 @@ class UsuarioSpec : DescribeSpec({
         val elRetornoDelRey = Libro(
             titulo = "El retorno del rey",
             autor = tolkien,
+            imageURL = "",
             paginas = 180,
             palabras = 40_000,
             ediciones = 4,
@@ -106,6 +109,7 @@ class UsuarioSpec : DescribeSpec({
         val donQuijote = Libro(
             titulo = "Don Quijote de la mancha",
             autor = miguel,
+            imageURL = "",
             paginas = 300,
             palabras = 50000,
             ediciones = 1,
@@ -116,6 +120,7 @@ class UsuarioSpec : DescribeSpec({
         val donQuijote2 = Libro(
             titulo = "Don Quijote de la mancha 2 ",
             autor = miguel,
+            imageURL = "",
             paginas = 800,
             palabras = 500000,
             ediciones = 1,
@@ -134,6 +139,7 @@ class UsuarioSpec : DescribeSpec({
             val libroNoDesafiante = Libro(
                 titulo = "El señor de los anillos",
                 autor = tolkien,
+                imageURL = "",
                 paginas = 11,
                 palabras = 300,
                 ediciones = 3,
@@ -147,6 +153,7 @@ class UsuarioSpec : DescribeSpec({
             val libroNoDesafiante = Libro(
                 titulo = "El señor de los anillos",
                 autor = tolkien,
+                imageURL = "",
                 paginas = 11,
                 palabras = 300,
                 ediciones = 3,

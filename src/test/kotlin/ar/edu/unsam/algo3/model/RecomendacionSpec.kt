@@ -83,6 +83,7 @@ class RecomendacionSpec : DescribeSpec({
     val libroAutorPreferido = Libro(
         titulo = "Aleph",
         autor = autorPreferido,
+        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -94,6 +95,7 @@ class RecomendacionSpec : DescribeSpec({
     val libroOtroAutorPreferido = Libro(
         titulo = "Rayuela",
         autor = otroAutorPreferido,
+        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -105,6 +107,7 @@ class RecomendacionSpec : DescribeSpec({
     val libroAutorNoPreferido = Libro(
         titulo = "Sarasa",
         autor = autorNoPreferido,
+        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 4,
@@ -200,6 +203,7 @@ class RecomendacionSpec : DescribeSpec({
                 titulo = "Un libro nuevo",
                 autor = Autor(nombre = "Rolando", apellido = "Hanglin", seudonimo = "rolo", idiomaNativo = Lenguaje.ESPANIOL, fechaNacimiento = LocalDate.of(1968, 6, 9), premios= mutableListOf()),
                 paginas = 200,
+                imageURL = "",
                 palabras = 10_000,
                 ediciones = 1,
                 ventasSemanales = 100,
@@ -211,6 +215,7 @@ class RecomendacionSpec : DescribeSpec({
                 titulo = "Otro libro nuevo",
                 autor = Autor(nombre = "Beto", apellido = "Cascella", seudonimo = "beto", idiomaNativo = Lenguaje.ESPANIOL, fechaNacimiento = LocalDate.of(1978, 6, 1)),
                 paginas = 200,
+                imageURL = "",
                 palabras = 10_000,
                 ediciones = 1,
                 ventasSemanales = 100,
@@ -286,6 +291,7 @@ class RecomendacionSpec : DescribeSpec({
                 val otroLibroDeAutorPreferido = Libro(
                     titulo = "Fervor de Buenos Aires",
                     autor = autorPreferido,
+                    imageURL = "",
                     paginas = 180,
                     palabras = 40_000,
                     ediciones = 4,

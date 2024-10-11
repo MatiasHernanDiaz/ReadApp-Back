@@ -8,11 +8,13 @@ class Libro(
     val titulo: String = "",
     val autor: Autor,
     val paginas: Int,
+    val imageURL: String,
     val palabras: Int,
     var ediciones: Int,
     var ventasSemanales: Int,
     val lecturaCompleja: Boolean,
     val traducciones: MutableSet<Lenguaje> = mutableSetOf(),
+
 
     ) : ItemRepo {
     companion object maxPag {

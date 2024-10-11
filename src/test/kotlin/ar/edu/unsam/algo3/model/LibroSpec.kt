@@ -11,6 +11,7 @@ class LibroSpec : DescribeSpec({
             val donQuijote = Libro(
                 titulo = "Don Quijote de la mancha",
                 autor = miguel,
+                imageURL = "",
                 paginas = 300,
                 palabras = 50000,
                 ediciones = 1,
@@ -26,6 +27,7 @@ class LibroSpec : DescribeSpec({
             val zelda = Libro(
                 titulo = "The legend of Zelda: ocarina of time. the book",
                 autor = miyamoto,
+                imageURL = "",
                 paginas = 200,
                 palabras = 15000,
                 ediciones = 3,
@@ -41,6 +43,7 @@ class LibroSpec : DescribeSpec({
             val guiaCocina = Libro(
                 titulo = "aprende a cocinar con Mama Fresh",
                 autor = mama,
+                imageURL = "",
                 paginas = 300,
                 palabras = 10000,
                 ediciones = 1,
@@ -56,6 +59,7 @@ class LibroSpec : DescribeSpec({
             val jojos = Libro(
                 titulo = "jojos bizzare adventure: phantom blood cap 1",
                 autor = araki,
+                imageURL = "",
                 paginas = 100,
                 palabras = 5000,
                 ediciones = 3,
@@ -71,6 +75,7 @@ class LibroSpec : DescribeSpec({
             val historia = Libro(
                 titulo = "Libro de historia para cuarto grado",
                 autor = matel,
+                imageURL = "",
                 paginas = 500,
                 palabras = 70000,
                 ediciones = 1,
@@ -88,6 +93,7 @@ class LibroSpec : DescribeSpec({
             val elEternauta = Libro(
                 titulo = "el Eternauta PARTE 1",
                 autor = german,
+                imageURL = "",
                 paginas = 1000,
                 ediciones = 20,
                 palabras = 10000,
@@ -103,6 +109,7 @@ class LibroSpec : DescribeSpec({
             val cronicasDeUnaMuerte = Libro(
                 titulo = "Cronicas de una muerte anunciada",
                 autor = marquez,
+                imageURL = "",
                 paginas = 1000,
                 ediciones = 2,
                 palabras = 10000,
@@ -118,6 +125,7 @@ class LibroSpec : DescribeSpec({
             val laGranjaDeZenon = Libro(
                 titulo = "la granja de zenon",
                 autor = zenon,
+                imageURL = "",
                 paginas = 1000,
                 ediciones = 2,
                 palabras = 10000,
@@ -133,6 +141,7 @@ class LibroSpec : DescribeSpec({
             val elPalacioJapones = Libro(
                 titulo = "El palacio japones",
                 autor = vasconcelos,
+                imageURL = "",
                 paginas = 1000,
                 ediciones = 200,
                 palabras = 10000,
@@ -153,6 +162,7 @@ class LibroSpec : DescribeSpec({
             val caperucita = Libro(
                 titulo = "La Caperucita Roja",
                 autor = perrault,
+                imageURL = "",
                 paginas = 599,
                 ediciones = 1,
                 palabras = 10000,
@@ -172,6 +182,7 @@ class LibroSpec : DescribeSpec({
             val pulgarcito = Libro(
                 titulo = "Pulgarcito",
                 autor = perrault,
+                imageURL = "",
                 paginas = 599,
                 ediciones = 1,
                 palabras = 10000,
@@ -186,6 +197,7 @@ class LibroSpec : DescribeSpec({
             val pulgarcito = Libro(
                 titulo = "Pulgarcito",
                 autor = perrault,
+                imageURL = "",
                 paginas = 599,
                 ediciones = 1,
                 palabras = 10000,
@@ -200,6 +212,7 @@ class LibroSpec : DescribeSpec({
             val cenicienta = Libro(
                 titulo = "Cenicienta",
                 autor = perrault,
+                imageURL = "",
                 paginas = 300,
                 ediciones = 5,
                 palabras = 30000,

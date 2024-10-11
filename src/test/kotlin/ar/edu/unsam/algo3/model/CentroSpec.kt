@@ -33,6 +33,7 @@ class CentroSpec : DescribeSpec({
     val guiaCocina = Libro(
         titulo = "aprende a cocinar con Mama Fresh",
         autor = mama,
+        imageURL = "",
         paginas = 300,
         palabras = 10000,
         ediciones = 1,
@@ -43,6 +44,7 @@ class CentroSpec : DescribeSpec({
     val donQuijote = Libro(
         titulo = "Don Quijote de la mancha",
         autor = miguel,
+        imageURL = "",
         paginas = 300,
         palabras = 50000,
         ediciones = 1,

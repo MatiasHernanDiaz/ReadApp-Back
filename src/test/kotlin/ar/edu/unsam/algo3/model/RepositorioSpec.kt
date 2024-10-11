@@ -52,6 +52,7 @@ class RepositorioSpec : DescribeSpec({
     val libro1 = Libro(
         titulo = "Titulo1",
         autor = autor1,
+        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 1,
@@ -63,6 +64,7 @@ class RepositorioSpec : DescribeSpec({
     val libro2 = Libro(
         titulo = "Titulo2",
         autor = autor2,
+        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 2,
@@ -74,6 +76,7 @@ class RepositorioSpec : DescribeSpec({
     val libro3 = Libro(
         titulo = "Titulo3",
         autor = autor3,
+        imageURL = "",
         paginas = 180,
         palabras = 40_000,
         ediciones = 3,

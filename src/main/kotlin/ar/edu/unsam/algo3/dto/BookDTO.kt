@@ -5,10 +5,11 @@ import ar.edu.unsam.algo3.*
 
 data class BookDTO(
     val title: String = "",
-    val autor: AutorDTO,
+    val autor: String = "",
+    val imageUrl: String,
     val pages: Int,
     val words: Int,
     val id: Int
 )
 
-fun Libro.toDTO() = BookDTO(id = id, title = titulo, autor = autor.toDTO(), pages = paginas, words = palabras)
+fun Libro.toDTO() = BookDTO(id = id, title = titulo, autor = (autor.toDTO().firstName + " " + autor.toDTO().lastName), imageUrl = imageURL ,pages = paginas, words = palabras)
