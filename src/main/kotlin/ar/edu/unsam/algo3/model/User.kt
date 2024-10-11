@@ -116,6 +116,9 @@ class User(
     fun hasRatings(): Boolean = !ratings.isEmpty()
 
     fun getMail()=email
+
+    fun removeRecomendation(recomendacion: Recomendacion) = recommendations.remove(recomendacion)
+
 }
 
 

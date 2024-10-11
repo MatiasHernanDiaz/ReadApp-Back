@@ -11,4 +11,5 @@ class RepositorioRecomendaciones : Repository<Recomendacion>() {
         patron.lowercase() == it.creador().lastName().lowercase() || patron.lowercase() in it.resegna().lowercase()
                 || it.libros().any { l -> patron.lowercase() in l.titulo().lowercase() || patron.lowercase() in l.autor.lastName().lowercase() }
     }
+
 }

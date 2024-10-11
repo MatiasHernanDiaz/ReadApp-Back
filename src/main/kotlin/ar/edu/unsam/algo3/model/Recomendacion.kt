@@ -95,4 +95,5 @@ class Recomendacion(
     fun usuarioValoro(user: User) = valoraciones.any { it.autor === user }
 
     fun promedioValoraciones(): Double = valoraciones.map{ it.puntuacion }.average()
+
 }
