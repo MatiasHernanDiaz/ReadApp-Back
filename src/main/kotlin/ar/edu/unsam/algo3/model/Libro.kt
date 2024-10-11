@@ -7,6 +7,7 @@ import ar.edu.unsam.algo3.repos.ItemRepo
 class Libro(
     val titulo: String = "",
     val autor: Autor,
+    val imagenURL: String,
     val paginas: Int,
     val palabras: Int,
     var ediciones: Int,
