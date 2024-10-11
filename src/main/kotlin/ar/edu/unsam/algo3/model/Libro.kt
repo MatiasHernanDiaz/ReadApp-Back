@@ -1,12 +1,13 @@
 package ar.edu.unsam.algo3
 
 import ar.edu.unsam.algo3.repos.ItemRepo
+import ar.edu.unsam.algo3.Author
 
 //import java.time.temporal.ChronoUnit
 
 class Libro(
     val titulo: String = "",
-    val autor: Autor,
+    val autor: Author,
     val imagenURL: String,
     val paginas: Int,
     val palabras: Int,
