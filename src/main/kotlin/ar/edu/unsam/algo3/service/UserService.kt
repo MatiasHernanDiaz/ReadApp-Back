@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.service
 
+import ar.edu.unsam.algo3.Combined
 import ar.edu.unsam.algo3.ReadMode
 import ar.edu.unsam.algo3.SearchCriteria
 import ar.edu.unsam.algo3.User
@@ -29,6 +30,12 @@ class UserService (val userRepo: UserRepository){
         if(oldUser === null) {
             throw NoIdException("No se encontró el usuario especificado")
         }
+
+        val newSearchCriteria = if(userDTO.searchCriteria.size > 1)
+            SearchCriteria.fromCustomString("Combinado", profiles = userDTO.searchCriteria) else
+            SearchCriteria.fromCustomString(userDTO.searchCriteria[0])
+
+
         return User(
             id = userDTO.id,
             firstName = userDTO.firstName,
@@ -39,7 +46,7 @@ class UserService (val userRepo: UserRepository){
             birthday = userDTO.birthday,
             nativeLanguage = userDTO.nativeLanguage,
             readTimeMinAvg = userDTO.readTimeMinAvg,
-            searchCriteria = SearchCriteria.fromCustomString(userDTO.searchCriteria),
+            searchCriteria = newSearchCriteria,
             friends = oldUser.friends,
             readBooks = oldUser.readBooks,
             booksToRead = oldUser.booksToRead,

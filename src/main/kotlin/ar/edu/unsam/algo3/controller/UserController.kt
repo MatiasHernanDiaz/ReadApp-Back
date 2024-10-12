@@ -7,6 +7,7 @@ import ar.edu.unsam.algo3.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController
+@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT])
 @RequestMapping("/users")
 class UserController (val userService: UserService){
 
@@ -16,13 +17,13 @@ class UserController (val userService: UserService){
 
 
     @PutMapping("editprofile")
-    fun editProfile(@RequestBody body: UserDTO): String {
+    fun editProfile(@RequestBody body: UserDTO): UserDTO {
         val updatedUser = userService.editProfile(body)
 
         if( updatedUser === null ) {
             throw NoIdException( "El usuario enviado no tiene un ID existente." )
         }
 
-        return "Usuario ${ updatedUser.id } fue actualizado correctamente"
+        return updatedUser.toDTO()
     }
 }
