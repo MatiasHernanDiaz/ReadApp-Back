@@ -9,7 +9,7 @@ data class UserDTO(
     val username: String,
     val email: String,
     val birthday: LocalDate,
-    var searchCriteria: String,//ojo
+    var searchCriteria: List<String>,
     val nativeLanguage: Language,
     val readTimeMinAvg: Int,
     val avatar: String,
@@ -28,7 +28,7 @@ fun User.toDTO() = UserDTO(
     username = username,
     email = email,
     birthday = birthday,
-    searchCriteria = searchCriteria.toCustomString(),
+    searchCriteria = if(searchCriteria is Combined) (searchCriteria as Combined).perfiles.map { it.toCustomString() } else listOf( searchCriteria.toCustomString() ),
     nativeLanguage = nativeLanguage,
     readTimeMinAvg = readTimeMinAvg,
     readMode = readMode.toCustomString(),

@@ -20,6 +20,7 @@ class DataInitializer(
 
     override fun run(vararg args: String?) {
 
+
         val borges = Author(
             firstName = "Jorge Luis",
             lastName = "Borges",
@@ -167,11 +168,12 @@ class DataInitializer(
         repoAutor.createItem(shakespeare)
         repoAutor.createItem(cervantes)
 
-        
         val historiaDelArte = Libro(
             titulo = "Historia Del Arte",
             autor = Gombrich,
+            imagenURL = "https://images.cdn2.buscalibre.com/fit-in/360x360/f6/79/f679ac83c5a34a1a1d0b8affdcdeaef7.jpg",
             paginas = 700,
+            fecha = 1969,
             palabras = 10_000,
             ediciones = 2,
             ventasSemanales = 100,
@@ -182,7 +184,9 @@ class DataInitializer(
         val gaturro = Libro(
             titulo = "Gaturro Gigante",
             autor = nik,
+            imagenURL = "https://images.cdn2.buscalibre.com/fit-in/360x360/cd/12/cd120253f636098c134b6b21e2d9a3a3.jpg",
             paginas = 105,
+            fecha = 1969,
             palabras = 12_145,
             ediciones = 4,
             ventasSemanales = 54,
@@ -193,7 +197,9 @@ class DataInitializer(
         val dragonBall = Libro(
             titulo = "Dragon Ball",
             autor = toriyama,
+            imagenURL = "https://acdn.mitiendanube.com/stores/001/455/161/products/dragon-ball-saga-freezer-05-ivrea-manga-viducomics-akira-toriyama-toyotaro-z-gt-super-49e3b537e0176388f517111400543922-480-0.jpg",
             paginas = 360,
+            fecha = 1969,
             palabras = 23_000,
             ediciones = 8,
             ventasSemanales = 223,
@@ -204,7 +210,9 @@ class DataInitializer(
         val cthulhu = Libro(
             titulo = "Llamada de Cthulhu",
             autor = lovecraft,
+            imagenURL = "https://data.livriz.com/media/MediaSpace/F9AFB48D-741D-4834-B760-F59344EEFF34/4/3b6448a7-76ec-4173-a173-9f04ff004233/9789878354521.jpg",
             paginas = 310,
+            fecha = 1969,
             palabras = 17_540,
             ediciones = 3,
             ventasSemanales = 21,
@@ -215,7 +223,9 @@ class DataInitializer(
         val bill = Libro(
             titulo = "El libro de Bill",
             autor = hirsch,
+            imagenURL = "https://data.livriz.com/media/mediaspace/F9AFB48D-741D-4834-B760-F59344EEFF34/45/af32d5ce-a12e-4055-9e9f-2a1b88131231/9789874670236.jpg",
             paginas = 224,
+            fecha = 1969,
             palabras = 15_000,
             ediciones = 2,
             ventasSemanales = 150,
@@ -226,7 +236,9 @@ class DataInitializer(
         val aleph = Libro(
             titulo = "Aleph",
             autor = borges,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/ab/b1/abb1e18f6c89a6dd0f021a63514759a9.jpg",
             paginas = 180,
+            fecha = 1969,
             palabras = 40_000,
             ediciones = 4,
             ventasSemanales = 120,
@@ -237,7 +249,9 @@ class DataInitializer(
         val rayuela = Libro(
             titulo = "Rayuela",
             autor = cortazar,
+            imagenURL = "https://educacion.ufm.edu/wp-content/uploads/2013/07/Rayuela.jpg",
             paginas = 180,
+            fecha = 1969,
             palabras = 40_000,
             ediciones = 4,
             ventasSemanales = 120,
@@ -248,7 +262,9 @@ class DataInitializer(
         val genteToxica = Libro(
             titulo = "Gente Toxica",
             autor = stamateas,
+            imagenURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRhHMuxc_QFcLpB5R31otOJ88cR7O4GKV32LA&s",
             paginas = 180,
+            fecha = 1969,
             palabras = 40_000,
             ediciones = 4,
             ventasSemanales = 120,
@@ -260,7 +276,9 @@ class DataInitializer(
         val ficciones = Libro(
             titulo = "Ficciones",
             autor = borges,
+            imagenURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT_d9j6mmEgRxYc4YZDQtnybIJcJ6WzUH8rjA&s",
             paginas = 200,
+            fecha = 1969,
             palabras = 45_000,
             ediciones = 6,
             ventasSemanales = 150,
@@ -271,7 +289,9 @@ class DataInitializer(
         val elInformeDeBrodie = Libro(
             titulo = "El informe de Brodie",
             autor = borges,
+            imagenURL = "https://www.tematika.com/media/catalog/Ilhsa/Imagenes/535903.jpg",
             paginas = 160,
+            fecha = 1969,
             palabras = 38_000,
             ediciones = 3,
             ventasSemanales = 100,
@@ -282,7 +302,9 @@ class DataInitializer(
         val elLibroDeArena = Libro(
             titulo = "El libro de arena",
             autor = borges,
+            imagenURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQyXb3L-bgfQQrnTfHQdSV4oFZ30nyXFL1UJQ&s",
             paginas = 190,
+            fecha = 1969,
             palabras = 42_000,
             ediciones = 5,
             ventasSemanales = 110,
@@ -293,7 +315,9 @@ class DataInitializer(
         val historiaUniversalDeLaInfamia = Libro(
             titulo = "Historia universal de la infamia",
             autor = borges,
+            imagenURL = "https://http2.mlstatic.com/D_NQ_NP_984283-MLA42035020169_062020-O.webp",
             paginas = 150,
+            fecha = 1969,
             palabras = 37_000,
             ediciones = 2,
             ventasSemanales = 90,
@@ -306,7 +330,9 @@ class DataInitializer(
         val cienAnosDeSoledad = Libro(
             titulo = "Cien años de soledad",
             autor = marquez,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/61/8d/618d227e8967274cd9589a549adff52d.jpg",
             paginas = 500,
+            fecha = 1969,
             palabras = 150_000,
             ediciones = 10,
             ventasSemanales = 500,
@@ -318,7 +344,9 @@ class DataInitializer(
         val elAmorEnLosTiemposDelColera = Libro(
             titulo = "El amor en los tiempos del cólera",
             autor = marquez,
+            imagenURL = "https://www.penguinlibros.com/ar/3609276/el-amor-en-los-tiempos-del-colera-edicion-ilustrada.jpg",
             paginas = 420,
+            fecha = 1969,
             palabras = 120_000,
             ediciones = 8,
             ventasSemanales = 350,
@@ -329,7 +357,9 @@ class DataInitializer(
         val cronicaDeUnaMuerteAnunciada = Libro(
             titulo = "Crónica de una muerte anunciada",
             autor = marquez,
+            imagenURL = "https://images.cdn1.buscalibre.com/fit-in/360x360/0a/cc/0acc18426c3fd6076f73a96465eb4da6.jpg",
             paginas = 180,
+            fecha = 1969,
             palabras = 50_000,
             ediciones = 5,
             ventasSemanales = 180,
@@ -341,7 +371,9 @@ class DataInitializer(
         val elOtonoDelPatriarca = Libro(
             titulo = "El otoño del patriarca",
             autor = marquez,
+            imagenURL = "https://letraslibres.com/wp-content/uploads/2016/05/el-otono-del-patriarca-garcia-marquez-1a-edicion-9190-mlm20012600691_112013-o.jpg",
             paginas = 300,
+            fecha = 1969,
             palabras = 80_000,
             ediciones = 4,
             ventasSemanales = 200,
@@ -353,7 +385,9 @@ class DataInitializer(
         val laHojarasca = Libro(
             titulo = "La hojarasca",
             autor = marquez,
+            imagenURL = "https://images.cdn2.buscalibre.com/fit-in/360x360/7f/51/7f51e25951ff2066fa19b9caea189d4a.jpg",
             paginas = 220,
+            fecha = 1969,
             palabras = 70_000,
             ediciones = 3,
             ventasSemanales = 150,
@@ -367,7 +401,9 @@ class DataInitializer(
         val donQuijote = Libro(
             titulo = "Don Quijote de la Mancha",
             autor = cervantes,
+            imagenURL = "https://images.cdn2.buscalibre.com/fit-in/360x360/73/b6/73b6fd96c31d26e2b6a3531808c1188c.jpg",
             paginas = 900,
+            fecha = 1969,
             palabras = 380_000,
             ediciones = 20,
             ventasSemanales = 1000,
@@ -379,7 +415,9 @@ class DataInitializer(
         val lasNovelasEjemplares = Libro(
             titulo = "Las novelas ejemplares",
             autor = cervantes,
+            imagenURL = "https://images.cdn1.buscalibre.com/fit-in/360x360/ed/23/ed23bc5b499b128e119a6f2397cb9bd1.jpg",
             paginas = 400,
+            fecha = 1969,
             palabras = 120_000,
             ediciones = 8,
             ventasSemanales = 250,
@@ -391,7 +429,9 @@ class DataInitializer(
         val losTrabajosDePersiles = Libro(
             titulo = "Los trabajos de Persiles y Sigismunda",
             autor = cervantes,
+            imagenURL = "https://www.ellibrototal.com/testLtotal/CARATULAS/libros/2010/7/695.jpg",
             paginas = 600,
+            fecha = 1969,
             palabras = 200_000,
             ediciones = 7,
             ventasSemanales = 300,
@@ -402,7 +442,9 @@ class DataInitializer(
         val laGalatea = Libro(
             titulo = "La Galatea",
             autor = cervantes,
+            imagenURL = "https://image.cdn0.buscalibre.com/5b5804424463b51d388b4567.__RS360x360__.jpg",
             paginas = 350,
+            fecha = 1969,
             palabras = 100_000,
             ediciones = 4,
             ventasSemanales = 180,
@@ -413,7 +455,9 @@ class DataInitializer(
         val elViajeDelParnaso = Libro(
             titulo = "El viaje del Parnaso",
             autor = cervantes,
+            imagenURL = "https://m.media-amazon.com/images/I/61Ua5hQi5lL._AC_UF1000,1000_QL80_.jpg",
             paginas = 280,
+            fecha = 1969,
             palabras = 85_000,
             ediciones = 3,
             ventasSemanales = 120,
@@ -425,7 +469,9 @@ class DataInitializer(
         val hamlet = Libro(
             titulo = "Hamlet",
             autor = shakespeare,
+            imagenURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRFkhbN3tECW06bLJ6APslOXGYe6sBaNHBgWg&s",
             paginas = 320,
+            fecha = 1969,
             palabras = 95_000,
             ediciones = 10,
             ventasSemanales = 500,
@@ -437,7 +483,9 @@ class DataInitializer(
         val macbeth = Libro(
             titulo = "Macbeth",
             autor = shakespeare,
+            imagenURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQZA5C9s2Faz4cjbtBwRJ7S3RqhsSor8fX_GA&s",
             paginas = 240,
+            fecha = 1969,
             palabras = 80_000,
             ediciones = 8,
             ventasSemanales = 400,
@@ -449,7 +497,9 @@ class DataInitializer(
         val othello = Libro(
             titulo = "Othello",
             autor = shakespeare,
+            imagenURL = "https://images.cdn2.buscalibre.com/fit-in/360x360/1f/32/1f325b89bcadd550414b6d8a472466a7.jpg",
             paginas = 280,
+            fecha = 1969,
             palabras = 85_000,
             ediciones = 7,
             ventasSemanales = 350,
@@ -460,7 +510,9 @@ class DataInitializer(
         val romeoYJulieta = Libro(
             titulo = "Romeo y Julieta",
             autor = shakespeare,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/ba/69/ba694cd6db3336d0fd36e75377399269.jpg",
             paginas = 260,
+            fecha = 1969,
             palabras = 78_000,
             ediciones = 6,
             ventasSemanales = 300,
@@ -471,7 +523,9 @@ class DataInitializer(
         val julioCesar = Libro(
             titulo = "Julio César",
             autor = shakespeare,
+            imagenURL = "https://images.nextory.com/4064066443047.jpg?fit=clip&auto=format&w",
             paginas = 250,
+            fecha = 1969,
             palabras = 75_000,
             ediciones = 5,
             ventasSemanales = 250,
@@ -483,7 +537,9 @@ class DataInitializer(
         val guerraYPaz = Libro(
             titulo = "Guerra y Paz",
             autor = tolstoy,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/520x520/e3/43/e343d2348ac304737b244a8a4def0aa0.jpg",
             paginas = 1225,
+            fecha = 1969,
             palabras = 560_000,
             ediciones = 12,
             ventasSemanales = 900,
@@ -494,7 +550,9 @@ class DataInitializer(
         val annaKarenina = Libro(
             titulo = "Anna Karenina",
             autor = tolstoy,
+            imagenURL = "https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625452e64ed610baadce9101_6034d7d1f3e0f561eab2b16e_Anna-karenina-lev-tolstoi-editorial-alma.jpeg",
             paginas = 864,
+            fecha = 1969,
             palabras = 340_000,
             ediciones = 10,
             ventasSemanales = 750,
@@ -505,7 +563,9 @@ class DataInitializer(
         val resurreccion = Libro(
             titulo = "Resurrección",
             autor = tolstoy,
+            imagenURL = "https://http2.mlstatic.com/D_NQ_NP_902619-MLA46364048397_062021-O.webp",
             paginas = 600,
+            fecha = 1969,
             palabras = 260_000,
             ediciones = 8,
             ventasSemanales = 500,
@@ -516,7 +576,9 @@ class DataInitializer(
         val laMuerteDeIvanIlich = Libro(
             titulo = "La muerte de Iván Ilich",
             autor = tolstoy,
+            imagenURL = "https://images-na.ssl-images-amazon.com/images/S/compressed.photo.goodreads.com/books/1682110599i/136140018.jpg",
             paginas = 140,
+            fecha = 1969,
             palabras = 50_000,
             ediciones = 5,
             ventasSemanales = 300,
@@ -527,7 +589,9 @@ class DataInitializer(
         val hadjiMurad = Libro(
             titulo = "Hadji Murad",
             autor = tolstoy,
+            imagenURL = "https://images.cdn2.buscalibre.com/fit-in/360x360/3a/3d/3a3dec0112ee937defdd9bd466889d0d.jpg",
             paginas = 240,
+            fecha = 1969,
             palabras = 80_000,
             ediciones = 4,
             ventasSemanales = 250,
@@ -540,7 +604,9 @@ class DataInitializer(
         val orgulloYPrejuicio = Libro(
             titulo = "Orgullo y prejuicio",
             autor = austen,
+            imagenURL = "https://madreditorial.com/wp-content/uploads/2021/07/9788415618782-copia.jpg",
             paginas = 432,
+            fecha = 1969,
             palabras = 120_000,
             ediciones = 10,
             ventasSemanales = 600,
@@ -551,7 +617,9 @@ class DataInitializer(
         val sentidoYSensibilidad = Libro(
             titulo = "Sentido y sensibilidad",
             autor = austen,
+            imagenURL = "https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/6254540b83a0b117317fcf20_6034d7d1f3e0f50480b2b2fd_Sentido-y-sensibilidad-jane-austen-editorial-alma.jpeg",
             paginas = 368,
+            fecha = 1969,
             palabras = 100_000,
             ediciones = 8,
             ventasSemanales = 500,
@@ -562,7 +630,9 @@ class DataInitializer(
         val emma = Libro(
             titulo = "Emma",
             autor = austen,
+            imagenURL = "https://www.planetadelibros.com.ar/usuaris/libros/fotos/360/m_libros/359510_portada_emma_jane-austen_202206131223.jpg",
             paginas = 512,
+            fecha = 1969,
             palabras = 150_000,
             ediciones = 9,
             ventasSemanales = 550,
@@ -573,7 +643,9 @@ class DataInitializer(
         val mansfieldPark = Libro(
             titulo = "Mansfield Park",
             autor = austen,
+            imagenURL = "https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/625428f235afa69b80492194_609a976a5ddbf75ab948ed92_9788418008319_web.jpeg",
             paginas = 400,
+            fecha = 1969,
             palabras = 130_000,
             ediciones = 6,
             ventasSemanales = 400,
@@ -584,7 +656,9 @@ class DataInitializer(
         val persuasion = Libro(
             titulo = "Persuasión",
             autor = austen,
+            imagenURL = "https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/62545315b0e15eb09d81c505_6034d7d1f3e0f50a0fb2b2ce_Persuasion-jane-austen-editorial-alma.jpeg",
             paginas = 288,
+            fecha = 1969,
             palabras = 90_000,
             ediciones = 7,
             ventasSemanales = 350,
@@ -597,7 +671,9 @@ class DataInitializer(
         val laMetamorfosis = Libro(
             titulo = "La metamorfosis",
             autor = kafka,
+            imagenURL = "https://acdn.mitiendanube.com/stores/001/029/689/products/la-metamorfosis-d8f83bea7935778bce17213973938658-1024-1024.jpg",
             paginas = 96,
+            fecha = 1969,
             palabras = 22_000,
             ediciones = 5,
             ventasSemanales = 450,
@@ -608,7 +684,9 @@ class DataInitializer(
         val elProceso = Libro(
             titulo = "El proceso",
             autor = kafka,
+            imagenURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQr_UwylNhprDrMzjcf4x_hh9wLdrqQoPyMrw&s",
             paginas = 320,
+            fecha = 1969,
             palabras = 85_000,
             ediciones = 8,
             ventasSemanales = 350,
@@ -619,7 +697,9 @@ class DataInitializer(
         val elCastillo = Libro(
             titulo = "El castillo",
             autor = kafka,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/8b/ed/8bed12d41932be052e5c2b4757f92bb4.jpg",
             paginas = 400,
+            fecha = 1969,
             palabras = 100_000,
             ediciones = 7,
             ventasSemanales = 320,
@@ -630,7 +710,9 @@ class DataInitializer(
         val cartasAlPadre = Libro(
             titulo = "Cartas al padre",
             autor = kafka,
+            imagenURL = "https://www.revistakopek.com/wp-content/uploads/2019/06/carta-al-padre.jpg",
             paginas = 240,
+            fecha = 1969,
             palabras = 60_000,
             ediciones = 4,
             ventasSemanales = 280,
@@ -641,7 +723,9 @@ class DataInitializer(
         val enLaColoniaPenal = Libro(
             titulo = "En la colonia penal",
             autor = kafka,
+            imagenURL = "https://http2.mlstatic.com/D_NQ_NP_870865-MLA40313689963_012020-O.webp",
             paginas = 140,
+            fecha = 1969,
             palabras = 35_000,
             ediciones = 3,
             ventasSemanales = 200,
@@ -654,7 +738,9 @@ class DataInitializer(
         val laSenoraDalloway = Libro(
             titulo = "La señora Dalloway",
             autor = woolf,
+            imagenURL = "https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/6321fc34dc1e29d4c45591e8_9788418395819.jpeg",
             paginas = 304,
+            fecha = 1969,
             palabras = 75_000,
             ediciones = 6,
             ventasSemanales = 420,
@@ -665,7 +751,9 @@ class DataInitializer(
         val alFaro = Libro(
             titulo = "Al faro",
             autor = woolf,
+            imagenURL = "https://images.cdn1.buscalibre.com/fit-in/360x360/60/90/60907cf1f083551cc430075d64f0fcd0.jpg",
             paginas = 209,
+            fecha = 1969,
             palabras = 65_000,
             ediciones = 5,
             ventasSemanales = 350,
@@ -676,7 +764,9 @@ class DataInitializer(
         val lasOlas = Libro(
             titulo = "Las olas",
             autor = woolf,
+            imagenURL = "https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/62b09b32999b2c70eac79215_9788418395567.jpeg",
             paginas = 297,
+            fecha = 1969,
             palabras = 70_000,
             ediciones = 7,
             ventasSemanales = 380,
@@ -687,7 +777,9 @@ class DataInitializer(
         val orlando = Libro(
             titulo = "Orlando",
             autor = woolf,
+            imagenURL = "https://images.cdn1.buscalibre.com/fit-in/360x360/8c/10/8c10336ffbe23d3273a7f74feeff4bc4.jpg",
             paginas = 336,
+            fecha = 1969,
             palabras = 80_000,
             ediciones = 6,
             ventasSemanales = 300,
@@ -698,7 +790,9 @@ class DataInitializer(
         val unaHabitacionPropia = Libro(
             titulo = "Una habitación propia",
             autor = woolf,
+            imagenURL = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRaTw_P1iobIyTeZRysIGDszgYj9no8_w-3ug&s",
             paginas = 172,
+            fecha = 1969,
             palabras = 40_000,
             ediciones = 4,
             ventasSemanales = 260,
@@ -711,7 +805,9 @@ class DataInitializer(
         val crimenYCastigo = Libro(
             titulo = "Crimen y castigo",
             autor = dostoevsky,
+            imagenURL = "https://i1.whakoom.com/large/10/3b/be8ab05a9a0946d5a0012b468a8ba551.jpg",
             paginas = 671,
+            fecha = 1969,
             palabras = 180_000,
             ediciones = 10,
             ventasSemanales = 700,
@@ -722,7 +818,9 @@ class DataInitializer(
         val elIdiota = Libro(
             titulo = "El idiota",
             autor = dostoevsky,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/f0/59/f05976ca62d3f261ffd65059ec64f3f7.jpg",
             paginas = 656,
+            fecha = 1969,
             palabras = 170_000,
             ediciones = 8,
             ventasSemanales = 550,
@@ -733,7 +831,9 @@ class DataInitializer(
         val losHermanosKaramazov = Libro(
             titulo = "Los hermanos Karamazov",
             autor = dostoevsky,
+            imagenURL = "https://images.cdn1.buscalibre.com/fit-in/360x360/33/5a/335af0768484b41ec4b206848844f723.jpg",
             paginas = 824,
+            fecha = 1969,
             palabras = 200_000,
             ediciones = 10,
             ventasSemanales = 600,
@@ -744,7 +844,9 @@ class DataInitializer(
         val demonios = Libro(
             titulo = "Demonios",
             autor = dostoevsky,
+            imagenURL = "https://eslavia.com.ar/wp-content/uploads/2019/12/los-demonios-1.jpg",
             paginas = 768,
+            fecha = 1969,
             palabras = 190_000,
             ediciones = 7,
             ventasSemanales = 500,
@@ -755,7 +857,9 @@ class DataInitializer(
         val elJugador = Libro(
             titulo = "El jugador",
             autor = dostoevsky,
+            imagenURL = "https://cdn.prod.website-files.com/6034d7d1f3e0f52c50b2adee/6254290ee18d54a50d008b33_618b8faa8965fbda9ae3f943_el20jugador.jpeg",
             paginas = 240,
+            fecha = 1969,
             palabras = 60_000,
             ediciones = 5,
             ventasSemanales = 350,
@@ -768,7 +872,9 @@ class DataInitializer(
         val _1984 = Libro(
             titulo = "1984",
             autor = orwell,
+            imagenURL = "https://images.cdn1.buscalibre.com/fit-in/360x360/ab/54/ab54a82815e061d7fc8f22bcd22f2605.jpg",
             paginas = 328,
+            fecha = 1969,
             palabras = 90_000,
             ediciones = 12,
             ventasSemanales = 900,
@@ -779,7 +885,9 @@ class DataInitializer(
         val rebelionEnLaGranja = Libro(
             titulo = "Rebelión en la granja",
             autor = orwell,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/36/12/3612339f9bf704aadacdd90b34723246.jpg",
             paginas = 112,
+            fecha = 1969,
             palabras = 30_000,
             ediciones = 10,
             ventasSemanales = 700,
@@ -790,7 +898,9 @@ class DataInitializer(
         val homenajeACataluna = Libro(
             titulo = "Homenaje a Cataluña",
             autor = orwell,
+            imagenURL = "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Homenatge_a_Catalunya.jpg/220px-Homenatge_a_Catalunya.jpg",
             paginas = 232,
+            fecha = 1969,
             palabras = 60_000,
             ediciones = 6,
             ventasSemanales = 400,
@@ -801,7 +911,9 @@ class DataInitializer(
         val losDiasDeBirmania = Libro(
             titulo = "Los días de Birmania",
             autor = orwell,
+            imagenURL = "https://images.cdn3.buscalibre.com/fit-in/360x360/8d/b2/8db277f1c8673503a67221d91f61b8f6.jpg",
             paginas = 288,
+            fecha = 1969,
             palabras = 75_000,
             ediciones = 5,
             ventasSemanales = 300,
@@ -812,7 +924,9 @@ class DataInitializer(
         val sinBlancaEnParisYLondres = Libro(
             titulo = "Sin blanca en París y Londres",
             autor = orwell,
+            imagenURL = "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_od7QJ1IAeBkmggk2bU9pcW3lWFj1g0-44Zr_YijTc5A0ARIiCRvsSA01OjHYW07f8sp_dSlvq9Ot02xB_dq-41tUWzLsfGavNhw8cZTlbseWmxlB7GPuPJ7HtOHbSmvvqNh22QoFROk/s1600/down+and+out.jpg",
             paginas = 232,
+            fecha = 1969,
             palabras = 60_000,
             ediciones = 4,
             ventasSemanales = 250,
