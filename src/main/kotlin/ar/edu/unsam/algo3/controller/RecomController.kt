@@ -1,6 +1,5 @@
 package ar.edu.unsam.algo3.controller
 
-import ar.edu.unsam.algo3.Recomendacion
 import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.RecomEditDTO
 import ar.edu.unsam.algo3.dto.toDTO
@@ -8,7 +7,7 @@ import ar.edu.unsam.algo3.service.RecomService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = ["*"])
+@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET])
 class RecomController(val recomService: RecomService) {
 
     @GetMapping("/recommendations")
@@ -22,11 +21,11 @@ class RecomController(val recomService: RecomService) {
     fun deleteRecom(@PathVariable idUser: Int, @PathVariable idRecom: Int) =
         recomService.deleteRecomById(idUser, idRecom)
 
-    @PutMapping("/recommendations/{idRecom}")
+    @PutMapping("/recommendations/update/{idRecom}")
     fun editableRecom(
         @PathVariable idRecom: Int,
         @RequestBody recomBody: RecomEditDTO
-    ): Recomendacion {
-        return recomService.editRecom(idRecom, recomBody)
+    ): RecomDTO {
+        return recomService.editRecom(idRecom, recomBody).toDTO()
     }
 }

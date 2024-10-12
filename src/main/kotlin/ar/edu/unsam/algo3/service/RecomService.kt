@@ -3,6 +3,7 @@ package ar.edu.unsam.algo3.service
 import ar.edu.unsam.algo3.Recomendacion
 import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.RecomEditDTO
+import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.beans.factory.annotation.Qualifier
@@ -45,7 +46,7 @@ class RecomService(
         recommendation.publica = recomBody.publicIs
 
         recomRepositorio.updateItem(recommendation)
-        return recommendation
+        return recomRepositorio.itemById(recommendation.id)!!
     }
 
 
