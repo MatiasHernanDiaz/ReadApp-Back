@@ -4,7 +4,7 @@ import ar.edu.unsam.algo3.repos.ItemRepo
 
 class Recomendacion(
     val creador: User,
-    val titulo: String="",
+    var titulo: String = "",
     var resegna: String,
     val libros: MutableSet<Libro> = mutableSetOf(),
     var publica: Boolean = false
@@ -15,13 +15,13 @@ class Recomendacion(
 
     init {
         creador.addRecom(this)
-        if(!libros.all { puedeAgregarLibro(creador, it) })
+        if (!libros.all { puedeAgregarLibro(creador, it) })
             throw Exception("La lista de libros no es válida.")
     }
 
     fun creador() = creador
 
-    private fun puedeEditar(posibleEditor: User): Boolean =
+    fun puedeEditar(posibleEditor: User): Boolean =
         posibleEditor === creador || (creador.isFriend(posibleEditor) &&
                 posibleEditor.recomBooksAreRead(this))
 
@@ -35,7 +35,7 @@ class Recomendacion(
                                 valorador.isFavouriteAuthor(libros.first().autor())))
 
     fun cambiarPrivacidad(editor: User) {
-        if(puedeEditar(editor)) {
+        if (puedeEditar(editor)) {
             publica = !publica
         } else {
             throw Exception("No es un editor válido")
@@ -45,7 +45,7 @@ class Recomendacion(
     fun esPublica(): Boolean = publica
 
     fun editarResegna(editor: User, nuevaResegna: String) {
-        if(puedeEditar(editor)) {
+        if (puedeEditar(editor)) {
             resegna = nuevaResegna
         } else {
             throw Exception("No es un editor válido")
@@ -55,19 +55,17 @@ class Recomendacion(
     fun resegna(): String = resegna
 
     fun agregarLibro(editor: User, nuevoLibro: Libro) {
-        if(puedeEditar(editor) && puedeAgregarLibro(editor, nuevoLibro)) {
+        if (puedeEditar(editor) && puedeAgregarLibro(editor, nuevoLibro)) {
             libros.add(nuevoLibro)
-        }
-        else {
+        } else {
             throw Exception("No es un editor válido")
         }
     }
 
     fun eliminarLibro(editor: User, libroAEliminar: Libro) {
-        if(puedeEditar(editor)) {
+        if (puedeEditar(editor)) {
             libros.remove(libroAEliminar)
-        }
-        else {
+        } else {
             throw Exception("No es un editor válido")
         }
     }
@@ -78,14 +76,14 @@ class Recomendacion(
         libros.sumOf { user.bookReadTime(it) }
 
     fun tiempoLecturaAhorrado(user: User): Double =
-        libros.filter { user.bookIsRead(it) } .sumOf { user.bookReadTime(it) }
+        libros.filter { user.bookIsRead(it) }.sumOf { user.bookReadTime(it) }
 
     fun tiempoLecturaNeto(user: User): Double =
         tiempoLecturaRecomendacion(user) - tiempoLecturaAhorrado(user)
 
     fun valoraciones() = valoraciones
     fun agregarValoracion(valoracion: Valoracion) {
-        if(puedeValorar(valoracion.autor)) {
+        if (puedeValorar(valoracion.autor)) {
             valoraciones.add(valoracion)
         } else {
             throw Exception("No es un valorador válido")
@@ -94,5 +92,6 @@ class Recomendacion(
 
     fun usuarioValoro(user: User) = valoraciones.any { it.autor === user }
 
-    fun promedioValoraciones(): Double = valoraciones.map{ it.puntuacion }.average()
+    fun promedioValoraciones(): Double = valoraciones.map { it.puntuacion }.average()
+
 }

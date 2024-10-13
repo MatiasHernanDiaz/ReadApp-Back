@@ -13,4 +13,7 @@ data class RecomDTO(
 )
 
 fun Recomendacion.toDTO() =
-    RecomDTO(id = id, title = titulo, description = resegna, books = libros.map { it.toDTO() }, publicIs = publica, creator = creador.toDTO(), ratings = valoraciones.map{it.toDTO()})
+    RecomDTO(id = id, title = titulo, description = resegna,
+        books = libros.map { it.toDTO() }, publicIs = publica,
+        creator = creador.toDTO(), ratings = valoraciones.map { it.toDTO() })
+

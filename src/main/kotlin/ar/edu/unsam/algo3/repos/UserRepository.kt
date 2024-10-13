@@ -8,5 +8,6 @@ class UserRepository : Repository<User>() {
     override val items = mutableSetOf<User>()
     override fun searchItems(patron: String) = items.filter { patron.lowercase() in it.displayName().lowercase()
             || patron.lowercase() == it.username().lowercase() }
+
 }
 
