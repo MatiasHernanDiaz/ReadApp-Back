@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*
 class RecomController(val recomService: RecomService) {
 
     @GetMapping("/recommendations")
-    fun recommendation(@RequestParam("idRecom") id: Int?, @RequestParam("text") text: String = "") =
+    fun recommendation(@RequestParam("userid") id: Int?, @RequestParam("text") text: String = "") =
         recomService.getAllRecoms(id, text).map { it.toDTO() }
 
     @GetMapping("/recommendations/{idRecom}")
