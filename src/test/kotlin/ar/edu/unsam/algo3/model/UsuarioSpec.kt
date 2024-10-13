@@ -84,6 +84,8 @@ class UsuarioSpec : DescribeSpec({
             ventasSemanales = 120,
             lecturaCompleja = false,
             traducciones = mutableSetOf(Language.SPANISH),
+            fecha = 1,
+            imagenURL = "ruta/a/la/imagen"
         )
 
         val lasDosTorres = Libro(
@@ -95,6 +97,8 @@ class UsuarioSpec : DescribeSpec({
             ventasSemanales = 120,
             lecturaCompleja = false,
             traducciones = mutableSetOf(Language.SPANISH),
+            fecha = 1,
+            imagenURL = "ruta/a/la/imagen"
         )
 
         val elRetornoDelRey = Libro(
@@ -106,6 +110,8 @@ class UsuarioSpec : DescribeSpec({
             ventasSemanales = 120,
             lecturaCompleja = false,
             traducciones = mutableSetOf(Language.SPANISH),
+            fecha = 1,
+            imagenURL = "ruta/a/la/imagen"
         )
         val donQuijote = Libro(
             titulo = "Don Quijote de la mancha",
@@ -115,7 +121,9 @@ class UsuarioSpec : DescribeSpec({
             ediciones = 1,
             ventasSemanales = 10001,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH),
+            fecha = 1,
+            imagenURL = "ruta/a/la/imagen"
         )
         val donQuijote2 = Libro(
             titulo = "Don Quijote de la mancha 2 ",
@@ -125,7 +133,9 @@ class UsuarioSpec : DescribeSpec({
             ediciones = 1,
             ventasSemanales = 10001,
             lecturaCompleja = true,
-            traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
+            traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH),
+            fecha = 1,
+            imagenURL = "ruta/a/la/imagen"
         )
 
 
@@ -142,7 +152,9 @@ class UsuarioSpec : DescribeSpec({
                 palabras = 300,
                 ediciones = 3,
                 ventasSemanales = 20000,
-                lecturaCompleja = false
+                lecturaCompleja = false,
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             user.readTimeAvg(libroNoDesafiante) shouldBe 10
@@ -155,7 +167,9 @@ class UsuarioSpec : DescribeSpec({
                 palabras = 300,
                 ediciones = 3,
                 ventasSemanales = 20000,
-                lecturaCompleja = true
+                lecturaCompleja = true,
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             user.readTimeAvg(libroNoDesafiante) shouldBe 20
