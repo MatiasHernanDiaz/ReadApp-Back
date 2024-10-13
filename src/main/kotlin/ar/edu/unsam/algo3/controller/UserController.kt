@@ -7,14 +7,12 @@ import ar.edu.unsam.algo3.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT])
+@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.GET])
 @RequestMapping("/users")
 class UserController (val userService: UserService){
 
-
     @GetMapping("")
     fun users() = userService.getAllUser().map { it.toDTO() }
-
 
     @PutMapping("editprofile")
     fun editProfile(@RequestBody body: UserDTO): UserDTO {
@@ -26,4 +24,14 @@ class UserController (val userService: UserService){
 
         return updatedUser.toDTO()
     }
+
+    @GetMapping("/{userid}")
+    fun users(@PathVariable userid: Int ) = userService.getUser(userid).toDTO()
+
+    @GetMapping("/{userid}/friends")
+    fun getAmigos(@PathVariable userid: Int) = userService.getFriends(userid).map { it.toDTO() }
+
+    @GetMapping("/{userid}/bookstoread")
+    fun getBookToRead(@PathVariable userid: Int, @RequestParam("toread") toread: Boolean) = userService.getBookToRead(userid, toread).map { it.toDTO() }
+
 }
