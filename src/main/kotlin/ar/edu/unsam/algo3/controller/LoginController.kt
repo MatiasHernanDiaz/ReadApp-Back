@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*
 
 @RestController
 @CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.POST, RequestMethod.GET])
-@RequestMapping("/login")
+@RequestMapping("/auth")
 class LoginController(val loginService: LoginService) {
 
     @PostMapping("/register")
@@ -18,7 +18,7 @@ class LoginController(val loginService: LoginService) {
 
     }
 
-    @GetMapping("")
+    @GetMapping("/login")
     fun getSignedUser(): SignedUserRes {
         val signedUser = loginService.getSignedUser()
 
@@ -27,9 +27,11 @@ class LoginController(val loginService: LoginService) {
         return SignedUserRes(true, signedUser.toDTO())
     }
 
-    @PostMapping("")
+    @PostMapping("/login")
     fun login(@RequestBody credentials: CredentialsDTO) = loginService.login(credentials.email, credentials.password).toDTO()
 
+    @GetMapping("/logout")
+    fun logout() = loginService.logout()
 }
 
 data class CredentialsDTO( val email: String, val password: String)

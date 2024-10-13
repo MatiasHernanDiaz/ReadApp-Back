@@ -25,5 +25,10 @@ class LoginService(val userService: UserService) {
 
         return userByEmail
     }
+
+    fun logout(): String {
+        signedUser = null
+        return "Success logout!"
+    }
 }
 
