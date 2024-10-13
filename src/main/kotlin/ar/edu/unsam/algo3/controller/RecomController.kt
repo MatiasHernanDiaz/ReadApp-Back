@@ -24,8 +24,9 @@ class RecomController(val recomService: RecomService) {
     @PutMapping("/recommendations/update/{idRecom}")
     fun editableRecom(
         @PathVariable idRecom: Int,
+        @RequestParam("userid") userid: Int,
         @RequestBody recomBody: RecomEditDTO
     ): RecomDTO {
-        return recomService.editRecom(idRecom, recomBody).toDTO()
+        return recomService.editRecom(idRecom, recomBody, userid).toDTO()
     }
 }

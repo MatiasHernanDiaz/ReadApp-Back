@@ -1012,14 +1012,7 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(aleph,rayuela,genteToxica)
         )
 
         val marge = User(
@@ -1420,7 +1413,7 @@ class DataInitializer(
         val recomHomero1 = Recomendacion(
             creador = homero,
             resegna = "Una emocionante aventura llena de risas y emoción.",
-            libros = mutableSetOf(aleph, bill, genteToxica),
+            libros = mutableSetOf(aleph,rayuela,genteToxica),
             publica = false,
             titulo = "Aventura y humor en un solo libro"
         )
@@ -1772,9 +1765,10 @@ class DataInitializer(
         val valoracionHomero3 = Valoracion(puntuacion = 3, comentario = "Regular.", autor = homero)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
-        recomLisa1.agregarValoracion(valoracionHomero1)  // Lisa valora la recomendación de Homero
-        recomBart1.agregarValoracion(valoracionHomero2)  // Bart valora la recomendación de Homero
-        recomMarge1.agregarValoracion(valoracionHomero3)  // Marge valora la recomendación de Homero
+        //Le sacos libros a homero para probar que no pueda editar, por tanto no puedo valorar lo que no leyo
+        //recomLisa1.agregarValoracion(valoracionHomero1)  // Lisa valora la recomendación de Homero
+        //recomBart1.agregarValoracion(valoracionHomero2)  // Bart valora la recomendación de Homero
+        //recomMarge1.agregarValoracion(valoracionHomero3)  // Marge valora la recomendación de Homero
 
 // Valoraciones de Lisa
         val valoracionLisa1 = Valoracion(puntuacion = 5, comentario = "Increíble.", autor = lisa)
