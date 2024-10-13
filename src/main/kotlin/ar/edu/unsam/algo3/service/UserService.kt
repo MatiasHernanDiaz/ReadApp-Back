@@ -1,13 +1,11 @@
 package ar.edu.unsam.algo3.service
 
-import ar.edu.unsam.algo3.Combined
-import ar.edu.unsam.algo3.ReadMode
-import ar.edu.unsam.algo3.SearchCriteria
-import ar.edu.unsam.algo3.User
+import ar.edu.unsam.algo3.*
 import ar.edu.unsam.algo3.dto.UserDTO
 import ar.edu.unsam.algo3.errors.NoIdException
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.stereotype.Service
+
 
 
 @Service
@@ -55,5 +53,22 @@ class UserService (val userRepo: UserRepository){
             readMode = ReadMode.fromCustomString(userDTO.readMode),
             avatar = userDTO.avatar
         )
+    }
+
+    fun getUser(userid: Int): User {
+        return userRepo.itemById(userid)!!
+    }
+
+    fun getFriends(userid: Int): List<User> {
+        return userRepo.itemById(userid)!!.friends.toList()
+    }
+
+    fun getBookToRead(userid: Int, toread: Boolean): List<Libro> {
+        if(toread){
+            return userRepo.itemById(userid)!!.booksToRead.toList()
+        }
+        else{
+            return userRepo.itemById(userid)!!.readBooks.toList()
+        }
     }
 }
