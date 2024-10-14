@@ -8,9 +8,9 @@ name: build
 on:
   # Nota: Reemplazar "main, master" con las branches principales que se manejen (ej.: "main, develop")
   push:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
   pull_request:
-    branches: [ main, master ]
+    branches: [ main, master, develop ]
 jobs:
   gradle:
     runs-on: ubuntu-latest
@@ -27,12 +27,12 @@ jobs:
       - name: Execute tests with coverage
         run: ./gradlew runOnGitHub
 
-      - name: Generate JaCoCo Badge
-        id: jacoco
-        uses: cicirello/jacoco-badge-generator@v2.11.0
-        with:
-          generate-branches-badge: true
-          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
+#      - name: Generate JaCoCo Badge
+#        id: jacoco
+#        uses: cicirello/jacoco-badge-generator@v2.11.0
+#        with:
+#          generate-branches-badge: true
+#          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
 
       - name: Log coverage percentage
         run: |

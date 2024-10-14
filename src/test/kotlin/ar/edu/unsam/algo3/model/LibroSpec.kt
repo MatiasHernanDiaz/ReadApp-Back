@@ -16,7 +16,9 @@ class LibroSpec : DescribeSpec({
                 ediciones = 1,
                 ventasSemanales = 10001,
                 lecturaCompleja = true,
-                traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
+                traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             donQuijote.esDesafiante() shouldBe true
             donQuijote.esBestSeller() shouldBe true
@@ -31,7 +33,9 @@ class LibroSpec : DescribeSpec({
                 ediciones = 3,
                 ventasSemanales = 10001,
                 lecturaCompleja = true,
-                traducciones = mutableSetOf()
+                traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             zelda.esDesafiante() shouldBe true
             zelda.esBestSeller() shouldBe true
@@ -46,7 +50,9 @@ class LibroSpec : DescribeSpec({
                 ediciones = 1,
                 ventasSemanales = 10001,
                 lecturaCompleja = true,
-                traducciones = mutableSetOf()
+                traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             guiaCocina.esDesafiante() shouldBe true
             guiaCocina.esBestSeller() shouldBe false
@@ -61,7 +67,9 @@ class LibroSpec : DescribeSpec({
                 ediciones = 3,
                 ventasSemanales = 9000,
                 lecturaCompleja = true,
-                traducciones = mutableSetOf()
+                traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             jojos.esDesafiante() shouldBe true
             jojos.esBestSeller() shouldBe false
@@ -76,7 +84,9 @@ class LibroSpec : DescribeSpec({
                 ediciones = 1,
                 ventasSemanales = 9000,
                 lecturaCompleja = true,
-                traducciones = mutableSetOf( Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.HINDI,Language.ARAB)
+                traducciones = mutableSetOf( Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.HINDI,Language.ARAB),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             historia.esDesafiante() shouldBe true
             historia.esBestSeller() shouldBe false
@@ -93,7 +103,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 10000,
                 ventasSemanales = 100000,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf(Language.ENGLISH)
+                traducciones = mutableSetOf(Language.ENGLISH),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             elEternauta.esDesafiante() shouldBe true
             elEternauta.esBestSeller() shouldBe true
@@ -108,7 +120,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 10000,
                 ventasSemanales = 100000,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.BENGALI)
+                traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.BENGALI),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             cronicasDeUnaMuerte.esDesafiante() shouldBe true
             cronicasDeUnaMuerte.esBestSeller() shouldBe true
@@ -123,7 +137,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 10000,
                 ventasSemanales = 1000,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf(Language.MANDARIN)
+                traducciones = mutableSetOf(Language.MANDARIN),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             laGranjaDeZenon.esDesafiante() shouldBe true
             laGranjaDeZenon.esBestSeller() shouldBe false
@@ -138,7 +154,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 10000,
                 ventasSemanales = 100,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf(Language.HINDI)
+                traducciones = mutableSetOf(Language.HINDI),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
             elPalacioJapones.esDesafiante() shouldBe true
             elPalacioJapones.esBestSeller() shouldBe false
@@ -158,7 +176,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 10000,
                 ventasSemanales = 10000,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf()
+                traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             caperucita.esDesafiante() shouldBe false
@@ -177,7 +197,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 10000,
                 ventasSemanales = 10000,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf()
+                traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             pulgarcito.idiomaOriginal() shouldBe Language.FRENCH
@@ -191,7 +213,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 10000,
                 ventasSemanales = 10000,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf()
+                traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             pulgarcito.traducciones() shouldBe listOf()
@@ -205,7 +229,9 @@ class LibroSpec : DescribeSpec({
                 palabras = 30000,
                 ventasSemanales = 200000,
                 lecturaCompleja = false,
-                traducciones = mutableSetOf(Language.SPANISH,Language.GERMAN,Language.JAPANESE)
+                traducciones = mutableSetOf(Language.SPANISH,Language.GERMAN,Language.JAPANESE),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             cenicienta.traducciones() shouldBe listOf(Language.SPANISH,Language.GERMAN,Language.JAPANESE)

@@ -18,7 +18,9 @@ class PerfilSpec : DescribeSpec ({
         ediciones = 1,
         ventasSemanales = 6000,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.FRENCH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
     val autor2 = Author(firstName = "Miguel", lastName = "de Cervantes", alias = "El manco", nativeLanguage = Language.ENGLISH,birthday = LocalDate.of(1988, 6, 9), prices= mutableListOf())
     val libro2 = Libro(
@@ -29,7 +31,9 @@ class PerfilSpec : DescribeSpec ({
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Language.SPANISH)
+        traducciones = mutableSetOf(Language.SPANISH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
     val autor3 = Author(firstName = "Miguel", lastName = "de Cervantes", alias = "El manco", nativeLanguage = Language.SPANISH,birthday = LocalDate.of(1988, 6, 9), prices= mutableListOf())
     val libro3 = Libro(
@@ -40,7 +44,9 @@ class PerfilSpec : DescribeSpec ({
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf( Language.ITALIAN, Language.PORTUGUESE,Language.ENGLISH, Language.FRENCH)
+        traducciones = mutableSetOf( Language.ITALIAN, Language.PORTUGUESE,Language.ENGLISH, Language.FRENCH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val amigo = User(
