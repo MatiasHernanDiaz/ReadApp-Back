@@ -1,6 +1,8 @@
 package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.Recomendacion
+import ar.edu.unsam.algo3.Valoracion
+import ar.edu.unsam.algo3.dto.RatingDTO
 import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.RecomEditDTO
 import ar.edu.unsam.algo3.dto.toDTO
@@ -57,7 +59,26 @@ class RecomService(
         return recomRepositorio.itemById(recommendation.id)!!
     }
 
+    fun canRating(userid: Int, recomid: Int): Boolean {
+        val recom = recomRepositorio.itemById(recomid)
+        val user = userRepository.itemById(userid)
+        return recom!!.puedeValorar(user!!)
+    }
 
+    fun rating(userid: Int, recomid: Int, ratingDTO: RatingDTO): RatingDTO {
+        if(!canRating(userid, recomid)){
+            throw BusinessException("El usuario no puede valorar!!")
+        }
+        val newRating : Valoracion = Valoracion(
+            rating = ratingDTO.rating,
+            description = ratingDTO.description,
+            autor = userRepository.itemById(userid)!!
+        )
+
+        val recom = recomRepositorio.itemById(recomid)
+        recom!!.agregarValoracion(newRating)
+        return newRating.toDTO()
+    }
 }
 
 

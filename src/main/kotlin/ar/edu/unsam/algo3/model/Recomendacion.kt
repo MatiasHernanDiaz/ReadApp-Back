@@ -28,7 +28,7 @@ class Recomendacion(
     private fun puedeAgregarLibro(editor: User, libro: Libro) = editor.bookIsRead(libro) &&
             creador.bookIsRead(libro)
 
-    private fun puedeValorar(valorador: User) =
+    fun puedeValorar(valorador: User) =
         valorador !== creador &&
                 (valorador.recomBooksAreRead(this) ||
                         (libros.all { it.autor() === libros.first().autor() } &&
@@ -92,6 +92,6 @@ class Recomendacion(
 
     fun usuarioValoro(user: User) = valoraciones.any { it.autor === user }
 
-    fun promedioValoraciones(): Double = valoraciones.map { it.puntuacion }.average()
+    fun promedioValoraciones(): Double = valoraciones.map { it.rating }.average()
 
 }

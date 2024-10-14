@@ -88,18 +88,18 @@ class PerfilSpec : DescribeSpec ({
     )
 
     val valoracion1 = Valoracion(
-        puntuacion = 5,
-        comentario = "la mejor valoracion del mundo",
+        rating = 5,
+        description = "la mejor valoracion del mundo",
         autor = amigo
     )
     val valoracion2 = Valoracion(
-        puntuacion = 3,
-        comentario = "masomenos",
+        rating = 3,
+        description = "masomenos",
         autor = amigo
         )
     val valoracion3 = Valoracion(
-        puntuacion = 1,
-        comentario = "nada que ver lo que opinás",
+        rating = 1,
+        description = "nada que ver lo que opinás",
         autor = amigo
     )
 
