@@ -15,7 +15,7 @@ class LoginService(val userService: UserService) {
         val userByEmail = allUsers.find { us -> us.email == email }
 
         if(userByEmail === null) {
-            throw BadCredentailsError("Hola")
+            throw BadCredentailsError()
         }
 
         if(userByEmail.password != password) {
