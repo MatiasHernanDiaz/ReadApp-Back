@@ -1012,14 +1012,7 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(aleph,rayuela,genteToxica)
         )
 
         val marge = User(
@@ -1420,7 +1413,7 @@ class DataInitializer(
         val recomHomero1 = Recomendacion(
             creador = homero,
             resegna = "Una emocionante aventura llena de risas y emoción.",
-            libros = mutableSetOf(aleph, bill, genteToxica),
+            libros = mutableSetOf(aleph,rayuela,genteToxica),
             publica = false,
             titulo = "Aventura y humor en un solo libro"
         )
@@ -1767,19 +1760,20 @@ class DataInitializer(
         )
 
         // Valoraciones de Homero
-        val valoracionHomero1 = Valoracion(puntuacion = 5, comentario = "Buenísimo Bro!", autor = homero)
-        val valoracionHomero2 = Valoracion(puntuacion = 4, comentario = "Muy interesante.", autor = homero)
-        val valoracionHomero3 = Valoracion(puntuacion = 3, comentario = "Regular.", autor = homero)
+        val valoracionHomero1 = Valoracion(rating = 5, description = "Buenísimo Bro!", autor = homero)
+        val valoracionHomero2 = Valoracion(rating = 4, description = "Muy interesante.", autor = homero)
+        val valoracionHomero3 = Valoracion(rating = 3, description = "Regular.", autor = homero)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
-        recomLisa1.agregarValoracion(valoracionHomero1)  // Lisa valora la recomendación de Homero
-        recomBart1.agregarValoracion(valoracionHomero2)  // Bart valora la recomendación de Homero
-        recomMarge1.agregarValoracion(valoracionHomero3)  // Marge valora la recomendación de Homero
+        //Le sacos libros a homero para probar que no pueda editar, por tanto no puedo valorar lo que no leyo
+        //recomLisa1.agregarValoracion(valoracionHomero1)  // Lisa valora la recomendación de Homero
+        //recomBart1.agregarValoracion(valoracionHomero2)  // Bart valora la recomendación de Homero
+        //recomMarge1.agregarValoracion(valoracionHomero3)  // Marge valora la recomendación de Homero
 
 // Valoraciones de Lisa
-        val valoracionLisa1 = Valoracion(puntuacion = 5, comentario = "Increíble.", autor = lisa)
-        val valoracionLisa2 = Valoracion(puntuacion = 4, comentario = "Reflexivo y hermoso.", autor = lisa)
-        val valoracionLisa3 = Valoracion(puntuacion = 3, comentario = "Bueno pero no es para todos.", autor = lisa)
+        val valoracionLisa1 = Valoracion(rating = 5, description = "Increíble.", autor = lisa)
+        val valoracionLisa2 = Valoracion(rating = 4, description = "Reflexivo y hermoso.", autor = lisa)
+        val valoracionLisa3 = Valoracion(rating = 3, description = "Bueno pero no es para todos.", autor = lisa)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomBart2.agregarValoracion(valoracionLisa1)  // Bart valora la recomendación de Lisa
@@ -1787,9 +1781,9 @@ class DataInitializer(
         recomSelma1.agregarValoracion(valoracionLisa3)  // Selma valora la recomendación de Lisa
 
 // Valoraciones de Bart
-        val valoracionBart1 = Valoracion(puntuacion = 5, comentario = "¡Me encantó!", autor = bart)
-        val valoracionBart2 = Valoracion(puntuacion = 4, comentario = "Divertido.", autor = bart)
-        val valoracionBart3 = Valoracion(puntuacion = 3, comentario = "Estuvo bien.", autor = bart)
+        val valoracionBart1 = Valoracion(rating = 5, description = "¡Me encantó!", autor = bart)
+        val valoracionBart2 = Valoracion(rating = 4, description = "Divertido.", autor = bart)
+        val valoracionBart3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = bart)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomMarge2.agregarValoracion(valoracionBart1)  // Marge valora la recomendación de Bart
@@ -1797,9 +1791,9 @@ class DataInitializer(
         recomPatty1.agregarValoracion(valoracionBart3)  // Patty valora la recomendación de Bart
 
 // Valoraciones de Marge
-        val valoracionMarge1 = Valoracion(puntuacion = 5, comentario = "Una joya literaria.", autor = marge)
-        val valoracionMarge2 = Valoracion(puntuacion = 4, comentario = "Lleno de emociones.", autor = marge)
-        val valoracionMarge3 = Valoracion(puntuacion = 3, comentario = "Interesante pero algo lento.", autor = marge)
+        val valoracionMarge1 = Valoracion(rating = 5, description = "Una joya literaria.", autor = marge)
+        val valoracionMarge2 = Valoracion(rating = 4, description = "Lleno de emociones.", autor = marge)
+        val valoracionMarge3 = Valoracion(rating = 3, description = "Interesante pero algo lento.", autor = marge)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomSelma2.agregarValoracion(valoracionMarge1)  // Selma valora la recomendación de Marge
@@ -1807,9 +1801,9 @@ class DataInitializer(
         recomMilhouse1.agregarValoracion(valoracionMarge3)  // Milhouse valora la recomendación de Marge
 
 // Valoraciones de Selma
-        val valoracionSelma1 = Valoracion(puntuacion = 5, comentario = "Reflexiones profundas.", autor = selma)
-        val valoracionSelma2 = Valoracion(puntuacion = 4, comentario = "Un buen libro.", autor = selma)
-        val valoracionSelma3 = Valoracion(puntuacion = 3, comentario = "Me gustó, pero hay mejores.", autor = selma)
+        val valoracionSelma1 = Valoracion(rating = 5, description = "Reflexiones profundas.", autor = selma)
+        val valoracionSelma2 = Valoracion(rating = 4, description = "Un buen libro.", autor = selma)
+        val valoracionSelma3 = Valoracion(rating = 3, description = "Me gustó, pero hay mejores.", autor = selma)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomPatty2.agregarValoracion(valoracionSelma1)  // Patty valora la recomendación de Selma
@@ -1817,9 +1811,9 @@ class DataInitializer(
         recomKrusty2.agregarValoracion(valoracionSelma3)  // Krusty valora la recomendación de Selma
 
 // Valoraciones de Patty
-        val valoracionPatty1 = Valoracion(puntuacion = 5, comentario = "Increíble lectura.", autor = patty)
-        val valoracionPatty2 = Valoracion(puntuacion = 4, comentario = "Me encantó.", autor = patty)
-        val valoracionPatty3 = Valoracion(puntuacion = 3, comentario = "No está mal.", autor = patty)
+        val valoracionPatty1 = Valoracion(rating = 5, description = "Increíble lectura.", autor = patty)
+        val valoracionPatty2 = Valoracion(rating = 4, description = "Me encantó.", autor = patty)
+        val valoracionPatty3 = Valoracion(rating = 3, description = "No está mal.", autor = patty)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomMilhouse2.agregarValoracion(valoracionPatty1)  // Milhouse valora la recomendación de Patty
@@ -1827,9 +1821,9 @@ class DataInitializer(
         recomNelson2.agregarValoracion(valoracionPatty3)  // Nelson valora la recomendación de Patty
 
 // Valoraciones de Milhouse
-        val valoracionMilhouse1 = Valoracion(puntuacion = 5, comentario = "Espectacular.", autor = milhouse)
-        val valoracionMilhouse2 = Valoracion(puntuacion = 4, comentario = "Muy divertido.", autor = milhouse)
-        val valoracionMilhouse3 = Valoracion(puntuacion = 3, comentario = "Aceptable.", autor = milhouse)
+        val valoracionMilhouse1 = Valoracion(rating = 5, description = "Espectacular.", autor = milhouse)
+        val valoracionMilhouse2 = Valoracion(rating = 4, description = "Muy divertido.", autor = milhouse)
+        val valoracionMilhouse3 = Valoracion(rating = 3, description = "Aceptable.", autor = milhouse)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomNelson3.agregarValoracion(valoracionMilhouse1)  // Nelson valora la recomendación de Milhouse
@@ -1837,9 +1831,9 @@ class DataInitializer(
         recomKrusty3.agregarValoracion(valoracionMilhouse3)  // Krusty valora la recomendación de Milhouse
 
 // Valoraciones de Barney
-        val valoracionBarney1 = Valoracion(puntuacion = 5, comentario = "¡Increíble!", autor = barney)
-        val valoracionBarney2 = Valoracion(puntuacion = 4, comentario = "Un gran libro.", autor = barney)
-        val valoracionBarney3 = Valoracion(puntuacion = 3, comentario = "Interesante.", autor = barney)
+        val valoracionBarney1 = Valoracion(rating = 5, description = "¡Increíble!", autor = barney)
+        val valoracionBarney2 = Valoracion(rating = 4, description = "Un gran libro.", autor = barney)
+        val valoracionBarney3 = Valoracion(rating = 3, description = "Interesante.", autor = barney)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomSkinner1.agregarValoracion(valoracionBarney1)  // Skinner valora la recomendación de Barney
@@ -1847,9 +1841,9 @@ class DataInitializer(
         recomSelma3.agregarValoracion(valoracionBarney3)  // Selma valora la recomendación de Barney
 
 // Valoraciones de Nelson
-        val valoracionNelson1 = Valoracion(puntuacion = 5, comentario = "¡Fantástico!", autor = nelson)
-        val valoracionNelson2 = Valoracion(puntuacion = 4, comentario = "Me gustó mucho.", autor = nelson)
-        val valoracionNelson3 = Valoracion(puntuacion = 3, comentario = "Estuvo bien.", autor = nelson)
+        val valoracionNelson1 = Valoracion(rating = 5, description = "¡Fantástico!", autor = nelson)
+        val valoracionNelson2 = Valoracion(rating = 4, description = "Me gustó mucho.", autor = nelson)
+        val valoracionNelson3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = nelson)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomKrusty1.agregarValoracion(valoracionNelson1)  // Krusty valora la recomendación de Nelson
@@ -1857,9 +1851,9 @@ class DataInitializer(
         recomLisa3.agregarValoracion(valoracionNelson3)  // Lisa valora la recomendación de Nelson
 
 // Valoraciones de Lenny
-        val valoracionLenny1 = Valoracion(puntuacion = 5, comentario = "Un libro que todos deben leer.", autor = lenny)
-        val valoracionLenny2 = Valoracion(puntuacion = 4, comentario = "Recomendado.", autor = lenny)
-        val valoracionLenny3 = Valoracion(puntuacion = 3, comentario = "Interesante.", autor = lenny)
+        val valoracionLenny1 = Valoracion(rating = 5, description = "Un libro que todos deben leer.", autor = lenny)
+        val valoracionLenny2 = Valoracion(rating = 4, description = "Recomendado.", autor = lenny)
+        val valoracionLenny3 = Valoracion(rating = 3, description = "Interesante.", autor = lenny)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomMarge3.agregarValoracion(valoracionLenny1)  // Marge valora la recomendación de Lenny

@@ -1,5 +1,6 @@
 package ar.edu.unsam.algo3.controller
 
+import ar.edu.unsam.algo3.dto.RatingDTO
 import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.RecomEditDTO
 import ar.edu.unsam.algo3.dto.toDTO
@@ -24,8 +25,20 @@ class RecomController(val recomService: RecomService) {
     @PutMapping("/recommendations/update/{idRecom}")
     fun editableRecom(
         @PathVariable idRecom: Int,
+        @RequestParam("userid") userid: Int,
         @RequestBody recomBody: RecomEditDTO
     ): RecomDTO {
-        return recomService.editRecom(idRecom, recomBody).toDTO()
+        return recomService.editRecom(idRecom, recomBody, userid).toDTO()
     }
+
+    @GetMapping("/recommendations/rating")
+    fun canRating(@RequestParam("userid") userid: Int, @RequestParam("recomid") recomid: Int) : Boolean =
+        recomService.canRating(userid, recomid)
+
+    @GetMapping("/recommendations/rating/{userid}")
+    fun rating(@PathVariable userid: Int,
+               @RequestParam("recomid") recomid: Int,
+               @RequestBody ratingBody: RatingDTO) : RatingDTO =
+        recomService.rating(userid, recomid, ratingBody)
+
 }

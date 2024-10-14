@@ -123,7 +123,7 @@ class RecomendacionSpec : DescribeSpec({
         imagenURL = "ruta/a/la/imagen"
     )
 
-    val valoracion = Valoracion(puntuacion = 5, comentario = "Buenisimo Bro!", autor = userCualquiera)
+    val valoracion = Valoracion(rating = 5, description = "Buenisimo Bro!", autor = userCualquiera)
 
     creadorRecom.addReadBook(libroAutorPreferido)
     creadorRecom.addReadBook(libroOtroAutorPreferido)
@@ -337,12 +337,12 @@ class RecomendacionSpec : DescribeSpec({
             }
             it("El autor de la valoracion puede editar comentario"){
                 valoracion.editarComentario(userCualquiera, "Buenisimo KPO")
-                valoracion.comentario shouldBe "Buenisimo KPO"
+                valoracion.description shouldBe "Buenisimo KPO"
             }
 
             it("El autor de la valoracion puede editar puntuacion"){
                 valoracion.editarPuntuacion(userCualquiera, 3)
-                valoracion.puntuacion shouldBe 3
+                valoracion.rating shouldBe 3
             }
 
             it("Un usuario que no es el autor de la valoracion no puede editar puntuacion"){
