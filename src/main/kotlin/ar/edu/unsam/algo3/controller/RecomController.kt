@@ -35,10 +35,9 @@ class RecomController(val recomService: RecomService) {
     fun canRating(@RequestParam("userid") userid: Int, @RequestParam("recomid") recomid: Int) : Boolean =
         recomService.canRating(userid, recomid)
 
-    @GetMapping("/recommendations/rating/{userid}")
-    fun rating(@PathVariable userid: Int,
-               @RequestParam("recomid") recomid: Int,
+    @PostMapping("/recommendations/rating/create")
+    fun rating(@RequestParam("recomid") recomid: Int,
                @RequestBody ratingBody: RatingDTO) : RatingDTO =
-        recomService.rating(userid, recomid, ratingBody)
+        recomService.rating(recomid, ratingBody)
 
 }
