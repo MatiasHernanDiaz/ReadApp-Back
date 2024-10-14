@@ -31,7 +31,11 @@ class UserService (val userRepo: UserRepository){
         }
 
         val newSearchCriteria = if(userDTO.searchCriteria.size > 1)
-            SearchCriteria.fromCustomString("Combinado", profiles = userDTO.searchCriteria) else
+            SearchCriteria.fromCustomString(
+                "Combinado",
+                user = oldUser,
+                profiles = userDTO.searchCriteria
+            ) else
             SearchCriteria.fromCustomString(userDTO.searchCriteria[0])
 
 
