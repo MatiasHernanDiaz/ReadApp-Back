@@ -28,7 +28,9 @@ class LoginController(val loginService: LoginService) {
     }
 
     @PostMapping("/login")
-    fun login(@RequestBody credentials: CredentialsDTO) = loginService.login(credentials.email, credentials.password).toDTO()
+    fun login(@RequestBody credentials: CredentialsDTO) = SignedUserRes(
+        true, loginService.login(credentials.email, credentials.password).toDTO()
+    )
 
     @GetMapping("/logout")
     fun logout() = loginService.logout()
