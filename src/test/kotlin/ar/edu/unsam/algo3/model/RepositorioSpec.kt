@@ -56,7 +56,9 @@ class RepositorioSpec : DescribeSpec({
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Language.ENGLISH)
+        traducciones = mutableSetOf(Language.ENGLISH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val libro2 = Libro(
@@ -67,7 +69,9 @@ class RepositorioSpec : DescribeSpec({
         ediciones = 2,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Language.ENGLISH)
+        traducciones = mutableSetOf(Language.ENGLISH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val libro3 = Libro(
@@ -78,7 +82,9 @@ class RepositorioSpec : DescribeSpec({
         ediciones = 3,
         ventasSemanales = 10001,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Language.ENGLISH)
+        traducciones = mutableSetOf(Language.ENGLISH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     //USUARIOS
@@ -471,7 +477,9 @@ class RepositorioSpec : DescribeSpec({
                     ediciones = 10,
                     ventasSemanales = 10001,
                     lecturaCompleja = false,
-                    traducciones = mutableSetOf(Language.ENGLISH)
+                    traducciones = mutableSetOf(Language.ENGLISH),
+                    fecha = 1,
+                    imagenURL = "ruta/a/la/imagen"
                 )
 
                 libro1Actualizado.id = 1

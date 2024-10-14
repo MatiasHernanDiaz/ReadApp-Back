@@ -63,7 +63,7 @@ class UserService (val userRepo: UserRepository){
         return userRepo.itemById(userid)!!.friends.toList()
     }
 
-    fun getBookToRead(userid: Int, toread: Boolean): List<Libro> {
+    fun getBooksToRead(userid: Int, toread: Boolean): List<Libro> {
         if(toread){
             return userRepo.itemById(userid)!!.booksToRead.toList()
         }

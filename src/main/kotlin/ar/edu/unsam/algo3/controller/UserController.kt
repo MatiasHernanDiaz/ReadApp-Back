@@ -29,9 +29,8 @@ class UserController (val userService: UserService){
     fun users(@PathVariable userid: Int ) = userService.getUser(userid).toDTO()
 
     @GetMapping("/{userid}/friends")
-    fun getAmigos(@PathVariable userid: Int) = userService.getFriends(userid).map { it.toDTO() }
+    fun getFriends(@PathVariable userid: Int) = userService.getFriends(userid).map { it.toDTO() }
 
     @GetMapping("/{userid}/bookstoread")
-    fun getBookToRead(@PathVariable userid: Int, @RequestParam("toread") toread: Boolean) = userService.getBookToRead(userid, toread).map { it.toDTO() }
-
+    fun getBooksToRead(@PathVariable userid: Int, @RequestParam("toread") toread: Boolean) = userService.getBooksToRead(userid, toread).map { it.toDTO() }
 }

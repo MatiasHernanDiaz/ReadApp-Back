@@ -93,6 +93,8 @@ class RecomendacionSpec : DescribeSpec({
         ventasSemanales = 120,
         lecturaCompleja = false,
         traducciones = mutableSetOf(Language.ENGLISH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val libroOtroAutorPreferido = Libro(
@@ -104,6 +106,8 @@ class RecomendacionSpec : DescribeSpec({
         ventasSemanales = 120,
         lecturaCompleja = false,
         traducciones = mutableSetOf(Language.ENGLISH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val libroAutorNoPreferido = Libro(
@@ -114,7 +118,9 @@ class RecomendacionSpec : DescribeSpec({
         ediciones = 4,
         ventasSemanales = 120,
         lecturaCompleja = false,
-        traducciones = mutableSetOf(Language.ENGLISH)
+        traducciones = mutableSetOf(Language.ENGLISH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val valoracion = Valoracion(rating = 5, description = "Buenisimo Bro!", autor = userCualquiera)
@@ -209,6 +215,8 @@ class RecomendacionSpec : DescribeSpec({
                 ventasSemanales = 100,
                 lecturaCompleja = false,
                 traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             val otroNuevoLibro = Libro(
@@ -220,6 +228,8 @@ class RecomendacionSpec : DescribeSpec({
                 ventasSemanales = 100,
                 lecturaCompleja = false,
                 traducciones = mutableSetOf(),
+                fecha = 1,
+                imagenURL = "ruta/a/la/imagen"
             )
 
             it("si el creador agrega un libro que no leyó, la cantidad de libros totales debe seguir siendo 3") {
@@ -296,6 +306,8 @@ class RecomendacionSpec : DescribeSpec({
                     ventasSemanales = 120,
                     lecturaCompleja = false,
                     traducciones = mutableSetOf(Language.ENGLISH),
+                    fecha = 1,
+                    imagenURL = "ruta/a/la/imagen"
                 )
                 creadorRecom.addReadBook(otroLibroDeAutorPreferido)
                 val recomDeAutorPreferido = Recomendacion(

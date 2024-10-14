@@ -17,7 +17,9 @@ class ValoracionAutomaticaSpec : DescribeSpec({
         ediciones = 1,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val primerLibroAgregado = Libro(
@@ -33,7 +35,9 @@ class ValoracionAutomaticaSpec : DescribeSpec({
         ediciones = 5,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val segundoLibroAgregado = Libro(
@@ -49,7 +53,9 @@ class ValoracionAutomaticaSpec : DescribeSpec({
         ediciones = 5,
         ventasSemanales = 10001,
         lecturaCompleja = true,
-        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH)
+        traducciones = mutableSetOf(Language.ENGLISH, Language.GERMAN, Language.PORTUGUESE, Language.RUSSIAN, Language.ITALIAN, Language.FRENCH),
+        fecha = 1,
+        imagenURL = "ruta/a/la/imagen"
     )
 
     val userEditor = User(
