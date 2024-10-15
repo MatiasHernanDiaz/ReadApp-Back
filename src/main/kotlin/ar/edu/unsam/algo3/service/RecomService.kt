@@ -2,10 +2,7 @@ package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.Recomendacion
 import ar.edu.unsam.algo3.Valoracion
-import ar.edu.unsam.algo3.dto.RatingDTO
-import ar.edu.unsam.algo3.dto.RecomDTO
-import ar.edu.unsam.algo3.dto.RecomEditDTO
-import ar.edu.unsam.algo3.dto.toDTO
+import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.errors.BusinessException
 import ar.edu.unsam.algo3.errors.NoIdException
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
@@ -78,6 +75,18 @@ class RecomService(
         val recom = recomRepositorio.itemById(recomid)
         recom!!.agregarValoracion(newRating)
         return newRating.toDTO()
+    }
+
+    fun createRecom(createRecomDTO: CreateRecomDTO): RecomDTO {
+        val creator = userRepository.itemById(createRecomDTO.userid)
+        val newRecom = Recomendacion(titulo = createRecomDTO.title,
+            creador = creator!!,
+            libros = mutableSetOf(),
+            resegna = ""
+            )
+        val id = recomRepositorio.createItem(newRecom)
+        println("id "+ id)
+        return recomRepositorio.itemById(id)!!.toDTO()
     }
 }
 

@@ -1,9 +1,6 @@
 package ar.edu.unsam.algo3.controller
 
-import ar.edu.unsam.algo3.dto.RatingDTO
-import ar.edu.unsam.algo3.dto.RecomDTO
-import ar.edu.unsam.algo3.dto.RecomEditDTO
-import ar.edu.unsam.algo3.dto.toDTO
+import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.service.RecomService
 import org.springframework.web.bind.annotation.*
 
@@ -31,6 +28,13 @@ class RecomController(val recomService: RecomService) {
         return recomService.editRecom(idRecom, recomBody, userid).toDTO()
     }
 
+    @PostMapping("/recommendations/create/recom")
+    fun createRecom(
+        @RequestBody createRecomDTO: CreateRecomDTO,
+    ): RecomDTO{
+        return recomService.createRecom(createRecomDTO)
+    }
+
     @GetMapping("/recommendations/rating")
     fun canRating(@RequestParam("userid") userid: Int, @RequestParam("recomid") recomid: Int) : Boolean =
         recomService.canRating(userid, recomid)
@@ -39,5 +43,6 @@ class RecomController(val recomService: RecomService) {
     fun rating(@RequestParam("recomid") recomid: Int,
                @RequestBody ratingBody: RatingDTO) : RatingDTO =
         recomService.rating(recomid, ratingBody)
+
 
 }

@@ -17,3 +17,8 @@ fun Recomendacion.toDTO() =
         books = libros.map { it.toDTO() }, publicIs = publica,
         creator = creador.toDTO(), ratings = valoraciones.map { it.toDTO() })
 
+data class CreateRecomDTO(
+    val title: String = "",
+    val userid: Int
+)
+
