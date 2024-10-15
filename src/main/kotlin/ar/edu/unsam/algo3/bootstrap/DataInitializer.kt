@@ -991,15 +991,6 @@ class DataInitializer(
         repoBook.createItem(rebelionEnLaGranja)
         repoBook.createItem(homenajeACataluna)
         repoBook.createItem(losDiasDeBirmania)
-//        (aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-//        othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-//        donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-//        historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-//        demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-//        enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-//        orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-//        homenajeACataluna,losDiasDeBirmania)
-
 
         val homero = User(
             firstName = "Homero",
@@ -1012,7 +1003,10 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica)
+            readBooks = mutableListOf(aleph,rayuela,genteToxica,macbeth,elJugador, elProceso,_1984,crimenYCastigo,
+                orgulloYPrejuicio,orlando, lasOlas),
+            booksToRead = mutableSetOf(losHermanosKaramazov,losDiasDeBirmania,julioCesar,alFaro),
+            avatar = "https://e00-elmundo.uecdn.es/assets/multimedia/imagenes/2015/03/06/14256475148639_189x0.jpg"
         )
 
         val marge = User(
@@ -1025,15 +1019,11 @@ class DataInitializer(
             searchCriteria = GreatReader(),
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
-            friends = mutableSetOf(),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            friends = mutableSetOf(homero),
+            readBooks = mutableListOf(crimenYCastigo,orgulloYPrejuicio,rebelionEnLaGranja,unaHabitacionPropia,elIdiota,
+                laMetamorfosis, guerraYPaz,_1984, laSenoraDalloway, enLaColoniaPenal,losHermanosKaramazov, demonios),
+            booksToRead = mutableSetOf(  aleph,julioCesar,persuasion,genteToxica,gaturro),
+            avatar = "https://assets.dev-filo.dift.io/img/2019/10/01/muere_la_mujer_que_inspirx_a_marge_simpson_sq.jpeg"
         )
 
         val bart = User(
@@ -1046,15 +1036,13 @@ class DataInitializer(
             searchCriteria = GreatReader(),
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
-            friends = mutableSetOf(),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            friends = mutableSetOf(homero,marge),
+            readBooks = mutableListOf(resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
+                _1984, elProceso,elJugador,orlando, alFaro, orgulloYPrejuicio,aleph,rayuela,genteToxica, lasOlas,
+                crimenYCastigo,unaHabitacionPropia,elIdiota,
+                losHermanosKaramazov, laMetamorfosis),
+            booksToRead = mutableSetOf(hamlet,hadjiMurad,elJugador),
+            avatar = "https://i.pinimg.com/474x/89/f0/2a/89f02a30096acb48e551f81466b63198.jpg"
         )
         val lisa = User(
             firstName = "Lisa",
@@ -1067,14 +1055,11 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(homero, marge, bart),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
+            readBooks = mutableListOf(aleph,rayuela,alFaro,orlando,lasOlas,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+                donQuijote,laHojarasca,elJugador, elProceso,sinBlancaEnParisYLondres, elCastillo,laMetamorfosis),
+            booksToRead = mutableSetOf(orlando,alFaro, lasOlas,hadjiMurad,homenajeACataluna,annaKarenina,historiaUniversalDeLaInfamia),
+            avatar = "https://www.clarin.com/img/2024/04/25/_R3rYsm5R_600x600__1.jpg"
         )
 
         val selma = User(
@@ -1087,17 +1072,13 @@ class DataInitializer(
 //            searchCriteria = Polyglot(),
             nativeLanguage = Language.FRENCH,
             readTimeMinAvg = 250,
-            friends = mutableSetOf (marge, lisa),    // problema no puedo agregar friends que creo abajo
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania),
-            booksToRead = mutableSetOf(genteToxica),
+            friends = mutableSetOf (marge, lisa),
+            readBooks = mutableListOf(elCastillo, laMetamorfosis, guerraYPaz,annaKarenina,rebelionEnLaGranja,
+                homenajeACataluna,losDiasDeBirmania,elJugador,sinBlancaEnParisYLondres,orlando,
+                orgulloYPrejuicio),
+            booksToRead = mutableSetOf(genteToxica,aleph,losHermanosKaramazov, elIdiota,persuasion),
             favouriteAuthors = mutableSetOf(borges,cortazar),
+            avatar = "https://i.pinimg.com/564x/91/e7/d5/91e7d5713f34e6381cf5daab839e3617.jpg"
         )
         val patty = User(
             firstName = "Patty",
@@ -1110,16 +1091,12 @@ class DataInitializer(
             nativeLanguage = Language.FRENCH,
             readTimeMinAvg = 150,
             friends = mutableSetOf (selma, marge,lisa),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania),
-            booksToRead = mutableSetOf(genteToxica),
+            readBooks = mutableListOf(unaHabitacionPropia,elOtonoDelPatriarca,orlando,lasOlas,alFaro,laSenoraDalloway,
+                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis, orgulloYPrejuicio,
+                demonios, elIdiota, losHermanosKaramazov,elJugador, _1984),
+            booksToRead = mutableSetOf(orlando, alFaro, genteToxica, julioCesar,annaKarenina,rebelionEnLaGranja),
             favouriteAuthors = mutableSetOf(borges,stamateas),
+            avatar = "https://simpsonspark.com/images/persos/contributions/patty-bouvier-22673.jpg"
         )
 
         val milhouse = User(
@@ -1133,16 +1110,12 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 150,
             friends = mutableSetOf (bart,homero, lisa),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania),
-            booksToRead = mutableSetOf(genteToxica),
+            readBooks = mutableListOf(losHermanosKaramazov, demonios, elIdiota,mansfieldPark,emma,sentidoYSensibilidad,
+                hadjiMurad,resurreccion,guerraYPaz,
+                losDiasDeBirmania,_1984,rebelionEnLaGranja, sinBlancaEnParisYLondres, elProceso,elJugador, laMetamorfosis),
+            booksToRead = mutableSetOf(demonios, elIdiota,alFaro,cartasAlPadre,julioCesar,genteToxica),
             favouriteAuthors = mutableSetOf(stamateas),
+            avatar = "https://i.pinimg.com/736x/29/f9/16/29f916dfbb6d68dc434eada19d02a4a8.jpg"
         )
 
         val barney = User(
@@ -1156,16 +1129,11 @@ class DataInitializer(
             nativeLanguage = Language.BENGALI,
             readTimeMinAvg = 150,
             friends = mutableSetOf (homero, bart, selma),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania),
-            booksToRead = mutableSetOf(genteToxica),
+            readBooks = mutableListOf(alFaro,ficciones,rebelionEnLaGranja,sinBlancaEnParisYLondres, elProceso,_1984,
+                laMuerteDeIvanIlich,guerraYPaz, laSenoraDalloway, laMetamorfosis, elCastillo ),
+            booksToRead = mutableSetOf(rayuela,hamlet,persuasion,gaturro ),
             favouriteAuthors = mutableSetOf(cortazar),
+            avatar = "https://www.terra.cl/u/fotografias/m/2024/3/3/f638x638-54092_112259_5050.png"
         )
         val nelson = User(
             firstName = "Nelson",
@@ -1178,16 +1146,11 @@ class DataInitializer(
             nativeLanguage = Language.ENGLISH,
             readTimeMinAvg = 150,
             friends = mutableSetOf (bart, lisa, marge, homero),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania),
-            booksToRead = mutableSetOf(aleph),
+            readBooks = mutableListOf(_1984, laSenoraDalloway, enLaColoniaPenal,rebelionEnLaGranja,
+                homenajeACataluna,losHermanosKaramazov, laMetamorfosis,laMuerteDeIvanIlich, orlando,alFaro, lasOlas),
+            booksToRead = mutableSetOf(_1984, laSenoraDalloway, enLaColoniaPenal,julioCesar,gaturro,laGalatea,guerraYPaz),
             favouriteAuthors = mutableSetOf(borges),
+            avatar = "https://static.wixstatic.com/media/199b3c_108a4877cb664bb4a2b790cdf53c4305~mv2.gif"
         )
         val carl = User(
             firstName = "Carl",
@@ -1200,16 +1163,11 @@ class DataInitializer(
             nativeLanguage = Language.ARAB,
             readTimeMinAvg = 150,
             friends = mutableSetOf (homero, bart, selma, marge, nelson),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania),
-            booksToRead = mutableSetOf(aleph),
+            readBooks = mutableListOf(donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,
+                cienAnosDeSoledad,elAmorEnLosTiemposDelColera,homenajeACataluna,losDiasDeBirmania),
+            booksToRead = mutableSetOf(aleph,julioCesar,romeoYJulieta,annaKarenina),
             favouriteAuthors = mutableSetOf(borges),
+            avatar = "https://www.giantbomb.com/a/uploads/square_medium/0/5370/1449780-carl.jpg"
         )
 
 
@@ -1224,14 +1182,10 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 290,
             friends = mutableSetOf(carl, barney, milhouse),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(demonios,aleph,losHermanosKaramazov,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
+                rebelionEnLaGranja, orgulloYPrejuicio, crimenYCastigo,sinBlancaEnParisYLondres, laSenoraDalloway,),
+            booksToRead = mutableSetOf(demonios, aleph, losHermanosKaramazov,annaKarenina,lasOlas,laMetamorfosis,guerraYPaz),
+            avatar = "https://lossimpson.es/wp-content/uploads/2023/11/Lenny-Leonard-%E2%80%93-Los-Simpson.png"
         )
 
         val ned = User(
@@ -1245,14 +1199,9 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 260,
             friends = mutableSetOf(marge, selma, patty),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(orgulloYPrejuicio, elProceso, crimenYCastigo,losDiasDeBirmania,rayuela),
+            booksToRead = mutableSetOf(alFaro,cartasAlPadre,aleph,elJugador),
+            avatar = "https://pbs.twimg.com/profile_images/520602466283294721/wIxA17z4_400x400.png"
         )
 
         val skinner = User(
@@ -1266,14 +1215,10 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 240,
             friends = mutableSetOf(bart, nelson, lisa),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(julioCesar,lasOlas,laMetamorfosis,annaKarenina,historiaUniversalDeLaInfamia,
+                        _1984, laMuerteDeIvanIlich,alFaro,gaturro,hadjiMurad,orlando),
+            booksToRead = mutableSetOf(losHermanosKaramazov,laHojarasca,aleph,elJugador),
+            avatar = "https://pm1.aminoapps.com/6857/5cde88cb1551cd58cd64968801f386e8a821d35bv2_00.jpg"
         )
 
         val ralph = User(
@@ -1287,20 +1232,15 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 130,
             friends = mutableSetOf(bart, milhouse, lisa),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(guerraYPaz, laSenoraDalloway, sinBlancaEnParisYLondres),
+            booksToRead = mutableSetOf(alFaro,julioCesar,laHojarasca,laGalatea),
+            avatar = "https://i.pinimg.com/1200x/b4/7c/23/b47c23756322ba453d6e5bf86ff43507.jpg"
         )
 
         val apu = User(
             firstName = "Apu",
             lastName = "Nahasapeemapetilon",
-            username = "anahasapeemapetilon",
+            username = "apu",
             password = "mandarina",
             email = "apu@simps.com",
             birthday = LocalDate.of(1975, 12, 12),
@@ -1308,35 +1248,9 @@ class DataInitializer(
             nativeLanguage = Language.ENGLISH,
             readTimeMinAvg = 310,
             friends = mutableSetOf(marge, selma, patty),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
-        )
-
-        val judy = User(
-            firstName = "Judy",
-            lastName = "Hopps",
-            username = "jhopps",
-            password = "mandarina",
-            email = "judy@simps.com",
-            birthday = LocalDate.of(1995, 3, 3),
-            searchCriteria = Experiencied(),
-            nativeLanguage = Language.ENGLISH,
-            readTimeMinAvg = 300,
-            friends = mutableSetOf(lisa, bart, milhouse),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(lasOlas,laMuerteDeIvanIlich,ficciones,historiaDelArte,guerraYPaz,alFaro,persuasion),
+            booksToRead = mutableSetOf(macbeth,mansfieldPark,unaHabitacionPropia,mansfieldPark,sentidoYSensibilidad),
+            avatar = "https://media.biobiochile.cl/wp-content/uploads/2018/10/apu-nahasapeemapetilon.gif"
         )
 
         val groundskeeper = User(
@@ -1350,14 +1264,9 @@ class DataInitializer(
             nativeLanguage = Language.ENGLISH,
             readTimeMinAvg = 250,
             friends = mutableSetOf(bart, milhouse, nelson),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            readBooks = mutableListOf(guerraYPaz,sinBlancaEnParisYLondres,unaHabitacionPropia,laSenoraDalloway),
+            booksToRead = mutableSetOf(unaHabitacionPropia,hamlet,historiaDelArte,elAmorEnLosTiemposDelColera),
+            avatar = "https://hips.hearstapps.com/es.h-cdn.co/fotoes/images/noticias-cine/willie-de-los-simpson-por-la-independencia-de-escocia/18597974-1-esl-ES/Willie-de-Los-Simpson-por-la-independencia-de-Escocia.png?crop=0.5614035087719298xw:1xh;center,top&resize=1200:*"
         )
 
         val krusty = User(
@@ -1370,15 +1279,10 @@ class DataInitializer(
             searchCriteria = Polyglot(),
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 320,
-            friends = mutableSetOf(homero, bart, milhouse),
-            readBooks = mutableListOf(aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,
-                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
-                donQuijote,laHojarasca,elOtonoDelPatriarca,cronicaDeUnaMuerteAnunciada,cienAnosDeSoledad,elAmorEnLosTiemposDelColera,
-                historiaUniversalDeLaInfamia,elLibroDeArena,elInformeDeBrodie,ficciones,sinBlancaEnParisYLondres,_1984,elJugador,
-                demonios,losHermanosKaramazov,elIdiota,crimenYCastigo,unaHabitacionPropia,orlando,lasOlas,alFaro,laSenoraDalloway,
-                enLaColoniaPenal,cartasAlPadre,elCastillo,elProceso,laMetamorfosis,persuasion,mansfieldPark,emma,sentidoYSensibilidad,
-                orgulloYPrejuicio,hadjiMurad,laMuerteDeIvanIlich,resurreccion,guerraYPaz,annaKarenina,rebelionEnLaGranja,
-                homenajeACataluna,losDiasDeBirmania)
+            friends = mutableSetOf(homero, bart, milhouse,marge, lisa, barney, ned , nelson, ralph, selma, patty,  carl, lenny, groundskeeper, skinner, apu ),
+            readBooks = mutableListOf(alFaro,cartasAlPadre,elCastillo,elIdiota,elJugador, laMetamorfosis, losHermanosKaramazov),
+            booksToRead = mutableSetOf(annaKarenina,laGalatea,guerraYPaz,julioCesar,crimenYCastigo,laSenoraDalloway),
+            avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5LdxFtiu-bv3t7PD-FNtUXTJrztkvutnlrQ&s"
         )
 
 
@@ -1389,6 +1293,17 @@ class DataInitializer(
         homero.addFriend(lisa)
         homero.addFriend(marge)
         homero.addFriend(carl)
+        bart.addFriend(lisa)
+        marge.addFriend(bart)
+        marge.addFriend(lisa)
+        marge.addFriend(selma)
+        marge.addFriend(patty)
+        marge.addFriend(ned)
+        marge.addFriend(milhouse)
+        marge.addFriend(apu)
+        bart.addFriend(milhouse)
+        bart.addFriend(nelson)
+        bart.addFriend(krusty)
 
         repoUser.createItem(homero)
         repoUser.createItem(marge)
@@ -1406,7 +1321,6 @@ class DataInitializer(
         repoUser.createItem(ned)
         repoUser.createItem(skinner)
         repoUser.createItem(ralph)
-        repoUser.createItem(judy)
         repoUser.createItem(apu)
 
         // Recomendaciones de Homero
@@ -1765,10 +1679,9 @@ class DataInitializer(
         val valoracionHomero3 = Valoracion(rating = 3, description = "Regular.", autor = homero)
 
 // Agregando valoraciones a las recomendaciones de otros personajes
-        //Le sacos libros a homero para probar que no pueda editar, por tanto no puedo valorar lo que no leyo
-        //recomLisa1.agregarValoracion(valoracionHomero1)  // Lisa valora la recomendación de Homero
-        //recomBart1.agregarValoracion(valoracionHomero2)  // Bart valora la recomendación de Homero
-        //recomMarge1.agregarValoracion(valoracionHomero3)  // Marge valora la recomendación de Homero
+        recomLisa1.agregarValoracion(valoracionHomero1)  // Lisa valora la recomendación de Homero
+        recomBart1.agregarValoracion(valoracionHomero2)  // Bart valora la recomendación de Homero
+        recomMarge1.agregarValoracion(valoracionHomero3)  // Marge valora la recomendación de Homero
 
 // Valoraciones de Lisa
         val valoracionLisa1 = Valoracion(rating = 5, description = "Increíble.", autor = lisa)
@@ -1780,12 +1693,12 @@ class DataInitializer(
         recomBarney1.agregarValoracion(valoracionLisa2)  // Barney valora la recomendación de Lisa
         recomSelma1.agregarValoracion(valoracionLisa3)  // Selma valora la recomendación de Lisa
 
-// Valoraciones de Bart
+//// Valoraciones de Bart
         val valoracionBart1 = Valoracion(rating = 5, description = "¡Me encantó!", autor = bart)
         val valoracionBart2 = Valoracion(rating = 4, description = "Divertido.", autor = bart)
         val valoracionBart3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = bart)
 
-// Agregando valoraciones a las recomendaciones de otros personajes
+//// Agregando valoraciones a las recomendaciones de otros personajes
         recomMarge2.agregarValoracion(valoracionBart1)  // Marge valora la recomendación de Bart
         recomKrusty1.agregarValoracion(valoracionBart2)  // Krusty valora la recomendación de Bart
         recomPatty1.agregarValoracion(valoracionBart3)  // Patty valora la recomendación de Bart
