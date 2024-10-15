@@ -2,6 +2,7 @@ package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.*
 import ar.edu.unsam.algo3.dto.UserDTO
+import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.errors.NoIdException
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.stereotype.Service
@@ -70,5 +71,35 @@ class UserService (val userRepo: UserRepository){
         else{
             return userRepo.itemById(userid)!!.readBooks.toList()
         }
+    }
+
+    fun getCandidatesToFriends(userid: Int, search: String?): List<User> {
+        val user = userRepo.itemById(userid)
+
+        if(user === null) {
+            throw NoIdException("Id de usuario inexistente")
+        }
+
+        var users: List<User>
+
+        if( search !== null ) {
+            users = userRepo.searchItems(search)
+        } else {
+            users = getAllUser().toList()
+        }
+        return users.filter{ it !== user && !user.friends().contains(it) }
+    }
+
+    fun addFriend(userid: Int, friendDTO: UserDTO): User {
+        val newFriend = userRepo.itemById(friendDTO.id)
+        val user = userRepo.itemById(userid)
+
+        if(user === null || newFriend === null) {
+            throw NoIdException("Id de usuario inexistente")
+        }
+
+        user.addFriend(newFriend)
+
+        return user
     }
 }
