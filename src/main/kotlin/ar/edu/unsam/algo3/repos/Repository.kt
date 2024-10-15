@@ -5,7 +5,7 @@ abstract class Repository<T:ItemRepo> {
 
     private fun itemExists(item: T): Boolean = items.map { it.id }.contains(item.id)
 
-    fun createItem(item: T) {
+    fun createItem(item: T): Int {
         if (itemExists(item)) {
             throw Exception("El item ya existe en el repositorio.")
         }
@@ -14,6 +14,7 @@ abstract class Repository<T:ItemRepo> {
         val newId = if(lastId != null) lastId + 1 else 1
         item.id = newId
         items.add(item)
+        return item.id
     }
 
     fun updateItem(item: T) {
