@@ -31,7 +31,11 @@ class UserService (val userRepo: UserRepository){
         }
 
         val newSearchCriteria = if(userDTO.searchCriteria.size > 1)
-            SearchCriteria.fromCustomString("Combinado", profiles = userDTO.searchCriteria) else
+            SearchCriteria.fromCustomString(
+                "Combinado",
+                user = oldUser,
+                profiles = userDTO.searchCriteria
+            ) else
             SearchCriteria.fromCustomString(userDTO.searchCriteria[0])
 
 
@@ -61,7 +65,13 @@ class UserService (val userRepo: UserRepository){
     }
 
     fun getFriends(userid: Int): List<User> {
-        return userRepo.itemById(userid)!!.friends.toList()
+        val user = userRepo.itemById(userid)
+
+        if(user === null) {
+            throw NoIdException("El id indicado no corresponde a ningún usuario")
+        }
+
+        return user.friends.toList()
     }
 
     fun getBooksToRead(userid: Int, toread: Boolean): List<Libro> {
@@ -90,7 +100,7 @@ class UserService (val userRepo: UserRepository){
         return users.filter{ it !== user && !user.friends().contains(it) }
     }
 
-    fun addFriend(userid: Int, friendDTO: UserDTO): User {
+    fun addFriend(userid: Int, friendDTO: UserDTO): List<User> {
         val newFriend = userRepo.itemById(friendDTO.id)
         val user = userRepo.itemById(userid)
 
@@ -100,6 +110,6 @@ class UserService (val userRepo: UserRepository){
 
         user.addFriend(newFriend)
 
-        return user
+        return user.friends.toList()
     }
 }
