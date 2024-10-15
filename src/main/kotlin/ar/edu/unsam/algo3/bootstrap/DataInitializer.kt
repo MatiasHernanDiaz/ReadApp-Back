@@ -933,7 +933,6 @@ class DataInitializer(
             lecturaCompleja = false,
             traducciones = mutableSetOf(Language.ENGLISH, Language.ITALIAN)
         )
-
         repoBook.createItem(aleph)
         repoBook.createItem(rayuela)
         repoBook.createItem(genteToxica)
@@ -1058,7 +1057,7 @@ class DataInitializer(
             readBooks = mutableListOf(aleph,rayuela,alFaro,orlando,lasOlas,julioCesar,romeoYJulieta,
                 othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
                 donQuijote,laHojarasca,elJugador, elProceso,sinBlancaEnParisYLondres, elCastillo,laMetamorfosis),
-            booksToRead = mutableSetOf(orlando,alFaro, lasOlas,hadjiMurad,homenajeACataluna,annaKarenina,historiaUniversalDeLaInfamia),
+            booksToRead = mutableSetOf(orlando,alFaro, lasOlas,hadjiMurad,homenajeACataluna,annaKarenina,historiaUniversalDeLaInfamia, guerraYPaz, laSenoraDalloway, sinBlancaEnParisYLondres, laSenoraDalloway),
             avatar = "https://www.clarin.com/img/2024/04/25/_R3rYsm5R_600x600__1.jpg"
         )
 
@@ -1232,7 +1231,9 @@ class DataInitializer(
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 130,
             friends = mutableSetOf(bart, milhouse, lisa),
-            readBooks = mutableListOf(guerraYPaz, laSenoraDalloway, sinBlancaEnParisYLondres),
+            readBooks = mutableListOf(guerraYPaz, laSenoraDalloway, sinBlancaEnParisYLondres, laSenoraDalloway, sinBlancaEnParisYLondres, aleph,rayuela,alFaro,orlando,lasOlas,julioCesar,romeoYJulieta,
+                othello,macbeth,hamlet,elViajeDelParnaso,laGalatea,losTrabajosDePersiles,lasNovelasEjemplares,
+                donQuijote,laHojarasca,elJugador, elProceso,sinBlancaEnParisYLondres, elCastillo,laMetamorfosis),
             booksToRead = mutableSetOf(alFaro,julioCesar,laHojarasca,laGalatea),
             avatar = "https://i.pinimg.com/1200x/b4/7c/23/b47c23756322ba453d6e5bf86ff43507.jpg"
         )
@@ -1285,6 +1286,22 @@ class DataInitializer(
             avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5LdxFtiu-bv3t7PD-FNtUXTJrztkvutnlrQ&s"
         )
 
+        val mandarina = User(
+            firstName = "Mandarina",
+            lastName = "Sin semilla",
+            username = "Mandarineitor",
+            password = "mandarina",
+            email = "mandarina@mandarina.com",
+            birthday = LocalDate.of(1975, 8, 4),
+            searchCriteria = Polyglot(),
+            nativeLanguage = Language.SPANISH,
+            readTimeMinAvg = 320,
+            friends = mutableSetOf(homero, bart, milhouse,marge, lisa),
+            readBooks = mutableListOf(losDiasDeBirmania,homenajeACataluna,rebelionEnLaGranja,annaKarenina,guerraYPaz,resurreccion,laMuerteDeIvanIlich,hadjiMurad,orgulloYPrejuicio,sentidoYSensibilidad,emma,mansfieldPark,persuasion,laMetamorfosis,elProceso,elCastillo,cartasAlPadre,enLaColoniaPenal,laSenoraDalloway,alFaro,lasOlas,orlando,unaHabitacionPropia,crimenYCastigo,elIdiota,losHermanosKaramazov,demonios,elJugador,_1984,sinBlancaEnParisYLondres,ficciones,elInformeDeBrodie,elLibroDeArena,historiaUniversalDeLaInfamia,elAmorEnLosTiemposDelColera,cienAnosDeSoledad,cronicaDeUnaMuerteAnunciada,elOtonoDelPatriarca,laHojarasca,donQuijote,lasNovelasEjemplares,losTrabajosDePersiles,laGalatea,elViajeDelParnaso,hamlet,macbeth,macbeth,othello,aleph,rayuela,genteToxica,bill,dragonBall,historiaDelArte,gaturro,cthulhu,julioCesar,romeoYJulieta,romeoYJulieta),
+            booksToRead = mutableSetOf(),
+            avatar = "https://png.pngtree.com/png-clipart/20240308/original/pngtree-cute-cartoon-character-tangerine-png-image_14546252.png"
+        )
+
 
         nelson.addFriend(carl)
         carl.addFriend(lenny)
@@ -1305,6 +1322,7 @@ class DataInitializer(
         bart.addFriend(nelson)
         bart.addFriend(krusty)
 
+
         repoUser.createItem(homero)
         repoUser.createItem(marge)
         repoUser.createItem(bart)
@@ -1322,6 +1340,7 @@ class DataInitializer(
         repoUser.createItem(skinner)
         repoUser.createItem(ralph)
         repoUser.createItem(apu)
+        repoUser.createItem(mandarina)
 
         // Recomendaciones de Homero
         val recomHomero1 = Recomendacion(

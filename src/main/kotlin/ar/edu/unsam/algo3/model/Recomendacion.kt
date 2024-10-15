@@ -22,8 +22,8 @@ class Recomendacion(
     fun creador() = creador
 
     fun puedeEditar(posibleEditor: User): Boolean =
-        posibleEditor === creador || ((creador.isFriend(posibleEditor) &&
-                posibleEditor.recomBooksAreRead(this))) // agrego parentensis porque me parece que tiene mas sentido asi
+        posibleEditor === creador || (creador.isFriend(posibleEditor) &&
+                posibleEditor.recomBooksAreRead(this))
 
     private fun puedeAgregarLibro(editor: User, libro: Libro) = editor.bookIsRead(libro) &&
             creador.bookIsRead(libro)

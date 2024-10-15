@@ -8,7 +8,7 @@ class RepositorioRecomendaciones : Repository<Recomendacion>() {
     override val items = mutableSetOf<Recomendacion>()
 
     override fun searchItems(patron: String) = items.filter {
-        patron.lowercase() == it.creador().lastName().lowercase() || patron.lowercase() in it.resegna().lowercase()
+        patron.lowercase() == it.creador().lastName().lowercase() || patron.lowercase() in it.resegna().lowercase() || patron.lowercase() in it.titulo.lowercase()
                 || it.libros().any { l -> patron.lowercase() in l.titulo().lowercase() || patron.lowercase() in l.autor.lastName().lowercase() }
     }
 
