@@ -5,7 +5,7 @@ import ar.edu.unsam.algo3.service.RecomService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET])
+@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET,RequestMethod.DELETE])
 class RecomController(val recomService: RecomService) {
 
     @GetMapping("/recommendations")

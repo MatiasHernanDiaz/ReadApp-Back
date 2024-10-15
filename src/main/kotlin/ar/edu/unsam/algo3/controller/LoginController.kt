@@ -33,7 +33,11 @@ class LoginController(val loginService: LoginService) {
     )
 
     @GetMapping("/logout")
-    fun logout() = loginService.logout()
+    fun logout(): SignedUserRes {
+        loginService.logout()
+
+        return SignedUserRes(false, null)
+    }
 }
 
 data class CredentialsDTO( val email: String, val password: String)
