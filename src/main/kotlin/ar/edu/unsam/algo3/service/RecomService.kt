@@ -59,6 +59,7 @@ class RecomService(
     fun canRating(userid: Int, recomid: Int): Boolean {
         val recom = recomRepositorio.itemById(recomid)
         val user = userRepository.itemById(userid)
+        print("Puede valorar?? " + recom!!.puedeValorar(user!!))
         return recom!!.puedeValorar(user!!)
     }
 
