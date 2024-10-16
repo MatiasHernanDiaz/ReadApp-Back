@@ -38,7 +38,8 @@ class RecomService(
         }
         recom.canRating = recom.puedeValorar(user)
         recom.canEdit = recom.puedeEditar(user)
-
+        println("puede valorar?" + recom.canRating)
+        println("puede puede editar?" + recom.canEdit)
         return recom
     }
 

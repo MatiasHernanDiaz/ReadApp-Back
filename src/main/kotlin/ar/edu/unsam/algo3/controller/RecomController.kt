@@ -14,7 +14,7 @@ class RecomController(val recomService: RecomService) {
 
     @GetMapping("/recommendations/{idRecom}/{userid}")
     fun getRecom(@PathVariable idRecom: Int,
-                 @PathVariable userid: Int) = recomService.getRecomById(idRecom, userid).toEditDTO()
+                 @PathVariable userid: Int): RecomEditDTO = recomService.getRecomById(idRecom, userid).toEditDTO()
 
     @DeleteMapping("/recommendations/delete/{idRecom}/{idUser}")
     fun deleteRecom(@PathVariable idUser: Int, @PathVariable idRecom: Int) =
@@ -25,8 +25,8 @@ class RecomController(val recomService: RecomService) {
         @PathVariable idRecom: Int,
         @RequestParam("userid") userid: Int,
         @RequestBody recomBody: RecomEditDTO
-    ): RecomDTO {
-        return recomService.editRecom(idRecom, recomBody, userid).toDTO()
+    ): RecomEditDTO {
+        return recomService.editRecom(idRecom, recomBody, userid).toEditDTO()
     }
 
     @PostMapping("/recommendations/create/recom")
