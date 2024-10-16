@@ -94,6 +94,13 @@ class Recomendacion(
 
     fun usuarioValoro(user: User) = valoraciones.any { it.autor === user }
 
-    fun promedioValoraciones(): Double = valoraciones.map { it.rating }.average()
+    fun promedioValoraciones(): Double {
+        val avg = valoraciones.map { it.rating }.average()
+
+        if( avg.isNaN()) {
+         return 0.0
+        }
+        return avg
+    }
 
 }
