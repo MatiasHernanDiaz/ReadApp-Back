@@ -103,4 +103,8 @@ class Recomendacion(
         return avg
     }
 
+    fun getBookToRecom(user: User): List<Libro>{
+        return creador.readBooks.intersect(user.readBooks).toList().filterNot { it in libros }
+    }
+
 }
