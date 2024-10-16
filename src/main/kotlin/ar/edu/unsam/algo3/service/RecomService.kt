@@ -26,10 +26,23 @@ class RecomService(
     fun getAllRecoms(id: Int?, text: String = ""): List<Recomendacion> =
         recomRepositorio.searchItems(text).filter { id === null || it.creador.id == id }
 
-    fun getRecomById(id: Int): Recomendacion = recomRepositorio.itemById(id)!!
+    fun getRecomById(id: Int, userid: Int): Recomendacion {
+        val recom = recomRepositorio.itemById(id)
+        val user = userRepository.itemById(userid)
+        if(recom == null ){
+            throw NoIdException("Recomendacion no encontrada") //mover al repo
+        }
+        if(user == null ){
+            throw NoIdException("Usuario logeado no encontrado") //mover al repo
+        }
+        recom.canRating = recom.puedeValorar(user)
+        recom.canEdit = recom.puedeEditar(user)
 
-    fun deleteRecomById(idUser: Int, idRecom: Int) {
-        val recomToDelete = getRecomById(idRecom)
+        return recom
+    }
+
+    fun deleteRecomById(idRecom: Int, idUser: Int) {
+        val recomToDelete = getRecomById(idRecom, idUser)
         val userOwner = userRepository.itemById(idUser)
 
         if (userOwner != null && recomToDelete.creador.id == idUser) {

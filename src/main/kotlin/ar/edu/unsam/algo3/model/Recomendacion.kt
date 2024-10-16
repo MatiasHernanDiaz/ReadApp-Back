@@ -12,6 +12,8 @@ class Recomendacion(
     override var id: Int = -1
 
     val valoraciones: MutableList<Valoracion> = mutableListOf()
+    var canRating: Boolean = false
+    var canEdit: Boolean = false
 
     init {
         creador.addRecom(this)

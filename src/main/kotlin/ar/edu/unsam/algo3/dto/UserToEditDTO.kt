@@ -5,7 +5,8 @@ import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
 
 data class UserToEditDTO @JsonCreator constructor(
-    @JsonProperty("id") val id: Int
+    @JsonProperty("id") val id: Int,
+    val fullName: String
 )
 
-fun User.toEditDTO() = UserToEditDTO(id = id)
+fun User.toEditDTO() = UserToEditDTO(id = id, fullName = this.displayName())

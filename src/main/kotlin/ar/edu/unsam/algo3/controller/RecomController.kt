@@ -12,12 +12,13 @@ class RecomController(val recomService: RecomService) {
     fun recommendation(@RequestParam("userid") id: Int?, @RequestParam("text") text: String = "") =
         recomService.getAllRecoms(id, text).map { it.toDTO() }
 
-    @GetMapping("/recommendations/{idRecom}")
-    fun getRecom(@PathVariable idRecom: Int) = recomService.getRecomById(idRecom).toDTO()
+    @GetMapping("/recommendations/{idRecom}/{userid}")
+    fun getRecom(@PathVariable idRecom: Int,
+                 @PathVariable userid: Int) = recomService.getRecomById(idRecom, userid).toEditDTO()
 
-    @DeleteMapping("/recommendations/{idUser}/{idRecom}")
+    @DeleteMapping("/recommendations/delete/{idRecom}/{idUser}")
     fun deleteRecom(@PathVariable idUser: Int, @PathVariable idRecom: Int) =
-        recomService.deleteRecomById(idUser, idRecom)
+        recomService.deleteRecomById(idRecom, idUser)
 
     @PutMapping("/recommendations/update/{idRecom}")
     fun editableRecom(
