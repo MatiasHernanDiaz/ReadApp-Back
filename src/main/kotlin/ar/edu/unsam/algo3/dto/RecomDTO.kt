@@ -9,13 +9,15 @@ data class RecomDTO(
     val books: List<BookDTO>,
     var publicIs: Boolean,
     val id: Int,
-    val ratings: List<RatingDTO>
+    val ratings: List<RatingDTO>,
+    val ratingsAvg: Double
 )
 
 fun Recomendacion.toDTO() =
     RecomDTO(id = id, title = titulo, description = resegna,
         books = libros.map { it.toDTO() }, publicIs = publica,
-        creator = creador.toDTO(), ratings = valoraciones.map { it.toDTO() })
+        creator = creador.toDTO(), ratings = valoraciones.map { it.toDTO() },
+        ratingsAvg = promedioValoraciones())
 
 data class CreateRecomDTO(
     val title: String = "",

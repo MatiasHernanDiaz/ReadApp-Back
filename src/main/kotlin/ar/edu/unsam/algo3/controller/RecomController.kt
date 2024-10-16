@@ -41,8 +41,8 @@ class RecomController(val recomService: RecomService) {
 
     @PostMapping("/recommendations/create/rating")
     fun rating(@RequestParam("recomid") recomid: Int,
-               @RequestBody ratingBody: RatingDTO) : RatingDTO =
-        recomService.rating(recomid, ratingBody)
+               @RequestBody ratingBody: RatingDTO) : RecomDTO =
+        recomService.rating(recomid, ratingBody).toDTO()
 
 
 }
