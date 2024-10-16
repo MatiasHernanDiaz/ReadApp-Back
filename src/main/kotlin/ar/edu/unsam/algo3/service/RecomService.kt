@@ -13,6 +13,7 @@ import org.springframework.beans.factory.config.BeanFactoryPostProcessor
 import org.springframework.stereotype.Service
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.client.HttpClientErrorException.NotFound
+import kotlin.jvm.Throws
 
 @Service
 class RecomService(
@@ -60,10 +61,10 @@ class RecomService(
         val recom = recomRepositorio.itemById(recomid)
         val user = userRepository.itemById(userid)
         print("Puede valorar?? " + recom!!.puedeValorar(user!!))
-        return recom!!.puedeValorar(user!!)
+        return recom.puedeValorar(user)
     }
 
-    fun rating(recomid: Int, ratingDTO: RatingDTO): RatingDTO {
+    fun rating(recomid: Int, ratingDTO: RatingDTO): Recomendacion {
         if(!canRating(ratingDTO.creatorId, recomid)){
             throw BusinessException("El usuario no puede valorar!!")
         }
@@ -74,8 +75,11 @@ class RecomService(
         )
 
         val recom = recomRepositorio.itemById(recomid)
-        recom!!.agregarValoracion(newRating)
-        return newRating.toDTO()
+        if(recom === null){
+            throw NoIdException("No hay una recomendacion con este ID")
+        }
+        recom.agregarValoracion(newRating)
+        return recom
     }
 
     fun createRecom(createRecomDTO: CreateRecomDTO): RecomDTO {
