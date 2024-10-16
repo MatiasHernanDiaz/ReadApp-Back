@@ -76,11 +76,12 @@ class RecomService(
         return recom!!.puedeValorar(user!!)
     }
 
-    fun rating(recomid: Int, ratingDTO: RatingDTO): RatingDTO {
+    fun rating(recomid: Int, ratingDTO: RatingDTO): Recomendacion {
+
         if(!canRating(ratingDTO.creatorId, recomid)){
             throw BusinessException("El usuario no puede valorar!!")
         }
-        val newRating : Valoracion = Valoracion(
+        val newRating = Valoracion(
             rating = ratingDTO.rating,
             description = ratingDTO.description,
             autor = userRepository.itemById(ratingDTO.creatorId)!!
@@ -88,7 +89,7 @@ class RecomService(
 
         val recom = recomRepositorio.itemById(recomid)
         recom!!.agregarValoracion(newRating)
-        return newRating.toDTO()
+        return recom
     }
 
     fun createRecom(createRecomDTO: CreateRecomDTO): RecomDTO {

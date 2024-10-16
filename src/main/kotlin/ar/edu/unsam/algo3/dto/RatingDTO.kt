@@ -9,13 +9,15 @@ data class RatingDTO(
     val description: String,
     val creatorId: Int,
     val creatorFullName: String,
-    val createDate: LocalDate)
+    val createDate: LocalDate,
+    val avatar: String)
 
 fun Valoracion.toDTO() = RatingDTO(
     rating = rating,
     description = description,
     creatorId = autor.id,
     creatorFullName = autor.displayName(),
-    createDate = createDate
+    createDate = createDate,
+    avatar = autor.avatar
 )
 
