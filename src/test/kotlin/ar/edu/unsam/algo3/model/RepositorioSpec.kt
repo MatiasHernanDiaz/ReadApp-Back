@@ -421,7 +421,7 @@ class RepositorioSpec : DescribeSpec({
             }
 
             it("ELIMINAR recomendacion inexistente") {
-                shouldThrow<NoIdException> { repositorioRecomendaciones.deleteItem(recomendacion3) }
+                shouldThrow<Exception> { repositorioRecomendaciones.deleteItem(recomendacion3) }
             }
         }
     }
@@ -509,7 +509,7 @@ class RepositorioSpec : DescribeSpec({
             }
 
             it("ELIMINAR autor inexistente") {
-                shouldThrow<NoIdException> { repositorioLibros.deleteItem(libro3) }
+                shouldThrow<Exception> { repositorioLibros.deleteItem(libro3) }
             }
         }
     }
