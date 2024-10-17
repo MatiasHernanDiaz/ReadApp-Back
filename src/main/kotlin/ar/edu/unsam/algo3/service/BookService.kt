@@ -29,15 +29,9 @@ class BookService (
         bookRepositorio.searchItems(text)
 
     fun getCandidatesToBook(recomid: Int, userid: Int, search: String?): List<Libro> {
-        val recom = recomRepository.itemById(recomid)
-        val user = userRepository.itemById(userid)
+        val recom = recomRepository.itemById(recomid,"Recomendacion no encontrada")
+        val user = userRepository.itemById(userid,"Usuario no encontrada")
 
-        if(recom == null){
-            throw NoIdException("Recomendacion no encontrada")
-        }
-        if(user == null){
-            throw NoIdException("Usuario no encontrada")
-        }
         if(search != null){
            return recom.getBookToRecom(user).filter { search in it.titulo }
         }
@@ -46,18 +40,9 @@ class BookService (
     }
 
     fun addBook(recomid: Int, userid: Int, bookDTO: BookDTO): Recomendacion {
-        val recom = recomRepository.itemById(recomid)
-        val user = userRepository.itemById(userid)
-        val book = bookRepositorio.itemById(bookDTO.id)
-        if(recom == null){
-            throw NoIdException("No se encontro recomendacion")
-        }
-        if(user == null){
-            throw NoIdException("No se encontro usuario logeado")
-        }
-        if(book == null){
-            throw NoIdException("No se encontro libro")
-        }
+        val recom = recomRepository.itemById(recomid, "No se encontro recomendacion")
+        val user = userRepository.itemById(userid,"No se encontro recomendacion")
+        val book = bookRepositorio.itemById(bookDTO.id, "No se encontro libro")
         recom.agregarLibro(user, book)
         return recom
     }

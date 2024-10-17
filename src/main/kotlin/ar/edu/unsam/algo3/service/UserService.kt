@@ -2,8 +2,6 @@ package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.*
 import ar.edu.unsam.algo3.dto.UserDTO
-import ar.edu.unsam.algo3.dto.toDTO
-import ar.edu.unsam.algo3.errors.NoIdException
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.stereotype.Service
 
@@ -12,7 +10,6 @@ import org.springframework.stereotype.Service
 @Service
 class UserService (val userRepo: UserRepository){
     fun getAllUser(): MutableSet<User> {
-        //userRepo.crearItem(creadorRecom)
         return userRepo.items
     }
 
@@ -20,15 +17,11 @@ class UserService (val userRepo: UserRepository){
         val newUser = userDTOToUser(userDTO)
         userRepo.updateItem(newUser)
 
-        return userRepo.itemById(userDTO.id)
+        return userRepo.itemById(userDTO.id, "No id de usuario al editar perfil")
     }
 
     fun userDTOToUser(userDTO: UserDTO): User {
-        val oldUser = userRepo.itemById(userDTO.id)
-
-        if(oldUser === null) {
-            throw NoIdException("No se encontró el usuario especificado")
-        }
+        val oldUser = userRepo.itemById(userDTO.id,"No se encontró el usuario especificado")
 
         val newSearchCriteria = if(userDTO.searchCriteria.size > 1)
             SearchCriteria.fromCustomString(
@@ -61,36 +54,27 @@ class UserService (val userRepo: UserRepository){
     }
 
     fun getUser(userid: Int): User {
-        return userRepo.itemById(userid)!!
+        return userRepo.itemById(userid, "Usuario no encontrado")
     }
 
     fun getFriends(userid: Int): List<User> {
-        val user = userRepo.itemById(userid)
-
-        if(user === null) {
-            throw NoIdException("El id indicado no corresponde a ningún usuario")
-        }
-
+        val user = userRepo.itemById(userid, "El id indicado no corresponde a ningún usuario")
         return user.friends.toList()
     }
 
     fun getBooksToRead(userid: Int, toread: Boolean): List<Libro> {
         if(toread){
-            return userRepo.itemById(userid)!!.booksToRead.toList()
+            return userRepo.itemById(userid, "Id de usuario no encontrado al buscar libros a leer").booksToRead.toList()
         }
         else{
-            return userRepo.itemById(userid)!!.readBooks.toList()
+            return userRepo.itemById(userid, "Id de usuario no encontrado al buscar libros lidos").readBooks.toList()
         }
     }
 
     fun getCandidatesToFriends(userid: Int, search: String?): List<User> {
-        val user = userRepo.itemById(userid)
+        val user = userRepo.itemById(userid, "Id de usuario inexistente")
 
-        if(user === null) {
-            throw NoIdException("Id de usuario inexistente")
-        }
-
-        var users: List<User>
+        val users: List<User>
 
         if( search !== null ) {
             users = userRepo.searchItems(search)
@@ -101,12 +85,8 @@ class UserService (val userRepo: UserRepository){
     }
 
     fun addFriend(userid: Int, friendDTO: UserDTO): List<User> {
-        val newFriend = userRepo.itemById(friendDTO.id)
-        val user = userRepo.itemById(userid)
-
-        if(user === null || newFriend === null) {
-            throw NoIdException("Id de usuario inexistente")
-        }
+        val newFriend = userRepo.itemById(friendDTO.id, "Id de usuario inexistente, al buscar amigos")
+        val user = userRepo.itemById(userid, "Id de usuario inexistente")
 
         user.addFriend(newFriend)
 

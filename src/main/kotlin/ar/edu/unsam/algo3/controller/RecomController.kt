@@ -33,7 +33,7 @@ class RecomController(val recomService: RecomService) {
     fun createRecom(
         @RequestBody createRecomDTO: CreateRecomDTO,
     ): RecomDTO{
-        return recomService.createRecom(createRecomDTO)
+        return recomService.createRecom(createRecomDTO).toDTO()
     }
 
     @GetMapping("/recommendations/rating")
