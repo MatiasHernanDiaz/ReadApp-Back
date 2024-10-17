@@ -182,7 +182,6 @@ class RepositorioSpec : DescribeSpec({
             }
 
             it("CREA un usuario ya existente") {
-
                 shouldThrow<Exception> { repositorioUsuarios.createItem(user) }
             }
         }
@@ -416,7 +415,9 @@ class RepositorioSpec : DescribeSpec({
                 repositorioRecomendaciones.deleteItem(recomendacion1)
 
                 //assert
-                repositorioRecomendaciones.itemById(1) shouldBe null
+                shouldThrow<NoIdException> {
+                    repositorioRecomendaciones.itemById(1)
+                }
             }
 
             it("ELIMINAR recomendacion inexistente") {
@@ -504,7 +505,7 @@ class RepositorioSpec : DescribeSpec({
                 repositorioLibros.deleteItem(libro1)
 
                 //assert
-                repositorioLibros.itemById(1) shouldBe null
+                shouldThrow<NoIdException> { repositorioLibros.itemById(1) }
             }
 
             it("ELIMINAR autor inexistente") {
