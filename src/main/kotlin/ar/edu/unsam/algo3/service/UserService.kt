@@ -13,10 +13,9 @@ class UserService (val userRepo: UserRepository){
         return userRepo.items
     }
 
-    fun editProfile(userDTO: UserDTO): User? {
+    fun editProfile(userDTO: UserDTO): User {
         val newUser = userDTOToUser(userDTO)
         userRepo.updateItem(newUser)
-
         return userRepo.itemById(userDTO.id, "No id de usuario al editar perfil")
     }
 
