@@ -21,7 +21,7 @@ class UserService (val userRepo: UserRepository){
     }
 
     fun userDTOToUser(userDTO: UserDTO): User {
-        val oldUser = userRepo.itemById(userDTO.id,"No se encontró el usuario especificado")
+        val oldUser = userRepo.itemById(userDTO.id,"No se encontro el usuario especificado")
 
         val newSearchCriteria = if(userDTO.searchCriteria.size > 1)
             SearchCriteria.fromCustomString(

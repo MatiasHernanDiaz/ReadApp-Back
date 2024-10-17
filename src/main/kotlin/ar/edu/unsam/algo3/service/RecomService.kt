@@ -43,7 +43,7 @@ class RecomService(
             userOwner.removeRecomendation(recomToDelete)
             recomRepositorio.deleteItem(recomToDelete)
         } else {
-            throw Exception("El usuario no es el propietario de la recomendación o no existe.")
+            throw Exception("El usuario no es el propietario de la recomendacion o no existe.")
         }
     }
 
