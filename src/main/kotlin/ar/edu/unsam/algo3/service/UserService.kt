@@ -5,13 +5,14 @@ import ar.edu.unsam.algo3.dto.BookDTO
 import ar.edu.unsam.algo3.dto.UserDTO
 import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.errors.NoIdException
+import ar.edu.unsam.algo3.repos.RepositorioLibros
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.stereotype.Service
 
 
 
 @Service
-class UserService (val userRepo: UserRepository){
+class UserService (val userRepo: UserRepository, val bookRepo: RepositorioLibros){
     fun getAllUser(): MutableSet<User> {
         //userRepo.crearItem(creadorRecom)
         return userRepo.items
@@ -116,9 +117,9 @@ class UserService (val userRepo: UserRepository){
 
     fun addBookToRead(userid: Int, bookDTO: BookDTO): List<Libro>{
         val user = userRepo.itemById(userid)
-        val bookToRead = bookDTO.toBook()
+        val bookToRead = bookRepo.itemById(bookDTO.id)
 
-        if(user === null) {
+        if(user === null|| bookToRead === null) {
             throw NoIdException("Id de usuario inexistente")
         }
 
@@ -128,9 +129,9 @@ class UserService (val userRepo: UserRepository){
     }
     fun addReadBooks(userid: Int, bookDTO: BookDTO): List<Libro>{
         val user = userRepo.itemById(userid)
-        val readBooks = bookDTO.toBook()
+        val readBooks = bookRepo.itemById(bookDTO.id)
 
-        if(user === null) {
+        if(user === null|| readBooks === null) {
             throw NoIdException("Id de usuario inexistente")
         }
 
