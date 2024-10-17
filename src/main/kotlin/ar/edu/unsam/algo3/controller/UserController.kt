@@ -1,5 +1,7 @@
 package ar.edu.unsam.algo3.controller
 
+import ar.edu.unsam.algo3.Libro
+import ar.edu.unsam.algo3.dto.BookDTO
 import ar.edu.unsam.algo3.dto.UserDTO
 import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.errors.NoIdException
@@ -38,6 +40,12 @@ class UserController (val userService: UserService){
     @PostMapping("/{userid}/addfriend")
     fun addFriend(@PathVariable userid: Int, @RequestBody friendDTO: UserDTO): List<UserDTO> = userService.addFriend(
         userid, friendDTO).map { it.toDTO() }
+    @PostMapping("/{userid}/addtoread")
+    fun addToRead(@PathVariable userid: Int, @RequestBody bookDTO: BookDTO): List<BookDTO> = userService.addBookToRead(
+        userid, bookDTO).map { it.toDTO() }
+    @PostMapping("/{userid}/addreadbook")
+    fun addReadBook(@PathVariable userid: Int, @RequestBody bookDTO: BookDTO): List<BookDTO> = userService.addReadBooks(
+        userid, bookDTO).map { it.toDTO() }
 
     @GetMapping("/{userid}/bookstoread")
     fun getBooksToRead(@PathVariable userid: Int, @RequestParam("toread") toread: Boolean) = userService.getBooksToRead(userid, toread).map { it.toDTO() }

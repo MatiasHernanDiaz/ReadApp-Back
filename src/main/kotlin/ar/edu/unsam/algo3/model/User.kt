@@ -49,6 +49,9 @@ class User(
 
     fun addBookToRead(libro: Libro) {
         booksToRead.add(libro)
+        if (booksToRead().contains(libro)){
+            throw Exception("${this.displayName()} ya tiene este libro para leer.")
+        }
     }
 
     fun booksToRead(): MutableSet<Libro> = booksToRead

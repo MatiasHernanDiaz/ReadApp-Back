@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.*
+import ar.edu.unsam.algo3.dto.BookDTO
 import ar.edu.unsam.algo3.dto.UserDTO
 import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.errors.NoIdException
@@ -111,5 +112,30 @@ class UserService (val userRepo: UserRepository){
         user.addFriend(newFriend)
 
         return user.friends.toList()
+    }
+
+    fun addBookToRead(userid: Int, bookDTO: BookDTO): List<Libro>{
+        val user = userRepo.itemById(userid)
+        val bookToRead = bookDTO.toBook()
+
+        if(user === null) {
+            throw NoIdException("Id de usuario inexistente")
+        }
+
+        user.addBookToRead(bookToRead)
+
+        return user.booksToRead().toList()
+    }
+    fun addReadBooks(userid: Int, bookDTO: BookDTO): List<Libro>{
+        val user = userRepo.itemById(userid)
+        val readBooks = bookDTO.toBook()
+
+        if(user === null) {
+            throw NoIdException("Id de usuario inexistente")
+        }
+
+        user.addReadBook(readBooks)
+
+        return user.readBooks().toList()
     }
 }
