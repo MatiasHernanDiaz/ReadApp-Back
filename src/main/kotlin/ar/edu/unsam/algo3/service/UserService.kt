@@ -16,11 +16,17 @@ class UserService (val userRepo: UserRepository){
         return userRepo.items
     }
 
-    fun editProfile(userDTO: UserDTO): User? {
+    fun editProfile(userDTO: UserDTO): User {
         val newUser = userDTOToUser(userDTO)
         userRepo.updateItem(newUser)
 
-        return userRepo.itemById(userDTO.id)
+        val updatedUser = userRepo.itemById(userDTO.id)
+
+        if( updatedUser === null ) {
+            throw NoIdException( "El usuario enviado no tiene un ID existente." )
+        }
+
+        return updatedUser
     }
 
     fun userDTOToUser(userDTO: UserDTO): User {
