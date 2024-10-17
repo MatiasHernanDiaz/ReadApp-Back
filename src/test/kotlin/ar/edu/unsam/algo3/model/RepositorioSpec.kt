@@ -1,5 +1,6 @@
 
 import ar.edu.unsam.algo3.*
+import ar.edu.unsam.algo3.errors.NoIdException
 import ar.edu.unsam.algo3.repos.RepositorioAutores
 import ar.edu.unsam.algo3.repos.RepositorioLibros
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
@@ -419,7 +420,7 @@ class RepositorioSpec : DescribeSpec({
             }
 
             it("ELIMINAR recomendacion inexistente") {
-                shouldThrow<Exception> { repositorioRecomendaciones.deleteItem(recomendacion3) }
+                shouldThrow<NoIdException> { repositorioRecomendaciones.deleteItem(recomendacion3) }
             }
         }
     }
@@ -507,7 +508,7 @@ class RepositorioSpec : DescribeSpec({
             }
 
             it("ELIMINAR autor inexistente") {
-                shouldThrow<Exception> { repositorioLibros.deleteItem(libro3) }
+                shouldThrow<NoIdException> { repositorioLibros.deleteItem(libro3) }
             }
         }
     }
