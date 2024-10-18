@@ -15,11 +15,11 @@ class LoginService(val userService: UserService) {
         val userByEmail = allUsers.find { us -> us.email == email }
 
         if(userByEmail === null) {
-            throw BadCredentailsError()
+            throw BadCredentailsError("Credenciales inválidas")
         }
 
         if(userByEmail.password != password) {
-            throw BadCredentailsError()
+            throw BadCredentailsError("Credenciales inválidas")
         }
         signedUser = userByEmail
 
