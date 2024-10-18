@@ -1,5 +1,7 @@
 package ar.edu.unsam.algo3.repos
 
+import ar.edu.unsam.algo3.errors.NoIdException
+
 abstract class Repository<T:ItemRepo> {
     abstract val items: MutableSet<T>
 
@@ -34,7 +36,18 @@ abstract class Repository<T:ItemRepo> {
     }
 
 
-    fun itemById(id: Int): T? = items.find { it.id == id }
+    fun itemById(id: Int, entityType:String = ""): T {
+
+        val item = items.find { it.id == id }
+        if(item == null && entityType == ""){
+            throw NoIdException("El id buscado no existe")
+        }
+        if(item == null){
+            throw NoIdException(entityType)
+        }
+        return item
+    }
+
 
 
     abstract fun searchItems(patron: String): List<T>

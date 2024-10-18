@@ -1,6 +1,7 @@
 package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.Recomendacion
+import ar.edu.unsam.algo3.User
 import ar.edu.unsam.algo3.Valoracion
 import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.errors.BusinessException
@@ -27,71 +28,85 @@ class RecomService(
     fun getAllRecoms(id: Int?, text: String = ""): List<Recomendacion> =
         recomRepositorio.searchItems(text).filter { id === null || it.creador.id == id }
 
-    fun getRecomById(id: Int): Recomendacion = recomRepositorio.itemById(id)!!
+    fun getRecomById(id: Int, userid: Int): Recomendacion {
+        val recom = recomRepositorio.itemById(id, "No se encontro recomendacion")
+        val user = userRepository.itemById(userid, "No se encontro usuario")
+        setCarEditAndCanRating(recom, user)
+        return recom
+    }
 
-    fun deleteRecomById(idUser: Int, idRecom: Int) {
-        val recomToDelete = getRecomById(idRecom)
+    fun deleteRecomById(idRecom: Int, idUser: Int) {
+        val recomToDelete = getRecomById(idRecom, idUser)
         val userOwner = userRepository.itemById(idUser)
 
-        if (userOwner != null && recomToDelete.creador.id == idUser) {
+        if (recomToDelete.creador.id == idUser) {
             userOwner.removeRecomendation(recomToDelete)
             recomRepositorio.deleteItem(recomToDelete)
         } else {
-            throw Exception("El usuario no es el propietario de la recomendación o no existe.")
+            throw Exception("El usuario no es el propietario de la recomendacion o no existe.")
         }
     }
 
     fun editRecom(idRecom: Int, recomBody: RecomEditDTO, userid: Int): Recomendacion {
-        val userEditor = userRepository.itemById(userid)
-        val recommendation = recomRepositorio.itemById(idRecom)
-            ?: throw NoIdException("Recomendación no encontrada!!")
+        val userEditor = userRepository.itemById(userid, "Usuario no encontrado")
 
-        if(!recommendation.puedeEditar(userEditor!!)){
+        val recommendation = recomRepositorio.itemById(idRecom, "No se encuentra la recomendacion")
+
+        if(!recommendation.puedeEditar(userEditor)){
             throw BusinessException("El usuario no puede editar la recomendacion!!")
         }
 
-        recommendation.titulo = recomBody.title
-        recommendation.resegna = recomBody.description
-        recommendation.publica = recomBody.publicIs
+        setRecom( recommendation, recomBody)
         recomRepositorio.updateItem(recommendation)
-        return recomRepositorio.itemById(recommendation.id)!!
+        return recomRepositorio.itemById(recommendation.id, "No se encontro recomendacion")
     }
 
     fun canRating(userid: Int, recomid: Int): Boolean {
-        val recom = recomRepositorio.itemById(recomid)
-        val user = userRepository.itemById(userid)
-        print("Puede valorar?? " + recom!!.puedeValorar(user!!))
+        val recom = recomRepositorio.itemById(recomid, "No se encuentra la recomendacion")
+        val user = userRepository.itemById(userid, "No se encontro usuario logeado")
         return recom.puedeValorar(user)
     }
 
     fun rating(recomid: Int, ratingDTO: RatingDTO): Recomendacion {
+
         if(!canRating(ratingDTO.creatorId, recomid)){
             throw BusinessException("El usuario no puede valorar!!")
         }
-        val newRating : Valoracion = Valoracion(
+        val newRating = Valoracion(
             rating = ratingDTO.rating,
             description = ratingDTO.description,
-            autor = userRepository.itemById(ratingDTO.creatorId)!!
+            autor = userRepository.itemById(ratingDTO.creatorId)
         )
 
-        val recom = recomRepositorio.itemById(recomid)
-        if(recom === null){
-            throw NoIdException("No hay una recomendacion con este ID")
-        }
+        val recom = recomRepositorio.itemById(recomid, "No se encontro recomendacion")
         recom.agregarValoracion(newRating)
         return recom
     }
 
-    fun createRecom(createRecomDTO: CreateRecomDTO): RecomDTO {
-        val creator = userRepository.itemById(createRecomDTO.userid)
+    fun createRecom(createRecomDTO: CreateRecomDTO): Recomendacion {
+        val id = recomRepositorio.createItem(createRecomAux(createRecomDTO))
+        return recomRepositorio.itemById(id, "No se encontro recomendacion")
+    }
+
+    private fun setRecom( recommendation: Recomendacion, recomBody: RecomEditDTO){
+        recommendation.titulo = recomBody.title
+        recommendation.resegna = recomBody.description
+        recommendation.publica = recomBody.publicIs
+    }
+
+    private fun setCarEditAndCanRating(recom: Recomendacion, user: User){
+        recom.canRating = recom.puedeValorar(user)
+        recom.canEdit = recom.puedeEditar(user)
+    }
+
+    private fun createRecomAux(createRecomDTO: CreateRecomDTO) : Recomendacion{
+        val creator = userRepository.itemById(createRecomDTO.userid, "No se encontro usuario")
         val newRecom = Recomendacion(titulo = createRecomDTO.title,
-            creador = creator!!,
+            creador = creator,
             libros = mutableSetOf(),
-            resegna = ""
-            )
-        val id = recomRepositorio.createItem(newRecom)
-        println("id "+ id)
-        return recomRepositorio.itemById(id)!!.toDTO()
+            resegna = "Dile a los demas de que se trata..."
+        )
+        return newRecom
     }
 }
 

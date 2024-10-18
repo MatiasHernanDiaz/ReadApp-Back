@@ -15,7 +15,7 @@ interface SearchCriteria{
             "Calculador" -> Calculator(user!!, minTime!!, maxTime!!)
             "Demandante" -> Claimant()
             "Experimentado" -> Experiencied()
-            "Cambiante" -> Inconstant(user!!, Calculator(user!!, minTime!!, maxTime!!))
+            "Cambiante" -> Inconstant(user!!, Calculator(user, minTime!!, maxTime!!))
             "Combinado" -> Combined(user!!, profiles!!.map{ this.fromCustomString(it) }.toMutableSet())
             else -> GreatReader()
          }

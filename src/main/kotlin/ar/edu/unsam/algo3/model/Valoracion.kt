@@ -1,8 +1,10 @@
 package ar.edu.unsam.algo3
 
+import java.time.LocalDate
+
 // ¿Es correcto declararla como "data class"? Dos recomendaciones podrían obtener
 // valoraciones iguales, pero no serían la misma.
-data class Valoracion (var rating: Int, var description: String, val autor: User){
+data class Valoracion (var rating: Int, var description: String, val autor: User, val createDate: LocalDate = LocalDate.now()){
 
     fun capazDeEditar(user: User): Boolean{
         return user === autor
@@ -24,4 +26,6 @@ data class Valoracion (var rating: Int, var description: String, val autor: User
             throw Exception("${user.displayName()} no es capaz de editar puntuación")
         }
     }
+
+
 }
