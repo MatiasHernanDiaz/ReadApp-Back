@@ -1,12 +1,9 @@
 package ar.edu.unsam.algo3.controller
 
-import ar.edu.unsam.algo3.User
 import ar.edu.unsam.algo3.dto.UserDTO
 import ar.edu.unsam.algo3.dto.toDTO
+import ar.edu.unsam.algo3.errors.BadCredentailsError
 import ar.edu.unsam.algo3.service.LoginService
-import com.fasterxml.jackson.annotation.JsonFilter
-import org.springframework.boot.autoconfigure.ldap.embedded.EmbeddedLdapProperties.Credential
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -28,22 +25,27 @@ class LoginController(val loginService: LoginService) {
         return SignedUserRes(true, signedUser.toDTO(),"")
     }
 
-    @PostMapping("/login")
-    fun login(@RequestBody credentials: CredentialsDTO): ResponseEntity<SignedUserRes> {
-        val user = loginService.login(credentials.email, credentials.password)
-
-        return if (user != null) {
-            ResponseEntity.ok(SignedUserRes(true, user.toDTO(),"Login Existoso"))
-        } else {
-            ResponseEntity.status(401).body(SignedUserRes(false, null, "Credenciales Invalidas"))
-        }
-    }
-
 //    @PostMapping("/login")
-//    fun login(@RequestBody credentials: CredentialsDTO) = SignedUserRes(
+//    fun login(@RequestBody credentials: CredentialsDTO): ResponseEntity<SignedUserRes> {
 //        val user = loginService.login(credentials.email, credentials.password)
 //
-//    )
+//        return if (user != null) {
+//            ResponseEntity.ok(SignedUserRes(true, user.toDTO(),"Login Existoso"))
+//        } else {
+//            ResponseEntity.status(401).body(SignedUserRes(false, null, "Credenciales Invalidas"))
+//        }
+//    }
+    @PostMapping("/login")
+    fun login(@RequestBody credentials: CredentialsDTO): SignedUserRes {
+    return try {
+        // Intenta loguear al usuario
+        val user = loginService.login(credentials.email, credentials.password)
+        SignedUserRes(true, user.toDTO(), "Login Exitoso")
+    } catch (e: BadCredentailsError) {
+        SignedUserRes(false, null, e.message ?: "Credenciales inválidas")
+    }
+}
+
 
     @GetMapping("/logout")
     fun logout(): SignedUserRes {
