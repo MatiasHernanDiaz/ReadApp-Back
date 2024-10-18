@@ -72,18 +72,18 @@ class ValoracionAutomaticaSpec : DescribeSpec({
         password = "sarasa"
     )
 
-    val userCreador = User(
-        firstName = "Marty",
-        lastName = "McFly",
-        username = "Condensador_De_Flujo",
-        email = "volverAlFuturo@gmail.com",
-        birthday = LocalDate.of(1968, 6, 9),
-        searchCriteria = GreatReader(),
-        nativeLanguage = Language.SPANISH,
-        readTimeMinAvg = 30,
-        friends = mutableSetOf(userEditor),
-        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado),
-        password = "sarasa"
-    )
+//    val userCreador = User(
+//        firstName = "Marty",
+//        lastName = "McFly",
+//        username = "Condensador_De_Flujo",
+//        email = "volverAlFuturo@gmail.com",
+//        birthday = LocalDate.of(1968, 6, 9),
+//        searchCriteria = GreatReader(),
+//        nativeLanguage = Language.SPANISH,
+//        readTimeMinAvg = 30,
+//        friends = mutableSetOf(userEditor),
+//        readBooks = mutableListOf(libroOriginalRecom, primerLibroAgregado, segundoLibroAgregado),
+//        password = "sarasa"
+//    )
 
 })

@@ -12,37 +12,38 @@ class RecomController(val recomService: RecomService) {
     fun recommendation(@RequestParam("userid") id: Int?, @RequestParam("text") text: String = "") =
         recomService.getAllRecoms(id, text).map { it.toDTO() }
 
-    @GetMapping("/recommendations/{idRecom}")
-    fun getRecom(@PathVariable idRecom: Int) = recomService.getRecomById(idRecom).toDTO()
+    @GetMapping("/recommendations/{idRecom}/{userid}")
+    fun getRecom(@PathVariable idRecom: Int,
+                 @PathVariable userid: Int): RecomEditDTO = recomService.getRecomById(idRecom, userid).toEditDTO()
 
-    @DeleteMapping("/recommendations/{idUser}/{idRecom}")
+    @DeleteMapping("/recommendations/delete/{idRecom}/{idUser}")
     fun deleteRecom(@PathVariable idUser: Int, @PathVariable idRecom: Int) =
-        recomService.deleteRecomById(idUser, idRecom)
+        recomService.deleteRecomById(idRecom, idUser)
 
     @PutMapping("/recommendations/update/{idRecom}")
     fun editableRecom(
         @PathVariable idRecom: Int,
         @RequestParam("userid") userid: Int,
         @RequestBody recomBody: RecomEditDTO
-    ): RecomDTO {
-        return recomService.editRecom(idRecom, recomBody, userid).toDTO()
+    ): RecomEditDTO {
+        return recomService.editRecom(idRecom, recomBody, userid).toEditDTO()
     }
 
     @PostMapping("/recommendations/create/recom")
     fun createRecom(
         @RequestBody createRecomDTO: CreateRecomDTO,
     ): RecomDTO{
-        return recomService.createRecom(createRecomDTO)
+        return recomService.createRecom(createRecomDTO).toDTO()
     }
 
     @GetMapping("/recommendations/rating")
     fun canRating(@RequestParam("userid") userid: Int, @RequestParam("recomid") recomid: Int) : Boolean =
         recomService.canRating(userid, recomid)
 
+
     @PostMapping("/recommendations/create/rating")
     fun rating(@RequestParam("recomid") recomid: Int,
-               @RequestBody ratingBody: RatingDTO) : RecomDTO =
-        recomService.rating(recomid, ratingBody).toDTO()
-
+               @RequestBody ratingBody: RatingDTO) : RecomEditDTO =
+        recomService.rating(recomid, ratingBody).toEditDTO()
 
 }

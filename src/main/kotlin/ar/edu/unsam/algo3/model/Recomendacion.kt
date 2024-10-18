@@ -12,6 +12,8 @@ class Recomendacion(
     override var id: Int = -1
 
     val valoraciones: MutableList<Valoracion> = mutableListOf()
+    var canRating: Boolean = false
+    var canEdit: Boolean = false
 
     init {
         creador.addRecom(this)
@@ -99,6 +101,10 @@ class Recomendacion(
          return 0.0
         }
         return avg
+    }
+
+    fun getBookToRecom(user: User): List<Libro>{
+        return creador.readBooks.intersect(user.readBooks).toList().filterNot { it in libros }
     }
 
 }
