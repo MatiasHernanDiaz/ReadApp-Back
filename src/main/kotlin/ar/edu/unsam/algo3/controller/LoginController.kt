@@ -25,26 +25,11 @@ class LoginController(val loginService: LoginService) {
         return SignedUserRes(true, signedUser.toDTO(),"")
     }
 
-//    @PostMapping("/login")
-//    fun login(@RequestBody credentials: CredentialsDTO): ResponseEntity<SignedUserRes> {
-//        val user = loginService.login(credentials.email, credentials.password)
-//
-//        return if (user != null) {
-//            ResponseEntity.ok(SignedUserRes(true, user.toDTO(),"Login Existoso"))
-//        } else {
-//            ResponseEntity.status(401).body(SignedUserRes(false, null, "Credenciales Invalidas"))
-//        }
-//    }
     @PostMapping("/login")
-    fun login(@RequestBody credentials: CredentialsDTO): SignedUserRes {
-    return try {
-        // Intenta loguear al usuario
-        val user = loginService.login(credentials.email, credentials.password)
-        SignedUserRes(true, user.toDTO(), "Login Exitoso")
-    } catch (e: BadCredentailsError) {
-        SignedUserRes(false, null, e.message ?: "Credenciales inválidas")
-    }
-}
+    fun login(@RequestBody credentials: CredentialsDTO): SignedUserRes =
+        SignedUserRes(true, loginService.login(credentials.email, credentials.password).toDTO(),"Login Exitoso")
+
+
 
 
     @GetMapping("/logout")
