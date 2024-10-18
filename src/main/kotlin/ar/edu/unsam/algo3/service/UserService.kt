@@ -139,27 +139,27 @@ class UserService (val userRepo: UserRepository, val bookRepo: RepositorioLibros
 
         return user.readBooks().toList()
     }
-    fun delBookToRead(userid: Int, bookDTO: BookDTO): List<Libro>{
+    fun delBookToRead(userid: Int, bookId: Int): List<Libro>{
         val user = userRepo.itemById(userid)
-        val bookToRead = bookRepo.itemById(bookDTO.id)
+        val bookToRead = bookRepo.itemById(bookId)
 
         if(user === null|| bookToRead === null) {
             throw NoIdException("Id de usuario inexistente")
         }
 
-        user.addBookToRead(bookToRead)
+        user.delBookToRead(bookToRead)
 
         return user.booksToRead().toList()
     }
-    fun delReadBooks(userid: Int, bookDTO: BookDTO): List<Libro>{
+    fun delReadBooks(userid: Int, bookId: Int): List<Libro>{
         val user = userRepo.itemById(userid)
-        val readBooks = bookRepo.itemById(bookDTO.id)
+        val readBooks = bookRepo.itemById(bookId)
 
         if(user === null|| readBooks === null) {
             throw NoIdException("Id de usuario inexistente")
         }
 
-        user.addReadBook(readBooks)
+        user.delReadBook(readBooks)
 
         return user.readBooks().toList()
     }

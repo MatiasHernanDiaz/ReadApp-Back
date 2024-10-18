@@ -9,7 +9,7 @@ import ar.edu.unsam.algo3.service.UserService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.GET, RequestMethod.POST])
+@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.GET, RequestMethod.POST, RequestMethod.DELETE])
 @RequestMapping("/users")
 class UserController (val userService: UserService){
 
@@ -47,12 +47,12 @@ class UserController (val userService: UserService){
     fun addReadBook(@PathVariable userid: Int, @RequestBody bookDTO: BookDTO): List<BookDTO> = userService.addReadBooks(
         userid, bookDTO).map { it.toDTO() }
     @DeleteMapping("/{userid}/deltoread")
-    fun deleteBookToRead(@PathVariable userid: Int,@RequestParam("book") book: BookDTO) {
-        userService.delBookToRead(userid, book)
+    fun deleteBookToRead(@PathVariable userid: Int,@RequestParam("bookid") bookID: Int) {
+        userService.delBookToRead(userid, bookID)
     }
     @DeleteMapping("/{userid}/delreadbook")
-    fun deleteBookRead(@PathVariable userid: Int,@RequestParam("book") book: BookDTO) {
-        userService.delReadBooks(userid, book)
+    fun deleteBookRead(@PathVariable userid: Int,@RequestParam("bookid") bookID: Int) {
+        userService.delReadBooks(userid, bookID)
     }
 
     @GetMapping("/{userid}/bookstoread")
