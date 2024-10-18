@@ -46,6 +46,14 @@ class UserController (val userService: UserService){
     @PostMapping("/{userid}/addreadbook")
     fun addReadBook(@PathVariable userid: Int, @RequestBody bookDTO: BookDTO): List<BookDTO> = userService.addReadBooks(
         userid, bookDTO).map { it.toDTO() }
+    @DeleteMapping("/{userid}/deltoread")
+    fun deleteBookToRead(@PathVariable userid: Int,@RequestParam("book") book: BookDTO) {
+        userService.delBookToRead(userid, book)
+    }
+    @DeleteMapping("/{userid}/delreadbook")
+    fun deleteBookRead(@PathVariable userid: Int,@RequestParam("book") book: BookDTO) {
+        userService.delReadBooks(userid, book)
+    }
 
     @GetMapping("/{userid}/bookstoread")
     fun getBooksToRead(@PathVariable userid: Int, @RequestParam("toread") toread: Boolean) = userService.getBooksToRead(userid, toread).map { it.toDTO() }

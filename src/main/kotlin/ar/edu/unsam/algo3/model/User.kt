@@ -53,6 +53,18 @@ class User(
             throw Exception("${this.displayName()} ya tiene este libro para leer.")
         }
     }
+    fun delBookToRead(libro: Libro) {
+        booksToRead.remove(libro)
+        if (booksToRead().contains(libro)){
+            throw Exception("${this.displayName()} ya tiene este libro para leer.")
+        }
+    }
+    fun delReadBook(libro: Libro) {
+        readBooks.remove(libro)
+        if (booksToRead().contains(libro)){
+            throw Exception("${this.displayName()} ya tiene este libro para leer.")
+        }
+    }
 
     fun booksToRead(): MutableSet<Libro> = booksToRead
 
