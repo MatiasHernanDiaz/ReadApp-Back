@@ -111,8 +111,8 @@ class PerfilSpec : DescribeSpec ({
 
     val calculator = Calculator(
         user = user,
-        tiempoMaximo = 400.0,
-        tiempoMinimo = 210.3
+        maxTime = 400.0,
+        minTime = 210.3
     )
     val cambianteUsuario = Inconstant(
         user = user,

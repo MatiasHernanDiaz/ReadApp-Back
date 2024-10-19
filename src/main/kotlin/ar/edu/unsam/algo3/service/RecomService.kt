@@ -20,13 +20,19 @@ import kotlin.jvm.Throws
 class RecomService(
     val recomRepositorio: RepositorioRecomendaciones,
     val userRepository: UserRepository,
+    val loginService: LoginService,
     @Qualifier("forceAutoProxyCreatorToUseClassProxying") private val creator: BeanFactoryPostProcessor
 ) {
     fun getAllRecoms(id: Int?): List<Recomendacion> =
         recomRepositorio.items().filter { id === null || it.creador.id == id }
 
-    fun getAllRecoms(id: Int?, text: String = ""): List<Recomendacion> =
-        recomRepositorio.searchItems(text).filter { id === null || it.creador.id == id }
+    fun getAllRecoms(id: Int?, text: String = ""): List<Recomendacion> {
+        if( id === null ) {
+            return recomRepositorio.searchItems(text).filter { loginService.getSignedUser()?.isRecommendable(it) ?: false }
+        } else {
+            return recomRepositorio.searchItems(text).filter { it.creador.id == id }
+        }
+    }
 
     fun getRecomById(id: Int, userid: Int): Recomendacion {
         val recom = recomRepositorio.itemById(id, "No se encontro recomendacion")

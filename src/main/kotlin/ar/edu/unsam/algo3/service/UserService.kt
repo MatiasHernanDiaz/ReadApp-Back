@@ -26,9 +26,16 @@ class UserService (val userRepo: UserRepository){
             SearchCriteria.fromCustomString(
                 "Combinado",
                 user = oldUser,
+                minTime = userDTO.minTime,
+                maxTime = userDTO.maxTime,
                 profiles = userDTO.searchCriteria
             ) else
-            SearchCriteria.fromCustomString(userDTO.searchCriteria[0])
+            SearchCriteria.fromCustomString(
+                userDTO.searchCriteria[0],
+                user = oldUser,
+                minTime = userDTO.minTime,
+                maxTime = userDTO.maxTime
+            )
 
 
         return User(
