@@ -3,6 +3,7 @@ package ar.edu.unsam.algo3.service
 import ar.edu.unsam.algo3.*
 import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.UserDTO
+import ar.edu.unsam.algo3.errors.NoIdException
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.stereotype.Service
@@ -98,6 +99,16 @@ class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecom
 
         user.addFriend(newFriend)
 
+        return user.friends.toList()
+    }
+    fun deleteFriend(userid: Int, friendId: Int): List<User> {
+        val user = userRepo.itemById(userid)
+        val friendToRemove = userRepo.itemById(friendId)  // Asumiendo que los amigos también son usuarios
+
+        if (user === null || friendToRemove === null) {
+            throw NoIdException("Id de usuario o amigo inexistente")
+        }
+        user.deleteFriend(friendToRemove)
         return user.friends.toList()
     }
 

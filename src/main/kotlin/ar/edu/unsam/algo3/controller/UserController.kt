@@ -34,6 +34,10 @@ class UserController(
     @GetMapping("/{userid}/friends")
     fun getFriends(@PathVariable userid: Int) = userService.getFriends(userid).map { it.toDTO() }
 
+    @DeleteMapping("/{userid}/delfriend")
+    fun deleteFriend(@PathVariable userid: Int, @RequestParam("friendid") friendID: Int) {
+        userService.deleteFriend(userid, friendID)
+    }
     @GetMapping("/{userid}/candidatestofriend")
     fun getCandidatesToFriend(@PathVariable userid: Int, @RequestParam("search") search: String?) = userService.getCandidatesToFriends(
         userid, search).map { it.toDTO() }
