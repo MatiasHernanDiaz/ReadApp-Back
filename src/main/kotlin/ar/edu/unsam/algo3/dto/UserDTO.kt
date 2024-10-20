@@ -43,3 +43,18 @@ fun User.toDTO() = UserDTO(
     favorites = favoriteRecoms.map{ it.toDTO() }
 )
 
+data class CreatorDTO(
+    val lastName: String,
+    val id: Int,
+    val firstName: String,
+    val username: String,
+    val email: String
+)
+
+fun User.toCreatorDTO() = CreatorDTO(
+    id = id,
+    lastName = lastName,
+    firstName = firstName,
+    username = username,
+    email = email,
+)
