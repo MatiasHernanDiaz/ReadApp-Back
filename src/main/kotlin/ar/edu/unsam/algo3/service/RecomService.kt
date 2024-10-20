@@ -6,6 +6,7 @@ import ar.edu.unsam.algo3.Valoracion
 import ar.edu.unsam.algo3.dto.*
 import ar.edu.unsam.algo3.errors.BusinessException
 import ar.edu.unsam.algo3.errors.NoIdException
+import ar.edu.unsam.algo3.repos.RepositorioLibros
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.beans.factory.annotation.Qualifier
@@ -20,6 +21,7 @@ import kotlin.jvm.Throws
 class RecomService(
     val recomRepositorio: RepositorioRecomendaciones,
     val userRepository: UserRepository,
+    val bookRepository: RepositorioLibros,
     @Qualifier("forceAutoProxyCreatorToUseClassProxying") private val creator: BeanFactoryPostProcessor
 ) {
     fun getAllRecoms(id: Int?): List<Recomendacion> =
@@ -107,6 +109,14 @@ class RecomService(
             resegna = "Dile a los demas de que se trata..."
         )
         return newRecom
+    }
+
+    fun deteleBookToRecom(userid: Int, recomid: Int, bookBody: BookDTO): Recomendacion {
+        val recom = recomRepositorio.itemById(recomid)
+        val book = bookRepository.itemById(bookBody.id)
+        val user = userRepository.itemById(userid)
+        recom.eliminarLibro(user, book)
+        return recom
     }
 }
 
