@@ -3,7 +3,7 @@ package ar.edu.unsam.algo3.dto
 import ar.edu.unsam.algo3.Recomendacion
 
 data class RecomDTO(
-    val creator: UserDTO,
+    val creator: CreatorDTO,
     val title: String = "",
     var description: String,
     val books: List<BookDTO>,
@@ -16,11 +16,12 @@ data class RecomDTO(
 fun Recomendacion.toDTO() =
     RecomDTO(id = id, title = titulo, description = resegna,
         books = libros.map { it.toDTO() }, publicIs = publica,
-        creator = creador.toDTO(), ratings = valoraciones.map { it.toDTO() },
+        creator = creador.toCreatorDTO(), ratings = valoraciones.map { it.toDTO() },
         ratingsAvg = promedioValoraciones())
 
 data class CreateRecomDTO(
     val title: String = "",
     val userid: Int
 )
+
 

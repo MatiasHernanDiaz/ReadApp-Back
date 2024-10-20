@@ -1283,7 +1283,8 @@ class DataInitializer(
             friends = mutableSetOf(homero, bart, milhouse,marge, lisa, barney, ned , nelson, ralph, selma, patty,  carl, lenny, groundskeeper, skinner, apu ),
             readBooks = mutableListOf(alFaro,cartasAlPadre,elCastillo,elIdiota,elJugador, laMetamorfosis, losHermanosKaramazov),
             booksToRead = mutableSetOf(annaKarenina,laGalatea,guerraYPaz,julioCesar,crimenYCastigo,laSenoraDalloway),
-            avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5LdxFtiu-bv3t7PD-FNtUXTJrztkvutnlrQ&s"
+            avatar = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR5LdxFtiu-bv3t7PD-FNtUXTJrztkvutnlrQ&s",
+            favoriteRecoms = mutableSetOf()
         )
 
         val mandarina = User(
@@ -1792,6 +1793,9 @@ class DataInitializer(
         recomRalph2.agregarValoracion(valoracionLenny2)  // Ralph valora la recomendación de Lenny
         recomBarney2.agregarValoracion(valoracionLenny3)  // Barney valora la recomendación de Lenny
 
+        homero.addFavoriteRecom(recomMarge1)
+        homero.addFavoriteRecom(recomMarge2)
+        homero.addFavoriteRecom(recomMarge3)
 
 
 //        repoRecom.createItem(recomCompleta)

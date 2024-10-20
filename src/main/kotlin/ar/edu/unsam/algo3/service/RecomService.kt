@@ -114,6 +114,11 @@ class RecomService(
         )
         return newRecom
     }
+
+    fun getRecom(id: Int): Recomendacion {
+            val recom = recomRepositorio.itemById(id, "No se encontro recomendacion")
+            return recom
+        }
 }
 
 
