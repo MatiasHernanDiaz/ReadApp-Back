@@ -103,7 +103,7 @@ class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecom
     }
     fun deleteFriend(userid: Int, friendId: Int): List<User> {
         val user = userRepo.itemById(userid)
-        val friendToRemove = userRepo.itemById(friendId)  // Asumiendo que los amigos también son usuarios
+        val friendToRemove = userRepo.itemById(friendId)
 
         if (user === null || friendToRemove === null) {
             throw NoIdException("Id de usuario o amigo inexistente")
