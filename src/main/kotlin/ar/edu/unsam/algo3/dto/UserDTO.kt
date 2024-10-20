@@ -18,7 +18,8 @@ data class UserDTO(
     val readToBooks: List<BookDTO>,
     val id: Int,
     val minTime: Double = 0.0,
-    val maxTime: Double = 0.0
+    val maxTime: Double = 0.0,
+    val favorites: List<RecomDTO>
 )
 
 fun User.toDTO() = UserDTO(
@@ -28,7 +29,9 @@ fun User.toDTO() = UserDTO(
     username = username,
     email = email,
     birthday = birthday,
-    searchCriteria = if(searchCriteria is Combined) (searchCriteria as Combined).perfiles.map { it.toCustomString() } else listOf( searchCriteria.toCustomString() ),
+    searchCriteria = if (searchCriteria is Combined) (searchCriteria as Combined).perfiles.map { it.toCustomString() } else listOf(
+        searchCriteria.toCustomString()
+    ),
     nativeLanguage = nativeLanguage,
     readTimeMinAvg = readTimeMinAvg,
     readMode = readMode.toCustomString(),
@@ -37,5 +40,6 @@ fun User.toDTO() = UserDTO(
     avatar = avatar,
     minTime = searchCriteria.minTime,
     maxTime = searchCriteria.maxTime,
+    favorites = favoriteRecoms.map{ it.toDTO() }
 )
 

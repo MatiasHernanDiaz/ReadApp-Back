@@ -1,14 +1,16 @@
 package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.*
+import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.UserDTO
+import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.stereotype.Service
 
 
 
 @Service
-class UserService (val userRepo: UserRepository){
+class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecomendaciones){
     fun getAllUser(): MutableSet<User> {
         return userRepo.items
     }
@@ -97,5 +99,24 @@ class UserService (val userRepo: UserRepository){
         user.addFriend(newFriend)
 
         return user.friends.toList()
+    }
+
+    fun addFavoriteRecom(userId: Int, recomId: Int): List<Recomendacion> {
+        val user = userRepo.itemById(userId)
+        val recommendation = recomRepo.itemById(recomId)
+        user.addFavoriteRecom(recommendation)
+        return user.favoriteRecoms.toList()
+    }
+
+    fun removeFavoriteRecom(userId: Int, recomId: Int): List<Recomendacion> {
+        val user = userRepo.itemById(userId)
+        val recommendation = recomRepo.itemById(recomId)
+        user.removeFavoriteRecom(recommendation)
+        return user.favoriteRecoms.toList()
+    }
+
+    fun getFavoriteRecom(userId: Int): List<Recomendacion> {
+        val user = userRepo.itemById(userId)
+        return user.favoriteRecoms.toList()
     }
 }
