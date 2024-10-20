@@ -5,7 +5,7 @@ import ar.edu.unsam.algo3.service.RecomService
 import org.springframework.web.bind.annotation.*
 
 @RestController
-@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET])
+@CrossOrigin(origins = ["http://localhost:4200"], methods = [RequestMethod.PUT, RequestMethod.POST, RequestMethod.GET, RequestMethod.DELETE])
 class RecomController(val recomService: RecomService) {
 
     @GetMapping("/recommendations")
@@ -46,9 +46,9 @@ class RecomController(val recomService: RecomService) {
                @RequestBody ratingBody: RatingDTO) : RecomEditDTO =
         recomService.rating(recomid, ratingBody).toEditDTO()
 
-    @PostMapping("/recommendations/delete/{userid}/{recomid}/{bookid}")
-    fun deleteBookToRecom(@RequestParam("recomid") recomid: Int,
-                          @RequestParam("userid") userid: Int,
-                          @RequestBody bookBody: BookDTO): RecomEditDTO = recomService.deteleBookToRecom(userid,recomid, bookBody).toEditDTO()
+    @DeleteMapping("/recommendations/delete/{userid}/{recomid}/{bookid}")
+    fun deleteBookToRecom(@PathVariable("recomid") recomid: Int,
+                          @PathVariable("userid") userid: Int,
+                          @PathVariable("bookid") bookid: Int): RecomEditDTO = recomService.deteleBookToRecom(userid,recomid, bookid).toEditDTO()
 
 }

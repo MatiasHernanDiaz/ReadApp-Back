@@ -111,9 +111,9 @@ class RecomService(
         return newRecom
     }
 
-    fun deteleBookToRecom(userid: Int, recomid: Int, bookBody: BookDTO): Recomendacion {
+    fun deteleBookToRecom(userid: Int, recomid: Int, bookid: Int): Recomendacion {
         val recom = recomRepositorio.itemById(recomid)
-        val book = bookRepository.itemById(bookBody.id)
+        val book = bookRepository.itemById(bookid)
         val user = userRepository.itemById(userid)
         recom.eliminarLibro(user, book)
         return recom
