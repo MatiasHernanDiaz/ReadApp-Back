@@ -1050,7 +1050,7 @@ class DataInitializer(
             password = "mandarina",
             email = "lisa@simps.com",
             birthday = LocalDate.of(1990, 8, 24),
-//            searchCriteria = Leedor(),
+            searchCriteria = Polyglot(),
             nativeLanguage = Language.SPANISH,
             readTimeMinAvg = 300,
             friends = mutableSetOf(homero, marge, bart),

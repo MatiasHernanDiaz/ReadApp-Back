@@ -54,7 +54,7 @@ class PerfilSpec : DescribeSpec ({
         lastName = "McFly",
         username = "Condensador_De_Flujo",
         email = "volverAlFuturo@gmail.com",
-        birthday = LocalDate.of(1938, 6, 9),
+        birthday = LocalDate.of(1948, 6, 9),
         searchCriteria = GreatReader(),
         nativeLanguage = Language.SPANISH,
         readTimeMinAvg = 30,
@@ -111,17 +111,19 @@ class PerfilSpec : DescribeSpec ({
 
     val calculator = Calculator(
         user = user,
-        tiempoMaximo = 400.0,
-        tiempoMinimo = 210.3
+        maxTime = 400.0,
+        minTime = 210.3
     )
     val cambianteUsuario = Inconstant(
         user = user,
-        calculator = calculator
+        maxTime = 400.0,
+        minTime = 210.3
     )
 
     val cambianteAmigo = Inconstant(
         user = amigo,
-        calculator = calculator
+        maxTime = 500.0,
+        minTime = 210.3
     )
 
     val combined = Combined(
@@ -257,12 +259,12 @@ class PerfilSpec : DescribeSpec ({
             user.updateSearchCriteria(cambianteUsuario)
             user.isRecommendable(recomendacion) shouldBe true
         }
-        it("como es mas adulto, será recomendable ya que está en su limite de tiempo"){
+        it("como es mas adulto, no será recomendable ya que no entra en la ventana de tiempo"){
             amigo.updateSearchCriteria(cambianteAmigo)
             recomendacion.agregarLibro(creador,libro2)
             recomendacion.agregarLibro(creador,libro3)
 
-            amigo.isRecommendable(recomendacion) shouldBe true
+            amigo.isRecommendable(recomendacion) shouldBe false
         }
         it("como tiene mayor edad, no sera recomendable ya que el tiempo es demasiado alto"){
             amigo.updateSearchCriteria(cambianteAmigo)

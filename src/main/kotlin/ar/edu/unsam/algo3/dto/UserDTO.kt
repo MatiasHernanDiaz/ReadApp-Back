@@ -14,11 +14,11 @@ data class UserDTO(
     val readTimeMinAvg: Int,
     val avatar: String,
     val readMode: String,
+    val readBooks: List<BookDTO>,
+    val readToBooks: List<BookDTO>,
     val id: Int,
-//    val friends: List<FriendDTO>,
-//    val readBooks: List<BookDTO>,
-//    val readToBooks: List<BookDTO>,
-//    val ratings
+    val minTime: Double = 0.0,
+    val maxTime: Double = 0.0
 )
 
 fun User.toDTO() = UserDTO(
@@ -32,6 +32,10 @@ fun User.toDTO() = UserDTO(
     nativeLanguage = nativeLanguage,
     readTimeMinAvg = readTimeMinAvg,
     readMode = readMode.toCustomString(),
-    avatar = avatar
+    readBooks = readBooks.map { it.toDTO() },
+    readToBooks = booksToRead.map { it.toDTO() },
+    avatar = avatar,
+    minTime = searchCriteria.minTime,
+    maxTime = searchCriteria.maxTime,
 )
 
