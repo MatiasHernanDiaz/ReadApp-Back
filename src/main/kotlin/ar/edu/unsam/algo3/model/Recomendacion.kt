@@ -7,7 +7,8 @@ class Recomendacion(
     var titulo: String = "",
     var resegna: String,
     val libros: MutableSet<Libro> = mutableSetOf(),
-    var publica: Boolean = false
+    var publica: Boolean = false,
+    var favorite: Boolean = false
 ) : ItemRepo {
     override var id: Int = -1
 

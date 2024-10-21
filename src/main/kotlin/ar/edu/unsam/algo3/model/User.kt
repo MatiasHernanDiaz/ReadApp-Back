@@ -23,7 +23,9 @@ class User(
     val recommendations: MutableList<Recomendacion> = mutableListOf(),
     val ratings: MutableList<Valoracion> = mutableListOf(),
     var readMode: ReadMode = AvgReader,
-    var avatar: String = ""
+    var avatar: String = "",
+    val favoriteRecoms: MutableSet<Recomendacion> = mutableSetOf()
+
 ): ItemRepo {
     fun age(): Int = Period.between(birthday, LocalDate.now()).years
 
@@ -133,6 +135,26 @@ class User(
     fun getMail()=email
 
     fun removeRecomendation(recomendacion: Recomendacion) = recommendations.remove(recomendacion)
+
+    fun addFavoriteRecom(recomendacion: Recomendacion) {
+        if (!favoriteRecoms.contains(recomendacion)) {
+            favoriteRecoms.add(recomendacion)
+        }
+    }
+
+    fun removeFavoriteRecom(recomendacion: Recomendacion) {
+        if (favoriteRecoms.contains(recomendacion)) {
+            favoriteRecoms.remove(recomendacion)
+        }
+    }
+
+    fun isFavoriteRecom(recomendacion: Recomendacion): Boolean {
+        return favoriteRecoms.contains(recomendacion)
+    }
+
+    fun getFavoriteRecoms(): List<Recomendacion> {
+        return favoriteRecoms.toList()
+    }
 
 }
 

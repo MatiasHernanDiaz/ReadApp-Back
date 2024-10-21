@@ -14,11 +14,12 @@ data class UserDTO(
     val readTimeMinAvg: Int,
     val avatar: String,
     val readMode: String,
+    val readBooks: List<BookDTO>,
+    val readToBooks: List<BookDTO>,
     val id: Int,
-//    val friends: List<FriendDTO>,
-//    val readBooks: List<BookDTO>,
-//    val readToBooks: List<BookDTO>,
-//    val ratings
+    val minTime: Double = 0.0,
+    val maxTime: Double = 0.0,
+    val favorites: List<RecomDTO>
 )
 
 fun User.toDTO() = UserDTO(
@@ -28,10 +29,32 @@ fun User.toDTO() = UserDTO(
     username = username,
     email = email,
     birthday = birthday,
-    searchCriteria = if(searchCriteria is Combined) (searchCriteria as Combined).perfiles.map { it.toCustomString() } else listOf( searchCriteria.toCustomString() ),
+    searchCriteria = if (searchCriteria is Combined) (searchCriteria as Combined).perfiles.map { it.toCustomString() } else listOf(
+        searchCriteria.toCustomString()
+    ),
     nativeLanguage = nativeLanguage,
     readTimeMinAvg = readTimeMinAvg,
     readMode = readMode.toCustomString(),
-    avatar = avatar
+    readBooks = readBooks.map { it.toDTO() },
+    readToBooks = booksToRead.map { it.toDTO() },
+    avatar = avatar,
+    minTime = searchCriteria.minTime,
+    maxTime = searchCriteria.maxTime,
+    favorites = favoriteRecoms.map{ it.toDTO() }
 )
 
+data class CreatorDTO(
+    val lastName: String,
+    val id: Int,
+    val firstName: String,
+    val username: String,
+    val email: String
+)
+
+fun User.toCreatorDTO() = CreatorDTO(
+    id = id,
+    lastName = lastName,
+    firstName = firstName,
+    username = username,
+    email = email,
+)

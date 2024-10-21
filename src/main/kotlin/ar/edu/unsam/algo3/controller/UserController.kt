@@ -1,10 +1,11 @@
 package ar.edu.unsam.algo3.controller
 
-import ar.edu.unsam.algo3.Libro
 import ar.edu.unsam.algo3.dto.BookDTO
+import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.UserDTO
 import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.service.LoginService
+import ar.edu.unsam.algo3.service.RecomService
 import ar.edu.unsam.algo3.service.UserService
 import org.springframework.web.bind.annotation.*
 
@@ -13,7 +14,8 @@ import org.springframework.web.bind.annotation.*
 @RequestMapping("/users")
 class UserController(
     val userService: UserService,
-    private val loginService: LoginService
+    private val loginService: LoginService,
+    private val recomService: RecomService
 ){
 
     @GetMapping("")
@@ -56,4 +58,14 @@ class UserController(
 
     @GetMapping("/{userid}/bookstoread")
     fun getBooksToRead(@PathVariable userid: Int, @RequestParam("toread") toread: Boolean) = userService.getBooksToRead(userid, toread).map { it.toDTO() }
+
+    @PostMapping("/favorites/{userId}/{recomId}")
+    fun addFavoriteRecom(@PathVariable userId: Int, @PathVariable recomId: Int) : List<RecomDTO> = userService.addFavoriteRecom(userId,recomId).map { it.toDTO() }
+
+    @DeleteMapping("/favorites/{userId}/{recomId}")
+    fun removeFavoriteRecom(@PathVariable userId: Int, @PathVariable recomId: Int): List<RecomDTO> = userService.removeFavoriteRecom(userId,recomId).map { it.toDTO() }
+
+    @GetMapping("/favorites/{userId}")
+    fun getFavorites (@PathVariable userId: Int): List<RecomDTO> = userService.getFavoriteRecom(userId).map { it.toDTO() }
+
 }
