@@ -27,7 +27,6 @@ jobs:
       - name: Execute tests with coverage
         run: |
           ./gradlew runOnGitHub
-          cat file:///home/runner/work/readapp-2024-backend-grupo-7/readapp-2024-backend-grupo-7/build/reports/tests/test/index.html
 
 #      - name: Generate JaCoCo Badge
 #        id: jacoco
