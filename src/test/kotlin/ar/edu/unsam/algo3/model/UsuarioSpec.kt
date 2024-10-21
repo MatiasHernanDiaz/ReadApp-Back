@@ -3,6 +3,7 @@ import io.kotest.assertions.throwables.shouldThrow
 import io.kotest.core.spec.style.DescribeSpec
 import io.kotest.matchers.equals.shouldNotBeEqual
 import io.kotest.matchers.shouldBe
+import org.apache.catalina.Executor
 import org.junit.jupiter.api.Assertions.assertEquals
 import java.time.LocalDate
 import java.time.Period
@@ -241,6 +242,7 @@ class UsuarioSpec : DescribeSpec({
             user.addBookToRead(lasDosTorres)
 
             //Assert
+            shouldThrow<Exception> { user.addBookToRead(lasDosTorres) }
             user.booksToRead() shouldBe mutableListOf(lasDosTorres)
         }
 

@@ -1,12 +1,12 @@
 package ar.edu.unsam.algo3.controller
 
+import ar.edu.unsam.algo3.dto.BookDTO
 import ar.edu.unsam.algo3.dto.RecomDTO
 import ar.edu.unsam.algo3.dto.UserDTO
 import ar.edu.unsam.algo3.dto.toDTO
 import ar.edu.unsam.algo3.service.LoginService
 import ar.edu.unsam.algo3.service.RecomService
 import ar.edu.unsam.algo3.service.UserService
-import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.*
 
 @RestController
@@ -45,6 +45,20 @@ class UserController(
     @PostMapping("/{userid}/addfriend")
     fun addFriend(@PathVariable userid: Int, @RequestBody friendDTO: UserDTO): List<UserDTO> = userService.addFriend(
         userid, friendDTO).map { it.toDTO() }
+    @PostMapping("/{userid}/addtoread")
+    fun addToRead(@PathVariable userid: Int, @RequestBody bookDTO: BookDTO): List<BookDTO> = userService.addBookToRead(
+        userid, bookDTO).map { it.toDTO() }
+    @PostMapping("/{userid}/addreadbook")
+    fun addReadBook(@PathVariable userid: Int, @RequestBody bookDTO: BookDTO): List<BookDTO> = userService.addReadBooks(
+        userid, bookDTO).map { it.toDTO() }
+    @DeleteMapping("/{userid}/deltoread")
+    fun deleteBookToRead(@PathVariable userid: Int,@RequestParam("bookid") bookID: Int) {
+        userService.delBookToRead(userid, bookID)
+    }
+    @DeleteMapping("/{userid}/delreadbook")
+    fun deleteBookRead(@PathVariable userid: Int,@RequestParam("bookid") bookID: Int) {
+        userService.delReadBooks(userid, bookID)
+    }
 
     @GetMapping("/{userid}/bookstoread")
     fun getBooksToRead(@PathVariable userid: Int, @RequestParam("toread") toread: Boolean) = userService.getBooksToRead(userid, toread).map { it.toDTO() }
