@@ -101,6 +101,12 @@ class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecom
 
         return user.friends.toList()
     }
+    fun deleteFriend(userid: Int, friendId: Int): List<User> {
+        val user = userRepo.itemById(userid, "El id del usuario no existe")
+        val friendToRemove = userRepo.itemById(friendId, "El id del amigo buscado no existe")
+        user.deleteFriend(friendToRemove)
+        return user.friends.toList()
+    }
 
     fun addBookToRead(userid: Int, bookDTO: BookDTO): List<Libro>{
         val user = userRepo.itemById(userid, "Id usuario no entonctrado")
