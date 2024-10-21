@@ -133,6 +133,8 @@ class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecom
         user.delReadBook(readBooks)
 
         return user.readBooks().toList()
+    }
+    
     fun addFavoriteRecom(userId: Int, recomId: Int): List<Recomendacion> {
         val user = userRepo.itemById(userId)
         val recommendation = recomRepo.itemById(recomId)
