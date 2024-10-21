@@ -236,14 +236,10 @@ class UsuarioSpec : DescribeSpec({
 
         }
 
-        it("un lectorPromedio quiere agregar un libro su lista de libros pendientes"){
-
-            //Act
-            //user.addBookToRead(lasDosTorres)
+        it("un lectorPromedio quiere agregar un libro que ya tiene en su lista de libros pendientes"){
 
             //Assert
             shouldThrow<Exception> { user.addBookToRead(lasDosTorres) }
-            //user.booksToRead() shouldBe mutableListOf(lasDosTorres)
         }
 
         it("Tiempo de lectura de una recomendacion"){

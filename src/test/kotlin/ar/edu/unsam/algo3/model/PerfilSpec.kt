@@ -134,7 +134,7 @@ class PerfilSpec : DescribeSpec ({
     describe("perfil precavido"){
         it("puede leer ya que está en su lista de noLeidos"){
             user.updateSearchCriteria(Cautious(user))
-            user.addBookToRead(libro)
+            user.addBookToRead(libro) //<<<<-------
             recomendacion.agregarLibro(creador,libro)
 
             user.isRecommendable(recomendacion) shouldBe true
