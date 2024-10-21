@@ -50,7 +50,22 @@ class User(
         recomendacion.libros().all({ readBooks.contains(it) })
 
     fun addBookToRead(libro: Libro) {
+        if (booksToRead().contains(libro)){
+            throw Exception("${this.displayName()} ya tiene este libro para leer.")
+        }
         booksToRead.add(libro)
+    }
+    fun delBookToRead(libro: Libro) {
+//        if (booksToRead().contains(libro)){
+//            throw Exception("${this.displayName()} ya tiene este libro para leer.")
+//        }
+        booksToRead.remove(libro)
+    }
+    fun delReadBook(libro: Libro) {
+        readBooks.remove(libro)
+        if (booksToRead().contains(libro)){
+            throw Exception("${this.displayName()} ya tiene este libro para leer.")
+        }
     }
 
     fun booksToRead(): MutableSet<Libro> = booksToRead

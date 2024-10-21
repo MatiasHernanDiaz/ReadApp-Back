@@ -1,8 +1,9 @@
 package ar.edu.unsam.algo3.service
 
 import ar.edu.unsam.algo3.*
-import ar.edu.unsam.algo3.dto.RecomDTO
+import ar.edu.unsam.algo3.dto.BookDTO
 import ar.edu.unsam.algo3.dto.UserDTO
+import ar.edu.unsam.algo3.repos.RepositorioLibros
 import ar.edu.unsam.algo3.repos.RepositorioRecomendaciones
 import ar.edu.unsam.algo3.repos.UserRepository
 import org.springframework.stereotype.Service
@@ -10,7 +11,7 @@ import org.springframework.stereotype.Service
 
 
 @Service
-class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecomendaciones){
+class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecomendaciones, val bookRepo: RepositorioLibros){
     fun getAllUser(): MutableSet<User> {
         return userRepo.items
     }
@@ -99,6 +100,39 @@ class UserService (val userRepo: UserRepository , val recomRepo:RepositorioRecom
         user.addFriend(newFriend)
 
         return user.friends.toList()
+    }
+
+    fun addBookToRead(userid: Int, bookDTO: BookDTO): List<Libro>{
+        val user = userRepo.itemById(userid, "Id usuario no entonctrado")
+        val bookToRead = bookRepo.itemById(bookDTO.id, "Id usuario no entonctrado")
+
+        user.addBookToRead(bookToRead)
+
+        return user.booksToRead().toList()
+    }
+    fun addReadBooks(userid: Int, bookDTO: BookDTO): List<Libro>{
+        val user = userRepo.itemById(userid, "Id usuario no entonctrado")
+        val readBooks = bookRepo.itemById(bookDTO.id, "Id libro no encontrado")
+
+        user.addReadBook(readBooks)
+
+        return user.readBooks().toList()
+    }
+    fun delBookToRead(userid: Int, bookId: Int): List<Libro>{
+        val user = userRepo.itemById(userid, "Id usuario no entonctrado")
+        val bookToRead = bookRepo.itemById(bookId, "Id libro no encontrado")
+
+        user.delBookToRead(bookToRead)
+
+        return user.booksToRead().toList()
+    }
+    fun delReadBooks(userid: Int, bookId: Int): List<Libro>{
+        val user = userRepo.itemById(userid, "Id usuario no entonctrado")
+        val readBooks = bookRepo.itemById(bookId, "Id libro no encontrado")
+
+        user.delReadBook(readBooks)
+
+        return user.readBooks().toList()
     }
 
     fun addFavoriteRecom(userId: Int, recomId: Int): List<Recomendacion> {
