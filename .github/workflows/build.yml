@@ -25,17 +25,16 @@ jobs:
       - uses: gradle/actions/setup-gradle@v3
 
       - name: Execute tests with coverage
-        run: ./gradlew runOnGitHub
+        run: |
+          ./gradlew runOnGitHub
+          cat file:///home/runner/work/readapp-2024-backend-grupo-7/readapp-2024-backend-grupo-7/build/reports/tests/test/index.html
 
 #      - name: Generate JaCoCo Badge
 #        id: jacoco
 #        uses: cicirello/jacoco-badge-generator@v2.11.0
 #        with:
 #          generate-branches-badge: true
-#          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv
-      - name: Print failed tests
-        run: |
-          cat file:///home/runner/work/readapp-2024-backend-grupo-7/readapp-2024-backend-grupo-7/build/reports/tests/test/index.html
+#          jacoco-csv-file: build/reports/jacoco/test/jacocoTestReport.csv 
             
       - name: Log coverage percentage
         run: |
