@@ -1694,9 +1694,9 @@ class DataInitializer(
         )
 
         // Valoraciones de Homero
-        val valoracionHomero1 = Valoracion(rating = 5, description = "Buenísimo Bro!", autor = homero)
-        val valoracionHomero2 = Valoracion(rating = 4, description = "Muy interesante.", autor = homero)
-        val valoracionHomero3 = Valoracion(rating = 3, description = "Regular.", autor = homero)
+        val valoracionHomero1 = Valoracion(rating = 5, description = "Buenísimo Bro!", autor = homero, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionHomero2 = Valoracion(rating = 4, description = "Muy interesante.", autor = homero, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionHomero3 = Valoracion(rating = 3, description = "Regular.", autor = homero, createDate = LocalDate.of(2024, 10, 21))
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomLisa1.agregarValoracion(valoracionHomero1)  // Lisa valora la recomendación de Homero
@@ -1704,9 +1704,9 @@ class DataInitializer(
         recomMarge1.agregarValoracion(valoracionHomero3)  // Marge valora la recomendación de Homero
 
 // Valoraciones de Lisa
-        val valoracionLisa1 = Valoracion(rating = 5, description = "Increíble.", autor = lisa)
-        val valoracionLisa2 = Valoracion(rating = 4, description = "Reflexivo y hermoso.", autor = lisa)
-        val valoracionLisa3 = Valoracion(rating = 3, description = "Bueno pero no es para todos.", autor = lisa)
+        val valoracionLisa1 = Valoracion(rating = 5, description = "Increíble.", autor = lisa, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionLisa2 = Valoracion(rating = 4, description = "Reflexivo y hermoso.", autor = lisa, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionLisa3 = Valoracion(rating = 3, description = "Bueno pero no es para todos.", autor = lisa, createDate = LocalDate.of(2024, 10, 21))
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomBart2.agregarValoracion(valoracionLisa1)  // Bart valora la recomendación de Lisa
@@ -1714,9 +1714,9 @@ class DataInitializer(
         recomSelma1.agregarValoracion(valoracionLisa3)  // Selma valora la recomendación de Lisa
 
 //// Valoraciones de Bart
-        val valoracionBart1 = Valoracion(rating = 5, description = "¡Me encantó!", autor = bart)
-        val valoracionBart2 = Valoracion(rating = 4, description = "Divertido.", autor = bart)
-        val valoracionBart3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = bart)
+        val valoracionBart1 = Valoracion(rating = 5, description = "¡Me encantó!", autor = bart, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionBart2 = Valoracion(rating = 4, description = "Divertido.", autor = bart, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionBart3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = bart, createDate = LocalDate.of(2024, 10, 21))
 
 //// Agregando valoraciones a las recomendaciones de otros personajes
         recomMarge2.agregarValoracion(valoracionBart1)  // Marge valora la recomendación de Bart
@@ -1724,9 +1724,9 @@ class DataInitializer(
         recomPatty1.agregarValoracion(valoracionBart3)  // Patty valora la recomendación de Bart
 
 // Valoraciones de Marge
-        val valoracionMarge1 = Valoracion(rating = 5, description = "Una joya literaria.", autor = marge)
-        val valoracionMarge2 = Valoracion(rating = 4, description = "Lleno de emociones.", autor = marge)
-        val valoracionMarge3 = Valoracion(rating = 3, description = "Interesante pero algo lento.", autor = marge)
+        val valoracionMarge1 = Valoracion(rating = 5, description = "Una joya literaria.", autor = marge, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionMarge2 = Valoracion(rating = 4, description = "Lleno de emociones.", autor = marge, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionMarge3 = Valoracion(rating = 3, description = "Interesante pero algo lento.", autor = marge, createDate = LocalDate.of(2024, 10, 21))
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomSelma2.agregarValoracion(valoracionMarge1)  // Selma valora la recomendación de Marge
@@ -1734,9 +1734,9 @@ class DataInitializer(
         recomMilhouse1.agregarValoracion(valoracionMarge3)  // Milhouse valora la recomendación de Marge
 
 // Valoraciones de Selma
-        val valoracionSelma1 = Valoracion(rating = 5, description = "Reflexiones profundas.", autor = selma)
-        val valoracionSelma2 = Valoracion(rating = 4, description = "Un buen libro.", autor = selma)
-        val valoracionSelma3 = Valoracion(rating = 3, description = "Me gustó, pero hay mejores.", autor = selma)
+        val valoracionSelma1 = Valoracion(rating = 5, description = "Reflexiones profundas.", autor = selma, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionSelma2 = Valoracion(rating = 4, description = "Un buen libro.", autor = selma, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionSelma3 = Valoracion(rating = 3, description = "Me gustó, pero hay mejores.", autor = selma, createDate = LocalDate.of(2024, 10, 21))
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomPatty2.agregarValoracion(valoracionSelma1)  // Patty valora la recomendación de Selma
@@ -1784,9 +1784,9 @@ class DataInitializer(
         recomLisa3.agregarValoracion(valoracionNelson3)  // Lisa valora la recomendación de Nelson
 
 // Valoraciones de Lenny
-        val valoracionLenny1 = Valoracion(rating = 5, description = "Un libro que todos deben leer.", autor = lenny)
-        val valoracionLenny2 = Valoracion(rating = 4, description = "Recomendado.", autor = lenny)
-        val valoracionLenny3 = Valoracion(rating = 3, description = "Interesante.", autor = lenny)
+        val valoracionLenny1 = Valoracion(rating = 5, description = "Un libro que todos deben leer.", autor = lenny, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionLenny2 = Valoracion(rating = 4, description = "Recomendado.", autor = lenny, createDate = LocalDate.of(2024, 10, 21))
+        val valoracionLenny3 = Valoracion(rating = 3, description = "Interesante.", autor = lenny, createDate = LocalDate.of(2024, 10, 21))
 
 // Agregando valoraciones a las recomendaciones de otros personajes
         recomMarge3.agregarValoracion(valoracionLenny1)  // Marge valora la recomendación de Lenny

@@ -1561,58 +1561,58 @@ val recomRalph3 = Recomendacion(
 )
 
 // Valoraciones de Homero
-val valoracionHomero1 = Valoracion(rating = 5, description = "Buenísimo Bro!", autor = homero)
-val valoracionHomero2 = Valoracion(rating = 4, description = "Muy interesante.", autor = homero)
-val valoracionHomero3 = Valoracion(rating = 3, description = "Regular.", autor = homero)
+val valoracionHomero1 = Valoracion(rating = 5, description = "Buenísimo Bro!", autor = homero, createDate = LocalDate.of(2024, 10, 21))
+val valoracionHomero2 = Valoracion(rating = 4, description = "Muy interesante.", autor = homero, createDate = LocalDate.of(2024, 10, 21))
+val valoracionHomero3 = Valoracion(rating = 3, description = "Regular.", autor = homero, createDate = LocalDate.of(2024, 10, 21))
 
 
 // Valoraciones de Lisa
-val valoracionLisa1 = Valoracion(rating = 5, description = "Increíble.", autor = lisa)
-val valoracionLisa2 = Valoracion(rating = 4, description = "Reflexivo y hermoso.", autor = lisa)
-val valoracionLisa3 = Valoracion(rating = 3, description = "Bueno pero no es para todos.", autor = lisa)
+val valoracionLisa1 = Valoracion(rating = 5, description = "Increíble.", autor = lisa, createDate = LocalDate.of(2024, 10, 21))
+val valoracionLisa2 = Valoracion(rating = 4, description = "Reflexivo y hermoso.", autor = lisa, createDate = LocalDate.of(2024, 10, 21))
+val valoracionLisa3 = Valoracion(rating = 3, description = "Bueno pero no es para todos.", autor = lisa, createDate = LocalDate.of(2024, 10, 21))
 
 
 //// Valoraciones de Bart
-val valoracionBart1 = Valoracion(rating = 5, description = "¡Me encantó!", autor = bart)
-val valoracionBart2 = Valoracion(rating = 4, description = "Divertido.", autor = bart)
-val valoracionBart3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = bart)
+val valoracionBart1 = Valoracion(rating = 5, description = "¡Me encantó!", autor = bart, createDate = LocalDate.of(2024, 10, 21))
+val valoracionBart2 = Valoracion(rating = 4, description = "Divertido.", autor = bart, createDate = LocalDate.of(2024, 10, 21))
+val valoracionBart3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = bart, createDate = LocalDate.of(2024, 10, 21))
 
 
 // Valoraciones de Marge
-val valoracionMarge1 = Valoracion(rating = 5, description = "Una joya literaria.", autor = marge)
-val valoracionMarge2 = Valoracion(rating = 4, description = "Lleno de emociones.", autor = marge)
-val valoracionMarge3 = Valoracion(rating = 3, description = "Interesante pero algo lento.", autor = marge)
+val valoracionMarge1 = Valoracion(rating = 5, description = "Una joya literaria.", autor = marge, createDate = LocalDate.of(2024, 10, 21))
+val valoracionMarge2 = Valoracion(rating = 4, description = "Lleno de emociones.", autor = marge, createDate = LocalDate.of(2024, 10, 21))
+val valoracionMarge3 = Valoracion(rating = 3, description = "Interesante pero algo lento.", autor = marge, createDate = LocalDate.of(2024, 10, 21))
 
 
 // Valoraciones de Selma
-val valoracionSelma1 = Valoracion(rating = 5, description = "Reflexiones profundas.", autor = selma)
-val valoracionSelma2 = Valoracion(rating = 4, description = "Un buen libro.", autor = selma)
-val valoracionSelma3 = Valoracion(rating = 3, description = "Me gustó, pero hay mejores.", autor = selma)
+val valoracionSelma1 = Valoracion(rating = 5, description = "Reflexiones profundas.", autor = selma, createDate = LocalDate.of(2024, 10, 21))
+val valoracionSelma2 = Valoracion(rating = 4, description = "Un buen libro.", autor = selma, createDate = LocalDate.of(2024, 10, 21))
+val valoracionSelma3 = Valoracion(rating = 3, description = "Me gustó, pero hay mejores.", autor = selma, createDate = LocalDate.of(2024, 10, 21))
 
 
 // Valoraciones de Patty
-val valoracionPatty1 = Valoracion(rating = 5, description = "Increíble lectura.", autor = patty)
-val valoracionPatty2 = Valoracion(rating = 4, description = "Me encantó.", autor = patty)
-val valoracionPatty3 = Valoracion(rating = 3, description = "No está mal.", autor = patty)
+val valoracionPatty1 = Valoracion(rating = 5, description = "Increíble lectura.", autor = patty, createDate = LocalDate.of(2024, 10, 21))
+val valoracionPatty2 = Valoracion(rating = 4, description = "Me encantó.", autor = patty, createDate = LocalDate.of(2024, 10, 21))
+val valoracionPatty3 = Valoracion(rating = 3, description = "No está mal.", autor = patty, createDate = LocalDate.of(2024, 10, 21))
 
 // Valoraciones de Milhouse
-val valoracionMilhouse1 = Valoracion(rating = 5, description = "Espectacular.", autor = milhouse)
-val valoracionMilhouse2 = Valoracion(rating = 4, description = "Muy divertido.", autor = milhouse)
-val valoracionMilhouse3 = Valoracion(rating = 3, description = "Aceptable.", autor = milhouse)
+val valoracionMilhouse1 = Valoracion(rating = 5, description = "Espectacular.", autor = milhouse, createDate = LocalDate.of(2024, 10, 21))
+val valoracionMilhouse2 = Valoracion(rating = 4, description = "Muy divertido.", autor = milhouse, createDate = LocalDate.of(2024, 10, 21))
+val valoracionMilhouse3 = Valoracion(rating = 3, description = "Aceptable.", autor = milhouse, createDate = LocalDate.of(2024, 10, 21))
 
 // Valoraciones de Barney
-val valoracionBarney1 = Valoracion(rating = 5, description = "¡Increíble!", autor = barney)
-val valoracionBarney2 = Valoracion(rating = 4, description = "Un gran libro.", autor = barney)
-val valoracionBarney3 = Valoracion(rating = 3, description = "Interesante.", autor = barney)
+val valoracionBarney1 = Valoracion(rating = 5, description = "¡Increíble!", autor = barney, createDate = LocalDate.of(2024, 10, 21))
+val valoracionBarney2 = Valoracion(rating = 4, description = "Un gran libro.", autor = barney, createDate = LocalDate.of(2024, 10, 21))
+val valoracionBarney3 = Valoracion(rating = 3, description = "Interesante.", autor = barney, createDate = LocalDate.of(2024, 10, 21))
 
 
 // Valoraciones de Nelson
-val valoracionNelson1 = Valoracion(rating = 5, description = "¡Fantástico!", autor = nelson)
-val valoracionNelson2 = Valoracion(rating = 4, description = "Me gustó mucho.", autor = nelson)
-val valoracionNelson3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = nelson)
+val valoracionNelson1 = Valoracion(rating = 5, description = "¡Fantástico!", autor = nelson, createDate = LocalDate.of(2024, 10, 21))
+val valoracionNelson2 = Valoracion(rating = 4, description = "Me gustó mucho.", autor = nelson, createDate = LocalDate.of(2024, 10, 21))
+val valoracionNelson3 = Valoracion(rating = 3, description = "Estuvo bien.", autor = nelson, createDate = LocalDate.of(2024, 10, 21))
 
 
 // Valoraciones de Lenny
-val valoracionLenny1 = Valoracion(rating = 5, description = "Un libro que todos deben leer.", autor = lenny)
-val valoracionLenny2 = Valoracion(rating = 4, description = "Recomendado.", autor = lenny)
-val valoracionLenny3 = Valoracion(rating = 3, description = "Interesante.", autor = lenny)
+val valoracionLenny1 = Valoracion(rating = 5, description = "Un libro que todos deben leer.", autor = lenny, createDate = LocalDate.of(2024, 10, 21))
+val valoracionLenny2 = Valoracion(rating = 4, description = "Recomendado.", autor = lenny, createDate = LocalDate.of(2024, 10, 21))
+val valoracionLenny3 = Valoracion(rating = 3, description = "Interesante.", autor = lenny, createDate = LocalDate.of(2024, 10, 21))
